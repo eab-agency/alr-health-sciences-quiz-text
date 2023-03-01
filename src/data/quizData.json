@@ -1,0 +1,191 @@
+{
+    "questions": [
+        {
+            "question": "At work, a primary motivator for me is...",
+            "answers": [
+                {
+                    "answer": "Helping others do their best at work. I like to develop plans and communicate them to a team.",
+                    "personality": "executive",
+                    "weight": 1
+                },
+                {
+                    "answer": "Improving a person’s quality of life and health. I like to help people.",
+                    "personality": "practitioner",
+                    "weight": 1
+                },
+                {
+                    "answer": "Lifelong learning. I like to teach others and give them the tools to help themselves.",
+                    "personality": "educator",
+                    "weight": 1
+                },
+                {
+                    "answer": "Making groundbreaking discoveries. I like to figure out how things work.",
+                    "personality": "scientist",
+                    "weight": 1
+                },
+                {
+                    "answer": "Finding insights in data. I like to develop and maintain systems and solve problems.",
+                    "personality": "analyst",
+                    "weight": 1
+                }
+            ]
+        },
+        {
+            "question": "I’d like to work with...",
+            "answers": [
+                {
+                    "answer": "Health care providers and am interested in managing staff or finances.",
+                    "personality": "executive",
+                    "weight": 1
+                },
+                {
+                    "answer": "Patients and other medical professionals.",
+                    "personality": "practitioner",
+                    "weight": 1
+                },
+                {
+                    "answer": "Community residents, aspiring health care professionals, or people with disabilities.",
+                    "personality": "educator",
+                    "weight": 1
+                },
+                {
+                    "answer": "Other scientists or medical professionals.",
+                    "personality": "scientist",
+                    "weight": 1
+                },
+                {
+                    "answer": "Medical professionals and computer systems.",
+                    "personality": "analyst",
+                    "weight": 1
+                }
+            ]
+        },
+        {
+            "question": "My ideal work setting is...",
+            "answers": [
+                {
+                    "answer": "In a hospital or physician’s office, but I’d be open to a residential care facility or government agency.",
+                    "personality": "executive",
+                    "weight": 1
+                },
+                {
+                    "answer": "In a physician’s office, hospital, or outpatient care center.",
+                    "personality": "practitioner",
+                    "weight": 1
+                },
+                {
+                    "answer": "At a government agency or nonprofit, but I’d be open to working at a university or family services organization.",
+                    "personality": "educator",
+                    "weight": 1
+                },
+                {
+                    "answer": "In a lab or at a university, but I’d be open to working in a hospital or office.",
+                    "personality": "scientist",
+                    "weight": 1
+                },
+                {
+                    "answer": "In an office or hospital, but I’d be open to working in a technical services or administrative support organization.",
+                    "personality": "analyst",
+                    "weight": 1
+                }
+            ]
+        },
+        {
+            "question": "My biggest professional strengths are...",
+            "answers": [
+                {
+                    "answer": "Leading and communicating with others. I have good attention to detail and enjoy analyzing information and using technology.",
+                    "personality": "executive",
+                    "weight": 2
+                },
+                {
+                    "answer": "Empathetic communication and emotional stablility. I have strong problem-solving and interpersonal skills.",
+                    "personality": "practitioner",
+                    "weight": 2
+                },
+                {
+                    "answer": "Breaking down big ideas so others can learn. I’m also good at analyzing information to inform big-picture problem solving.",
+                    "personality": "educator",
+                    "weight": 2
+                },
+                {
+                    "answer": "Critical thinking, observation, and data analysis. I can also communicate complex ideas simply while speaking and writing.",
+                    "personality": "scientist",
+                    "weight": 2
+                },
+                {
+                    "answer": "Organization, project management, data analysis, and creative problem solving.",
+                    "personality": "analyst",
+                    "weight": 2
+                }
+            ]
+        },
+        {
+            "question": "I have taken college courses in ...",
+            "answers": [
+                {
+                    "answer": "Accounting, administration, ethics, or economics.",
+                    "personality": "executive",
+                    "weight": 1
+                },
+                {
+                    "answer": "Physical sciences or health care.",
+                    "personality": "practitioner",
+                    "weight": 1
+                },
+                {
+                    "answer": "Education, public health, ethics, or a language.",
+                    "personality": "educator",
+                    "weight": 1
+                },
+                {
+                    "answer": "Physical science such as biology or chemistry.",
+                    "personality": "scientist",
+                    "weight": 1
+                },
+                {
+                    "answer": "Biology, computer science, math, or management.",
+                    "personality": "analyst",
+                    "weight": 1
+                }
+            ]
+        },
+        {
+            "question": "My professional experience includes ...",
+            "answers": [
+                {
+                    "answer": "Some experience in an administrative or clinical role.",
+                    "personality": "executive",
+                    "weight": 1
+                },
+                {
+                    "answer": "Some experience working in a lab setting or with patients as a medic, nurse, medical assistant, EMT, etc.",
+                    "personality": "practitioner",
+                    "weight": 1
+                },
+                {
+                    "answer": "Some experience working in education or with a community organization.",
+                    "personality": "educator",
+                    "weight": 1
+                },
+                {
+                    "answer": "I have some experience working in a lab setting or doing research, writing proposals, and writing about my findings.",
+                    "personality": "scientist",
+                    "weight": 1
+                },
+                {
+                    "answer": "I have some experience working with computers, databases, or information systems.",
+                    "personality": "analyst",
+                    "weight": 1
+                }
+            ]
+        }
+    ],
+    "results": {
+        "executive": 0,
+        "practitioner": 0,
+        "educator": 0,
+        "scientist": 0,
+        "analyst": 0
+    }
+}
