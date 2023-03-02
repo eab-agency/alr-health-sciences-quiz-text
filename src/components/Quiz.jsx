@@ -3,58 +3,78 @@ import { useRouter } from 'next/router';
 import Question from './Question';
 import Answers from './Answers';
 import ResetQuizButton from "../components/ResetQuizButton";
-import { QuizContext } from "../contexts/QuizContext";
+
+import quizData from '../data/quizData.json';
 
 function Quiz() {
     const router = useRouter();
 
-    const [state, dispatch] = useContext(QuizContext);
-    const { questions, currentQuestion, quizEnded, score, result } = state;
-    console.log("🚀 ~ file: Quiz.jsx:13 ~ Quiz ~ state:", state)
-
-  
-
-    const handleAnswer = (answer) => {
-        dispatch({ type: "ANSWER_QUESTION", payload: answer });
-    };
-
-
-    const handleRetakeQuiz = () => {
-        dispatch({ type: "RESET_QUIZ" });
-    };
-
+    const [currentQuestion, setCurrentQuestion] = useState(0);
+    const [answers, setAnswers] = useState({});
+    const [personalityType, setPersonalityType] = useState(null);
+    const [resultText, setResultText] = useState(null);
 
     useEffect(() => {
-        if (quizEnded) {
-            dispatch({ type: "QUIZ_END", payload: result });
-            router.push(`/${result}`);
+        // Load previoius answers from local storage if available
+        const storedAnswers = JSON.parse(localStorage.getItem('quizAnswers'));
+        if (storedAnswers) {
+            setAnswers(storedAnswers);
         }
-    }, [quizEnded, dispatch, router, result]);
+    }, []);
+
+    useEffect(() => {
+        // Check if all questions have been answered and calculate results
+        if (Object.keys(answers).length === quizData.questions.length) {
+            const scores = {};
+            quizData.questions.forEach((question, index) => {
+                const selectedAnswer = answers[index];
+                if (selectedAnswer) {
+                    const personality = selectedAnswer.personality;
+                    const weight = selectedAnswer.weight;
+                    if (!scores[personality]) {
+                        scores[personality] = 0;
+                    }
+                    scores[personality] += weight;
+                }
+            });
+            // Find the personality with the highest score
+            let maxScore = -Infinity;
+            let maxPersonality = null;
+            for (const personality in scores) {
+                if (scores[personality] > maxScore) {
+                    maxScore = scores[personality];
+                    maxPersonality = personality;
+                }
+            }
+            setPersonalityType(maxPersonality);
+            setResultText(quizData.results[maxPersonality]);
+            // Store answers in local storage
+            localStorage.setItem('quizAnswers', JSON.stringify(answers));
+        }
+    }, [answers]);
+
+    const handleAnswer = (index, answer) => {
+        setAnswers({ ...answers, [index]: answer });
+        setCurrentQuestion(currentQuestion + 1);
+    };
 
 
-    if (questions.length === 0) {
-        return <div>Loading...</div>;
-    }
 
     return (
         <div>
             <h2>Scores</h2>
-            <ul>
+            {/* <ul>
                 {Object.keys(score).map((personality, index) => (
                     <li key={index}>
                         {personality}: {score[personality]}
                     </li>
                 ))}
                 <li>result: {result}</li>
-            </ul>
+            </ul> */}
             <Question
-                question={questions[currentQuestion].question}
+                question={quizData.questions[currentQuestion]}
             />
-            <Answers
-                answers={questions[currentQuestion].answers}
-                handleAnswer={handleAnswer}
-            />
-            <ResetQuizButton onClick={handleRetakeQuiz} />
+            {/* <ResetQuizButton onClick={handleRetakeQuiz} /> */}
         </div>
     );
 }
