@@ -16,7 +16,8 @@ function Quiz() {
             "practitioner": 0,
             "educator": 0,
             "scientist": 0,
-            "analyst": 0
+            "analyst": 0,
+            "initial": 0,
         },
         highestScorePersonality: null
     });
@@ -36,14 +37,31 @@ function Quiz() {
     const handleAnswer = (question, answer ) => {
         // calculate personality score based on selected answer
         const personality = answer.personality;
-        const answerWeight = eabQuizData.score[personality] ? eabQuizData.score[personality] + answer.weight : answer.weight;
+        // const answerWeight = eabQuizData.score[personality] ? eabQuizData.score[personality] + answer.weight : answer.weight;
 
-        // set highest score personality
-        const highestScorePersonality = Object.keys(eabQuizData.score).reduce((a, b) => eabQuizData.score[a] > eabQuizData.score[b] ? a : b);
+        // Only update score if the answer's personality is not 'initial'
+        const answerWeight = personality !== 'initial' ?
+            (eabQuizData.score[personality] ? eabQuizData.score[personality] + answer.weight : answer.weight)
+            : 0;
+
+        // find highest score personality from updated score object
+        const updatedScore = { ...eabQuizData.score, [personality]: answerWeight };
+        let highestScorePersonality = Object.keys(updatedScore)
+            .filter(key => key !== 'initial') // Filter out the 'initial' personality
+            .reduce((a, b) => {
+                if (updatedScore[a] === updatedScore[b]) {
+                    return a; // If scores are tied, return the existing highest score personality
+                }
+                return updatedScore[a] > updatedScore[b] ? a : b;
+            }, Object.keys(updatedScore)[0]); // Set the initial value to the first key in case all scores are 0
+
+        if (updatedScore[highestScorePersonality] === 0) {
+            highestScorePersonality = ''; // If all scores are 0, return an empty string as the highest score personality
+        }
 
 
-
-        setEabQuizData({ ...eabQuizData, answers: [ ...eabQuizData.answers, {question: question, answer: answer.answer} ], score: { ...eabQuizData.score, [personality]: answerWeight }, currentQuestion: eabQuizData.currentQuestion + 1, highestScorePersonality: highestScorePersonality })
+        setEabQuizData({ ...eabQuizData, answers: [...eabQuizData.answers, { question: question, answer: answer.answer }],
+            score: updatedScore, currentQuestion: eabQuizData.currentQuestion + 1, highestScorePersonality: highestScorePersonality })
     };
 
     const handleRetakeQuiz = () => {
@@ -54,8 +72,10 @@ function Quiz() {
                 "practitioner": 0,
                 "educator": 0,
                 "scientist": 0,
-                "analyst": 0 },
+                "analyst": 0,
+                "initial": 0 },
             highestScorePersonality: null})
+            localStorage.removeItem('eab-quiz-data');
 
     };
 

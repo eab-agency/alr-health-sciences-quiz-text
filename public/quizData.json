@@ -1,26 +1,30 @@
 {
-    "initialQuestion": {
-        "question": "Where are you in your educational journey?",
-        "answers": [
-            {
-                "answer": "I’m currently in school for a health care related degree",
-                "weight": 1
-            },
-            {
-                "answer": "I’m considering going back to school for a health care related degree",
-                "weight": 1
-            },
-            {
-                "answer": "I’m considering going back to school for a degree that isn’t related to health care",
-                "weight": 1
-            },
-            {
-                "answer": "I’m not currently considering going back to school",
-                "weight": 1
-            }
-        ]
-    },
     "questions": [
+        {
+            "question": "Where are you in your educational journey?",
+            "answers": [
+                {
+                    "answer": "I’m currently in school for a health care related degree",
+                    "personality": "initial",
+                    "weight": 1
+                },
+                {
+                    "answer": "I’m considering going back to school for a health care related degree",
+                    "personality": "initial",
+                    "weight": 1
+                },
+                {
+                    "answer": "I’m considering going back to school for a degree that isn’t related to health care",
+                    "personality": "initial",
+                    "weight": 1
+                },
+                {
+                    "answer": "I’m not currently considering going back to school",
+                    "personality": "initial",
+                    "weight": 1
+                }
+            ]
+        },
         {
             "question": "At work, a primary motivator for me is...",
             "answers": [
