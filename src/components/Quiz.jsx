@@ -1,82 +1,79 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useRouter } from 'next/router';
 import Question from './Question';
-import Answers from './Answers';
 import ResetQuizButton from "../components/ResetQuizButton";
-
-import quizData from '../data/quizData.json';
+import Score from "@/components/Score";
+import data from '../data/quizData.json';
+import {useLocalStorage}  from '@/hooks/useLocalStorage';
 
 function Quiz() {
-    const router = useRouter();
-
-    const [currentQuestion, setCurrentQuestion] = useState(0);
-    const [answers, setAnswers] = useState({});
-    const [personalityType, setPersonalityType] = useState(null);
-    const [resultText, setResultText] = useState(null);
+    const [quizData, setQuizData] = useState(null);
+    const [eabQuizData, setEabQuizData] = useLocalStorage('eab-quiz-data', {
+        answers: [],
+        currentQuestion: 0,
+        score: {
+            "executive": 0,
+            "practitioner": 0,
+            "educator": 0,
+            "scientist": 0,
+            "analyst": 0
+        },
+        highestScorePersonality: null
+    });
+    const [isLoading, setLoading] = useState(false)
 
     useEffect(() => {
-        // Load previoius answers from local storage if available
-        const storedAnswers = JSON.parse(localStorage.getItem('quizAnswers'));
-        if (storedAnswers) {
-            setAnswers(storedAnswers);
-        }
+        setLoading(true)
+        fetch('./quizData.json')
+            .then((res) => res.json())
+            .then((data) => {
+                setQuizData(data)
+                setLoading(false)
+            })
     }, []);
 
-    useEffect(() => {
-        // Check if all questions have been answered and calculate results
-        if (Object.keys(answers).length === quizData.questions.length) {
-            const scores = {};
-            quizData.questions.forEach((question, index) => {
-                const selectedAnswer = answers[index];
-                if (selectedAnswer) {
-                    const personality = selectedAnswer.personality;
-                    const weight = selectedAnswer.weight;
-                    if (!scores[personality]) {
-                        scores[personality] = 0;
-                    }
-                    scores[personality] += weight;
-                }
-            });
-            // Find the personality with the highest score
-            let maxScore = -Infinity;
-            let maxPersonality = null;
-            for (const personality in scores) {
-                if (scores[personality] > maxScore) {
-                    maxScore = scores[personality];
-                    maxPersonality = personality;
-                }
-            }
-            setPersonalityType(maxPersonality);
-            setResultText(quizData.results[maxPersonality]);
-            // Store answers in local storage
-            localStorage.setItem('quizAnswers', JSON.stringify(answers));
-        }
-    }, [answers]);
 
-    const handleAnswer = (index, answer) => {
-        setAnswers({ ...answers, [index]: answer });
-        setCurrentQuestion(currentQuestion + 1);
+    const handleAnswer = (question, answer ) => {
+        // calculate personality score based on selected answer
+        const personality = answer.personality;
+        const answerWeight = eabQuizData.score[personality] ? eabQuizData.score[personality] + answer.weight : answer.weight;
+
+        // set highest score personality
+        const highestScorePersonality = Object.keys(eabQuizData.score).reduce((a, b) => eabQuizData.score[a] > eabQuizData.score[b] ? a : b);
+
+
+
+        setEabQuizData({ ...eabQuizData, answers: [ ...eabQuizData.answers, {question: question, answer: answer.answer} ], score: { ...eabQuizData.score, [personality]: answerWeight }, currentQuestion: eabQuizData.currentQuestion + 1, highestScorePersonality: highestScorePersonality })
     };
 
+    const handleRetakeQuiz = () => {
+        // reset state
+        setEabQuizData({
+            ...eabQuizData, answers: [], currentQuestion: 0, score: {
+                "executive": 0,
+                "practitioner": 0,
+                "educator": 0,
+                "scientist": 0,
+                "analyst": 0 },
+            highestScorePersonality: null})
+
+    };
+
+    if (isLoading) return <p>Loading...</p>
+    if (!quizData) return <p>No quiz data</p>
 
 
     return (
         <div>
-            <h2>Scores</h2>
-            {/* <ul>
-                {Object.keys(score).map((personality, index) => (
-                    <li key={index}>
-                        {personality}: {score[personality]}
-                    </li>
-                ))}
-                <li>result: {result}</li>
-            </ul> */}
-            <Question
-                question={quizData.questions[currentQuestion]}
-            />
-            {/* <ResetQuizButton onClick={handleRetakeQuiz} /> */}
+            <Score score={eabQuizData.score} personality={eabQuizData.highestScorePersonality} />
+            <h3>Question {eabQuizData.currentQuestion + 1} of {quizData.questions.length}</h3>
+            {quizData && (<Question
+                question={quizData.questions[eabQuizData.currentQuestion]} handleAnswer={handleAnswer}
+            />)}
+            <ResetQuizButton onClick={handleRetakeQuiz} />
         </div>
     );
 }
+
 
 export default Quiz;

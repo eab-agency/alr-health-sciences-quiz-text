@@ -1,15 +1,25 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+function Question({ question, handleAnswer }) {
 
-function Question({ question }) {
-    console.log("🚀 ~ file: Question.jsx:4 ~ Question ~ question:", question)
+    const [shuffledAnswers, setShuffledAnswers] = useState([]);
+
+    // use useEffect to shuffle answers
+    useEffect(() => {
+        // shuffle answers
+        const shuffledAnswers = [...question.answers];
+        shuffledAnswers.sort(() => Math.random() - 0.5);
+        setShuffledAnswers(shuffledAnswers);
+    }, [question]);
+    
+
     return (
         <>
             <h2>{question.question}</h2>
             <ul>
-                {question.answers.map((answer, index) => (
-                    <li key={index} onClick={() => handleAnswer(currentQuestion, answer)}>
-                        {answer.text}
-                    </li>
+                {shuffledAnswers.map((answer, index) => (
+                    <button key={index} onClick={() => handleAnswer(question.question, answer )}>
+                        {answer.answer} ({answer.personality})
+                    </button>
                 ))}
             </ul>
         </>
