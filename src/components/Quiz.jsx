@@ -5,6 +5,7 @@ import ResetQuizButton from "../components/ResetQuizButton";
 import Score from "@/components/Score";
 import data from '../data/quizData.json';
 import {useLocalStorage}  from '@/hooks/useLocalStorage';
+import Results from './Results';
 
 function Quiz() {
     const [quizData, setQuizData] = useState(null);
@@ -81,6 +82,9 @@ function Quiz() {
 
     if (isLoading) return <p>Loading...</p>
     if (!quizData) return <p>No quiz data</p>
+
+// if we are at the end of the quiz, show the results page and pass the score and personality
+    if (eabQuizData.currentQuestion === quizData.questions.length) return <Results score={eabQuizData.score} personality={eabQuizData.highestScorePersonality} />
 
 
     return (
