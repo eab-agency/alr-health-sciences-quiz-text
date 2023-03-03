@@ -1,11 +1,9 @@
 /* eslint-disable no-nested-ternary */
-import React, { useState, useEffect, useContext } from 'react';
-import { useRouter } from 'next/router';
+import React, { useState, useEffect } from 'react';
+import Score from '@/components/Score';
+import { useLocalStorage } from '@/hooks/useLocalStorage';
 import Question from './Question';
 import ResetQuizButton from './ResetQuizButton';
-import Score from '@/components/Score';
-import data from '../data/quizData.json';
-import { useLocalStorage } from '@/hooks/useLocalStorage';
 import Results from './Results';
 
 function Quiz() {
@@ -100,21 +98,14 @@ function Quiz() {
 
     // if we are at the end of the quiz, show the results page and pass the score and personality
     if (eabQuizData.currentQuestion === quizData.questions.length) {
-        console.log('hello');
-        // grap personality from eabQuizData.highestScorePersonality and match with quizData.results
-
+        const { description, title } =
+            quizData.results[eabQuizData.highestScorePersonality];
         return (
             <>
                 <Results
                     personality={eabQuizData.highestScorePersonality}
-                    description={
-                        quizData.results[eabQuizData.highestScorePersonality]
-                            .description
-                    }
-                    title={
-                        quizData.results[eabQuizData.highestScorePersonality]
-                            .title
-                    }
+                    description={description}
+                    title={title}
                 />
                 <ResetQuizButton onClick={handleRetakeQuiz} />
             </>

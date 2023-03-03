@@ -1,9 +1,26 @@
 {
   "extends": [
+    "plugin:import/errors",
     "next/core-web-vitals",
     "wesbos",
     "prettier"
   ],
+  "settings": {
+    "import/resolver": {
+      "alias": {
+        "extensions": [
+          ".js",
+          ".jsx"
+        ],
+        "map": [
+          [
+            "@",
+            "./src"
+          ]
+        ]
+      }
+    }
+  },
   "rules": {
     "react/prop-types": "off",
     "prettier/prettier": [

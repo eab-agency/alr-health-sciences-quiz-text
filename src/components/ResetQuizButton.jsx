@@ -1,8 +1,10 @@
-import React from "react";
+import React from 'react';
 
 function ResetQuizButton({ onClick }) {
     return (
-        <button onClick={onClick}>Retake Quiz</button>
+        <button type="button" onClick={onClick}>
+            Retake Quiz
+        </button>
     );
 }
 
