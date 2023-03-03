@@ -116,7 +116,7 @@ function Quiz() {
         <div>
             <Score
                 score={eabQuizData.score}
-                personality={eabQuizData.highestScorePersonality}
+                winningPersonality={eabQuizData.highestScorePersonality}
             />
             <h3>
                 Question {eabQuizData.currentQuestion + 1} of{' '}
