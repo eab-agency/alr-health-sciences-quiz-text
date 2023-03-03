@@ -1,9 +1,5 @@
-import React from 'react'
+import React from 'react';
 
-const AnalystPage = () => {
-    return (
-        <div>AnalystPage</div>
-    )
-}
+const AnalystPage = () => <div>AnalystPage</div>;
 
-export default AnalystPage
+export default AnalystPage;

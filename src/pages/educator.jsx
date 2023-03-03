@@ -1,9 +1,5 @@
-import React from 'react'
+import React from 'react';
 
-const EducatorPage = () => {
-    return (
-        <div>EducatorPage</div>
-    )
-}
+const EducatorPage = () => <div>EducatorPage</div>;
 
-export default EducatorPage
+export default EducatorPage;

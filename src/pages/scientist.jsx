@@ -1,9 +1,5 @@
-import React from 'react'
+import React from 'react';
 
-const ScientistPage = () => {
-    return (
-        <div>ScientistPage</div>
-    )
-}
+const ScientistPage = () => <div>ScientistPage</div>;
 
-export default ScientistPage
+export default ScientistPage;

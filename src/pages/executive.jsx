@@ -1,9 +1,5 @@
-import React from 'react'
+import React from 'react';
 
-const ExecutivePage = () => {
-  return (
-    <div>ExecutivePage</div>
-  )
-}
+const ExecutivePage = () => <div>ExecutivePage</div>;
 
-export default ExecutivePage
+export default ExecutivePage;

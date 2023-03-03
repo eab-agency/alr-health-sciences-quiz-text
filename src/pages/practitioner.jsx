@@ -1,9 +1,5 @@
-import React from 'react'
+import React from 'react';
 
-const PractitionerPage = () => {
-    return (
-        <div>PractitionerPage</div>
-    )
-}
+const PractitionerPage = () => <div>PractitionerPage</div>;
 
-export default PractitionerPage
+export default PractitionerPage;
