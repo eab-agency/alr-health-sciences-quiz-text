@@ -12,7 +12,7 @@ function Question({ question, handleAnswer }) {
     }, [question]);
 
     return (
-        <>
+        <div>
             <h2>{question.question}</h2>
             <ul>
                 {shuffledAnswers.map((answer, index) => (
@@ -25,7 +25,7 @@ function Question({ question, handleAnswer }) {
                     </button>
                 ))}
             </ul>
-        </>
+        </div>
     );
 }
 

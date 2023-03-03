@@ -101,14 +101,14 @@ function Quiz() {
         const { description, title } =
             quizData.results[eabQuizData.highestScorePersonality];
         return (
-            <>
+            <div>
                 <Results
                     personality={eabQuizData.highestScorePersonality}
                     description={description}
                     title={title}
                 />
                 <ResetQuizButton onClick={handleRetakeQuiz} />
-            </>
+            </div>
         );
     }
 
