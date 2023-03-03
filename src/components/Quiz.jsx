@@ -90,7 +90,7 @@ function Quiz() {
             },
             highestScorePersonality: null,
         });
-        localStorage.removeItem('eab-quiz-data');
+        // localStorage.removeItem('eab-quiz-data');
     };
 
     if (isLoading) return <p>Loading...</p>;
