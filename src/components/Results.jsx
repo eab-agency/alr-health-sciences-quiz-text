@@ -6,7 +6,7 @@ const Results = ({ personality, description, title }) => (
         Results: {personality}
         <h2>{title}</h2>
         <p>{description}</p>
-        <AcquiaForm src="https://alr-wd-layout-library-sandbox-sj-1-2.contact-server.com/form/generate.js?id=2" />
+        <AcquiaForm src="https://go.cappex-health.com/form/generate.js?id=2" />
     </div>
 );
 
