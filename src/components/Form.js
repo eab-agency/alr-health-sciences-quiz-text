@@ -3,6 +3,7 @@ import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import axios from 'axios';
 import * as Yup from 'yup';
+import { useRouter } from 'next/router';
 // import fields from './arrayOfFieldObjects';
 
 const fields = [
@@ -364,39 +365,42 @@ const generateField = (field, error) => {
     }
 };
 
-const onSubmit = async (values, { setSubmitting }) => {
-    console.log(values);
-
-    try {
-        const formData = {
-            ...values,
-            formId: 2,
-            formName: 'quizformquizform',
-            messenger: 1,
-        };
-
-        const { data } = await axios.post(
-            '/api/submit?formId=2',
-            {
-                mauticform: formData,
-            },
-            {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                },
-            }
-        );
-
-        console.log(data);
-        setSubmitting(false);
-    } catch (error) {
-        console.log(error);
-        setSubmitting(false);
-    }
-};
-
-const AcquiaFormHandle = () => {
+const AcquiaFormHandle = ({ redirectTo }) => {
     const initialValues = {};
+    const router = useRouter();
+
+    const onSubmit = async (values, { setSubmitting, setErrors }) => {
+        try {
+            const formData = {
+                ...values,
+                formId: 2,
+                formName: 'quizformquizform',
+                messenger: 1,
+            };
+
+            const { data } = await axios.post(
+                '/api/submit?formId=2',
+                {
+                    mauticform: formData,
+                },
+                {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                    },
+                }
+            );
+
+            console.log(data);
+            setSubmitting(false);
+            // Redirect to the specified path on successful form submission
+            if (redirectTo) {
+                router.push(redirectTo);
+            }
+        } catch (error) {
+            console.log(error);
+            setSubmitting(false);
+        }
+    };
 
     fields.forEach((field) => {
         initialValues[field.alias] = field.defaultValue || '';

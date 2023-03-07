@@ -6,7 +6,6 @@ import { getMatchedSchool } from '@/components/helpers/getMatchedSchool';
 import PageLayout from '@/components/PageLayout';
 import Tabs from '@/components/Tabs';
 import Stats from '@/components/Stats';
-import AcquiaForm from '@/components/AcquiaForm';
 import { useQuizData, useUser } from '@/context/context';
 import UniversityMatch from '@/components/UniversityMatch';
 import StateSelect from '@/components/helpers/StateSelect';
@@ -46,7 +45,6 @@ const ExecutivePage = () => {
             <p>{personalityData.detailedDestription}</p>
             <Tabs tabs={personalityData.tabs} className="personalityTabs" />
             <Form />
-            <AcquiaForm src="https://go.cappex-health.com/form/generate.js?id=2" />
             <section className="career-path">
                 <h2>
                     What's a common health care career path for The Executive?
