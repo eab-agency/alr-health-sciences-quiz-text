@@ -1,20 +1,19 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 import { getMatchedSchool } from '@/components/helpers/getMatchedSchool';
 
 import PageLayout from '@/components/PageLayout';
 import Tabs from '@/components/Tabs';
 import Stats from '@/components/Stats';
 import AcquiaForm from '@/components/AcquiaForm';
-import { QuizDataContext, UserLocationContext } from '@/context/context';
-import Image from 'next/image';
+import { useQuizData, useUser } from '@/context/context';
 import UniversityMatch from '@/components/UniversityMatch';
 import StateSelect from '@/components/helpers/StateSelect';
 
 const ExecutivePage = () => {
-    const { quizData } = useContext(QuizDataContext);
-    const { userLocation, matchedSchool, setMatchedSchool } =
-        useContext(UserLocationContext);
+    const { quizData } = useQuizData();
+    const { userLocation, matchedSchool, setMatchedSchool } = useUser();
 
     const router = useRouter();
     const currentRoute = router.pathname.replace('/', '');
@@ -44,7 +43,7 @@ const ExecutivePage = () => {
         <div>
             <h1>{personalityData.title}</h1>
             <p>{personalityData.detailedDestription}</p>
-            <Tabs tabs={personalityData.tabs} />
+            <Tabs tabs={personalityData.tabs} className="personalityTabs" />
             <AcquiaForm src="https://go.cappex-health.com/form/generate.js?id=2" />
             <section className="career-path">
                 <h2>
@@ -95,8 +94,8 @@ const ExecutivePage = () => {
                     common and often preferred, especially for more senior
                     management roles.
                 </h3>
-                <Tabs tabs={personalityData.degreeTabs} />
             </section>
+            <Tabs tabs={personalityData.degreeTabs} className="degreeTabs" />
             <section className="best-schools">
                 <Image
                     src="https://via.placeholder.com/342x252"

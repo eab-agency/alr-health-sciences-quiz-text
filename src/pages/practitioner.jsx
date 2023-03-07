@@ -1,17 +1,17 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 
 import Tabs from '@/components/Tabs';
 import PageLayout from '@/components/PageLayout';
-import { QuizDataContext, UserLocationContext } from '@/context/context';
+import { useQuizData, useUser } from '@/context/context';
+import UniversityMatch from '@/components/UniversityMatch';
 
 const PractitionerPage = () => {
-    const { userLocation } = useContext(UserLocationContext);
-    const { quizData } = useContext(QuizDataContext);
+    const { quizData } = useQuizData();
+    const { matchedSchool } = useUser();
 
     const router = useRouter();
     const currentRoute = router.pathname.replace('/', '');
-    const [matchedSchool, setMatchedSchool] = useState(null);
 
     //    wait for quizData to be populated and then set personalityData based on quizData.results.title
     const [personalityData, setPersonalityData] = useState(null);
@@ -34,6 +34,7 @@ const PractitionerPage = () => {
             <h1>{personalityData.title}</h1>
             <p>{personalityData.detailedDestription}</p>
             <Tabs tabs={personalityData.tabs} />
+            {matchedSchool && <UniversityMatch school={matchedSchool} />}
         </div>
     );
 };

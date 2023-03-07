@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 import Image from 'next/image';
 import React from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';

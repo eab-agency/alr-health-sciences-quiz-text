@@ -1,13 +1,14 @@
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect, useMemo } from 'react';
 import axios from 'axios';
 
 import { getMatchedSchool } from '@/components/helpers/getMatchedSchool';
 
-export const QuizDataContext = createContext(null);
-export const UserLocationContext = createContext(null);
+const QuizDataContext = createContext(null);
+const UserLocationContext = createContext(null);
 
-function Context({ children }) {
+function ContextProvider({ children }) {
     const [quizData, setQuizData] = useState();
+    // eslint-disable-next-line no-unused-vars
     const [loading, setLoading] = useState(false);
     const [matchedSchool, setMatchedSchool] = useState(null);
 
@@ -22,7 +23,7 @@ function Context({ children }) {
         }, 2000);
 
         return () => clearTimeout(getData);
-    }, []);
+    }, [apiURL]);
 
     // wait for userLocation to be populated and then set matchedSchool based on userLocation.region_iso_code
     useEffect(() => {
@@ -34,9 +35,9 @@ function Context({ children }) {
             // grab first school from quizData.schools and set matchedSchool
             setMatchedSchool(matchedSchoolInternal);
         }
-    }, [userLocation]);
+    }, [quizData, userLocation]);
 
-    // grab quizData from quizData.json and set matchedSchool to first school in quizData.schools
+    // grab quizData from quizData.json and set matchedSchool to first school in quizData.schoolss
     useEffect(() => {
         setLoading(true);
         fetch('./quizData.json')
@@ -48,15 +49,39 @@ function Context({ children }) {
             });
     }, []);
 
+    const valueUser = useMemo(
+        () => ({ userLocation, matchedSchool, setMatchedSchool }),
+        [userLocation, matchedSchool, setMatchedSchool]
+    );
+
+    const valueQuizData = useMemo(
+        () => ({ quizData, setQuizData }),
+        [quizData, setQuizData]
+    );
+
     return (
-        <UserLocationContext.Provider
-            value={{ userLocation, matchedSchool, setMatchedSchool }}
-        >
-            <QuizDataContext.Provider value={{ quizData, setQuizData }}>
+        <UserLocationContext.Provider value={valueUser}>
+            <QuizDataContext.Provider value={valueQuizData}>
                 {children}
             </QuizDataContext.Provider>
         </UserLocationContext.Provider>
     );
 }
 
-export default Context;
+function useUser() {
+    const context = useContext(UserLocationContext);
+    if (context === undefined) {
+        throw new Error('useUser must be used within a CountProvider');
+    }
+    return context;
+}
+
+function useQuizData() {
+    const context = useContext(QuizDataContext);
+    if (context === undefined) {
+        throw new Error('useQuizData must be used within a CountProvider');
+    }
+    return context;
+}
+
+export { useQuizData, useUser, ContextProvider };

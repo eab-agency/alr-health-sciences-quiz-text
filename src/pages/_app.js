@@ -1,9 +1,9 @@
 import '@/styles/globals.css';
-import Context from '../context/context';
+import { ContextProvider } from '../context/context';
 
 export default function App({ Component, pageProps }) {
     return (
-        <Context>
+        <ContextProvider>
             {Component.PageLayout ? (
                 <Component.PageLayout>
                     <Component {...pageProps} />
@@ -11,6 +11,6 @@ export default function App({ Component, pageProps }) {
             ) : (
                 <Component {...pageProps} />
             )}
-        </Context>
+        </ContextProvider>
     );
 }

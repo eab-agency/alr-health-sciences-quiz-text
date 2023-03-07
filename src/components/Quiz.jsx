@@ -1,16 +1,16 @@
 /* eslint-disable no-nested-ternary */
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState } from 'react';
 import Score from '@/components/Score';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import Question from './Question';
 import ResetQuizButton from './ResetQuizButton';
 import Results from './Results';
-import { QuizDataContext } from '../context/context';
+import { useQuizData } from '../context/context';
 
 function Quiz() {
-    const { quizData, setQuizData } = useContext(QuizDataContext);
+    const { quizData, setQuizData } = useQuizData();
+    const [personalityData, setPersonalityData] = useState('executive');
 
-    // const [quizData, setQuizData] = useState(null);
     const [eabQuizData, setEabQuizData] = useLocalStorage('eab-quiz-data', {
         answers: [],
         currentQuestion: 0,
@@ -24,6 +24,7 @@ function Quiz() {
         },
         highestScorePersonality: null,
     });
+    // eslint-disable-next-line no-unused-vars
     const [isLoading, setLoading] = useState(false);
 
     const handleAnswer = (question, answer) => {
@@ -71,6 +72,18 @@ function Quiz() {
         });
     };
 
+    // if highestScorePersonality is changes, then set the personalityData
+    React.useEffect(() => {
+        if (quizData && quizData.results) {
+            const personalityDataInternal = quizData.results.find(
+                (result) =>
+                    result.title.toLowerCase() ===
+                    eabQuizData.highestScorePersonality
+            );
+            setPersonalityData(personalityDataInternal);
+        }
+    }, [eabQuizData.highestScorePersonality, quizData]);
+
     const handleRetakeQuiz = () => {
         // reset state
         setEabQuizData({
@@ -87,7 +100,6 @@ function Quiz() {
             },
             highestScorePersonality: null,
         });
-        // localStorage.removeItem('eab-quiz-data');
     };
 
     if (isLoading) return <p>Loading...</p>;
@@ -95,14 +107,12 @@ function Quiz() {
 
     // if we are at the end of the quiz, show the results page and pass the score and personality
     if (eabQuizData.currentQuestion === quizData.questions.length) {
-        const { description, title } =
-            quizData.results[eabQuizData.highestScorePersonality];
         return (
             <div>
                 <Results
                     personality={eabQuizData.highestScorePersonality}
-                    description={description}
-                    title={title}
+                    description={personalityData.description}
+                    title={personalityData.title}
                 />
                 <ResetQuizButton onClick={handleRetakeQuiz} />
             </div>
