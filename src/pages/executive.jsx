@@ -10,6 +10,7 @@ import AcquiaForm from '@/components/AcquiaForm';
 import { useQuizData, useUser } from '@/context/context';
 import UniversityMatch from '@/components/UniversityMatch';
 import StateSelect from '@/components/helpers/StateSelect';
+import Form from '@/components/Form';
 
 const ExecutivePage = () => {
     const { quizData } = useQuizData();
@@ -44,6 +45,7 @@ const ExecutivePage = () => {
             <h1>{personalityData.title}</h1>
             <p>{personalityData.detailedDestription}</p>
             <Tabs tabs={personalityData.tabs} className="personalityTabs" />
+            <Form />
             <AcquiaForm src="https://go.cappex-health.com/form/generate.js?id=2" />
             <section className="career-path">
                 <h2>

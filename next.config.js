@@ -10,6 +10,14 @@ const nextConfig = {
             },
         ],
     },
+    async rewrites() {
+        return [
+            {
+                source: '/api/:path*',
+                destination: 'https://go.cappex-health.com/form/:path*',
+            },
+        ];
+    },
 };
 
 module.exports = nextConfig;
