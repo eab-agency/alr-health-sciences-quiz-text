@@ -1,44 +1,43 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useContext, useEffect } from 'react';
+import { useRouter } from 'next/router';
+
+import Tabs from '@/components/Tabs';
+import PageLayout from '@/components/PageLayout';
+import { QuizDataContext, UserLocationContext } from '@/context/context';
 
 const PractitionerPage = () => {
-    const [userLocation, setUserLocation] = useState(null);
-    const apiURL = 'https://ipgeolocation.abstractapi.com/v1/';
+    const { userLocation } = useContext(UserLocationContext);
+    const { quizData } = useContext(QuizDataContext);
 
-    // const getUserLocationFromAPI = async () => {
-    //     axios
-    //         .get(`https://ipgeolocation.abstractapi.com/v1/?api_key=${apiKey}`)
-    //         .then((response) => {
-    //             console.log(response.data);
-    //             setUserLocation(response.data);
-    //         })
-    //         .catch((error) => {
-    //             console.log(error);
-    //         });
-    // };
+    const router = useRouter();
+    const currentRoute = router.pathname.replace('/', '');
+    const [matchedSchool, setMatchedSchool] = useState(null);
 
-    React.useEffect(() => {
-        const getData = setTimeout(() => {
-            axios
-                .get(
-                    `https://ipgeolocation.abstractapi.com/v1/?api_key=${process.env.ABSTRACT_API_KEY}`
-                )
-                .then((response) => {
-                    console.log(response.data);
-                    setUserLocation(response.data);
-                });
-        }, 2000);
+    //    wait for quizData to be populated and then set personalityData based on quizData.results.title
+    const [personalityData, setPersonalityData] = useState(null);
+    useEffect(() => {
+        if (quizData) {
+            const personalityDataInternal = quizData.results.find(
+                (result) => result.title.toLowerCase() === currentRoute
+            );
+            setPersonalityData(personalityDataInternal);
+        }
+    }, [quizData, currentRoute]);
 
-        return () => clearTimeout(getData);
-    }, []);
+    // if no personalityData is found, return loading
+    if (!personalityData) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <div>
-            Looks like you are a Practitioner from {userLocation?.city},{' '}
-            {userLocation?.region}!
-            <div />
+            <h1>{personalityData.title}</h1>
+            <p>{personalityData.detailedDestription}</p>
+            <Tabs tabs={personalityData.tabs} />
         </div>
     );
 };
+
+PractitionerPage.PageLayout = PageLayout;
 
 export default PractitionerPage;

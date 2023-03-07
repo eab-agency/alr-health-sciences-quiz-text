@@ -1,13 +1,16 @@
 /* eslint-disable no-nested-ternary */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Score from '@/components/Score';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import Question from './Question';
 import ResetQuizButton from './ResetQuizButton';
 import Results from './Results';
+import { QuizDataContext } from '../context/context';
 
 function Quiz() {
-    const [quizData, setQuizData] = useState(null);
+    const { quizData, setQuizData } = useContext(QuizDataContext);
+
+    // const [quizData, setQuizData] = useState(null);
     const [eabQuizData, setEabQuizData] = useLocalStorage('eab-quiz-data', {
         answers: [],
         currentQuestion: 0,
@@ -22,16 +25,6 @@ function Quiz() {
         highestScorePersonality: null,
     });
     const [isLoading, setLoading] = useState(false);
-
-    useEffect(() => {
-        setLoading(true);
-        fetch('./quizData.json')
-            .then((res) => res.json())
-            .then((data) => {
-                setQuizData(data);
-                setLoading(false);
-            });
-    }, []);
 
     const handleAnswer = (question, answer) => {
         // calculate personality score based on selected answer
@@ -71,6 +64,10 @@ function Quiz() {
             score: updatedScore,
             currentQuestion: eabQuizData.currentQuestion + 1,
             highestScorePersonality,
+        });
+        setQuizData({
+            ...quizData,
+            personality: highestScorePersonality,
         });
     };
 

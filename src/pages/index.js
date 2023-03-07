@@ -1,7 +1,8 @@
 import Head from 'next/head';
+import QuizLayout from '@/components/QuizLayout';
 import Quiz from '@/components/Quiz';
 
-export default function Home() {
+function Home() {
     return (
         <>
             <Head>
@@ -19,3 +20,7 @@ export default function Home() {
         </>
     );
 }
+
+Home.PageLayout = QuizLayout;
+
+export default Home;
