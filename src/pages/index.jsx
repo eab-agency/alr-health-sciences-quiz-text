@@ -1,7 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
 import PageFooter from '@/components/PageFooter';
-import PageHeader from '@/components/PageHeader';
 import Image from 'next/image';
 import styles from '@/styles/global/layouts/EmailOnly.module.scss';
 import Button from '@/components/Button';
