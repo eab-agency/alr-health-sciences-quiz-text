@@ -1,9 +1,16 @@
+import PageHeader from './PageHeader';
+import PageFooter from './PageFooter';
+
 export default function QuizLayout({ children }) {
     return (
-        <div className="quiz-layout">
-            <div className="quiz-layout__container">
-                <div className="quiz-layout__content">{children}</div>
+        <>
+            <PageHeader pageType="quiz" />
+            <div className="quiz-layout">
+                <div className="quiz-layout__container">
+                    <div className="quiz-layout__content">{children}</div>
+                </div>
             </div>
-        </div>
+            <PageFooter />
+        </>
     );
 }

@@ -1,0 +1,27 @@
+//* Layouts
+
+@use '../config/tokens';
+
+body {
+    div#__next {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 100vh;
+        overflow: hidden;
+        background: url('/images/cappex-icon-dark.svg') no-repeat center;
+        background-size: 150% auto;
+
+        @media (prefers-color-scheme: light) {
+            background: url('/images/cappex-icon-light.svg') no-repeat center;
+        }
+    }
+
+    div.content-wrapper {
+        display: block;
+        width: 100%;
+        max-width: tokens.$maxWidth;
+        position: relative;
+        margin: 0 auto;
+    }
+}
