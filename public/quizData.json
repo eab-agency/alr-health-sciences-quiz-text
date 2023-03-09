@@ -26,7 +26,7 @@
             ]
         },
         {
-            "question": "At work, a primary motivator for me is...",
+            "question": "At work, a primary <strong>motivator</strong> for me is...",
             "answers": [
                 {
                     "answer": "Helping others do their best at work. I like to develop plans and communicate them to a team.",
@@ -56,37 +56,37 @@
             ]
         },
         {
-            "question": "I'd like to work with...",
+            "question": "I'd like to enhance <strong>health care</strong> through ...",
             "answers": [
                 {
-                    "answer": "Health care providers and am interested in managing staff or finances.",
+                    "answer": "Directing staff and planning finances.",
                     "personality": "executive",
                     "weight": 1
                 },
                 {
-                    "answer": "Patients and other medical professionals.",
+                    "answer": "Working directly with patients.",
                     "personality": "practitioner",
                     "weight": 1
                 },
                 {
-                    "answer": "Community residents, aspiring health care professionals, or people with disabilities.",
+                    "answer": "Educating new practitioners or community members.",
                     "personality": "educator",
                     "weight": 1
                 },
                 {
-                    "answer": "Other scientists or medical professionals.",
+                    "answer": "Advancing the science of medicine.",
                     "personality": "scientist",
                     "weight": 1
                 },
                 {
-                    "answer": "Medical professionals and computer systems.",
+                    "answer": "Managing data and computer systems.",
                     "personality": "analyst",
                     "weight": 1
                 }
             ]
         },
         {
-            "question": "My ideal work setting is...",
+            "question": "My ideal <strong>work setting</strong> is...",
             "answers": [
                 {
                     "answer": "In a hospital or physician's office, but I'd be open to a residential care facility or government agency.",
@@ -116,7 +116,7 @@
             ]
         },
         {
-            "question": "My biggest professional strengths are...",
+            "question": "My biggest professional <strong>strengths</strong> are...",
             "answers": [
                 {
                     "answer": "Leading and communicating with others. I have good attention to detail and enjoy analyzing information and using technology.",
@@ -146,7 +146,7 @@
             ]
         },
         {
-            "question": "I have taken college courses in ...",
+            "question": "I have taken <strong>college courses</strong> in ...",
             "answers": [
                 {
                     "answer": "Accounting, administration, ethics, or economics.",
@@ -176,7 +176,7 @@
             ]
         },
         {
-            "question": "My professional experience includes ...",
+            "question": "My <strong>professional experience</strong> includes ...",
             "answers": [
                 {
                     "answer": "Some experience in an administrative or clinical role.",
@@ -556,10 +556,7 @@
             "link": "https://www.unthsc.edu/academics/",
             "linkText": "Learn About Health Sciences at UNT",
             "imageURL": "https://via.placeholder.com/352x433",
-            "associatedStates": [
-                "NV",
-                "NY"
-            ]
+            "associatedStates": ["NV", "NY"]
         },
         {
             "title": "Fairleigh Dickinson",
@@ -568,11 +565,7 @@
             "link": "https://www.fdu.edu/academics/programs/?fwp_program_topic=health-sciences",
             "linkText": "Explore Programs at Fairleigh Dickinson",
             "imageURL": "https://via.placeholder.com/352x433",
-            "associatedStates": [
-                "SC",
-                "NC",
-                "FL"
-            ]
+            "associatedStates": ["SC", "NC", "FL"]
         },
         {
             "title": "San Diego State University",
@@ -581,10 +574,7 @@
             "link": "https://chhs.sdsu.edu/",
             "linkText": "Learn About Health and Human Services at SDSU",
             "imageURL": "https://via.placeholder.com/352x433",
-            "associatedStates": [
-                "CA",
-                "WA"
-            ]
+            "associatedStates": ["CA", "WA"]
         },
         {
             "title": "University of Saint Francis",
@@ -593,10 +583,7 @@
             "link": "https://majors.sf.edu/",
             "linkText": "Explore Programs at USF",
             "imageURL": "https://via.placeholder.com/352x433",
-            "associatedStates": [
-                "CA",
-                "VA"
-            ]
+            "associatedStates": ["CA", "VA"]
         }
     ],
     "score": {

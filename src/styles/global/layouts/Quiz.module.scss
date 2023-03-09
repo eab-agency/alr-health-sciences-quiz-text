@@ -5,10 +5,14 @@
 .container {
     @include layouts.container;
 
-    &-quiz {
-        @include layouts.container;
-        max-width: 60rem;
+    .content {
+        @include layouts.content;
     }
+}
+
+.container-quiz {
+    @include layouts.container;
+    max-width: 60rem;
 
     .content {
         @include layouts.content;
