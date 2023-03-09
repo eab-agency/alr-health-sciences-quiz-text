@@ -13,8 +13,13 @@ function Question({ question, handleAnswer }) {
     }, [question]);
 
     return (
+        // get dangerouslySetInnerHTML to work
+
         <>
-            <h2 className="question-copy">{question.question}</h2>
+            <h2
+                className="question-copy"
+                dangerouslySetInnerHTML={{ __html: question.question }}
+            />
             <ul className={styles.questions}>
                 {shuffledAnswers.map((answer, index) => (
                     <button
