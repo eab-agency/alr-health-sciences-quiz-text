@@ -22,7 +22,7 @@
     },
     "questions": [
         {
-            "question": "At work, a primary motivator for me is...",
+            "question": "At work, a primary <strong>mootivator</strong> for me is...",
             "answers": [
                 {
                     "answer": "Helping others do their best at work. I like to develop plans and communicate them to a team.",

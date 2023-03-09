@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import styles from '@/styles/global/layouts/Question.module.scss';
 
 function Question({ question, handleAnswer }) {
     const [shuffledAnswers, setShuffledAnswers] = useState([]);
@@ -12,11 +13,12 @@ function Question({ question, handleAnswer }) {
     }, [question]);
 
     return (
-        <div>
-            <h2>{question.question}</h2>
-            <ul>
+        <>
+            <h2 className="question-copy">{question.question}</h2>
+            <ul className={styles.questions}>
                 {shuffledAnswers.map((answer, index) => (
                     <button
+                        className="answer-button"
                         type="button"
                         key={index}
                         onClick={() => handleAnswer(question.question, answer)}
@@ -25,7 +27,7 @@ function Question({ question, handleAnswer }) {
                     </button>
                 ))}
             </ul>
-        </div>
+        </>
     );
 }
 

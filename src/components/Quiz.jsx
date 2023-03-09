@@ -1,7 +1,9 @@
 /* eslint-disable no-nested-ternary */
 import React, { useState } from 'react';
-import Score from '@/components/Score';
+// import Score from '@/components/Score';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
+import Image from 'next/image';
+import styles from '@/styles/global/layouts/Quiz.module.scss';
 import Question from './Question';
 import ResetQuizButton from './ResetQuizButton';
 import Results from './Results';
@@ -118,24 +120,59 @@ function Quiz() {
             </div>
         );
     }
+    if (eabQuizData.currentQuestion === 0) {
+        return (
+            <div className={styles.container}>
+                <div className={styles.content}>
+                    <span className="intro-title">
+                        Before we get started ...
+                    </span>
+                    <div className="questions-container">
+                        {quizData && (
+                            <Question
+                                question={
+                                    quizData.questions[
+                                        eabQuizData.currentQuestion
+                                    ]
+                                }
+                                handleAnswer={handleAnswer}
+                            />
+                        )}
+                    </div>
+                </div>
+                <figure className={styles['deco-image']}>
+                    <Image
+                        src="/images/cappex-education-journey.jpg"
+                        alt="Define Your Future in Health Care"
+                        width={500}
+                        height={600}
+                    />
+                </figure>
+            </div>
+        );
+    }
 
     return (
-        <div>
-            <Score
+        <div className={styles['container-quiz']}>
+            <div className={styles.content}>
+                {/* <Score
                 score={eabQuizData.score}
                 winningPersonality={eabQuizData.highestScorePersonality}
-            />
-            <h3>
-                Question {eabQuizData.currentQuestion + 1} of{' '}
-                {quizData.questions.length}
-            </h3>
-            {quizData && (
-                <Question
-                    question={quizData.questions[eabQuizData.currentQuestion]}
-                    handleAnswer={handleAnswer}
-                />
-            )}
-            <ResetQuizButton onClick={handleRetakeQuiz} />
+            /> */}
+
+                <div className={styles['questions-counter']}>
+                    Question {eabQuizData.currentQuestion + 1} of{' '}
+                    {quizData.questions.length}
+                </div>
+                {quizData && (
+                    <Question
+                        question={
+                            quizData.questions[eabQuizData.currentQuestion]
+                        }
+                        handleAnswer={handleAnswer}
+                    />
+                )}
+            </div>
         </div>
     );
 }

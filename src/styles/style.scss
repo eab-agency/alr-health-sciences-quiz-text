@@ -1,3 +1,4 @@
+@use 'sass:color';
 @use 'global/config';
 @use 'global/layouts';
 @use 'global/components';
@@ -24,6 +25,40 @@ p {
 
         strong {
             color: config.$c-malva-500;
+        }
+    }
+}
+
+.intro-title {
+    display: inline-block;
+    position: relative;
+    font-size: clamp(config.$fs-xxl, 2vw, config.$fs-xxxl);
+    font-weight: config.$fw-light;
+    line-height: config.$lh-s;
+    color: config.$c-white;
+    background-color: config.$c-blue-500;
+    border-top-right-radius: 5em;
+    border-bottom-right-radius: 5em;
+    padding-block: 0.2em;
+    padding-right: 0.7em;
+
+    &::before {
+        content: '';
+        display: block;
+        width: 100vw;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        right: 100%;
+        background-color: config.$c-blue-500;
+    }
+
+    @media (prefers-color-scheme: light) {
+        background: color.adjust(config.$c-blue-500, $lightness: 70%);
+        color: config.$c-blue-500;
+
+        &::before {
+            background-color: color.adjust(config.$c-blue-500, $lightness: 70%);
         }
     }
 }

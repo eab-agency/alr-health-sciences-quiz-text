@@ -5,7 +5,7 @@ import Image from 'next/image';
 import styles from '@/styles/global/layouts/EmailOnly.module.scss';
 import Button from '@/components/Button';
 
-export default function emailonly() {
+export default function LandingPage() {
     return (
         <>
             <Head>
@@ -19,13 +19,13 @@ export default function emailonly() {
                 />
                 <link rel="icon" href="/favicon.png" />
             </Head>
-            <main className={styles.short}>
+            <main className="short landing">
                 <div className="content-wrapper">
                     <div className={styles.container}>
-                        <div className={styles['intro-copy']}>
+                        <div className={styles.content}>
                             <header>
                                 <Image
-                                    src="/images/cappex-logo.svg"
+                                    src="/images/cappex-logo-light.svg"
                                     alt="Cappex"
                                     width={200}
                                     height={50}
