@@ -2,10 +2,8 @@
 @forward 'button';
 
 .question-copy {
-    font-size: 1.5rem;
-    line-height: 1.5;
     padding-bottom: 0.5em;
-    margin-bottom: 2.5em;
+    margin-bottom: 1em;
     position: relative;
 
     &::after {
@@ -17,5 +15,13 @@
         position: absolute;
         bottom: 0;
         left: 0;
+    }
+
+    strong {
+        color: tokens.$c-turquoise-500;
+
+        @media (prefers-color-scheme: light) {
+            color: tokens.$c-malva-500;
+        }
     }
 }

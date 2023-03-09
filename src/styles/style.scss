@@ -36,7 +36,7 @@ p {
     font-weight: config.$fw-light;
     line-height: config.$lh-s;
     color: config.$c-white;
-    background-color: config.$c-blue-500;
+    background-color: color.adjust(config.$c-blue-500, $lightness: 5%);
     border-top-right-radius: 5em;
     border-bottom-right-radius: 5em;
     padding-block: 0.2em;
@@ -50,7 +50,7 @@ p {
         position: absolute;
         top: 0;
         right: 100%;
-        background-color: config.$c-blue-500;
+        background-color: color.adjust(config.$c-blue-500, $lightness: 5%);
     }
 
     @media (prefers-color-scheme: light) {

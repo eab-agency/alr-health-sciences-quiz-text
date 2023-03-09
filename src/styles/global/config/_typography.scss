@@ -30,7 +30,7 @@ h1 {
     }
 }
 h2 {
-    font-size: clamp(fonts.$fs-m, 4vw, fonts.$fs-xl);
+    font-size: clamp(fonts.$fs-m, 4vw, fonts.$fs-xxl);
     font-weight: fonts.$fw-semibold;
     color: tokens.$c-white;
 

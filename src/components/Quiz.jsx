@@ -155,23 +155,29 @@ function Quiz() {
     return (
         <div className={styles['container-quiz']}>
             <div className={styles.content}>
-                {/* <Score
-                score={eabQuizData.score}
-                winningPersonality={eabQuizData.highestScorePersonality}
-            /> */}
-
+                {/* NOTE: This score components was just for testing purposes?? */}
+                {/* } <Score
+                    score={eabQuizData.score}
+                    winningPersonality={eabQuizData.highestScorePersonality}
+                />{' '}
+                */}
+                <span className="intro-title">
+                    Define Your Future in Health Care
+                </span>
                 <div className={styles['questions-counter']}>
                     Question {eabQuizData.currentQuestion + 1} of{' '}
                     {quizData.questions.length}
                 </div>
-                {quizData && (
-                    <Question
-                        question={
-                            quizData.questions[eabQuizData.currentQuestion]
-                        }
-                        handleAnswer={handleAnswer}
-                    />
-                )}
+                <div className="questions-container">
+                    {quizData && (
+                        <Question
+                            question={
+                                quizData.questions[eabQuizData.currentQuestion]
+                            }
+                            handleAnswer={handleAnswer}
+                        />
+                    )}
+                </div>
             </div>
         </div>
     );
