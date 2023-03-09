@@ -19,7 +19,6 @@ export default function emailonly() {
                 />
                 <link rel="icon" href="/favicon.png" />
             </Head>
-            {/* <PageHeader /> */}
             <main className={styles.short}>
                 <div className="content-wrapper">
                     <div className={styles.container}>

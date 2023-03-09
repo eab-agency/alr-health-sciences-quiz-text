@@ -63,6 +63,16 @@
         background: color.adjust(tokens.$c-turquoise-500, $lightness: 40%);
         color: tokens.$c-blue-500;
     }
+
+    @media (prefers-color-scheme: light) {
+        color: tokens.$c-malva-500;
+        border-color: tokens.$c-malva-500;
+
+        &:hover {
+            background: color.adjust(tokens.$c-malva-500, $lightness: 40%);
+            color: tokens.$c-blue-500;
+        }
+    }
 }
 
 button,
