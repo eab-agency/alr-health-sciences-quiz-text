@@ -1,0 +1,76 @@
+@use 'sass:color';
+@use '../config/tokens';
+
+%button {
+    display: flex;
+    width: auto;
+    align-items: center;
+    gap: 0.5em;
+    padding: 0.5em 1em;
+    border: 1px solid black;
+    border-radius: 5em;
+    background-color: black;
+    color: white;
+    font-size: clamp(tokens.$fs-s, 3vw, tokens.$fs-m);
+    line-height: 1;
+    text-decoration: none;
+    // slow ease transition
+    transition: all 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+    span {
+        margin-bottom: -0.1em; // fix for descenders in lowercase letters
+    }
+
+    i {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        transition: all 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+        svg {
+            width: 1.5em;
+            height: 1.5em;
+        }
+    }
+
+    &:hover {
+        gap: 0.75em;
+
+        i {
+            transform: scale(1.2);
+        }
+    }
+}
+
+%button--primary {
+    @extend %button;
+    background-color: tokens.$c-orange-500;
+    color: tokens.$c-blue-500;
+    border-color: tokens.$c-orange-500;
+
+    &:hover {
+        background: color.adjust(tokens.$c-orange-500, $lightness: 30%);
+    }
+}
+
+%button--secondary {
+    @extend %button;
+    background-color: transparent;
+    color: tokens.$c-turquoise-500;
+    border-color: tokens.$c-turquoise-500;
+
+    &:hover {
+        background: color.adjust(tokens.$c-turquoise-500, $lightness: 40%);
+        color: tokens.$c-blue-500;
+    }
+}
+
+button,
+.button {
+    &.btn-primary {
+        @extend %button--primary;
+    }
+    &.btn-secondary {
+        @extend %button--secondary;
+    }
+}

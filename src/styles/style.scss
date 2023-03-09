@@ -1,0 +1,29 @@
+@use 'global/config';
+@use 'global/layouts';
+@use 'global/components';
+
+body {
+    background-color: config.$c-blue-800;
+}
+
+p {
+    color: config.$c-white;
+
+    strong {
+        color: config.$c-turquoise-500;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    body {
+        background-color: config.$c-gray-100;
+    }
+
+    p {
+        color: config.$c-blue-800;
+
+        strong {
+            color: config.$c-malva-500;
+        }
+    }
+}
