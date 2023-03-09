@@ -64,9 +64,11 @@ export default function emailonly() {
                         </div>
                         <figure className={styles['deco-image']}>
                             <Image
-                                src="/images/cappex-define-your-future-img.png"
+                                src="/images/cappex-define-your-future-img.jpg"
                                 alt="Define Your Future in Health Care"
-                                fill
+                                // fill
+                                width={500}
+                                height={600}
                             />
                         </figure>
                     </div>

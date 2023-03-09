@@ -77,6 +77,8 @@
 
 button,
 .button {
+    @extend %button;
+
     &.btn-primary {
         @extend %button--primary;
     }
