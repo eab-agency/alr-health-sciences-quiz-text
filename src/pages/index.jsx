@@ -10,7 +10,9 @@ export default function emailonly() {
     return (
         <>
             <Head>
-                <title>Email Only | Health Science Quiz</title>
+                <title>
+                    Define Your Future in Health Care | Health Science Quiz
+                </title>
                 <meta name="description" content="Cappex Health Science Quiz" />
                 <meta
                     name="viewport"
