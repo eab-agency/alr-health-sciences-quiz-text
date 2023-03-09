@@ -3,7 +3,7 @@ import Link from 'next/link';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { MdChevronRight } from 'react-icons/md';
 
-export default function Button({ label, type }) {
+export default function Button({ label, type, href }) {
     const [buttonType, setButtonType] = useState('default');
 
     useEffect(() => {
@@ -17,7 +17,7 @@ export default function Button({ label, type }) {
     }, [type]);
 
     return (
-        <Link href="/" className={buttonType}>
+        <Link href={href} className={buttonType}>
             <span>{label}</span>
             <i>
                 <MdChevronRight />

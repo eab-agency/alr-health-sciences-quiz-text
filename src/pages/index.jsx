@@ -56,7 +56,11 @@ export default function emailonly() {
                                 —and the steps you can take to advance your
                                 career.
                             </p>
-                            <Button label="Get Started" type="primary" />
+                            <Button
+                                label="Get Started"
+                                type="primary"
+                                href="quiz"
+                            />
                         </div>
                         <figure className={styles['deco-image']}>
                             <Image
