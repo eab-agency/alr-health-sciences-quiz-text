@@ -1,0 +1,32 @@
+@use 'sass:color';
+@use '../config/tokens';
+@use '../layouts';
+
+.container {
+    @include layouts.container;
+
+    &-quiz {
+        @include layouts.container;
+        max-width: 60rem;
+    }
+
+    .content {
+        @include layouts.content;
+    }
+}
+
+.deco-image {
+    @include layouts.decoImage;
+}
+
+.questions-counter {
+    display: block;
+    position: absolute;
+    right: 1em;
+    color: color.adjust(tokens.$c-blue-300, $lightness: 5%);
+    font-size: clamp(tokens.$fs-xs, 2vw, tokens.$fs-m);
+
+    @media (prefers-color-scheme: light) {
+        color: tokens.$c-blue-500;
+    }
+}

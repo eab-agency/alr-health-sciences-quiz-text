@@ -3,8 +3,6 @@ import Image from 'next/image';
 import NabBar from './NavBar';
 
 export default function PageHeader({ pageType }) {
-    // const className = `page-header ${pageType}`;
-
     return (
         <header>
             {/* <div className={className}> */}
@@ -13,7 +11,7 @@ export default function PageHeader({ pageType }) {
             >
                 <figure>
                     <Image
-                        src="/images/cappex-logo.svg"
+                        src="/images/cappex-logo-light.svg"
                         alt="Cappex Logo"
                         width={300}
                         height={300}

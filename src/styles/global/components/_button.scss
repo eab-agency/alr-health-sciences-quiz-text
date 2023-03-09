@@ -14,7 +14,8 @@
     font-size: clamp(tokens.$fs-s, 3vw, tokens.$fs-m);
     line-height: 1;
     text-decoration: none;
-    // slow ease transition
+    text-align: left;
+    cursor: pointer;
     transition: all 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
 
     span {
@@ -34,10 +35,8 @@
     }
 
     &:hover {
-        gap: 0.75em;
-
         i {
-            transform: scale(1.2);
+            transform: scale(1.2) translateX(0.35em);
         }
     }
 }
@@ -63,14 +62,80 @@
         background: color.adjust(tokens.$c-turquoise-500, $lightness: 40%);
         color: tokens.$c-blue-500;
     }
+
+    @media (prefers-color-scheme: light) {
+        color: tokens.$c-malva-500;
+        border-color: tokens.$c-malva-500;
+
+        &:hover {
+            background: color.adjust(tokens.$c-malva-500, $lightness: 40%);
+            color: tokens.$c-blue-500;
+        }
+    }
 }
 
 button,
 .button {
+    @extend %button;
+
     &.btn-primary {
         @extend %button--primary;
     }
     &.btn-secondary {
         @extend %button--secondary;
+    }
+}
+
+.answer-button {
+    border-color: tokens.$c-orange-500;
+    background: color.adjust(tokens.$c-orange-500, $lightness: 35%);
+    color: tokens.$c-blue-500;
+    font-size: clamp(tokens.$fs-xs, 2vw, tokens.$fs-m);
+    line-height: tokens.$lh-m;
+    position: relative;
+
+    &::before {
+        content: '';
+        display: block;
+        width: 0.6em;
+        height: 0.6em;
+        background: tokens.$c-malva-500;
+        border-radius: 50%;
+        flex-shrink: 0;
+        position: absolute;
+        right: 1.2em;
+        transform: scale(0);
+        transition: all 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+        z-index: tokens.$layer-2;
+    }
+
+    &::after {
+        content: '';
+        display: block;
+        width: 1.2em;
+        height: 1.2em;
+        background: tokens.$c-white;
+        border-radius: 50%;
+        border: 1px solid tokens.$c-orange-500;
+        flex-shrink: 0;
+        transition: all 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+        position: relative;
+        z-index: tokens.$layer-1;
+    }
+
+    &:hover,
+    &:focus {
+        background: color.adjust(tokens.$c-turquoise-500, $lightness: 40%);
+        color: tokens.$c-blue-500;
+        border-color: tokens.$c-malva-500;
+
+        &::before {
+            transform: scale(1) translateX(0.35em);
+        }
+
+        &::after {
+            border-color: tokens.$c-malva-500;
+            transform: scale(1.2) translateX(0.35em);
+        }
     }
 }

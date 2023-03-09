@@ -5,11 +5,11 @@ export default function QuizLayout({ children }) {
     return (
         <>
             <PageHeader pageType="quiz" />
-            <div className="quiz-layout">
-                <div className="quiz-layout__container">
+            <main className="short quiz-layout">
+                <div className="content-wrapper">
                     <div className="quiz-layout__content">{children}</div>
                 </div>
-            </div>
+            </main>
             <PageFooter />
         </>
     );

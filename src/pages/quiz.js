@@ -14,9 +14,7 @@ function Home() {
                 />
                 <link rel="icon" href="/favicon.png" />
             </Head>
-            <main>
-                <Quiz />
-            </main>
+            <Quiz />
         </>
     );
 }

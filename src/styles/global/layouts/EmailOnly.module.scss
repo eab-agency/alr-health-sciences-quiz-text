@@ -1,38 +1,14 @@
 @use '../config/tokens';
-
-.short {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex: 1;
-}
+@use '../layouts';
 
 .container {
-    display: flex;
-    flex-flow: row wrap;
-    align-items: center;
-    gap: tokens.$baseUnit * 2;
-    padding: clamp(tokens.$baseUnit * 2, 5vw, tokens.$baseUnit * 4);
+    @include layouts.container;
 
-    .intro-copy {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: clamp(tokens.$baseUnit, 3vw, tokens.$baseUnit * 2);
-        flex: 1 0 20rem;
-
-        & > header {
-            display: flex;
-            flex-direction: column;
-            gap: clamp(tokens.$baseUnit, 5vw, tokens.$baseUnit * 5);
-        }
+    .content {
+        @include layouts.content;
     }
 }
 
 .deco-image {
-    display: block;
-    position: relative;
-    width: clamp(25rem, 35vw, 35rem);
-    height: clamp(30rem, 44vw, 44.8rem);
+    @include layouts.decoImage;
 }

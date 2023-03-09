@@ -1,1 +1,21 @@
+@use '../config/tokens';
 @forward 'button';
+
+.question-copy {
+    font-size: 1.5rem;
+    line-height: 1.5;
+    padding-bottom: 0.5em;
+    margin-bottom: 2.5em;
+    position: relative;
+
+    &::after {
+        content: '';
+        display: block;
+        width: 100vw;
+        height: 1px;
+        border-top: 1px solid tokens.$c-blue-300;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+}
