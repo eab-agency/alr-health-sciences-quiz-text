@@ -7,14 +7,16 @@ export default function PageHeader({ pageType }) {
     return (
         <header>
             <div className={styles.container}>
-                <div
-                    className={
-                        pageType ? `page-header ${pageType}` : 'page-header'
-                    }
-                >
-                    <MainLogo />
-                    {pageType === 'results' ? <NabBar /> : null}
-                </div>
+                {pageType !== 'results' ? (
+                    <div className={styles['page-header']}>
+                        <MainLogo />
+                    </div>
+                ) : (
+                    <div className={styles['page-header-results']}>
+                        <MainLogo />
+                        <NabBar />
+                    </div>
+                )}
             </div>
         </header>
     );

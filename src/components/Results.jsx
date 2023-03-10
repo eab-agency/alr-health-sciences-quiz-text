@@ -22,7 +22,7 @@ const Results = ({ personality, description, title, answers }) => (
                 goals faster.
             </p>
         </div>
-        <div className={styles.Form}>
+        <div className={styles.formContainer}>
             <h2>Where should we send your results?</h2>
             <Form redirectTo={`/${personality}`} answers={answers} />
             {process.env.NODE_ENV === 'development' && (

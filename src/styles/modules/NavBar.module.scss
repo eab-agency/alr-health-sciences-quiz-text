@@ -1,12 +1,110 @@
-.active {
-    background-color: lightgreen;
-    text-decoration: none;
-    border-bottom: 2px solid green;
-    color: white;
-}
+@use 'sass:color';
+@use '../global/config/breakpoints';
+@use '../global/config/tokens';
+@use '../global/config/fonts';
 
-.nonActive {
-    background-color: black;
-    color: white;
-    text-decoration: none;
+.navigation {
+    display: flex;
+    margin-inline: auto 0;
+
+    .hamburger {
+        background-color: tokens.$c-blue-900;
+        border-color: tokens.$c-blue-900;
+        transition: all 0.2s ease-in-out;
+
+        svg {
+            width: 1.5em;
+            height: 1.5em;
+            transition: all 0.2s ease-in-out;
+        }
+
+        &:hover {
+            background-color: tokens.$c-turquoise-500;
+            color: tokens.$c-blue-900;
+            transform: scale(1.1);
+        }
+
+        @media (min-width: breakpoints.$mq-1100) {
+            display: none;
+        }
+    }
+
+    ul {
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+
+        @media (min-width: breakpoints.$mq-1100) {
+            flex-direction: row;
+        }
+
+        li {
+            border-bottom: 1px solid tokens.$c-blue-300;
+
+            @media (min-width: breakpoints.$mq-1100) {
+                border-right: 1px solid tokens.$c-blue-300;
+                border-bottom: none;
+            }
+
+            &:last-child {
+                border-right: none;
+            }
+
+            a {
+                display: block;
+                padding-block: clamp(
+                    tokens.$baseUnit * 0.5,
+                    2vw,
+                    tokens.$baseUnit * 1
+                );
+                padding-inline: clamp(
+                    tokens.$baseUnit,
+                    5vw,
+                    tokens.$baseUnit * 2
+                );
+                text-decoration: none;
+                color: color.adjust(tokens.$c-blue-300, $lightness: 15%);
+                text-transform: uppercase;
+                position: relative;
+                text-align: center;
+                transition: all 0.2s ease-in-out;
+
+                &.active {
+                    color: tokens.$c-white;
+                    font-weight: fonts.$fw-bold;
+                    padding-inline: clamp(
+                        tokens.$baseUnit * 1.5,
+                        5vw,
+                        tokens.$baseUnit * 2.5
+                    );
+
+                    &::after {
+                        content: '';
+                        display: block;
+                        width: 60%;
+                        height: 0.4em;
+                        background-color: tokens.$c-blue-300;
+                        position: absolute;
+                        bottom: 0;
+                        left: 50%;
+                        transform: translateX(-50%);
+                    }
+                }
+
+                &:hover,
+                &:focus {
+                    color: tokens.$c-white;
+                    font-weight: fonts.$fw-bold;
+                    padding-inline: clamp(
+                        tokens.$baseUnit * 1.5,
+                        5vw,
+                        tokens.$baseUnit * 2.5
+                    );
+                }
+
+                // &.nonActive {
+                // }
+            }
+        }
+    }
 }

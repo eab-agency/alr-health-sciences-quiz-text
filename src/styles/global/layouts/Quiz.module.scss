@@ -37,3 +37,19 @@
         color: tokens.$c-blue-500;
     }
 }
+
+.containerResults {
+    @include layouts.container;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: clamp(tokens.$baseUnit * 2, 4vw, tokens.$baseUnit * 5);
+}
+
+.retakeButton {
+    border-top: 1px solid tokens.$c-blue-300;
+    margin-top: clamp(tokens.$baseUnit, 3vw, tokens.$baseUnit * 3);
+    padding-top: 1em;
+    display: block;
+    width: 100%;
+    max-width: tokens.$mq-700;
+}

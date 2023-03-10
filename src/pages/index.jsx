@@ -36,8 +36,8 @@ export default function LandingPage() {
                                 <strong>
                                     2 million jobs in health care will be
                                     created each year over the next decade
-                                </strong>{' '}
-                                — and many colleges and universities offer
+                                </strong>
+                                —and many colleges and universities offer
                                 flexible, affordable degrees or certificates
                                 that can help you get a head start in
                                 transferring your skills to a new or more

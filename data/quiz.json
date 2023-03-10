@@ -217,7 +217,7 @@
         {
             "title": "executive",
             "description": "You have a natural ability to lead and make decisions. You thrive in high-pressure environments and enjoy taking charge of projects and people.",
-            "detailedDestription": "You're an organized go-getter who's interested in the business side of health care. The idea of planning, directing, and coordinating medical and health services intrigues you. Adapting to an ever-changing landscape of health care laws, regulations, and technology doesn't phase you. You may already have a background in business or health care and find yourself ready for the responsibilities of management.",
+            "detailedDescription": "You're an organized go-getter who's interested in the business side of health care. The idea of planning, directing, and coordinating medical and health services intrigues you. Adapting to an ever-changing landscape of health care laws, regulations, and technology doesn't phase you. You may already have a background in business or health care and find yourself ready for the responsibilities of management.",
             "tabs": [
                 {
                     "title": "Motivation",
@@ -563,12 +563,7 @@
             "link": "https://www.unthsc.edu/academics/",
             "linkText": "Learn About Health Sciences at UNT",
             "imageURL": "https://via.placeholder.com/352x433",
-            "associatedStates": [
-                "TX",
-                "OK",
-                "LA",
-                "AR"
-            ]
+            "associatedStates": ["TX", "OK", "LA", "AR"]
         },
         {
             "title": "Fairleigh Dickinson",
@@ -577,16 +572,7 @@
             "link": "https://www.fdu.edu/academics/programs/?fwp_program_topic=health-sciences",
             "linkText": "Explore Programs at Fairleigh Dickinson",
             "imageURL": "https://via.placeholder.com/352x433",
-            "associatedStates": [
-                "NY",
-                "NJ",
-                "CT",
-                "RI",
-                "PA",
-                "MA",
-                "MD",
-                "DE"
-            ]
+            "associatedStates": ["NY", "NJ", "CT", "RI", "PA", "MA", "MD", "DE"]
         },
         {
             "title": "San Diego State University",
@@ -595,11 +581,7 @@
             "link": "https://chhs.sdsu.edu/",
             "linkText": "Learn About Health and Human Services at SDSU",
             "imageURL": "https://via.placeholder.com/352x433",
-            "associatedStates": [
-                "CA",
-                "AZ",
-                "NV"
-            ]
+            "associatedStates": ["CA", "AZ", "NV"]
         },
         {
             "title": "University of Saint Francis",
@@ -608,13 +590,7 @@
             "link": "https://majors.sf.edu/",
             "linkText": "Explore Programs at USF",
             "imageURL": "https://via.placeholder.com/352x433",
-            "associatedStates": [
-                "IL",
-                "IN",
-                "WI",
-                "IA",
-                "MI"
-            ]
+            "associatedStates": ["IL", "IN", "WI", "IA", "MI"]
         }
     ],
     "score": {

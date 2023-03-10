@@ -3,4 +3,9 @@
 .main-logo {
     display: block;
     width: clamp(tokens.$baseUnit * 7, 20vw, tokens.$baseUnit * 20);
+    // height: clamp(tokens.$baseUnit * 2, 5vw, tokens.$baseUnit * 3);
+
+    img {
+        width: 100%;
+    }
 }
