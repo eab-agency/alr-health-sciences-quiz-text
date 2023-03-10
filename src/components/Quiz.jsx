@@ -30,10 +30,6 @@ function Quiz() {
     const [isLoading, setLoading] = useState(false);
 
     const handleAnswer = (question, answer, associatedField) => {
-        console.log(
-            '🚀 ~ file: Quiz.jsx:33 ~ handleAnswer ~ associatedField:',
-            associatedField
-        );
         // calculate personality score based on selected answer
         const { personality } = answer;
         // Only update score if the answer's personality is not 'initial'
