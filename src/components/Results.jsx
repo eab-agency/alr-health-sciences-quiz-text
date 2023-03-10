@@ -25,9 +25,10 @@ const Results = ({ personality, description, title, answers }) => (
         <div className={styles.formContainer}>
             <h2>Where should we send your results?</h2>
             <Form redirectTo={`/${personality}`} answers={answers} />
-        {process.env.NODE_ENV === 'development' && (
-            <Link href={`/${personality}`}>Skip form</Link>
-        )}
+            ....
+            {process.env.NODE_ENV === 'development' && (
+                <Link href={`/${personality}`}>Skip form</Link>
+            )}
         </div>
     </div>
 );
