@@ -4,6 +4,7 @@
 
 .container {
     @include layouts.container;
+    align-items: flex-start;
 
     .content {
         @include layouts.content;
@@ -13,6 +14,7 @@
 .container-quiz {
     @include layouts.container;
     max-width: 60rem;
+    align-items: flex-start;
 
     .content {
         @include layouts.content;
@@ -27,6 +29,7 @@
     display: block;
     position: absolute;
     right: 1em;
+    top: 4.9rem;
     color: color.adjust(tokens.$c-blue-300, $lightness: 5%);
     font-size: clamp(tokens.$fs-xs, 2vw, tokens.$fs-m);
 

@@ -13,8 +13,6 @@ function Question({ question, handleAnswer }) {
     }, [question]);
 
     return (
-        // get dangerouslySetInnerHTML to work
-
         <>
             <h2
                 className="question-copy"
