@@ -1,16 +1,17 @@
 import React from 'react';
 import Form from '@/components/Form';
+import styles from '@/styles/global/layouts/Results.module.scss';
 
 const Results = ({ personality, description, title, answers }) => (
-    <div>
-        <span>Your ideal role is ...</span>
-        <div className="role">
+    <div className={styles['results-container']}>
+        <span className="intro-title">Your ideal role is ...</span>
+        <div className={styles.role}>
             {/* Results: {personality} */}
             <h2>{title}</h2>
             <p>{description}</p>
         </div>
 
-        <div className="engage-copy">
+        <div className={styles['engage-copy']}>
             <p>
                 Learn why we thought this role could be a good fit for you!
                 Then, discover <strong>related careers</strong>, average{' '}

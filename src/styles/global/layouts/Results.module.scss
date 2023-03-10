@@ -1,0 +1,14 @@
+@use '../config/tokens';
+
+.role {
+    display: block;
+    width: 100%;
+    max-width: tokens.$mq-600;
+    background: tokens.$c-blue-900 url('/images/texture.png');
+    border: 0.25em solid tokens.$c-blue-500;
+    padding: clamp(tokens.$baseUnit * 1, 5vw, tokens.$baseUnit * 2);
+}
+
+.engage-copy {
+    font-size: clamp(tokens.$fs-m, 3vw, tokens.$fs-xl);
+}
