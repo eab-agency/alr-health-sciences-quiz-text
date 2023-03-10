@@ -1,5 +1,7 @@
 import React from 'react';
 import Form from '@/components/Form';
+import Link from 'next/link';
+
 import styles from '@/styles/global/layouts/Results.module.scss';
 
 const Results = ({ personality, description, title, answers }) => (
@@ -23,6 +25,9 @@ const Results = ({ personality, description, title, answers }) => (
         <div className={styles.formContainer}>
             <h2>Where should we send your results?</h2>
             <Form redirectTo={`/${personality}`} answers={answers} />
+        {process.env.NODE_ENV === 'development' && (
+            <Link href={`/${personality}`}>Skip form</Link>
+        )}
         </div>
     </div>
 );
