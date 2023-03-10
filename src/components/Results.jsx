@@ -2,15 +2,33 @@ import React from 'react';
 import Form from '@/components/Form';
 import Link from 'next/link';
 
+import styles from '@/styles/global/layouts/Results.module.scss';
+
 const Results = ({ personality, description, title, answers }) => (
-    <div>
-        Results: {personality}
-        <h2>{title}</h2>
-        <p>{description}</p>
-        <Form redirectTo={`/${personality}`} answers={answers} />
+    <div className={styles['results-container']}>
+        <span className="intro-title">Your ideal role is ...</span>
+        <div className={styles.role}>
+            {/* Results: {personality} */}
+            <h2 className={styles.roleTitle}>{title}</h2>
+            <p>{description}</p>
+        </div>
+
+        <div className={styles.engageCopy}>
+            <p>
+                Learn why we thought this role could be a good fit for you!
+                Then, discover <strong>related careers</strong>, average{' '}
+                <strong>salaries</strong> and job outlook, and{' '}
+                <strong>academic programs</strong> that can help you reach your
+                goals faster.
+            </p>
+        </div>
+        <div className={styles.Form}>
+            <h2>Where should we send your results?</h2>
+            <Form redirectTo={`/${personality}`} answers={answers} />
         {process.env.NODE_ENV === 'development' && (
             <Link href={`/${personality}`}>Skip form</Link>
         )}
+        </div>
     </div>
 );
 

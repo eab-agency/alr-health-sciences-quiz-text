@@ -1,0 +1,6 @@
+@use '../config/tokens';
+
+.main-logo {
+    display: block;
+    width: clamp(tokens.$baseUnit * 7, 20vw, tokens.$baseUnit * 20);
+}

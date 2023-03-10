@@ -110,7 +110,8 @@ function Quiz() {
             highestScorePersonality: localQData.highestScorePersonality,
         };
         return (
-            <div>
+            <div className={styles.container}>
+                <div className={styles.content}>
                 <Results
                     personality={localQData.highestScorePersonality}
                     description={personalityData.description}
@@ -118,6 +119,8 @@ function Quiz() {
                     answers={finalResults}
                 />
                 <ResetQuizButton onClick={handleRetakeQuiz} />
+                </div>
+
             </div>
         );
     }

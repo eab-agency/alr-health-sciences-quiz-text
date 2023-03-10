@@ -1,0 +1,65 @@
+@use 'sass:color';
+@use '../config/tokens';
+
+.results-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: clamp(tokens.$baseUnit * 1, 5vw, tokens.$baseUnit * 3);
+}
+
+.role {
+    display: block;
+    width: 100%;
+    max-width: tokens.$mq-600;
+    background: tokens.$c-blue-900 url('/images/texture.png');
+    border: 0.5em solid tokens.$c-blue-500;
+    padding: clamp(tokens.$baseUnit * 1, 5vw, tokens.$baseUnit * 2);
+
+    .roleTitle {
+        font-size: clamp(tokens.$fs-m, 3vw, tokens.$fs-l);
+        padding-bottom: 0.5em;
+        margin-bottom: 1em;
+        border-bottom: 1px solid tokens.$c-blue-500;
+    }
+
+    // light mode
+    @media (prefers-color-scheme: light) {
+        background: color.adjust(tokens.$c-turquoise-500, $lightness: 45%)
+            url('/images/texture-light.png');
+        border: 0.5em solid
+            color.adjust(
+                color.adjust(tokens.$c-turquoise-500, $lightness: 30%),
+                $saturation: -20%
+            );
+    }
+}
+
+.engageCopy {
+    font-size: clamp(tokens.$fs-m, 3vw, tokens.$fs-xl);
+    margin-top: 1em;
+}
+
+.Form {
+    display: block;
+    padding-block: clamp(tokens.$baseUnit * 1, 5vw, tokens.$baseUnit * 2);
+    & > h2 {
+        position: relative;
+        padding-bottom: 0.5em;
+        margin-bottom: 1em;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100vw;
+            height: 1px;
+            background: tokens.$c-blue-300;
+
+            // @media (prefers-color-scheme: light) {
+
+            // }
+        }
+    }
+}

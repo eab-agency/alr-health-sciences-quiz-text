@@ -4,6 +4,8 @@ import PageFooter from '@/components/PageFooter';
 import Image from 'next/image';
 import styles from '@/styles/global/layouts/EmailOnly.module.scss';
 import Button from '@/components/Button';
+// eslint-disable-next-line import/no-unresolved
+import MainLogo from '@/components/MainLogo';
 
 export default function LandingPage() {
     return (
@@ -24,12 +26,7 @@ export default function LandingPage() {
                     <div className={styles.container}>
                         <div className={styles.content}>
                             <header>
-                                <Image
-                                    src="/images/cappex-logo-light.svg"
-                                    alt="Cappex"
-                                    width={200}
-                                    height={50}
-                                />
+                                <MainLogo />
                                 <h1>Define Your Future in Health Care</h1>
                             </header>
                             <p>
