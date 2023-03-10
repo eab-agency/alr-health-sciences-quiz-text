@@ -3,12 +3,13 @@ import axios from 'axios';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 
 import { getMatchedSchool } from '@/components/helpers/getMatchedSchool';
+import { useRequest } from '@/hooks/useRequest';
 
-const QuizDataContext = createContext(null);
 const UserLocationContext = createContext(null);
 
 function ContextProvider({ children }) {
-    const [quizData, setQuizData] = useState();
+    const { data: schools, error } = useRequest('/quiz/schools');
+
     // eslint-disable-next-line no-unused-vars
     const [loading, setLoading] = useState(false);
     const [matchedSchool, setMatchedSchool] = useState(null);
@@ -32,12 +33,12 @@ function ContextProvider({ children }) {
         if (location) {
             const matchedSchoolInternal = getMatchedSchool(
                 location.region_iso_code,
-                quizData
+                schools
             );
             // grab first school from quizData.schools and set matchedSchool
             setMatchedSchool(matchedSchoolInternal);
         }
-    }, [quizData, location]);
+    }, [schools, location]);
 
     // grab quizData from quizData.json and set matchedSchool to first school in quizData.schoolss
     useEffect(() => {
@@ -45,7 +46,6 @@ function ContextProvider({ children }) {
         fetch('./quizData.json')
             .then((res) => res.json())
             .then((data) => {
-                setQuizData(data);
                 setMatchedSchool(data.schools[0]);
                 setLoading(false);
             });
@@ -56,16 +56,9 @@ function ContextProvider({ children }) {
         [matchedSchool, setMatchedSchool]
     );
 
-    const valueQuizData = useMemo(
-        () => ({ quizData, setQuizData }),
-        [quizData, setQuizData]
-    );
-
     return (
         <UserLocationContext.Provider value={valueUser}>
-            <QuizDataContext.Provider value={valueQuizData}>
-                {children}
-            </QuizDataContext.Provider>
+            {children}
         </UserLocationContext.Provider>
     );
 }
@@ -78,12 +71,4 @@ function useUser() {
     return context;
 }
 
-function useQuizData() {
-    const context = useContext(QuizDataContext);
-    if (context === undefined) {
-        throw new Error('useQuizData must be used within a CountProvider');
-    }
-    return context;
-}
-
-export { useQuizData, useUser, ContextProvider };
+export { useUser, ContextProvider };

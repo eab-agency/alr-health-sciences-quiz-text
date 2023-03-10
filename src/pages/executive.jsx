@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
@@ -6,13 +7,16 @@ import { getMatchedSchool } from '@/components/helpers/getMatchedSchool';
 import PageLayout from '@/components/PageLayout';
 import Tabs from '@/components/Tabs';
 import Stats from '@/components/Stats';
-import { useQuizData, useUser } from '@/context/context';
+import { useUser } from '@/context/context';
 import UniversityMatch from '@/components/UniversityMatch';
 import StateSelect from '@/components/helpers/StateSelect';
 import Form from '@/components/Form';
+import { useRequest } from '@/hooks/useRequest';
 
 const ExecutivePage = () => {
-    const { quizData } = useQuizData();
+    const { data: results, error: resultsError } = useRequest('/quiz/results');
+    const { data: schools, error: schoolsError } = useRequest('/quiz/schools');
+
     const { matchedSchool, setMatchedSchool } = useUser();
 
     const router = useRouter();
@@ -21,16 +25,16 @@ const ExecutivePage = () => {
     //    wait for quizData to be populated and then set personalityData based on quizData.results.title
     const [personalityData, setPersonalityData] = useState(null);
     useEffect(() => {
-        if (quizData) {
-            const personalityDataInternal = quizData.results.find(
+        if (results) {
+            const personalityDataInternal = results.find(
                 (result) => result.title.toLowerCase() === currentRoute
             );
             setPersonalityData(personalityDataInternal);
         }
-    }, [quizData, currentRoute]);
+    }, [results, currentRoute]);
 
     const handleStateChange = (value) => {
-        const matchedSchoolInternal = getMatchedSchool(value, quizData);
+        const matchedSchoolInternal = getMatchedSchool(value, schools);
         setMatchedSchool(matchedSchoolInternal);
     };
 
