@@ -1,28 +1,30 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 
 import Tabs from '@/components/Tabs';
 import PageLayout from '@/components/PageLayout';
-import { useQuizData, useUser } from '@/context/context';
+import { useUser } from '@/context/context';
 import UniversityMatch from '@/components/UniversityMatch';
+import { useRequest } from '@/hooks/useRequest';
 
 const PractitionerPage = () => {
-    const { quizData } = useQuizData();
+    const { data: results, error: resultsError } = useRequest('/quiz/results');
     const { matchedSchool } = useUser();
 
     const router = useRouter();
     const currentRoute = router.pathname.replace('/', '');
 
-    //    wait for quizData to be populated and then set personalityData based on quizData.results.title
+    //    wait for quizData to be populated and then set personalityData based on results.title
     const [personalityData, setPersonalityData] = useState(null);
     useEffect(() => {
-        if (quizData) {
-            const personalityDataInternal = quizData.results.find(
+        if (results) {
+            const personalityDataInternal = results.find(
                 (result) => result.title.toLowerCase() === currentRoute
             );
             setPersonalityData(personalityDataInternal);
         }
-    }, [quizData, currentRoute]);
+    }, [results, currentRoute]);
 
     // if no personalityData is found, return loading
     if (!personalityData) {

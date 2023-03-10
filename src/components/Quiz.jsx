@@ -1,19 +1,23 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-nested-ternary */
 import React, { useState } from 'react';
 // import Score from '@/components/Score';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import Image from 'next/image';
 import styles from '@/styles/global/layouts/Quiz.module.scss';
+import { useRequest } from '@/hooks/useRequest';
 import Question from './Question';
 import ResetQuizButton from './ResetQuizButton';
 import Results from './Results';
-import { useQuizData } from '../context/context';
 
 function Quiz() {
-    const { quizData, setQuizData } = useQuizData();
+    const { data: results, error: resultError } = useRequest('/quiz/results');
+    const { data: questions, error: questionError } =
+        useRequest('/quiz/questions');
+
     const [personalityData, setPersonalityData] = useState('executive');
 
-    const [eabQuizData, setEabQuizData] = useLocalStorage('eab-quiz-data', {
+    const [localQData, setLocalQData] = useLocalStorage('eab-quiz-data', {
         answers: [],
         currentQuestion: 0,
         score: {
@@ -26,8 +30,6 @@ function Quiz() {
         },
         highestScorePersonality: null,
     });
-    // eslint-disable-next-line no-unused-vars
-    const [isLoading, setLoading] = useState(false);
 
     const handleAnswer = (question, answer, associatedField) => {
         // calculate personality score based on selected answer
@@ -35,14 +37,14 @@ function Quiz() {
         // Only update score if the answer's personality is not 'initial'
         const answerWeight =
             personality !== 'initial'
-                ? eabQuizData.score[personality]
-                    ? eabQuizData.score[personality] + answer.weight
+                ? localQData.score[personality]
+                    ? localQData.score[personality] + answer.weight
                     : answer.weight
                 : 0;
 
         // find highest score personality from updated score object
         const updatedScore = {
-            ...eabQuizData.score,
+            ...localQData.score,
             [personality]: answerWeight,
         };
         let highestScorePersonality = Object.keys(updatedScore)
@@ -58,38 +60,34 @@ function Quiz() {
             highestScorePersonality = ''; // If all scores are 0, return an empty string as the highest score personality
         }
 
-        setEabQuizData({
-            ...eabQuizData,
+        setLocalQData({
+            ...localQData,
             answers: [
-                ...eabQuizData.answers,
+                ...localQData.answers,
                 { question, answer: answer.answer, associatedField },
             ],
             score: updatedScore,
-            currentQuestion: eabQuizData.currentQuestion + 1,
+            currentQuestion: localQData.currentQuestion + 1,
             highestScorePersonality,
-        });
-        setQuizData({
-            ...quizData,
-            personality: highestScorePersonality,
         });
     };
 
     // if highestScorePersonality is changes, then set the personalityData
     React.useEffect(() => {
-        if (quizData && quizData.results) {
-            const personalityDataInternal = quizData.results.find(
+        if (results) {
+            const personalityDataInternal = results.find(
                 (result) =>
                     result.title.toLowerCase() ===
-                    eabQuizData.highestScorePersonality
+                    localQData.highestScorePersonality
             );
             setPersonalityData(personalityDataInternal);
         }
-    }, [eabQuizData.highestScorePersonality, quizData]);
+    }, [localQData.highestScorePersonality, results]);
 
     const handleRetakeQuiz = () => {
         // reset state
-        setEabQuizData({
-            ...eabQuizData,
+        setLocalQData({
+            ...localQData,
             answers: [],
             currentQuestion: 0,
             score: {
@@ -103,29 +101,30 @@ function Quiz() {
             highestScorePersonality: null,
         });
     };
-    if (isLoading) return <p>Loading...</p>;
-    if (!quizData) return <p>No quiz data</p>;
+    if (!questions) return <p>No question data</p>;
 
     // if we are at the end of the quiz, show the results page and pass the score and personality
-    if (eabQuizData.currentQuestion === quizData.questions.length) {
-        const results = {
-            answers: eabQuizData.answers,
-            highestScorePersonality: eabQuizData.highestScorePersonality,
+    if (localQData.currentQuestion === questions?.length) {
+        const finalResults = {
+            answers: localQData.answers,
+            highestScorePersonality: localQData.highestScorePersonality,
         };
         return (
             <div className={styles.container}>
                 <div className={styles.content}>
-                    <Results
-                        personality={eabQuizData.highestScorePersonality}
-                        description={personalityData.description}
-                        title={personalityData.title}
-                    />
-                    <ResetQuizButton onClick={handleRetakeQuiz} />
+                <Results
+                    personality={localQData.highestScorePersonality}
+                    description={personalityData.description}
+                    title={personalityData.title}
+                    answers={finalResults}
+                />
+                <ResetQuizButton onClick={handleRetakeQuiz} />
                 </div>
+
             </div>
         );
     }
-    if (eabQuizData.currentQuestion === 0) {
+    if (localQData.currentQuestion === 0) {
         return (
             <div className={styles.container}>
                 <div className={styles.content}>
@@ -133,9 +132,9 @@ function Quiz() {
                         Before we get started ...
                     </span>
                     <div className="questions-container">
-                        {quizData && (
+                        {questions && (
                             <Question
-                                questionNum={eabQuizData.currentQuestion}
+                                questionNum={localQData.currentQuestion}
                                 handleAnswer={handleAnswer}
                             />
                         )}
@@ -158,24 +157,22 @@ function Quiz() {
             <div className={styles.content}>
                 {/* NOTE: This score components was just for testing purposes?? */}
                 {/* } <Score
-                    score={eabQuizData.score}
-                    winningPersonality={eabQuizData.highestScorePersonality}
+                    score={localQData.score}
+                    winningPersonality={localQData.highestScorePersonality}
                 />{' '}
                 */}
                 <span className="intro-title">
                     Define Your Future in Health Care
                 </span>
                 <div className={styles['questions-counter']}>
-                    Question {eabQuizData.currentQuestion + 1} of{' '}
-                    {quizData.questions.length}
+                    Question {localQData.currentQuestion + 1} of{' '}
+                    {questions?.length}
                 </div>
                 <div className="questions-container">
-                    {quizData && (
-                        <Question
-                            handleAnswer={handleAnswer}
-                            questionNum={eabQuizData.currentQuestion}
-                        />
-                    )}
+                    <Question
+                        handleAnswer={handleAnswer}
+                        questionNum={localQData.currentQuestion}
+                    />
                 </div>
             </div>
         </div>
