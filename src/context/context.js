@@ -25,7 +25,7 @@ function ContextProvider({ children }) {
         }, 2000);
 
         return () => clearTimeout(getData);
-    }, [apiURL]);
+    }, [apiURL, setLocation]);
 
     // wait for userLocation to be populated and then set matchedSchool based on userLocation.region_iso_code
     useEffect(() => {
