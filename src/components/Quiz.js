@@ -101,7 +101,8 @@ function Quiz() {
             highestScorePersonality: null,
         });
     };
-    if (!questions) return <p>No question data</p>;
+    if (questionError) return <p>Error loading questions.</p>;
+    if (!questions) return <p>Loading...</p>;
 
     // if we are at the end of the quiz, show the results page and pass the score and personality
     if (localQData.currentQuestion === questions?.length) {
