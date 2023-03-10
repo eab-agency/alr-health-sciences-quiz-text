@@ -564,8 +564,10 @@
             "linkText": "Learn About Health Sciences at UNT",
             "imageURL": "https://via.placeholder.com/352x433",
             "associatedStates": [
-                "NV",
-                "NY"
+                "TX",
+                "OK",
+                "LA",
+                "AR"
             ]
         },
         {
@@ -576,9 +578,14 @@
             "linkText": "Explore Programs at Fairleigh Dickinson",
             "imageURL": "https://via.placeholder.com/352x433",
             "associatedStates": [
-                "SC",
-                "NC",
-                "FL"
+                "NY",
+                "NJ",
+                "CT",
+                "RI",
+                "PA",
+                "MA",
+                "MD",
+                "DE"
             ]
         },
         {
@@ -590,7 +597,8 @@
             "imageURL": "https://via.placeholder.com/352x433",
             "associatedStates": [
                 "CA",
-                "WA"
+                "AZ",
+                "NV"
             ]
         },
         {
@@ -601,8 +609,11 @@
             "linkText": "Explore Programs at USF",
             "imageURL": "https://via.placeholder.com/352x433",
             "associatedStates": [
-                "CA",
-                "VA"
+                "IL",
+                "IN",
+                "WI",
+                "IA",
+                "MI"
             ]
         }
     ],
