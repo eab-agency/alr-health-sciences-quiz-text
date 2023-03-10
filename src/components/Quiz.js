@@ -112,15 +112,14 @@ function Quiz() {
         return (
             <div className={styles.container}>
                 <div className={styles.content}>
-                <Results
-                    personality={localQData.highestScorePersonality}
-                    description={personalityData.description}
-                    title={personalityData.title}
-                    answers={finalResults}
-                />
-                <ResetQuizButton onClick={handleRetakeQuiz} />
+                    <Results
+                        personality={localQData.highestScorePersonality}
+                        description={personalityData.description}
+                        title={personalityData.title}
+                        answers={finalResults}
+                    />
+                    <ResetQuizButton onClick={handleRetakeQuiz} />
                 </div>
-
             </div>
         );
     }

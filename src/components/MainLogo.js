@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from '@/styles/global/components/MainLogo.module.scss';
+import Image from 'next/image';
 
 export default function MainLogo() {
     const [logo, setLogo] = React.useState(null);
@@ -29,7 +30,9 @@ export default function MainLogo() {
 
     return (
         <figure className={styles['main-logo']}>
-            <img src={logo} alt="Cappex Logo" />
+            {logo && (
+                <Image src={logo} alt="Cappex Logo" width={100} height={19} />
+            )}
         </figure>
     );
 }
