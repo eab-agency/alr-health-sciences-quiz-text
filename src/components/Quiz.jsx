@@ -110,13 +110,15 @@ function Quiz() {
     // if we are at the end of the quiz, show the results page and pass the score and personality
     if (eabQuizData.currentQuestion === quizData.questions.length) {
         return (
-            <div>
-                <Results
-                    personality={eabQuizData.highestScorePersonality}
-                    description={personalityData.description}
-                    title={personalityData.title}
-                />
-                <ResetQuizButton onClick={handleRetakeQuiz} />
+            <div className={styles.container}>
+                <div className={styles.content}>
+                    <Results
+                        personality={eabQuizData.highestScorePersonality}
+                        description={personalityData.description}
+                        title={personalityData.title}
+                    />
+                    <ResetQuizButton onClick={handleRetakeQuiz} />
+                </div>
             </div>
         );
     }

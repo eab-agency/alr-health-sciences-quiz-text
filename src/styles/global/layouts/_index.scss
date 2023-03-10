@@ -48,9 +48,12 @@ body {
 .short {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     flex: 1;
+
+    &.landing {
+        justify-content: center;
+        align-items: center;
+    }
 }
 
 @mixin container {
