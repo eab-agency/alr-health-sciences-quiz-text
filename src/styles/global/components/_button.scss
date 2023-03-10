@@ -46,6 +46,7 @@
     background-color: tokens.$c-orange-500;
     color: tokens.$c-blue-500;
     border-color: tokens.$c-orange-500;
+    font-size: clamp(tokens.$fs-m, 3vw, tokens.$fs-l);
 
     &:hover {
         background: color.adjust(tokens.$c-orange-500, $lightness: 30%);
@@ -57,6 +58,7 @@
     background-color: transparent;
     color: tokens.$c-turquoise-500;
     border-color: tokens.$c-turquoise-500;
+    font-size: 1rem;
 
     &:hover {
         background: color.adjust(tokens.$c-turquoise-500, $lightness: 40%);
@@ -64,11 +66,11 @@
     }
 
     @media (prefers-color-scheme: light) {
-        color: tokens.$c-malva-500;
-        border-color: tokens.$c-malva-500;
+        color: color.adjust(tokens.$c-malva-500, $lightness: -10%);
+        border-color: color.adjust(tokens.$c-malva-500, $lightness: -10%);
 
         &:hover {
-            background: color.adjust(tokens.$c-malva-500, $lightness: 40%);
+            background: color.adjust(tokens.$c-malva-500, $lightness: 30%);
             color: tokens.$c-blue-500;
         }
     }

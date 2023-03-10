@@ -1,0 +1,20 @@
+.form {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 1rem;
+    width: 100%;
+    max-width: 45rem;
+}
+
+.qGroup {
+    flex: 1 0 20rem;
+
+    &:nth-child(3) {
+        flex: 1 0 100%;
+    }
+
+    /* target all elements except the first three */
+    &:not(:nth-child(-n + 3)) {
+        display: none;
+    }
+}

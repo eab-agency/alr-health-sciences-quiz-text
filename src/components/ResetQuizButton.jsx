@@ -1,6 +1,6 @@
 import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { MdOutlineRefresh } from 'react-icons/md';
+// import { MdOutlineRefresh } from 'react-icons/md';
 
 function ResetQuizButton({ onClick }) {
     return (
@@ -10,9 +10,9 @@ function ResetQuizButton({ onClick }) {
             onClick={onClick}
         >
             Retake Quiz
-            <i>
+            {/* <i>
                 <MdOutlineRefresh />
-            </i>
+            </i> */}
         </button>
     );
 }

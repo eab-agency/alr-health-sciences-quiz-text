@@ -1,5 +1,6 @@
 @use '../config/tokens';
 @forward 'button';
+@forward 'forms';
 
 .question-copy {
     padding-bottom: 0.5em;
