@@ -7,11 +7,11 @@ const Results = ({ personality, description, title, answers }) => (
         <span className="intro-title">Your ideal role is ...</span>
         <div className={styles.role}>
             {/* Results: {personality} */}
-            <h2>{title}</h2>
+            <h2 className={styles.roleTitle}>{title}</h2>
             <p>{description}</p>
         </div>
 
-        <div className={styles['engage-copy']}>
+        <div className={styles.engageCopy}>
             <p>
                 Learn why we thought this role could be a good fit for you!
                 Then, discover <strong>related careers</strong>, average{' '}
@@ -20,7 +20,10 @@ const Results = ({ personality, description, title, answers }) => (
                 goals faster.
             </p>
         </div>
-        <Form redirectTo={`/${personality}`} answers={answers} />
+        <div className={styles.Form}>
+            <h2>Where should we send your results?</h2>
+            <Form redirectTo={`/${personality}`} answers={answers} />
+        </div>
     </div>
 );
 

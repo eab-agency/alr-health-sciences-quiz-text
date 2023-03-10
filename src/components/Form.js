@@ -5,6 +5,8 @@ import axios from 'axios';
 import * as Yup from 'yup';
 import { useRouter } from 'next/router';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { MdChevronRight } from 'react-icons/md';
 // import fields from './arrayOfFieldObjects';
 
 const fields = [
@@ -431,8 +433,13 @@ const AcquiaFormHandle = ({ redirectTo, answers = {} }) => {
                         </div>
                     ))}
 
-                    <button type="submit" disabled={isSubmitting}>
-                        Submit
+                    <button
+                        className="button btn-primary"
+                        type="submit"
+                        disabled={isSubmitting}
+                    >
+                        <span>Submit</span>
+                        <MdChevronRight />
                     </button>
                 </Form>
             )}
