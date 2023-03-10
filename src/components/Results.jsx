@@ -1,7 +1,7 @@
 import React from 'react';
-import AcquiaForm from './AcquiaForm';
+import Form from '@/components/Form';
 
-const Results = ({ personality, description, title }) => (
+const Results = ({ personality, description, title, answers }) => (
     <div>
         <span>Your ideal role is ...</span>
         <div className="role">
@@ -19,7 +19,7 @@ const Results = ({ personality, description, title }) => (
                 goals faster.
             </p>
         </div>
-        <AcquiaForm src="https://go.cappex-health.com/form/generate.js?id=2" />
+        <Form redirectTo={`/${personality}`} answers={answers} />
     </div>
 );
 

@@ -50,7 +50,7 @@ export default async function corsHandler(req, res) {
 
         res.status(200).json(data);
     } catch (error) {
-        console.error(error);
+        // console.error(error);
         res.status(500).json({ message: '🚫 Request error', error });
     }
 }

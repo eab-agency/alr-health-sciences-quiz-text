@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 import React, { useState, useEffect } from 'react';
 import styles from '@/styles/global/layouts/Question.module.scss';
 
@@ -12,6 +13,10 @@ function Question({ question, handleAnswer }) {
         setShuffledAnswers(shuffledAnswersTemp);
     }, [question]);
 
+    const handleClick = (q, answer, assocField) => {
+        handleAnswer(q, answer, assocField);
+    };
+
     return (
         <>
             <h2
@@ -24,7 +29,13 @@ function Question({ question, handleAnswer }) {
                         className="answer-button"
                         type="button"
                         key={index}
-                        onClick={() => handleAnswer(question.question, answer)}
+                        onClick={() =>
+                            handleClick(
+                                question.question,
+                                answer,
+                                question.associatedField
+                            )
+                        }
                     >
                         {answer.answer} ({answer.personality})
                     </button>

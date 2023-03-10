@@ -1,6 +1,6 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import Image from 'next/image';
-/* eslint-disable import/no-extraneous-dependencies */
 import { MdHelpOutline, MdOutlinePrivacyTip } from 'react-icons/md';
 import styles from '../styles/modules/PageFooter.module.scss';
 

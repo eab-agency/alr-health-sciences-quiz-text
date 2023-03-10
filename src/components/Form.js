@@ -3,6 +3,8 @@ import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import axios from 'axios';
 import * as Yup from 'yup';
+import { useRouter } from 'next/router';
+import { useLocalStorage } from '@/hooks/useLocalStorage';
 // import fields from './arrayOfFieldObjects';
 
 const fields = [
@@ -10,7 +12,7 @@ const fields = [
         id: 5,
         label: 'First Name',
         showLabel: true,
-        alias: 'first_name',
+        alias: 'first_name1',
         type: 'text',
         defaultValue: null,
         isRequired: false,
@@ -36,7 +38,7 @@ const fields = [
         id: 7,
         label: 'Last Name',
         showLabel: true,
-        alias: 'last_name',
+        alias: 'last_name1',
         type: 'text',
         defaultValue: null,
         isRequired: false,
@@ -62,7 +64,7 @@ const fields = [
         id: 8,
         label: 'Preferred Email',
         showLabel: true,
-        alias: 'preferred_email',
+        alias: 'preferred_email1',
         type: 'email',
         defaultValue: null,
         isRequired: true,
@@ -303,7 +305,7 @@ const fields = [
 ];
 const validationSchema = Yup.object().shape({
     // validation schema here
-    preferred_email: Yup.string()
+    preferred_email1: Yup.string()
         .email('Invalid email')
         .required('Email is required'),
 });
@@ -351,55 +353,67 @@ const generateField = (field, error) => {
                 </React.Fragment>
             );
         case 'hidden':
-            return (
-                <Field
-                    key={id}
-                    name={alias}
-                    type="hidden"
-                    defaultValue={defaultValue}
-                />
-            );
+            return <Field key={id} name={alias} type="hidden" />;
         default:
             return null;
     }
 };
 
-const onSubmit = async (values, { setSubmitting }) => {
-    console.log(values);
+const AcquiaFormHandle = ({ redirectTo, answers = {} }) => {
+    const [location] = useLocalStorage('489hLocation', null);
 
-    try {
-        const formData = {
-            ...values,
-            formId: 2,
-            formName: 'quizformquizform',
-            messenger: 1,
-        };
-
-        const { data } = await axios.post(
-            '/api/submit?formId=2',
-            {
-                mauticform: formData,
-            },
-            {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                },
-            }
-        );
-
-        console.log(data);
-        setSubmitting(false);
-    } catch (error) {
-        console.log(error);
-        setSubmitting(false);
-    }
-};
-
-const AcquiaFormHandle = () => {
     const initialValues = {};
+    const router = useRouter();
+
+    const onSubmit = async (values, { setSubmitting, setErrors }) => {
+        try {
+            const formData = {
+                ...values,
+                formId: 2,
+                formName: 'quizformquizform',
+                messenger: 1,
+                ip_address_state: location.region_iso_code,
+            };
+
+            const { data } = await axios.post(
+                '/api/submit?formId=2',
+                {
+                    mauticform: formData,
+                },
+                {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                    },
+                }
+            );
+
+            console.log(data);
+            setSubmitting(false);
+            // Redirect to the specified path on successful form submission
+            if (redirectTo) {
+                router.push(redirectTo);
+            }
+        } catch (error) {
+            console.log(error);
+            setSubmitting(false);
+        }
+    };
 
     fields.forEach((field) => {
-        initialValues[field.alias] = field.defaultValue || '';
+        if (field.alias === 'quiz_result') {
+            initialValues[field.alias] = answers.highestScorePersonality;
+        } else {
+            initialValues[field.alias] = field.defaultValue || '';
+            if (answers.answers) {
+                answers.answers.forEach((answer) => {
+                    if (answer.associatedField === field.alias) {
+                        initialValues[
+                            field.alias
+                        ] = `${answer.question} | ${answer.answer}`;
+                    }
+                });
+            }
+        }
     });
 
     return (

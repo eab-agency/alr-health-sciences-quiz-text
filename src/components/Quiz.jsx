@@ -29,7 +29,7 @@ function Quiz() {
     // eslint-disable-next-line no-unused-vars
     const [isLoading, setLoading] = useState(false);
 
-    const handleAnswer = (question, answer) => {
+    const handleAnswer = (question, answer, associatedField) => {
         // calculate personality score based on selected answer
         const { personality } = answer;
         // Only update score if the answer's personality is not 'initial'
@@ -62,7 +62,7 @@ function Quiz() {
             ...eabQuizData,
             answers: [
                 ...eabQuizData.answers,
-                { question, answer: answer.answer },
+                { question, answer: answer.answer, associatedField },
             ],
             score: updatedScore,
             currentQuestion: eabQuizData.currentQuestion + 1,
@@ -109,6 +109,10 @@ function Quiz() {
 
     // if we are at the end of the quiz, show the results page and pass the score and personality
     if (eabQuizData.currentQuestion === quizData.questions.length) {
+        const results = {
+            answers: eabQuizData.answers,
+            highestScorePersonality: eabQuizData.highestScorePersonality,
+        };
         return (
             <div className={styles.container}>
                 <div className={styles.content}>
