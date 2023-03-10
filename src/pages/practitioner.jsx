@@ -15,7 +15,7 @@ const PractitionerPage = () => {
     const router = useRouter();
     const currentRoute = router.pathname.replace('/', '');
 
-    //    wait for quizData to be populated and then set personalityData based on quizData.results.title
+    //    wait for quizData to be populated and then set personalityData based on results.title
     const [personalityData, setPersonalityData] = useState(null);
     useEffect(() => {
         if (results) {

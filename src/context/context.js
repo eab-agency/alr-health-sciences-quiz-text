@@ -35,21 +35,15 @@ function ContextProvider({ children }) {
                 location.region_iso_code,
                 schools
             );
-            // grab first school from quizData.schools and set matchedSchool
+            // grab first school from schools and set matchedSchool
             setMatchedSchool(matchedSchoolInternal);
         }
     }, [schools, location]);
 
-    // grab quizData from quizData.json and set matchedSchool to first school in quizData.schoolss
+    // set matchedSchool to first school in schools
     useEffect(() => {
-        setLoading(true);
-        fetch('./quizData.json')
-            .then((res) => res.json())
-            .then((data) => {
-                setMatchedSchool(data.schools[0]);
-                setLoading(false);
-            });
-    }, []);
+        if (schools) setMatchedSchool(schools[0]);
+    }, [schools]);
 
     const valueUser = useMemo(
         () => ({ matchedSchool, setMatchedSchool }),
