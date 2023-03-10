@@ -32,7 +32,7 @@ p {
 .intro-title {
     display: inline-block;
     position: relative;
-    font-size: clamp(config.$fs-xxl, 2vw, config.$fs-xxxl);
+    font-size: clamp(config.$fs-l, 3vw, config.$fs-xxl);
     font-weight: config.$fw-light;
     line-height: config.$lh-s;
     color: config.$c-white;
@@ -41,6 +41,10 @@ p {
     border-bottom-right-radius: 5em;
     padding-block: 0.2em;
     padding-right: 0.7em;
+
+    @media (max-width: config.$mq-500) {
+        max-width: 15rem;
+    }
 
     &::before {
         content: '';

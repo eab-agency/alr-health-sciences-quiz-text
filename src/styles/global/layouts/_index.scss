@@ -9,14 +9,14 @@ body {
         justify-content: space-between;
         min-height: 100vh;
         overflow: hidden;
-        background: url('/images/cappex-icon-dark.svg') no-repeat 70% 45%;
+        background: url('/images/cappex-icon-dark.svg') no-repeat 70% -40rem;
 
         @media (min-width: tokens.$mq-900) {
             background-size: 120vw auto;
         }
 
         @media (min-width: tokens.$mq-900) and (min-height: tokens.$mq-900) {
-            background: url('/images/cappex-icon-dark.svg') no-repeat 60% 45%;
+            background: url('/images/cappex-icon-dark.svg') no-repeat 80% -50rem;
             background-size: 260vh auto;
         }
 
@@ -48,9 +48,12 @@ body {
 .short {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     flex: 1;
+
+    &.landing {
+        justify-content: center;
+        align-items: center;
+    }
 }
 
 @mixin container {

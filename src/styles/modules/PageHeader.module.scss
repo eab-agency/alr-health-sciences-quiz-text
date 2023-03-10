@@ -1,0 +1,9 @@
+@use '../global/config/tokens';
+@use '../global/layouts';
+
+.container {
+    @include layouts.container;
+    max-width: tokens.$maxWidth;
+    margin: 0 auto;
+    padding-block: clamp(tokens.$baseUnit, 5vw, tokens.$baseUnit * 2);
+}

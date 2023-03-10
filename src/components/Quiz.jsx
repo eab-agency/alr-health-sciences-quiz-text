@@ -113,14 +113,15 @@ function Quiz() {
             highestScorePersonality: eabQuizData.highestScorePersonality,
         };
         return (
-            <div>
-                <Results
-                    personality={eabQuizData.highestScorePersonality}
-                    description={personalityData.description}
-                    title={personalityData.title}
-                    answers={results}
-                />
-                <ResetQuizButton onClick={handleRetakeQuiz} />
+            <div className={styles.container}>
+                <div className={styles.content}>
+                    <Results
+                        personality={eabQuizData.highestScorePersonality}
+                        description={personalityData.description}
+                        title={personalityData.title}
+                    />
+                    <ResetQuizButton onClick={handleRetakeQuiz} />
+                </div>
             </div>
         );
     }
