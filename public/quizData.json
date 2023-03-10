@@ -2,6 +2,7 @@
     "questions": [
         {
             "question": "Where are you in your educational journey?",
+            "associatedField": "education_journey",
             "answers": [
                 {
                     "answer": "I'm currently in school for a health care related degree",
@@ -27,6 +28,7 @@
         },
         {
             "question": "At work, a primary <strong>motivator</strong> for me is...",
+            "associatedField": "quizresponse1",
             "answers": [
                 {
                     "answer": "Helping others do their best at work. I like to develop plans and communicate them to a team.",
@@ -57,6 +59,7 @@
         },
         {
             "question": "I'd like to enhance <strong>health care</strong> through ...",
+            "associatedField": "quizresponse2",
             "answers": [
                 {
                     "answer": "Directing staff and planning finances.",
@@ -87,6 +90,7 @@
         },
         {
             "question": "My ideal <strong>work setting</strong> is...",
+            "associatedField": "quizresponse3",
             "answers": [
                 {
                     "answer": "In a hospital or physician's office, but I'd be open to a residential care facility or government agency.",
@@ -117,6 +121,7 @@
         },
         {
             "question": "My biggest professional <strong>strengths</strong> are...",
+            "associatedField": "quizresponse4",
             "answers": [
                 {
                     "answer": "Leading and communicating with others. I have good attention to detail and enjoy analyzing information and using technology.",
@@ -147,6 +152,7 @@
         },
         {
             "question": "I have taken <strong>college courses</strong> in ...",
+            "associatedField": "quizresponse5",
             "answers": [
                 {
                     "answer": "Accounting, administration, ethics, or economics.",
@@ -177,6 +183,7 @@
         },
         {
             "question": "My <strong>professional experience</strong> includes ...",
+            "associatedField": "quizresponse6",
             "answers": [
                 {
                     "answer": "Some experience in an administrative or clinical role.",
@@ -556,7 +563,10 @@
             "link": "https://www.unthsc.edu/academics/",
             "linkText": "Learn About Health Sciences at UNT",
             "imageURL": "https://via.placeholder.com/352x433",
-            "associatedStates": ["NV", "NY"]
+            "associatedStates": [
+                "NV",
+                "NY"
+            ]
         },
         {
             "title": "Fairleigh Dickinson",
@@ -565,7 +575,11 @@
             "link": "https://www.fdu.edu/academics/programs/?fwp_program_topic=health-sciences",
             "linkText": "Explore Programs at Fairleigh Dickinson",
             "imageURL": "https://via.placeholder.com/352x433",
-            "associatedStates": ["SC", "NC", "FL"]
+            "associatedStates": [
+                "SC",
+                "NC",
+                "FL"
+            ]
         },
         {
             "title": "San Diego State University",
@@ -574,7 +588,10 @@
             "link": "https://chhs.sdsu.edu/",
             "linkText": "Learn About Health and Human Services at SDSU",
             "imageURL": "https://via.placeholder.com/352x433",
-            "associatedStates": ["CA", "WA"]
+            "associatedStates": [
+                "CA",
+                "WA"
+            ]
         },
         {
             "title": "University of Saint Francis",
@@ -583,7 +600,10 @@
             "link": "https://majors.sf.edu/",
             "linkText": "Explore Programs at USF",
             "imageURL": "https://via.placeholder.com/352x433",
-            "associatedStates": ["CA", "VA"]
+            "associatedStates": [
+                "CA",
+                "VA"
+            ]
         }
     ],
     "score": {

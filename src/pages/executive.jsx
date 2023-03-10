@@ -13,7 +13,7 @@ import Form from '@/components/Form';
 
 const ExecutivePage = () => {
     const { quizData } = useQuizData();
-    const { userLocation, matchedSchool, setMatchedSchool } = useUser();
+    const { matchedSchool, setMatchedSchool } = useUser();
 
     const router = useRouter();
     const currentRoute = router.pathname.replace('/', '');
@@ -147,9 +147,6 @@ const ExecutivePage = () => {
                     Bureau of Labor Statistics
                 </a>
             </section>
-            <div>
-                matched state from IP address: {userLocation?.region_iso_code}
-            </div>
             {matchedSchool && (
                 <>
                     <div>

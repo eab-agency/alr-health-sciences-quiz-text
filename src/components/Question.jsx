@@ -12,6 +12,10 @@ function Question({ question, handleAnswer }) {
         setShuffledAnswers(shuffledAnswersTemp);
     }, [question]);
 
+    const handleClick = (q, answer, assocField) => {
+        handleAnswer(q, answer, assocField);
+    };
+
     return (
         // get dangerouslySetInnerHTML to work
 
@@ -26,7 +30,13 @@ function Question({ question, handleAnswer }) {
                         className="answer-button"
                         type="button"
                         key={index}
-                        onClick={() => handleAnswer(question.question, answer)}
+                        onClick={() =>
+                            handleClick(
+                                question.question,
+                                answer,
+                                question.associatedField
+                            )
+                        }
                     >
                         {answer.answer} ({answer.personality})
                     </button>

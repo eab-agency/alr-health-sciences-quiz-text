@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect, useMemo } from 'react';
 import axios from 'axios';
+import { useLocalStorage } from '@/hooks/useLocalStorage';
 
 import { getMatchedSchool } from '@/components/helpers/getMatchedSchool';
 
@@ -12,13 +13,14 @@ function ContextProvider({ children }) {
     const [loading, setLoading] = useState(false);
     const [matchedSchool, setMatchedSchool] = useState(null);
 
-    const [userLocation, setUserLocation] = useState(null);
     const apiURL = `https://ipgeolocation.abstractapi.com/v1/?api_key=${process.env.NEXT_PUBLIC_ABSTRACT_API_KEY}`;
+
+    const [location, setLocation] = useLocalStorage('489hLocation', null);
 
     useEffect(() => {
         const getData = setTimeout(() => {
             axios.get(apiURL).then((response) => {
-                setUserLocation(response.data);
+                setLocation(response.data);
             });
         }, 2000);
 
@@ -27,15 +29,15 @@ function ContextProvider({ children }) {
 
     // wait for userLocation to be populated and then set matchedSchool based on userLocation.region_iso_code
     useEffect(() => {
-        if (userLocation) {
+        if (location) {
             const matchedSchoolInternal = getMatchedSchool(
-                userLocation.region_iso_code,
+                location.region_iso_code,
                 quizData
             );
             // grab first school from quizData.schools and set matchedSchool
             setMatchedSchool(matchedSchoolInternal);
         }
-    }, [quizData, userLocation]);
+    }, [quizData, location]);
 
     // grab quizData from quizData.json and set matchedSchool to first school in quizData.schoolss
     useEffect(() => {
@@ -50,8 +52,8 @@ function ContextProvider({ children }) {
     }, []);
 
     const valueUser = useMemo(
-        () => ({ userLocation, matchedSchool, setMatchedSchool }),
-        [userLocation, matchedSchool, setMatchedSchool]
+        () => ({ matchedSchool, setMatchedSchool }),
+        [matchedSchool, setMatchedSchool]
     );
 
     const valueQuizData = useMemo(
