@@ -1,5 +1,4 @@
 import React from 'react';
-import Image from 'next/image';
 import styles from '@/styles/modules/PageHeader.module.scss';
 import NabBar from './NavBar';
 import MainLogo from './MainLogo';
