@@ -387,14 +387,14 @@ const AcquiaFormHandle = ({ redirectTo, answers = {} }) => {
                 }
             );
 
-            console.log(data);
+            // console.log(data);
             setSubmitting(false);
             // Redirect to the specified path on successful form submission
             if (redirectTo) {
                 router.push(redirectTo);
             }
         } catch (error) {
-            console.log(error);
+            // console.log(error);
             setSubmitting(false);
         }
     };
