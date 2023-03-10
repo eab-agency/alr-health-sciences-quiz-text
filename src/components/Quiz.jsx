@@ -103,7 +103,6 @@ function Quiz() {
             highestScorePersonality: null,
         });
     };
-
     if (isLoading) return <p>Loading...</p>;
     if (!quizData) return <p>No quiz data</p>;
 
@@ -136,11 +135,7 @@ function Quiz() {
                     <div className="questions-container">
                         {quizData && (
                             <Question
-                                question={
-                                    quizData.questions[
-                                        eabQuizData.currentQuestion
-                                    ]
-                                }
+                                questionNum={eabQuizData.currentQuestion}
                                 handleAnswer={handleAnswer}
                             />
                         )}
@@ -177,10 +172,8 @@ function Quiz() {
                 <div className="questions-container">
                     {quizData && (
                         <Question
-                            question={
-                                quizData.questions[eabQuizData.currentQuestion]
-                            }
                             handleAnswer={handleAnswer}
+                            questionNum={eabQuizData.currentQuestion}
                         />
                     )}
                 </div>
