@@ -563,7 +563,7 @@
             "link": "https://www.unthsc.edu/academics/",
             "linkText": "Learn About Health Sciences at UNT",
             "imageURL": "https://via.placeholder.com/352x433",
-            "associatedStates": ["NV", "NY"]
+            "associatedStates": ["TX", "OK", "LA", "AR"]
         },
         {
             "title": "Fairleigh Dickinson",
@@ -572,7 +572,7 @@
             "link": "https://www.fdu.edu/academics/programs/?fwp_program_topic=health-sciences",
             "linkText": "Explore Programs at Fairleigh Dickinson",
             "imageURL": "https://via.placeholder.com/352x433",
-            "associatedStates": ["SC", "NC", "FL"]
+            "associatedStates": ["NY", "NJ", "CT", "RI", "PA", "MA", "MD", "DE"]
         },
         {
             "title": "San Diego State University",
@@ -581,7 +581,7 @@
             "link": "https://chhs.sdsu.edu/",
             "linkText": "Learn About Health and Human Services at SDSU",
             "imageURL": "https://via.placeholder.com/352x433",
-            "associatedStates": ["CA", "WA"]
+            "associatedStates": ["CA", "AZ", "NV"]
         },
         {
             "title": "University of Saint Francis",
@@ -590,7 +590,7 @@
             "link": "https://majors.sf.edu/",
             "linkText": "Explore Programs at USF",
             "imageURL": "https://via.placeholder.com/352x433",
-            "associatedStates": ["CA", "VA"]
+            "associatedStates": ["IL", "IN", "WI", "IA", "MI"]
         }
     ],
     "score": {
