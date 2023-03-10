@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 import React, { useState, useEffect } from 'react';
 import styles from '@/styles/global/layouts/Question.module.scss';
 
@@ -17,8 +18,6 @@ function Question({ question, handleAnswer }) {
     };
 
     return (
-        // get dangerouslySetInnerHTML to work
-
         <>
             <h2
                 className="question-copy"
