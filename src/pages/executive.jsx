@@ -92,15 +92,21 @@ const ExecutivePage = () => {
                                 for hospitals or clinics
                             </li>
                         </ul>
-                        <Image
-                            src="https://via.placeholder.com/526x284"
-                            width={526}
-                            height={284}
-                            alt="placeholder"
-                        />
+                        <figure>
+                            <Image
+                                src="/images/executive.jpg"
+                                width={478}
+                                height={284}
+                                alt="Executive woman smiling in front of a laptop"
+                            />
+                            <figcaption>Healthcare administrator</figcaption>
+                        </figure>
                     </div>
                 </section>
-                <Stats stats={personalityData.stats} />
+                <Stats
+                    stats={personalityData.stats}
+                    source={personalityData.statsSource}
+                />
                 <section className="best-degrees">
                     <h2>
                         What are the best health care degrees for The Executive?

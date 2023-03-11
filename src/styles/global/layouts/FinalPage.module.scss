@@ -91,13 +91,22 @@
 
     .executive-path {
         display: flex;
-        flex-flow: row wrap;
+        flex-direction: column;
         gap: clamp(tokens.$baseUnit * 2, 5vw, tokens.$baseUnit * 4);
         margin-top: clamp(tokens.$baseUnit * 2, 5vw, tokens.$baseUnit * 4);
 
+        @media (min-width: tokens.$mq-900) {
+            flex-direction: row;
+        }
+
         ul {
-            flex: 1 0 25rem;
+            flex: 1 1 100%;
             list-style: none;
+            order: 1;
+
+            @media (min-width: tokens.$mq-900) {
+                order: 0;
+            }
 
             li {
                 display: flex;
@@ -119,5 +128,33 @@
                 }
             }
         }
+
+        figure {
+            flex-shrink: 0;
+            width: 50%;
+
+            @media (min-width: tokens.$mq-900) {
+                width: 40%;
+            }
+
+            img {
+                order: 0;
+
+                @media (min-width: tokens.$mq-900) {
+                    order: 1;
+                }
+            }
+
+            figcaption {
+                font-size: tokens.$fs-xs;
+                color: tokens.$c-white;
+                margin-top: 0;
+                text-transform: uppercase;
+            }
+        }
     }
+}
+
+.stats {
+    background: red;
 }
