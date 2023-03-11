@@ -11,7 +11,7 @@ async function formRoute(req, res) {
             const user = { email, fname, lname, state };
             req.session.user = user;
             await req.session.save();
-            res.redirect('/');
+            res.redirect(302, '/');
         } else {
             res.status(405).json({ message: 'Method not allowed' });
         }
