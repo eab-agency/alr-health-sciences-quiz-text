@@ -11,7 +11,9 @@ const AcquiaForm = ({ src, multiple }) => {
 
     return (
         <div ref={scriptRef} id="mauticform">
-            {status === 'loading' && <span>Loading...</span>}
+            {status === 'loading' && (
+                <span className="loading">Loading...</span>
+            )}
             {status === 'error' && <span>Error</span>}
         </div>
     );

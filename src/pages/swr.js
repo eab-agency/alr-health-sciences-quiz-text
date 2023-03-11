@@ -7,7 +7,7 @@ const SWR = () => {
     // Handle the error state
     if (error) return <div>Failed to load</div>;
     // Handle the loading state
-    if (!data) return <div>Loading...</div>;
+    if (!data) return <div className="loading">Loading...</div>;
     return <div>SWR</div>;
 };
 

@@ -7,6 +7,7 @@ import { useRouter } from 'next/router';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { MdChevronRight } from 'react-icons/md';
+import styles from '@/styles/global/components/Form.module.scss';
 // import fields from './arrayOfFieldObjects';
 
 const fields = [
@@ -438,9 +439,9 @@ const AcquiaFormHandle = ({ redirectTo, answers = {}, user = {} }) => {
             onSubmit={onSubmit}
         >
             {({ errors, isSubmitting }) => (
-                <Form>
+                <Form className={styles.form}>
                     {fields.map((field) => (
-                        <div key={field.id}>
+                        <div className={styles.qGroup} key={field.id}>
                             {generateField(field, errors[field.alias])}
                             <ErrorMessage name={field.alias} component="span" />
                         </div>
@@ -451,7 +452,7 @@ const AcquiaFormHandle = ({ redirectTo, answers = {}, user = {} }) => {
                         type="submit"
                         disabled={isSubmitting}
                     >
-                        <span>Submit</span>
+                        Submit
                         <MdChevronRight />
                     </button>
                 </Form>

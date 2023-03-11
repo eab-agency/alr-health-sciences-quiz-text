@@ -40,13 +40,13 @@ const ExecutivePage = () => {
 
     // if no personalityData is found, return loading
     if (!personalityData) {
-        return <div>Loading...</div>;
+        return <div className="loading">Loading...</div>;
     }
 
     return (
         <div>
             <h1>{personalityData.title}</h1>
-            <p>{personalityData.detailedDestription}</p>
+            <p>{personalityData.detailedDescription}</p>
             <Tabs tabs={personalityData.tabs} className="personalityTabs" />
             <Form />
             <section className="career-path">

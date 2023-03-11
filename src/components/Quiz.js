@@ -102,7 +102,7 @@ function Quiz({ user }) {
         });
     };
     if (questionError) return <p>Error loading questions.</p>;
-    if (!questions) return <p>Loading...</p>;
+    if (!questions) return <p className="loading">Loading...</p>;
 
     // if we are at the end of the quiz, show the results page and pass the score and personality
     if (localQData.currentQuestion === questions?.length) {
@@ -111,7 +111,7 @@ function Quiz({ user }) {
             highestScorePersonality: localQData.highestScorePersonality,
         };
         return (
-            <div className={styles.container}>
+            <div className={styles.containerResults}>
                 <div className={styles.content}>
                     <Results
                         personality={localQData.highestScorePersonality}
