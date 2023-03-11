@@ -2,7 +2,7 @@ import Head from 'next/head';
 import QuizLayout from '@/components/QuizLayout';
 import Quiz from '@/components/Quiz';
 
-function Home() {
+function QuizHome({ user }) {
     return (
         <>
             <Head>
@@ -14,11 +14,11 @@ function Home() {
                 />
                 <link rel="icon" href="/favicon.png" />
             </Head>
-            <Quiz />
+            <Quiz user={user} />
         </>
     );
 }
 
-Home.PageLayout = QuizLayout;
+QuizHome.PageLayout = QuizLayout;
 
-export default Home;
+export default QuizHome;
