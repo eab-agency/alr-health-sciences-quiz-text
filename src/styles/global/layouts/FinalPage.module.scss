@@ -1,0 +1,123 @@
+@use '../layouts';
+@use '../config/tokens';
+
+.container {
+    @include layouts.container;
+    align-items: flex-start;
+    max-width: tokens.$maxWidth;
+    margin: 0 auto;
+
+    .content {
+        @include layouts.content;
+        gap: 0;
+
+        & > span {
+            margin-bottom: 2em;
+        }
+    }
+}
+
+.intro-section {
+    h1 {
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100vw;
+            height: 1px;
+            background-color: tokens.$c-blue-500;
+        }
+    }
+
+    p {
+        display: block;
+        width: 100%;
+        max-width: tokens.$mq-900;
+        font-size: clamp(tokens.$baseUnit * 1, 2vw, tokens.$baseUnit * 1.75);
+    }
+}
+
+.career-path {
+    display: block;
+    width: 100%;
+    background: tokens.$c-blue-500;
+    padding-block: clamp(tokens.$baseUnit * 2, 5vw, tokens.$baseUnit * 4);
+    position: relative;
+
+    &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 150vw;
+        height: 100%;
+        transform: translateX(-50%);
+        background: tokens.$c-blue-500;
+        z-index: -1;
+    }
+
+    .path-intro {
+        h2 {
+            position: relative;
+            padding-bottom: 0.5em;
+            margin-bottom: 1em;
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100vw;
+                height: 1px;
+                background-color: tokens.$c-blue-300;
+            }
+        }
+
+        p {
+            display: block;
+            width: 100%;
+            max-width: tokens.$mq-900;
+            font-size: clamp(
+                tokens.$baseUnit * 1,
+                2vw,
+                tokens.$baseUnit * 1.75
+            );
+        }
+    }
+
+    .executive-path {
+        display: flex;
+        flex-flow: row wrap;
+        gap: clamp(tokens.$baseUnit * 2, 5vw, tokens.$baseUnit * 4);
+        margin-top: clamp(tokens.$baseUnit * 2, 5vw, tokens.$baseUnit * 4);
+
+        ul {
+            flex: 1 0 25rem;
+            list-style: none;
+
+            li {
+                display: flex;
+                gap: 0.5em;
+                font-size: tokens.$fs-m;
+                color: tokens.$c-white;
+                margin-bottom: 1em;
+
+                &::before {
+                    content: tokens.$i-checkmark;
+                    font-family: tokens.$f-icons;
+                    color: tokens.$c-orange-500;
+                    font-size: 1.2em;
+                    transform: translateY(-5%);
+                }
+
+                strong {
+                    color: tokens.$c-turquoise-500;
+                }
+            }
+        }
+    }
+}

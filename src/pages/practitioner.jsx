@@ -7,6 +7,7 @@ import PageLayout from '@/components/PageLayout';
 import { useUser } from '@/context/context';
 import UniversityMatch from '@/components/UniversityMatch';
 import { useRequest } from '@/hooks/useRequest';
+import styles from '@/styles/global/layouts/FinalPage.module.scss';
 
 const PractitionerPage = () => {
     const { data: results, error: resultsError } = useRequest('/quiz/results');
@@ -32,11 +33,22 @@ const PractitionerPage = () => {
     }
 
     return (
-        <div>
-            <h1>{personalityData.title}</h1>
-            <p>{personalityData.detailedDescription}</p>
-            <Tabs tabs={personalityData.tabs} />
-            {matchedSchool && <UniversityMatch school={matchedSchool} />}
+        <div className={styles.container}>
+            <div className={styles.content}>
+                <span className="intro-title">
+                    Your ideal role could be ...
+                </span>
+                <section className={styles['intro-section']}>
+                    <h1>{personalityData.title}</h1>
+                    <p>{personalityData.detailedDescription}</p>
+                </section>
+                <Tabs tabs={personalityData.tabs} />
+                {matchedSchool && (
+                    <section className={styles.school}>
+                        <UniversityMatch school={matchedSchool} />
+                    </section>
+                )}
+            </div>
         </div>
     );
 };

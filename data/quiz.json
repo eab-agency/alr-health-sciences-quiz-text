@@ -215,43 +215,43 @@
     ],
     "results": [
         {
-            "title": "executive",
+            "title": "Executive",
             "description": "You have a natural ability to lead and make decisions. You thrive in high-pressure environments and enjoy taking charge of projects and people.",
             "detailedDescription": "You're an organized go-getter who's interested in the business side of health care. The idea of planning, directing, and coordinating medical and health services intrigues you. Adapting to an ever-changing landscape of health care laws, regulations, and technology doesn't phase you. You may already have a background in business or health care and find yourself ready for the responsibilities of management.",
             "tabs": [
                 {
                     "title": "Motivation",
-                    "icon": "fas fa-home",
+                    "icon": "motivation-icon",
                     "content": "The Executive may like to develop plans and communicate them to a team. They enjoy helping others do their best at work."
                 },
                 {
                     "title": "Skills",
-                    "icon": "fas fa-briefcase",
+                    "icon": "skills-icon",
                     "content": "This role is skilled at leading and communicating with others. They have good attention to detail and enjoy analyzing information and using technology."
                 },
                 {
                     "title": "Works With",
-                    "icon": "fas fa-trophy",
+                    "icon": "work-icon",
                     "content": "Careers in The Executive's path often involve working with health care providers and managing staff or finances."
                 },
                 {
                     "title": "Courses",
-                    "icon": "fas fa-graduation-cap",
+                    "icon": "education-icon",
                     "content": "The Executive may have taken college courses in accounting, administration, ethics, or economics."
                 },
                 {
                     "title": "Setting",
-                    "icon": "fas fa-briefcase",
+                    "icon": "setting-icon",
                     "content": "A hospital or physician's office are common workplaces for The Executive, although they may also work in a residential care facility or government agency."
                 },
                 {
                     "title": "Education",
-                    "icon": "fas fa-graduation-cap",
+                    "icon": "education-icon",
                     "content": "Many jobs in this field require college courses in things like accounting, administration, ethics, or economics. Some roles require a bachelor's or master's degree."
                 },
                 {
                     "title": "Experience",
-                    "icon": "fas fa-briefcase",
+                    "icon": "work-icon",
                     "content": "People with experience in an administrative or clinical role tend to be a good fit for this The Executive's career path."
                 }
             ],
@@ -286,35 +286,36 @@
         {
             "title": "Practitioner",
             "description": "You enjoy working directly with people to help them solve problems and improve their lives. You have a hands-on approach and prefer to be in the field rather than behind a desk.",
+            "detailedDescription": "You’re an empathetic person who likes to help others. Things like anatomy and biology intrigue you, and natural bodily functions don’t phase you. Whether it’s through nursing or surgery, therapy or routine care appointments, what matters to you is improving the health of others. You may already have a background in patient care and are ready to advance your career, or you may be answering a new calling.",
             "tabs": [
                 {
                     "title": "Motivation",
-                    "icon": "fas fa-home",
+                    "icon": "motivation-icon",
                     "content": "The Practitioner likes to help people. They enjoy improving a person’s health or quality of life."
                 },
                 {
                     "title": "Skills",
-                    "icon": "fas fa-briefcase",
+                    "icon": "skills-icon",
                     "content": "This role is skilled in empathetic communication and tends to be emotionally stable. They have strong problem-solving and interpersonal skills."
                 },
                 {
                     "title": "Works With",
-                    "icon": "fas fa-trophy",
+                    "icon": "work-icon",
                     "content": "Careers in The Practitioner’s path work with patients and other medical professionals. They may be interested in all patients or those with a specific need."
                 },
                 {
                     "title": "Setting",
-                    "icon": "fas fa-briefcase",
+                    "icon": "setting-icon",
                     "content": "A physician’s office, hospital, or outpatient care center are common workplaces for The Practitioner.s"
                 },
                 {
                     "title": "Education",
-                    "icon": "fas fa-graduation-cap",
+                    "icon": "education-icon",
                     "content": "Jobs in this field often require college courses in physical sciences or health care. Many roles require a bachelor’s, masters, or professional degree."
                 },
                 {
                     "title": "Experience",
-                    "icon": "fas fa-briefcase",
+                    "icon": "experience-icon",
                     "content": "People with experience working in a lab setting or with patients as a nurse, medical assistant, EMT tend to be a good fit for The Practitioner’s career path."
                 }
             ],
@@ -356,37 +357,37 @@
             "tabs": [
                 {
                     "title": "Motivation",
-                    "icon": "fas fa-home",
+                    "icon": "motivation-icon",
                     "content": "The Executive may like to develop plans and communicate them to a team. They enjoy helping others do their best at work."
                 },
                 {
                     "title": "Skills",
-                    "icon": "fas fa-briefcase",
+                    "icon": "skills-icon",
                     "content": "This role is skilled at leading and communicating with others. They have good attention to detail and enjoy analyzing information and using technology."
                 },
                 {
                     "title": "Works With",
-                    "icon": "fas fa-trophy",
+                    "icon": "work-icon",
                     "content": "Careers in The Executive's path often involve working with health care providers and managing staff or finances."
                 },
                 {
                     "title": "Courses",
-                    "icon": "fas fa-graduation-cap",
+                    "icon": "courses-icon",
                     "content": "The Executive may have taken college courses in accounting, administration, ethics, or economics."
                 },
                 {
                     "title": "Setting",
-                    "icon": "fas fa-briefcase",
+                    "icon": "skills-icon",
                     "content": "A hospital or physician's office are common workplaces for The Executive, although they may also work in a residential care facility or government agency."
                 },
                 {
                     "title": "Education",
-                    "icon": "fas fa-graduation-cap",
+                    "icon": "courses-icon",
                     "content": "Many jobs in this field require college courses in things like accounting, administration, ethics, or economics. Some roles require a bachelor's or master's degree."
                 },
                 {
                     "title": "Experience",
-                    "icon": "fas fa-briefcase",
+                    "icon": "skills-icon",
                     "content": "People with experience in an administrative or clinical role tend to be a good fit for this The Executive's career path."
                 }
             ],
@@ -424,37 +425,37 @@
             "tabs": [
                 {
                     "title": "Motivation",
-                    "icon": "fas fa-home",
+                    "icon": "motivation-icon",
                     "content": "The Executive may like to develop plans and communicate them to a team. They enjoy helping others do their best at work."
                 },
                 {
                     "title": "Skills",
-                    "icon": "fas fa-briefcase",
+                    "icon": "skills-icon",
                     "content": "This role is skilled at leading and communicating with others. They have good attention to detail and enjoy analyzing information and using technology."
                 },
                 {
                     "title": "Works With",
-                    "icon": "fas fa-trophy",
+                    "icon": "work-icon",
                     "content": "Careers in The Executive's path often involve working with health care providers and managing staff or finances."
                 },
                 {
                     "title": "Courses",
-                    "icon": "fas fa-graduation-cap",
+                    "icon": "courses-icon",
                     "content": "The Executive may have taken college courses in accounting, administration, ethics, or economics."
                 },
                 {
                     "title": "Setting",
-                    "icon": "fas fa-briefcase",
+                    "icon": "skills-icon",
                     "content": "A hospital or physician's office are common workplaces for The Executive, although they may also work in a residential care facility or government agency."
                 },
                 {
                     "title": "Education",
-                    "icon": "fas fa-graduation-cap",
+                    "icon": "courses-icon",
                     "content": "Many jobs in this field require college courses in things like accounting, administration, ethics, or economics. Some roles require a bachelor's or master's degree."
                 },
                 {
                     "title": "Experience",
-                    "icon": "fas fa-briefcase",
+                    "icon": "skills-icon",
                     "content": "People with experience in an administrative or clinical role tend to be a good fit for this The Executive's career path."
                 }
             ],
@@ -492,37 +493,37 @@
             "tabs": [
                 {
                     "title": "Motivation",
-                    "icon": "fas fa-home",
+                    "icon": "motivation-icon",
                     "content": "The Executive may like to develop plans and communicate them to a team. They enjoy helping others do their best at work."
                 },
                 {
                     "title": "Skills",
-                    "icon": "fas fa-briefcase",
+                    "icon": "skills-icon",
                     "content": "This role is skilled at leading and communicating with others. They have good attention to detail and enjoy analyzing information and using technology."
                 },
                 {
                     "title": "Works With",
-                    "icon": "fas fa-trophy",
+                    "icon": "work-icon",
                     "content": "Careers in The Executive's path often involve working with health care providers and managing staff or finances."
                 },
                 {
                     "title": "Courses",
-                    "icon": "fas fa-graduation-cap",
+                    "icon": "courses-icon",
                     "content": "The Executive may have taken college courses in accounting, administration, ethics, or economics."
                 },
                 {
                     "title": "Setting",
-                    "icon": "fas fa-briefcase",
+                    "icon": "skills-icon",
                     "content": "A hospital or physician's office are common workplaces for The Executive, although they may also work in a residential care facility or government agency."
                 },
                 {
                     "title": "Education",
-                    "icon": "fas fa-graduation-cap",
+                    "icon": "courses-icon",
                     "content": "Many jobs in this field require college courses in things like accounting, administration, ethics, or economics. Some roles require a bachelor's or master's degree."
                 },
                 {
                     "title": "Experience",
-                    "icon": "fas fa-briefcase",
+                    "icon": "skills-icon",
                     "content": "People with experience in an administrative or clinical role tend to be a good fit for this The Executive's career path."
                 }
             ],
