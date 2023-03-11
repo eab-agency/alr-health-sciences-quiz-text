@@ -3,32 +3,35 @@ import Image from 'next/image';
 import React from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 // import 'react-tabs/style/react-tabs.css'
+// import styles from '@/styles/global/components/Tabs.module.scss';
 
 const TabComponent = ({ tabs }) => (
     <Tabs>
         <TabList>
             {tabs.map((tab, index) => (
-                <Tab key={index}>
-                    <span className={tab.icon}>{tab.title}</span>
+                <Tab className={tab.icon} key={index}>
+                    <span>{tab.title}</span>
                 </Tab>
             ))}
         </TabList>
 
         {tabs.map((tab, index) => (
-            <TabPanel key={index}>
-                {tab.icon && (
+            <TabPanel className={tab.icon} key={index}>
+                {/* {tab.icon && (
                     <Image
                         src="https://via.placeholder.com/200"
                         alt="placeholder"
                         width={200}
                         height={200}
                     />
-                )}
-                <h3>{tab.title}</h3>
-                <p
-                    className="tab-content"
-                    dangerouslySetInnerHTML={{ __html: tab.content }}
-                />
+                )} */}
+                <div className="tab-copy">
+                    <h3>{tab.title}</h3>
+                    <p
+                        className="tab-content"
+                        dangerouslySetInnerHTML={{ __html: tab.content }}
+                    />
+                </div>
             </TabPanel>
         ))}
     </Tabs>
