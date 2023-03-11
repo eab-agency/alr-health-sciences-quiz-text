@@ -10,7 +10,7 @@ import Question from './Question';
 import ResetQuizButton from './ResetQuizButton';
 import Results from './Results';
 
-function Quiz() {
+function Quiz({ user }) {
     const { data: results, error: resultError } = useRequest('/quiz/results');
     const { data: questions, error: questionError } =
         useRequest('/quiz/questions');
@@ -118,6 +118,7 @@ function Quiz() {
                         description={personalityData.description}
                         title={personalityData.title}
                         answers={finalResults}
+                        user={user}
                     />
                     <ResetQuizButton onClick={handleRetakeQuiz} />
                 </div>

@@ -361,10 +361,9 @@ const generateField = (field, error) => {
     }
 };
 
-const AcquiaFormHandle = ({ redirectTo, answers = {} }) => {
+const AcquiaFormHandle = ({ redirectTo, answers = {}, user = {} }) => {
     const [location] = useLocalStorage('489hLocation', null);
 
-    const initialValues = {};
     const router = useRouter();
 
     const onSubmit = async (values, { setSubmitting, setErrors }) => {
@@ -401,6 +400,7 @@ const AcquiaFormHandle = ({ redirectTo, answers = {} }) => {
         }
     };
 
+    const initialValues = {};
     fields.forEach((field) => {
         if (field.alias === 'quiz_result') {
             initialValues[field.alias] = answers.highestScorePersonality;
@@ -416,7 +416,20 @@ const AcquiaFormHandle = ({ redirectTo, answers = {} }) => {
                 });
             }
         }
+        if (user) {
+            if (field.alias === 'preferred_email1') {
+                initialValues[field.alias] = user.email;
+            } else if (field.alias === 'first_name1') {
+                initialValues[field.alias] = user.fname;
+            } else if (field.alias === 'last_name1') {
+                initialValues[field.alias] = user.lname;
+            }
+        }
     });
+    console.log(
+        '🚀 ~ file: Form.js:404 ~ AcquiaFormHandle ~ initialValues:',
+        initialValues
+    );
 
     return (
         <Formik
