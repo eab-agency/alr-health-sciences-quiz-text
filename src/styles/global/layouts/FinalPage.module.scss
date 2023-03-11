@@ -111,7 +111,7 @@
             li {
                 display: flex;
                 gap: 0.5em;
-                font-size: tokens.$fs-m;
+                font-size: clamp(tokens.$fs-s, 2vw, tokens.$fs-m);
                 color: tokens.$c-white;
                 margin-bottom: 1em;
 
@@ -155,6 +155,52 @@
     }
 }
 
-.stats {
-    background: red;
+.best-degrees {
+    display: block;
+    width: 100%;
+    background: tokens.$c-blue-800;
+    padding-block: clamp(tokens.$baseUnit * 2, 5vw, tokens.$baseUnit * 4);
+    position: relative;
+
+    &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 150vw;
+        height: 100%;
+        transform: translateX(-50%);
+        background: tokens.$c-blue-800;
+        z-index: -1;
+    }
+
+    .degrees-intro {
+        h2 {
+            position: relative;
+            padding-bottom: 0.5em;
+            margin-bottom: 1em;
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100vw;
+                height: 1px;
+                background-color: tokens.$c-blue-300;
+            }
+        }
+
+        p {
+            display: block;
+            width: 100%;
+            max-width: tokens.$mq-900;
+            font-size: clamp(
+                tokens.$baseUnit * 1,
+                2vw,
+                tokens.$baseUnit * 1.75
+            );
+        }
+    }
 }

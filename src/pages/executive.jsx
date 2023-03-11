@@ -107,21 +107,24 @@ const ExecutivePage = () => {
                     stats={personalityData.stats}
                     source={personalityData.statsSource}
                 />
-                <section className="best-degrees">
-                    <h2>
-                        What are the best health care degrees for The Executive?
-                    </h2>
-                    <h3>
-                        For many roles in The Executive’s career path, a
-                        bachelor’s degree is a minimum qualification. Master’s
-                        degrees are common and often preferred, especially for
-                        more senior management roles.
-                    </h3>
+                <section className={styles['best-degrees']}>
+                    <div className={styles['degrees-intro']}>
+                        <h2>
+                            What are the best health care degrees for The
+                            Executive?
+                        </h2>
+                        <p>
+                            For many roles in The Executive’s career path, a
+                            bachelor’s degree is a minimum qualification.
+                            Master’s degrees are common and often preferred,
+                            especially for more senior management roles.
+                        </p>
+                    </div>
+                    <Tabs
+                        tabs={personalityData.degreeTabs}
+                        className="degreeTabs"
+                    />
                 </section>
-                <Tabs
-                    tabs={personalityData.degreeTabs}
-                    className="degreeTabs"
-                />
                 <section className="best-schools">
                     <Image
                         src="https://via.placeholder.com/342x252"
