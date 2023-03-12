@@ -15,5 +15,5 @@ export default async (req, res) => {
     // parse the response as json
     const data = await response.json();
     // return the response as json
-    res.status(200).json(data);
+    res.status(200).json(data.form);
 };

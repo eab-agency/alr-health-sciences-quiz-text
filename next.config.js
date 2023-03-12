@@ -18,7 +18,7 @@ const nextConfig = {
             },
             {
                 source: '/api/acs/:path*',
-                destination: 'https://ago.cappex-health.com/api/:path*',
+                destination: 'https://ago.cappex-health.com/api',
             },
         ];
     },
