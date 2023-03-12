@@ -16,6 +16,10 @@ const nextConfig = {
                 source: '/api/submit:path*',
                 destination: 'https://go.cappex-health.com/form/submit:path*',
             },
+            {
+                source: '/api/acs/:path*',
+                destination: 'https://ago.cappex-health.com/api/:path*',
+            },
         ];
     },
 };

@@ -12,9 +12,8 @@
     &:nth-child(3) {
         flex: 1 0 100%;
     }
+}
 
-    /* target all elements except the first three */
-    &:not(:nth-child(-n + 3)) {
-        display: none;
-    }
+.hidden {
+    display: none;
 }
