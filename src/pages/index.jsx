@@ -7,9 +7,12 @@ import styles from '@/styles/global/layouts/EmailOnly.module.scss';
 import Button from '@/components/Button';
 // eslint-disable-next-line import/no-unresolved
 import MainLogo from '@/components/MainLogo';
+import useForm from '@/hooks/useForm';
 
 export default function LandingPage() {
     const { user } = useUser();
+    const { data } = useForm();
+    console.log('🚀 ~ file: index.jsx:15 ~ LandingPage ~ data:', data);
     return (
         <>
             <Head>
