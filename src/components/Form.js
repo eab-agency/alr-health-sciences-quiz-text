@@ -8,9 +8,8 @@ import { useLocalStorage } from '@/hooks/useLocalStorage';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { MdChevronRight } from 'react-icons/md';
 import styles from '@/styles/global/components/Form.module.scss';
-import useForm from '@/hooks/useForm';
-// import fields from './arrayOfFieldObjects';
-import useSWR from 'swr';
+// import useForm from '@/hooks/useForm';
+// import useSWR from 'swr';
 
 const fields = [
     {
@@ -367,7 +366,7 @@ const generateField = (field, error) => {
 
 const AcquiaFormHandle = ({ redirectTo, answers = {}, user = {}, id }) => {
     const [location] = useLocalStorage('489hLocation', null);
-    const { data: form } = useSWR('2', useForm);
+    // const { data: form } = useSWR('2', useForm);
 
     // const [fields, setFields] = useState([]);
 
