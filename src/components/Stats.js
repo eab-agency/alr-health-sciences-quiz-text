@@ -1,12 +1,16 @@
+import styles from '@/styles/global/components/Stats.module.scss';
+
 /* eslint-disable react/no-danger */
-function Stats({ stats }) {
+function Stats({ stats, source }) {
     return (
-        <section className="stats">
+        <section className={styles.stats}>
             <ul>
                 {stats.map((stat, _index) => (
                     <li key={_index}>
-                        <h3>{stat.number}</h3>
-                        <h4>{stat.title}</h4>
+                        <h3>
+                            <strong>{stat.number}</strong>
+                            {stat.title}
+                        </h3>
                         <p
                             dangerouslySetInnerHTML={{
                                 __html: stat.description,
@@ -15,6 +19,7 @@ function Stats({ stats }) {
                     </li>
                 ))}
             </ul>
+            <p className={styles.source}>{source}</p>
         </section>
     );
 }

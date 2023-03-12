@@ -36,7 +36,7 @@
 
         @media (min-width: tokens.$mq-800) {
             flex-direction: row;
-            justify-content: center;
+            // justify-content: center;
             margin-bottom: -0.5em;
         }
 
@@ -139,6 +139,10 @@
                 &::before {
                     transform: translateY(-10%);
                 }
+            }
+
+            &:focus {
+                outline: 1px dotted tokens.$c-turquoise-500;
             }
         }
     }

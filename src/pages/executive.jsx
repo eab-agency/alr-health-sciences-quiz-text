@@ -92,31 +92,40 @@ const ExecutivePage = () => {
                                 for hospitals or clinics
                             </li>
                         </ul>
-                        <Image
-                            src="https://via.placeholder.com/526x284"
-                            width={526}
-                            height={284}
-                            alt="placeholder"
-                        />
+                        <figure>
+                            <Image
+                                src="/images/executive.jpg"
+                                width={478}
+                                height={284}
+                                alt="Executive woman smiling in front of a laptop"
+                            />
+                            <figcaption>Healthcare administrator</figcaption>
+                        </figure>
                     </div>
                 </section>
-                <Stats stats={personalityData.stats} />
-                <section className="best-degrees">
-                    <h2>
-                        What are the best health care degrees for The Executive?
-                    </h2>
-                    <h3>
-                        For many roles in The Executive’s career path, a
-                        bachelor’s degree is a minimum qualification. Master’s
-                        degrees are common and often preferred, especially for
-                        more senior management roles.
-                    </h3>
-                </section>
-                <Tabs
-                    tabs={personalityData.degreeTabs}
-                    className="degreeTabs"
+                <Stats
+                    stats={personalityData.stats}
+                    source={personalityData.statsSource}
                 />
-                <section className="best-schools">
+                <section className={styles['best-degrees']}>
+                    <div className={styles['degrees-intro']}>
+                        <h2>
+                            What are the best health care degrees for The
+                            Executive?
+                        </h2>
+                        <p>
+                            For many roles in The Executive’s career path, a
+                            bachelor’s degree is a minimum qualification.
+                            Master’s degrees are common and often preferred,
+                            especially for more senior management roles.
+                        </p>
+                    </div>
+                    <Tabs
+                        tabs={personalityData.degreeTabs}
+                        className="degreeTabs"
+                    />
+                </section>
+                <section className={styles.certificates}>
                     <Image
                         src="https://via.placeholder.com/342x252"
                         width={342}
