@@ -125,7 +125,7 @@ const ExecutivePage = () => {
                         className="degreeTabs"
                     />
                 </section>
-                <section className="best-schools">
+                <section className={styles.certificates}>
                     <Image
                         src="https://via.placeholder.com/342x252"
                         width={342}
