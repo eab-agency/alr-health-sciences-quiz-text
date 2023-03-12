@@ -1,8 +1,6 @@
 export default async (req, res) => {
     const { username, password } = req.body;
     const { id } = req.query;
-
-    // fetch form id from https://go.cappex-health.com/api/forms/[id] with basic auth
     const response = await fetch(
         `https://go.cappex-health.com/api/forms/${id}`,
         {
@@ -17,5 +15,5 @@ export default async (req, res) => {
     // parse the response as json
     const data = await response.json();
     // return the response as json
-    res.status(200).json(data.form);
+    res.status(200).json(data);
 };
