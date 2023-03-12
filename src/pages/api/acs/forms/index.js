@@ -1,6 +1,4 @@
 const tokenEndpoint = 'https://go.cappex-health.com/oauth/v2/token';
-const clientId = '1_1gludp8swx40o8kgsc40oogo88s44ocw44oswksco80wocskcc';
-const clientSecret = '4qk755p2nxmo00kcwcs4s4c4cwocso8c80ss8s4ks0gkwggsgs';
 
 let accessToken = null;
 let tokenExpiration = 0;
