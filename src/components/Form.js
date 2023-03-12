@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import axios from 'axios';
 import * as Yup from 'yup';
@@ -8,7 +8,8 @@ import { useLocalStorage } from '@/hooks/useLocalStorage';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { MdChevronRight } from 'react-icons/md';
 import styles from '@/styles/global/components/Form.module.scss';
-// import fields from './arrayOfFieldObjects';
+// import useForm from '@/hooks/useForm';
+// import useSWR from 'swr';
 
 const fields = [
     {
@@ -306,6 +307,7 @@ const fields = [
         mappedField: null,
     },
 ];
+
 const validationSchema = Yup.object().shape({
     // validation schema here
     preferred_email1: Yup.string()
@@ -329,7 +331,7 @@ const generateField = (field, error) => {
     switch (type) {
         case 'text':
             return (
-                <React.Fragment key={id}>
+                <>
                     <label htmlFor={alias}>{label}</label>
                     {isRequired && <span className="required">*</span>}
 
@@ -339,11 +341,11 @@ const generateField = (field, error) => {
                         placeholder={properties.placeholder}
                         className={error ? 'is-invalid' : ''}
                     />
-                </React.Fragment>
+                </>
             );
         case 'email':
             return (
-                <React.Fragment key={id}>
+                <>
                     <label htmlFor={alias}>{label}</label>
                     {isRequired && <span className="required">*</span>}
 
@@ -353,7 +355,7 @@ const generateField = (field, error) => {
                         placeholder={properties.placeholder}
                         className={error ? 'is-invalid' : ''}
                     />
-                </React.Fragment>
+                </>
             );
         case 'hidden':
             return <Field key={id} name={alias} type="hidden" />;
@@ -362,8 +364,17 @@ const generateField = (field, error) => {
     }
 };
 
-const AcquiaFormHandle = ({ redirectTo, answers = {}, user = {} }) => {
+const AcquiaFormHandle = ({ redirectTo, answers = {}, user = {}, id }) => {
     const [location] = useLocalStorage('489hLocation', null);
+    // const { data: form } = useSWR('2', useForm);
+
+    // const [fields, setFields] = useState([]);
+
+    // useEffect(() => {
+    //     if (form) {
+    //         setFields(form.fields);
+    //     }
+    // }, [form]);
 
     const router = useRouter();
 
@@ -389,19 +400,18 @@ const AcquiaFormHandle = ({ redirectTo, answers = {}, user = {} }) => {
                 }
             );
 
-            // console.log(data);
             setSubmitting(false);
             // Redirect to the specified path on successful form submission
             if (redirectTo) {
                 router.push(redirectTo);
             }
         } catch (error) {
-            // console.log(error);
             setSubmitting(false);
         }
     };
 
-    const initialValues = {};
+    const initialValues = useMemo(() => ({}), []);
+
     fields.forEach((field) => {
         if (field.alias === 'quiz_result') {
             initialValues[field.alias] = answers.highestScorePersonality;
@@ -427,10 +437,37 @@ const AcquiaFormHandle = ({ redirectTo, answers = {}, user = {} }) => {
             }
         }
     });
-    console.log(
-        '🚀 ~ file: Form.js:404 ~ AcquiaFormHandle ~ initialValues:',
-        initialValues
-    );
+
+    // useEffect(() => {
+    //     if (fields.length > 0) {
+    //         fields.forEach((field) => {
+    //             if (field.alias === 'quiz_result') {
+    //                 initialValues[field.alias] =
+    //                     answers.highestScorePersonality;
+    //             } else {
+    //                 initialValues[field.alias] = field.defaultValue || '';
+    //                 if (answers.answers) {
+    //                     answers.answers.forEach((answer) => {
+    //                         if (answer.associatedField === field.alias) {
+    //                             initialValues[
+    //                                 field.alias
+    //                             ] = `${answer.question} | ${answer.answer}`;
+    //                         }
+    //                     });
+    //                 }
+    //             }
+    //             if (user) {
+    //                 if (field.alias === 'preferred_email1') {
+    //                     initialValues[field.alias] = user.email;
+    //                 } else if (field.alias === 'first_name1') {
+    //                     initialValues[field.alias] = user.fname;
+    //                 } else if (field.alias === 'last_name1') {
+    //                     initialValues[field.alias] = user.lname;
+    //                 }
+    //             }
+    //         });
+    //     }
+    // }, [fields, answers, user, initialValues]);
 
     return (
         <Formik
@@ -440,12 +477,21 @@ const AcquiaFormHandle = ({ redirectTo, answers = {}, user = {} }) => {
         >
             {({ errors, isSubmitting }) => (
                 <Form className={styles.form}>
-                    {fields.map((field) => (
-                        <div className={styles.qGroup} key={field.id}>
-                            {generateField(field, errors[field.alias])}
-                            <ErrorMessage name={field.alias} component="span" />
-                        </div>
-                    ))}
+                    {fields &&
+                        fields.map((field) => (
+                            <div
+                                className={`${styles.qGroup} ${
+                                    field.type === 'hidden' ? styles.hidden : ''
+                                }`}
+                                key={field.id}
+                            >
+                                {generateField(field, errors[field.alias])}
+                                <ErrorMessage
+                                    name={field.alias}
+                                    component="span"
+                                />
+                            </div>
+                        ))}
 
                     <button
                         className="button btn-primary"

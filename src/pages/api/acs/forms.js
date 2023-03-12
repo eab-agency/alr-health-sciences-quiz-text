@@ -1,9 +1,10 @@
 export default async (req, res) => {
-    // fetch forms from https://go.cappex-health.com/api/forms with basic auth
+    const { username, password } = req.body;
+
     const response = await fetch('https://go.cappex-health.com/api/forms', {
         headers: {
             Authorization: `Basic ${Buffer.from(
-                `${process.env.NEXT_PUBLIC_ACS_USERNAME}:${process.env.NEXT_PUBLIC_ACS_PASSWORD}`
+                `${username}:${password}`
             ).toString('base64')}`,
         },
     });

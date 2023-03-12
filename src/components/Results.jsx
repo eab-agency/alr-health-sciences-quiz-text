@@ -31,6 +31,7 @@ const Results = ({ personality, description, title, answers }) => {
                     redirectTo={`/${personality}`}
                     answers={answers}
                     user={user}
+                    id="2"
                 />
                 {process.env.NODE_ENV === 'development' && (
                     <Link href={`/${personality}`}>
