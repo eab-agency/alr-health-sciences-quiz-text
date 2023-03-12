@@ -17,8 +17,8 @@ const nextConfig = {
                 destination: 'https://go.cappex-health.com/form/submit:path*',
             },
             {
-                source: '/api/acs/:path*',
-                destination: 'https://ago.cappex-health.com/api',
+                source: '/api/acs/:slug',
+                destination: 'https://go.cappex-health.com/api/:slug',
             },
         ];
     },
