@@ -7,10 +7,19 @@
     display: flex;
     margin-inline: auto 0;
 
-    .hamburger {
-        background-color: tokens.$c-blue-900;
-        border-color: tokens.$c-blue-900;
+    %hamburguer {
+        position: relative;
+        z-index: tokens.$layer-10;
+        background-color: tokens.$c-blue-800;
+        border-color: tokens.$c-blue-800;
         transition: all 0.2s ease-in-out;
+        padding: 0.5em;
+        transform: translateY(-20%) translateX(20%);
+
+        @media (prefers-color-scheme: light) {
+            background-color: tokens.$c-blue-500;
+            border-color: tokens.$c-blue-500;
+        }
 
         svg {
             width: 1.5em;
@@ -29,13 +38,89 @@
         }
     }
 
+    .hamburgerClose {
+        @extend %hamburguer;
+    }
+
+    .hamburgerOpen {
+        @extend %hamburguer;
+        top: 0;
+    }
+
     ul {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+        position: relative;
         list-style: none;
+        top: 0;
+        right: 0;
 
-        @media (min-width: breakpoints.$mq-1100) {
-            flex-direction: row;
+        @media (max-width: breakpoints.$mq-1100) {
+            flex-direction: column;
+            position: fixed;
+
+            &.menuOpen {
+                display: flex;
+                width: 100%;
+                height: 100vh;
+                max-width: 30rem;
+                z-index: tokens.$layer-8;
+                padding-top: 5em;
+
+                &::before {
+                    content: '';
+                    display: block;
+                    width: 100vw;
+                    height: 100vh;
+                    position: fixed;
+                    top: 0;
+                    right: 0;
+                    background: rgba(tokens.$c-blue-900, 0.9);
+                }
+
+                &::after {
+                    content: '';
+                    display: block;
+                    width: 100%;
+                    max-width: 30rem;
+                    height: 100vh;
+                    position: absolute;
+                    top: 0;
+                    background-color: tokens.$c-gray-100;
+                }
+
+                li {
+                    position: relative;
+                    z-index: tokens.$layer-10;
+                    a {
+                        color: tokens.$c-blue-500;
+
+                        &:hover {
+                            color: tokens.$c-blue-800;
+                            background: color.adjust(
+                                tokens.$c-blue-500,
+                                $lightness: 60%
+                            );
+                        }
+                    }
+                }
+
+                @media (prefers-color-scheme: light) {
+                    &::after {
+                        background-color: tokens.$c-blue-800;
+                    }
+
+                    li {
+                        a {
+                            color: tokens.$c-white;
+                        }
+                    }
+                }
+            }
+
+            &.menuClosed {
+                display: none;
+            }
         }
 
         li {
@@ -44,6 +129,13 @@
             @media (min-width: breakpoints.$mq-1100) {
                 border-right: 1px solid tokens.$c-blue-300;
                 border-bottom: none;
+            }
+
+            @media (prefers-color-scheme: light) {
+                @media (min-width: breakpoints.$mq-1100) {
+                    border-right: 1px solid
+                        color.adjust(tokens.$c-blue-300, $lightness: 25%);
+                }
             }
 
             &:last-child {
@@ -69,6 +161,10 @@
                 text-align: center;
                 transition: all 0.2s ease-in-out;
 
+                @media (prefers-color-scheme: light) {
+                    color: tokens.$c-blue-800;
+                }
+
                 &.active {
                     color: tokens.$c-white;
                     font-weight: fonts.$fw-bold;
@@ -89,6 +185,18 @@
                         left: 50%;
                         transform: translateX(-50%);
                     }
+
+                    @media (prefers-color-scheme: light) {
+                        color: tokens.$c-blue-800;
+                    }
+
+                    @media (max-width: breakpoints.$mq-1100) {
+                        color: tokens.$c-blue-800;
+
+                        @media (prefers-color-scheme: light) {
+                            color: tokens.$c-white;
+                        }
+                    }
                 }
 
                 &:hover,
@@ -100,10 +208,11 @@
                         5vw,
                         tokens.$baseUnit * 2.5
                     );
-                }
 
-                // &.nonActive {
-                // }
+                    @media (prefers-color-scheme: light) {
+                        color: tokens.$c-blue-800;
+                    }
+                }
             }
         }
     }
