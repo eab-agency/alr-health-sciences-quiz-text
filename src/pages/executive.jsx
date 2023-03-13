@@ -74,24 +74,29 @@ const ExecutivePage = () => {
                     <div className={styles['executive-path']}>
                         <ul>
                             <li>
-                                Administrative services and facilities managers:
+                                <strong>
+                                    Administrative services and facilities
+                                    managers:
+                                </strong>{' '}
                                 Plan, direct, and coordinate activities that
                                 help a health care facility run efficiently
                             </li>
                             <li>
-                                Executives or administrators: Plan strategies
-                                and policies to help organizations such as
-                                hospital systems reach their goals.
+                                <strong>Executives or administrators:</strong>{' '}
+                                Plan strategies and policies to help
+                                organizations such as hospital systems reach
+                                their goals.
                             </li>
                             <li>
-                                Human resources manager: Plan, coordinate, and
-                                direct the employee-focused functions of
-                                organizations such as hospitals or clinics
+                                <strong>Human resources manager:</strong> Plan,
+                                coordinate, and direct the employee-focused
+                                functions of organizations such as hospitals or
+                                clinics
                             </li>
                             <li>
-                                Purchasing managers or agents: Buy products and
-                                services such as medical supplies and equipment
-                                for hospitals or clinics
+                                <strong>Purchasing managers or agents:</strong>{' '}
+                                Buy products and services such as medical
+                                supplies and equipment for hospitals or clinics
                             </li>
                         </ul>
                         <figure>
@@ -122,10 +127,7 @@ const ExecutivePage = () => {
                             especially for more senior management roles.
                         </p>
                     </div>
-                    <Tabs
-                        tabs={personalityData.degreeTabs}
-                        className="degreeTabs"
-                    />
+                    <Tabs tabs={personalityData.degreeTabs} />
                 </section>
                 <section className={styles.certificates}>
                     {/* <div className={styles.accordionHead}> */}

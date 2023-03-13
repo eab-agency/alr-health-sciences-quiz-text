@@ -1,3 +1,4 @@
+@use 'sass:color';
 @use '../layouts';
 @use '../config/tokens';
 
@@ -59,10 +60,20 @@
         height: 100%;
         transform: translateX(-50%);
         background: tokens.$c-blue-500;
-        z-index: -1;
+        z-index: tokens.$layer-1;
+    }
+
+    // add light mode
+    @media (prefers-color-scheme: light) {
+        background: color.adjust(tokens.$c-blue-800, $lightness: 70%);
+        &::before {
+            background: color.adjust(tokens.$c-blue-800, $lightness: 70%);
+        }
     }
 
     .path-intro {
+        position: relative;
+        z-index: tokens.$layer-2;
         h2 {
             position: relative;
             padding-bottom: 0.5em;
@@ -95,6 +106,8 @@
         display: flex;
         flex-direction: column;
         gap: clamp(tokens.$baseUnit * 2, 5vw, tokens.$baseUnit * 4);
+        position: relative;
+        z-index: tokens.$layer-2;
         margin-top: clamp(tokens.$baseUnit * 2, 5vw, tokens.$baseUnit * 4);
 
         @media (min-width: tokens.$mq-900) {
@@ -111,11 +124,12 @@
             }
 
             li {
-                display: flex;
-                gap: 0.5em;
+                display: block;
                 font-size: clamp(tokens.$fs-s, 2vw, tokens.$fs-m);
                 color: tokens.$c-white;
                 margin-bottom: 1em;
+                padding-left: 1.5em;
+                position: relative;
 
                 &::before {
                     content: tokens.$i-checkmark;
@@ -123,10 +137,26 @@
                     color: tokens.$c-orange-500;
                     font-size: 1.2em;
                     transform: translateY(-5%);
+                    position: absolute;
+                    left: 0;
+                    top: 0;
                 }
 
                 strong {
                     color: tokens.$c-turquoise-500;
+                }
+
+                @media (prefers-color-scheme: light) {
+                    color: tokens.$c-blue-800;
+                    &::before {
+                        color: tokens.$c-turquoise-500;
+                    }
+                    strong {
+                        color: color.adjust(
+                            tokens.$c-malva-500,
+                            $lightness: -20%
+                        );
+                    }
                 }
             }
         }
@@ -152,6 +182,10 @@
                 color: tokens.$c-white;
                 margin-top: 0;
                 text-transform: uppercase;
+
+                @media (prefers-color-scheme: light) {
+                    color: tokens.$c-blue-800;
+                }
             }
         }
     }
@@ -174,10 +208,20 @@
         height: 100%;
         transform: translateX(-50%);
         background: tokens.$c-blue-800;
-        z-index: -1;
+        z-index: tokens.$layer-1;
+    }
+
+    // add light mode
+    @media (prefers-color-scheme: light) {
+        background: tokens.$c-gray-100;
+        &::before {
+            background: tokens.$c-gray-100;
+        }
     }
 
     .degrees-intro {
+        position: relative;
+        z-index: tokens.$layer-2;
         h2 {
             position: relative;
             padding-bottom: 0.5em;
@@ -224,7 +268,14 @@
         height: 100%;
         transform: translateX(-50%);
         background: tokens.$c-blue-500;
-        z-index: -1;
+        z-index: tokens.$layer-1;
+    }
+
+    @media (prefers-color-scheme: light) {
+        background: color.adjust(tokens.$c-blue-800, $lightness: 70%);
+        &::before {
+            background: color.adjust(tokens.$c-blue-800, $lightness: 70%);
+        }
     }
 }
 
@@ -236,6 +287,7 @@
     position: relative;
     width: 100%;
     padding-block: clamp(tokens.$baseUnit * 2, 5vw, tokens.$baseUnit * 4);
+    background: tokens.$c-blue-800;
 
     .sourceContent {
         display: flex;
@@ -249,6 +301,7 @@
         padding-inline: clamp(tokens.$baseUnit * 2, 5vw, tokens.$baseUnit * 4);
         position: relative;
         border: 0.35em dashed tokens.$c-blue-500;
+        z-index: tokens.$layer-2;
 
         h2 {
             color: tokens.$c-blue-300;
@@ -269,7 +322,21 @@
         height: 100%;
         transform: translateX(-50%);
         background: tokens.$c-blue-800;
-        z-index: -1;
+        z-index: tokens.$layer-1;
+    }
+
+    @media (prefers-color-scheme: light) {
+        background: tokens.$c-gray-100;
+        .sourceContent {
+            background: color.adjust(tokens.$c-blue-800, $lightness: 70%);
+            border-color: color.adjust(tokens.$c-blue-800, $lightness: 50%);
+            h2 {
+                color: tokens.$c-blue-500;
+            }
+        }
+        &::before {
+            background: tokens.$c-gray-100;
+        }
     }
 
     h2 {
