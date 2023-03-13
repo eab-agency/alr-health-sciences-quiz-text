@@ -10,6 +10,7 @@ export default function NabBar() {
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+    // Note: AO - Prevent scrolling when the menu is open.
     // const pageBody = document.querySelector('body');
 
     const toggleMenu = () => {

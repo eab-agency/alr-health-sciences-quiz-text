@@ -44,7 +44,7 @@
 %button--primary {
     @extend %button;
     background-color: tokens.$c-orange-500;
-    color: tokens.$c-blue-500;
+    color: tokens.$c-blue-800;
     border-color: tokens.$c-orange-500;
     font-size: clamp(tokens.$fs-m, 3vw, tokens.$fs-l);
 

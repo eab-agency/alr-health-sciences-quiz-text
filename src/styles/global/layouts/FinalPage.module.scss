@@ -19,6 +19,7 @@
 }
 
 .intro-section {
+    padding-bottom: clamp(tokens.$baseUnit * 2, 5vw, tokens.$baseUnit * 4);
     h1 {
         position: relative;
 

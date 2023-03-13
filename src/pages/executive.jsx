@@ -197,9 +197,6 @@ const ExecutivePage = () => {
                 </section>
                 {matchedSchool && (
                     <section className={styles['matched-school']}>
-                        {/* <div className={styles.stateSelect}>
-                            <StateSelect onSelect={handleStateChange} />
-                        </div> */}
                         <UniversityMatch school={matchedSchool} />
                     </section>
                 )}
