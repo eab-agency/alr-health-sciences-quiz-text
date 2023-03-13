@@ -1,18 +1,39 @@
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { MdMenu } from 'react-icons/md';
+import { MdClose, MdMenu } from 'react-icons/md';
 import styles from '../styles/modules/NavBar.module.scss';
 
 export default function NabBar() {
     const router = useRouter();
     const currentRoute = router.pathname;
 
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    // const pageBody = document.querySelector('body');
+
+    const toggleMenu = () => {
+        if (isMenuOpen) {
+            setIsMenuOpen(false);
+            // pageBody.style.overflow = 'visible';
+        } else {
+            setIsMenuOpen(true);
+            // pageBody.style.overflow = 'hidden';
+        }
+    };
+
     return (
         <nav className={styles.navigation}>
-            <button type="button" className={styles.hamburger}>
-                <MdMenu />
+            <button
+                type="button"
+                className={
+                    isMenuOpen ? styles.hamburgerOpen : styles.hamburgerClose
+                }
+                onClick={toggleMenu}
+            >
+                {isMenuOpen ? <MdClose /> : <MdMenu />}
             </button>
-            <ul>
+            <ul className={isMenuOpen ? styles.menuOpen : styles.menuClosed}>
                 <li>
                     <Link
                         href="/practitioner"
