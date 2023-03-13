@@ -12,8 +12,10 @@ import UniversityMatch from '@/components/UniversityMatch';
 import StateSelect from '@/components/helpers/StateSelect';
 // import Form from '@/components/Form';
 import { useRequest } from '@/hooks/useRequest';
+import { BiLinkExternal } from 'react-icons/bi';
 
 import styles from '@/styles/global/layouts/FinalPage.module.scss';
+import Accordion from '@/components/Accordion';
 
 const ExecutivePage = () => {
     const { data: results, error: resultsError } = useRequest('/quiz/results');
@@ -126,65 +128,81 @@ const ExecutivePage = () => {
                     />
                 </section>
                 <section className={styles.certificates}>
-                    <Image
-                        src="https://via.placeholder.com/342x252"
-                        width={342}
-                        height={252}
-                        alt="placeholder"
-                    />
-                    <h3>
-                        Does The Executive need a license, certification, or
-                        registration?
-                    </h3>
-
-                    <p>
-                        The need for a license or certification depends on the
-                        role.
-                    </p>
-                    <p>
-                        All states require licensure for nursing home
-                        administrators. The process often involves a
-                        state-approved training program and national licensing
-                        exam, and varies by state.
-                    </p>
-                    <p>
-                        A license is not typically required in other areas of
-                        medical and health services management, although some
-                        positions do require a registered nurse or social worker
-                        license.
-                    </p>
-                    <p>
-                        While not required, certification can help your resume
-                        stand out among your peers. You could become certified
-                        in many of areas of practice, such as medical management
-                        or health information management.
-                    </p>
-                </section>
-                <section className="keep-exploring">
-                    <h2>Keep exploring</h2>
-                    <p>
-                        Much of the career, education, and salary information
-                        above was sourced from the Bureau of Labor Statistics.
-                        You can find state-specific job outlooks and salary
-                        details as well as even more information on related
-                        careers on their website.
-                    </p>
-                    <a
-                        href="https://www.bls.gov/ooh/healthcare/home.htm"
-                        target="_blank"
-                        rel="noreferrer"
+                    {/* <div className={styles.accordionHead}> */}
+                    <Accordion
+                        title="Does The Executive need a license, certification, or
+                        registration?"
                     >
-                        Bureau of Labor Statistics
-                    </a>
+                        <figure>
+                            <Image
+                                src="/images/certificate-image.svg"
+                                width={478}
+                                height={284}
+                                alt="Medical records"
+                            />
+                        </figure>
+                        <div>
+                            <p>
+                                The need for a license or certification depends
+                                on the role.
+                            </p>
+                            <p>
+                                All states require licensure for{' '}
+                                <strong>nursing home administrators.</strong>{' '}
+                                The process often involves a state-approved
+                                training program and national licensing exam,
+                                and varies by state.
+                            </p>
+                            <p>
+                                A license is{' '}
+                                <strong>not typically required</strong> in other
+                                areas of medical and health services management,
+                                although some positions do require a registered
+                                nurse or social worker license.
+                            </p>
+                            <p>
+                                While not required,{' '}
+                                <strong>
+                                    certification can help your resume stand out
+                                </strong>{' '}
+                                among your peers. You could become certified in
+                                many of areas of practice, such as medical
+                                management or health information management.
+                            </p>
+                        </div>
+                    </Accordion>
+                </section>
+                <section className={styles['keep-exploring']}>
+                    <div className={styles.sourceContent}>
+                        <h2>Keep exploring</h2>
+                        <p>
+                            Much of the career, education, and salary
+                            information above was sourced from the Bureau of
+                            Labor Statistics. You can find state-specific job
+                            outlooks and salary details as well as even more
+                            information on related careers on their website.
+                        </p>
+                        <a
+                            href="https://www.bls.gov/ooh/healthcare/home.htm"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="button btn-secondary"
+                        >
+                            Bureau of Labor Statistics{' '}
+                            <i>
+                                <BiLinkExternal />
+                            </i>
+                        </a>
+                    </div>
                 </section>
                 {matchedSchool && (
-                    <>
-                        <div>
+                    <section className={styles['matched-school']}>
+                        <div className={styles.stateSelect}>
                             {/* select input that has all the states */}
                             <StateSelect onSelect={handleStateChange} />
                         </div>
                         <UniversityMatch school={matchedSchool} />
-                    </>
+                    </section>
                 )}
             </div>
         </div>

@@ -2,7 +2,7 @@
 import Image from 'next/image';
 
 const UniversityMatch = ({ school }) => (
-    <section className="university-match">
+    <div className="university-match">
         <h2>Here’s a potential University match:</h2>
         <Image
             width={352}
@@ -14,7 +14,7 @@ const UniversityMatch = ({ school }) => (
         <h4>{school.subTitle}</h4>
         <p dangerouslySetInnerHTML={{ __html: school.description }} />
         <a href={school.link}>{school.linkText}</a>
-    </section>
+    </div>
 );
 
 export default UniversityMatch;
