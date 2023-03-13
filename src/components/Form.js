@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useMemo, useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
@@ -12,9 +13,23 @@ import useForm from '@/hooks/useForm';
 
 const validationSchema = Yup.object().shape({
     // validation schema here
-    preferred_email1: Yup.string().email('Invalid email'),
+    preferred_email: Yup.string().email('Invalid email'),
     // .required('Email is required'),
 });
+
+const getValidationSchema = (field) => {
+    const { alias, isRequired, validationMessage } = field;
+
+    let _validationSchema = Yup.string();
+
+    if (isRequired) {
+        _validationSchema = _validationSchema.required(validationMessage);
+    }
+
+    return Yup.object().shape({
+        [alias]: _validationSchema,
+    });
+};
 
 const generateField = (field, error) => {
     const {
@@ -42,6 +57,7 @@ const generateField = (field, error) => {
                         placeholder={properties.placeholder}
                         className={error ? 'is-invalid' : ''}
                     />
+                    {helpMessage && <small>{helpMessage}</small>}
                 </>
             );
         case 'email':
@@ -56,10 +72,48 @@ const generateField = (field, error) => {
                         placeholder={properties.placeholder}
                         className={error ? 'is-invalid' : ''}
                     />
+                    {helpMessage && <small>{helpMessage}</small>}
                 </>
             );
         case 'hidden':
             return <Field key={id} name={alias} type="hidden" />;
+        case 'tel':
+            return (
+                <>
+                    <label htmlFor={alias}>{label}</label>
+                    {isRequired && <span className="required">*</span>}
+                    <Field
+                        name={alias}
+                        type="tel"
+                        placeholder={properties.placeholder}
+                        className={error ? 'is-invalid' : ''}
+                    />
+                    {helpMessage && <small>{helpMessage}</small>}
+                </>
+            );
+        case 'date':
+            return (
+                <>
+                    <label htmlFor={alias}>{label}</label>
+                    {isRequired && <span className="required">*</span>}
+                    <Field
+                        name={alias}
+                        type="date"
+                        placeholder={properties.placeholder}
+                        className={error ? 'is-invalid' : ''}
+                    />
+                    {helpMessage && <small>{helpMessage}</small>}
+                </>
+            );
+        case 'freehtml':
+            return (
+                <div
+                    dangerouslySetInnerHTML={{
+                        __html: properties.text,
+                    }}
+                />
+            );
+
         default:
             return null;
     }
@@ -67,13 +121,17 @@ const generateField = (field, error) => {
 
 const AcquiaFormHandle = ({ redirectTo, answers = {}, user = {}, id }) => {
     const [location] = useLocalStorage('489hLocation', null);
-    const { data: acsForm, error } = useForm('2');
+    const { data: acsForm, error } = useForm(id);
+    const [formValues, setFormValues] = useState({});
 
-    const [fields, setFields] = useState([]);
+    const [theForm, setTheForm] = useState(null);
+    const [theFields, setTheFields] = useState([]);
 
     useEffect(() => {
         if (acsForm) {
-            setFields(acsForm.form.fields);
+            const { fields, ...otherFormProps } = acsForm.form;
+            setTheFields(fields);
+            setTheForm(otherFormProps);
         }
     }, [acsForm]);
 
@@ -83,21 +141,16 @@ const AcquiaFormHandle = ({ redirectTo, answers = {}, user = {}, id }) => {
         try {
             const formData = {
                 ...values,
-                formId: 2,
-                formName: 'quizformquizform',
+                formId: theForm.id,
+                formName: theForm.name,
                 messenger: 1,
                 ip_address_state: location.region_iso_code,
             };
 
             const { data } = await axios.post(
-                '/api/submit?formId=2',
+                `/api/submit?formId=${theForm.id}`,
                 {
                     mauticform: formData,
-                },
-                {
-                    headers: {
-                        'Content-Type': 'multipart/form-data',
-                    },
                 }
             );
 
@@ -114,8 +167,8 @@ const AcquiaFormHandle = ({ redirectTo, answers = {}, user = {}, id }) => {
     const initialValues = useMemo(() => ({}), []);
 
     useEffect(() => {
-        if (fields.length > 0) {
-            fields.forEach((field) => {
+        if (theFields.length > 0) {
+            theFields.forEach((field) => {
                 if (field.alias === 'quiz_result') {
                     initialValues[field.alias] =
                         answers.highestScorePersonality;
@@ -132,44 +185,41 @@ const AcquiaFormHandle = ({ redirectTo, answers = {}, user = {}, id }) => {
                     }
                 }
                 if (user) {
-                    if (field.alias === 'preferred_email1') {
+                    if (field.alias === 'preferred_email') {
                         initialValues[field.alias] = user.email;
-                    } else if (field.alias === 'first_name1') {
+                    } else if (field.alias === 'first_name') {
                         initialValues[field.alias] = user.fname;
-                    } else if (field.alias === 'last_name1') {
+                    } else if (field.alias === 'last_name') {
                         initialValues[field.alias] = user.lname;
                     }
                 }
             });
         }
-    }, [fields, answers, user, initialValues]);
+    }, [theFields, answers, user, initialValues]);
 
     if (error) return <p>Error loading form.</p>;
     if (!acsForm) return <p className="loading">Loading...</p>;
 
     return (
         <Formik
+            enableReinitialize
             initialValues={initialValues}
             validationSchema={validationSchema}
             onSubmit={onSubmit}
         >
             {({ errors, isSubmitting }) => (
                 <Form className={styles.form}>
-                    {fields &&
-                        fields.map((field) => (
-                            <div
-                                className={`${styles.qGroup} ${
-                                    field.type === 'hidden' ? styles.hidden : ''
-                                }`}
-                                key={field.id}
-                            >
-                                {generateField(field, errors[field.alias])}
-                                <ErrorMessage
-                                    name={field.alias}
-                                    component="span"
-                                />
-                            </div>
-                        ))}
+                    {theFields.map((field) => (
+                        <div
+                            className={`${styles.qGroup} ${
+                                field.type === 'hidden' ? styles.hidden : ''
+                            }`}
+                            key={field.id}
+                        >
+                            {generateField(field, errors[field.alias])}
+                            <ErrorMessage name={field.alias} component="span" />
+                        </div>
+                    ))}
 
                     <button
                         className="button btn-primary"
