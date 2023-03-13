@@ -7,9 +7,11 @@
     position: relative;
     background: tokens.$c-blue-800;
     padding-block: clamp(tokens.$baseUnit * 2, 5vw, tokens.$baseUnit * 4);
+    padding-top: 0;
 
     @media (prefers-color-scheme: light) {
-        background: color.adjust(tokens.$c-blue-800, $lightness: 10%);
+        // background: color.adjust(tokens.$c-blue-800, $lightness: 10%);
+        background: tokens.$c-gray-100;
     }
 
     @media (min-width: tokens.$mq-800) {
@@ -28,7 +30,8 @@
         background: tokens.$c-blue-800;
 
         @media (prefers-color-scheme: light) {
-            background: color.adjust(tokens.$c-blue-800, $lightness: 70%);
+            // background: color.adjust(tokens.$c-blue-800, $lightness: 70%);
+            background: tokens.$c-gray-100;
         }
     }
 
@@ -147,10 +150,11 @@
                     }
 
                     @media (prefers-color-scheme: light) {
-                        background: color.adjust(
-                            tokens.$c-blue-800,
-                            $lightness: 70%
-                        );
+                        // background: color.adjust(
+                        //     tokens.$c-blue-800,
+                        //     $lightness: 70%
+                        // );
+                        background: tokens.$c-gray-100;
                     }
                 }
             }
