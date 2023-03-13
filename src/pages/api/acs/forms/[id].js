@@ -1,5 +1,6 @@
 const tokenEndpoint = 'https://go.cappex-health.com/oauth/v2/token';
-
+const clientId = process.env.ACS_PUBLIC_KEY;
+const clientSecret = process.env.ACS_PRIVATE_KEY;
 let accessToken = null;
 let tokenExpiration = 0;
 
