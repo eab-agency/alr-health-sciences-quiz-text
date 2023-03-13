@@ -1,11 +1,11 @@
+import { getAccessToken } from '@/lib/token-utils';
+
 export default async (req, res) => {
-    const { username, password } = req.body;
+    const token = await getAccessToken();
 
     const response = await fetch('https://go.cappex-health.com/api/forms', {
         headers: {
-            Authorization: `Basic ${Buffer.from(
-                `${username}:${password}`
-            ).toString('base64')}`,
+            Authorization: `Bearer ${token}`,
         },
     });
     // parse the response as json

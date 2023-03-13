@@ -1,25 +1,14 @@
-export default async function useForm(id) {
-    const username = process.env.NEXT_PUBLIC_ACS_USERNAME;
-    const password = process.env.NEXT_PUBLIC_ACS_PASSWORD;
+import useSWR from 'swr';
+
+export default function useForm(id) {
     let url = '';
     if (!id) {
         url = `/api/acs/forms`;
     } else {
-        url = `/api/acs/form/${id}`;
+        url = `/api/acs/forms/${id}`;
     }
 
-    try {
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ username, password }),
-        });
+    const { data, error } = useSWR(url);
 
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        console.error(error);
-    }
+    return { data, error };
 }
