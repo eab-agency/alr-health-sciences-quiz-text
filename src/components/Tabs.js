@@ -17,14 +17,6 @@ const TabComponent = ({ tabs }) => (
 
         {tabs.map((tab, index) => (
             <TabPanel className={tab.icon} key={index}>
-                {/* {tab.icon && (
-                    <Image
-                        src="https://via.placeholder.com/200"
-                        alt="placeholder"
-                        width={200}
-                        height={200}
-                    />
-                )} */}
                 <div className="tab-copy">
                     <h3>{tab.title}</h3>
                     <p

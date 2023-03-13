@@ -7,8 +7,8 @@ const UniversityMatch = ({ school }) => (
     <div className={styles['university-match']}>
         <figure>
             <Image
-                width={352}
-                height={433}
+                width={1440}
+                height={640}
                 src={school.imageURL}
                 alt={school.title}
             />
