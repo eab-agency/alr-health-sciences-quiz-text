@@ -110,36 +110,45 @@ p {
 }
 
 .cappex-form {
-    display: block;
-    position: fixed;
-    z-index: config.$layer-10;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+    padding-block: clamp(config.$baseUnit, 3vw, config.$baseUnit * 3);
 
     &::before {
         content: '';
         display: block;
         width: 100vw;
-        height: 100vh;
+        height: 100%;
         position: absolute;
         z-index: config.$layer-1;
-        top: 50%;
+        top: 0;
         left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: rgba(config.$c-blue-500, 0.7);
-        backdrop-filter: blur(0.3em);
+        transform: translateX(-50%);
+        background-color: config.$c-blue-900;
+    }
+
+    @media (prefers-color-scheme: light) {
+        &::before {
+            background-color: color.adjust(config.$c-blue-900, $lightness: 70%);
+        }
     }
 
     .content {
         display: block;
         width: 90vw;
-        max-width: config.$mq-800;
+        max-width: config.$mq-900;
         position: relative;
         z-index: config.$layer-2;
         padding: clamp(config.$baseUnit, 3vw, config.$baseUnit * 3);
         border: 0.5em solid color.adjust(config.$c-blue-500, $lightness: 0%);
         background: config.$c-blue-800;
+
+        @media (prefers-color-scheme: light) {
+            background: color.adjust(config.$c-blue-500, $lightness: 68%);
+            border-color: color.adjust(config.$c-blue-500, $lightness: 40%);
+        }
 
         h3 {
             color: config.$c-white;
@@ -151,10 +160,15 @@ p {
                 transform: translateY(17%);
                 margin-inline: 1%;
             }
+
+            @media (prefers-color-scheme: light) {
+                color: config.$c-blue-500;
+            }
         }
 
         form {
             margin-bottom: 0;
+            max-width: 100%;
 
             .btn-primary {
                 margin-top: clamp(config.$baseUnit, 3vw, config.$baseUnit * 3);

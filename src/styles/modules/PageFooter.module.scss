@@ -42,15 +42,23 @@
         margin: 0;
 
         li {
-            padding-inline: 1em;
+            // padding-inline: 1em;
 
-            a {
+            .helpPrivBtn {
                 display: flex;
                 align-items: center;
                 gap: tokens.$baseUnit / 2;
                 text-transform: uppercase;
                 text-decoration: none;
                 font-size: tokens.$fs-xs;
+                background: none;
+                border: none;
+
+                &:hover {
+                    background-color: tokens.$c-blue-500;
+                    border-radius: 0;
+                    text-decoration: underline;
+                }
             }
 
             border-right: 1px solid tokens.$c-blue-500;
