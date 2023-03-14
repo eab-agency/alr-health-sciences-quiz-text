@@ -120,8 +120,9 @@ function Quiz({ user }) {
                         title={personalityData.title}
                         answers={finalResults}
                         user={user}
-                    />
-                    <ResetQuizButton onClick={handleRetakeQuiz} />
+                    >
+                        <ResetQuizButton onClick={handleRetakeQuiz} />
+                    </Results>
                 </div>
             </div>
         );

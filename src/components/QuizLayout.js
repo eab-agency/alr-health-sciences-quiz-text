@@ -4,7 +4,7 @@ import PageFooter from './PageFooter';
 export default function QuizLayout({ children }) {
     return (
         <>
-            <PageHeader pageType="results" />
+            <PageHeader pageType="quiz" />
             <main className="short quiz-layout">
                 <div className="content-wrapper">
                     <div className="quiz-layout__content">{children}</div>

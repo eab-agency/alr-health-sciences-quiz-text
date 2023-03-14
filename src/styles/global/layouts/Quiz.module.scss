@@ -42,7 +42,7 @@
     @include layouts.container;
     align-items: flex-start;
     gap: 1rem;
-    margin-bottom: clamp(tokens.$baseUnit * 2, 4vw, tokens.$baseUnit * 5);
+    padding-bottom: 0;
 }
 
 .retakeButton {
