@@ -16,11 +16,13 @@ import { BiLinkExternal } from 'react-icons/bi';
 
 import styles from '@/styles/global/layouts/FinalPage.module.scss';
 import Accordion from '@/components/Accordion';
+import CappexFormSection from '@/components/CappexFormSection';
+import { useLocalStorage } from '@/hooks/useLocalStorage';
 
 const ScientistPage = () => {
     const { data: results, error: resultsError } = useRequest('/quiz/results');
     const { data: schools, error: schoolsError } = useRequest('/quiz/schools');
-
+    const [localQData] = useLocalStorage('eab-quiz-data');
     const { matchedSchool, setMatchedSchool } = useUser();
 
     const router = useRouter();
@@ -36,11 +38,6 @@ const ScientistPage = () => {
             setPersonalityData(personalityDataInternal);
         }
     }, [results, currentRoute]);
-
-    const handleStateChange = (value) => {
-        const matchedSchoolInternal = getMatchedSchool(value, schools);
-        setMatchedSchool(matchedSchoolInternal);
-    };
 
     // if no personalityData is found, return loading
     if (!personalityData) {
@@ -58,6 +55,8 @@ const ScientistPage = () => {
                     <p>{personalityData.detailedDescription}</p>
                 </section>
                 <Tabs tabs={personalityData.tabs} />
+                {!localQData && <CappexFormSection />}
+
                 <section className={styles['career-path']}>
                     <div className={styles['path-intro']}>
                         <h2>
@@ -78,8 +77,8 @@ const ScientistPage = () => {
                                 <strong>Medical laboratory scientists</strong>{' '}
                                 perform complex tests on patient samples to find
                                 data that plays an important role in identifying
-                                and treating cancer, heart disease, diabetes,
-                                and other medical conditions.
+                                and treating cancerimport heart disease,
+                                diabetes, and other medical conditions.
                             </li>
                             <li>
                                 <strong>Clinical pharmacologist</strong>{' '}

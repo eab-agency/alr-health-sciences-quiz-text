@@ -123,10 +123,6 @@ const AcquiaFormHandle = ({ redirectTo, answers = {}, user = {}, id }) => {
     const [location] = useLocalStorage('489hLocation', null);
     const { data: acsForm, error } = useForm(id);
     const [formValues, setFormValues] = useState({});
-    console.log(
-        '🚀 ~ file: Form.js:126 ~ AcquiaFormHandle ~ formValues:',
-        formValues
-    );
 
     const [theForm, setTheForm] = useState(null);
     const [theFields, setTheFields] = useState([]);
@@ -168,62 +164,44 @@ const AcquiaFormHandle = ({ redirectTo, answers = {}, user = {}, id }) => {
         }
     };
 
-    const initialValues = useMemo(() => ({}), []);
+    const initialValues = {};
 
     useEffect(() => {
+        console.log('theFields', theFields);
         if (theFields.length > 0) {
+            const newFormValues = {};
             theFields.forEach((field) => {
                 if (field.alias === 'quiz_result') {
-                    setFormValues((prev) => ({
-                        ...prev,
-                        [field.alias]: answers.highestScorePersonality,
-                    }));
-                    // initialValues[field.alias] =
-                    //     answers.highestScorePersonality;
+                    newFormValues[field.alias] =
+                        answers.highestScorePersonality;
                 } else {
-                    setFormValues((prev) => ({
-                        ...prev,
-                        [field.alias]: field.defaultValue || '',
-                    }));
+                    newFormValues[field.alias] = field.defaultValue || '';
                     if (answers.answers) {
                         answers.answers.forEach((answer) => {
                             if (answer.associatedField === field.alias) {
-                                setFormValues((prev) => ({
-                                    ...prev,
-                                    [field.alias]: `${answer.question} | ${answer.answer}`,
-                                }));
-
-                                // initialValues[
-                                //     field.alias
-                                // ] = `${answer.question} | ${answer.answer}`;
+                                newFormValues[
+                                    field.alias
+                                ] = `${answer.question} | ${answer.answer}`;
                             }
                         });
                     }
                 }
                 if (user) {
                     if (field.alias === 'preferred_email') {
-                        setFormValues((prev) => ({
-                            ...prev,
-                            [field.alias]: user.email,
-                        }));
-                        // initialValues[field.alias] = user.email;
+                        newFormValues[field.alias] = user.email;
                     } else if (field.alias === 'first_name') {
-                        setFormValues((prev) => ({
-                            ...prev,
-                            [field.alias]: user.fname,
-                        }));
-                        // initialValues[field.alias] = user.fname;
+                        newFormValues[field.alias] = user.fname;
                     } else if (field.alias === 'last_name') {
-                        setFormValues((prev) => ({
-                            ...prev,
-                            [field.alias]: user.lname,
-                        }));
-                        // initialValues[field.alias] = user.lname;
+                        newFormValues[field.alias] = user.lname;
                     }
                 }
             });
+            setFormValues((prev) => ({
+                ...prev,
+                ...newFormValues,
+            }));
         }
-    }, [theFields, answers, user]);
+    }, []);
 
     if (error) return <p>Error loading form.</p>;
     if (!acsForm) return <p className="loading">Loading...</p>;
