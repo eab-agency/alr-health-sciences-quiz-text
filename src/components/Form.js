@@ -168,7 +168,7 @@ const AcquiaFormHandle = ({ redirectTo, answers = {}, user = {}, id }) => {
     const initialValues = {};
 
     useEffect(() => {
-        console.log('theFields', theFields);
+        // console.log('theFields', theFields);
         if (theFields.length > 0) {
             const newFormValues = {};
             theFields.forEach((field) => {
@@ -204,7 +204,7 @@ const AcquiaFormHandle = ({ redirectTo, answers = {}, user = {}, id }) => {
                 ...newFormValues,
             }));
         }
-    }, []);
+    }, [theFields]);
 
     if (error) return <p>Error loading form.</p>;
     if (!acsForm) return <p className="loading">Loading...</p>;
