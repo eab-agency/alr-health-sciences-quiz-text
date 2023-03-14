@@ -34,7 +34,6 @@ export default function Document() {
                 <Main />
                 <NextScript />
             </body>
-            import Script from 'next/script';
         </Html>
     );
 }

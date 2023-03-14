@@ -3,7 +3,7 @@ import { createContext, useContext, useState, useEffect, useMemo } from 'react';
 import axios from 'axios';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 
-import { getMatchedSchool } from '@/components/helpers/getMatchedSchool';
+import { getMatchedSchool } from '@/helpers/getMatchedSchool';
 import { useRequest } from '@/hooks/useRequest';
 
 const UserLocationContext = createContext(null);

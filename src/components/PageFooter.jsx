@@ -2,9 +2,19 @@
 import React from 'react';
 import Image from 'next/image';
 import { MdHelpOutline, MdOutlinePrivacyTip } from 'react-icons/md';
+import { Reoverlay } from 'reoverlay';
 import styles from '../styles/modules/PageFooter.module.scss';
+import PrivacyModal from './PrivacyModal';
+import HelpModal from './HelpModal';
 
 export default function PageFooter() {
+    const helpClick = () => {
+        Reoverlay.showModal(HelpModal, {});
+    };
+    const privacyClick = () => {
+        Reoverlay.showModal(PrivacyModal, {});
+    };
+
     return (
         <footer className={styles['page-footer']}>
             <div className={styles.wrapper}>
@@ -24,16 +34,16 @@ export default function PageFooter() {
                 <div className="help-privacy">
                     <ul>
                         <li>
-                            <a href="#">
+                            <button type="button" onClick={helpClick}>
                                 <MdHelpOutline />
                                 Help
-                            </a>
+                            </button>
                         </li>
                         <li>
-                            <a href="#">
+                            <button type="button" onClick={privacyClick}>
                                 <MdOutlinePrivacyTip />
                                 Privacy
-                            </a>
+                            </button>
                         </li>
                     </ul>
                 </div>

@@ -2,15 +2,13 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
-import { getMatchedSchool } from '@/components/helpers/getMatchedSchool';
+import { getMatchedSchool } from '@/helpers/getMatchedSchool';
 
 import PageLayout from '@/components/PageLayout';
 import Tabs from '@/components/Tabs';
 import Stats from '@/components/Stats';
 import { useUser } from '@/context/context';
 import UniversityMatch from '@/components/UniversityMatch';
-import StateSelect from '@/components/helpers/StateSelect';
-// import Form from '@/components/Form';
 import { useRequest } from '@/hooks/useRequest';
 import { BiLinkExternal } from 'react-icons/bi';
 
