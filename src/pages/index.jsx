@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import useUser from '@/hooks/useUser';
@@ -7,9 +7,23 @@ import styles from '@/styles/global/layouts/EmailOnly.module.scss';
 import Button from '@/components/Button';
 // eslint-disable-next-line import/no-unresolved
 import MainLogo from '@/components/MainLogo';
+import { useRouter } from 'next/router';
+import { useLocalStorage } from '@/hooks/useLocalStorage';
 
 export default function LandingPage() {
     const { user } = useUser();
+    const router = useRouter();
+    // grab utm_source from query params
+    const utmSource = router.query.utm_source;
+
+    const [localQData, setLocalQData] = useLocalStorage('eab-quiz-data');
+
+    useEffect(() => {
+        if (utmSource) {
+            setLocalQData({ ...localQData, utmSource });
+        }
+    }, []);
+
     return (
         <>
             <Head>

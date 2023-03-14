@@ -121,6 +121,7 @@ const generateField = (field, error) => {
 
 const AcquiaFormHandle = ({ redirectTo, answers = {}, user = {}, id }) => {
     const [location] = useLocalStorage('489hLocation', null);
+    const [localQData] = useLocalStorage('eab-quiz-data');
     const { data: acsForm, error } = useForm(id);
     const [formValues, setFormValues] = useState({});
 
@@ -174,6 +175,8 @@ const AcquiaFormHandle = ({ redirectTo, answers = {}, user = {}, id }) => {
                 if (field.alias === 'quiz_result') {
                     newFormValues[field.alias] =
                         answers.highestScorePersonality;
+                } else if (field.alias === 'paid_social_source_of_con') {
+                    newFormValues[field.alias] = localQData.utmSource;
                 } else {
                     newFormValues[field.alias] = field.defaultValue || '';
                     if (answers.answers) {
