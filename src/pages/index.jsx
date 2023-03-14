@@ -16,13 +16,13 @@ export default function LandingPage() {
     // grab utm_source from query params
     const utmSource = router.query.utm_source;
 
-    const [localQData, setLocalQData] = useLocalStorage('eab-quiz-data');
+    const [localQData, setLocalQData] = useLocalStorage('eab-quiz-data', {});
 
     useEffect(() => {
         if (utmSource) {
             setLocalQData({ ...localQData, utmSource });
         }
-    }, []);
+    }, [utmSource]);
 
     return (
         <>
