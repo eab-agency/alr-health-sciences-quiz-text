@@ -105,7 +105,7 @@ const AnalystPage = () => {
                         </ul>
                         <figure>
                             <Image
-                                src="/images/executive.jpg"
+                                src="/images/analyst.jpg"
                                 width={478}
                                 height={284}
                                 alt="Medical professional with computer"

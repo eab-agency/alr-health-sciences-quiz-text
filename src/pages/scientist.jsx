@@ -101,10 +101,10 @@ const ScientistPage = () => {
                         </ul>
                         <figure>
                             <Image
-                                src="/images/executive.jpg"
+                                src="/images/scientist.jpg"
                                 width={478}
                                 height={284}
-                                alt="Executive woman smiling in front of a laptop"
+                                alt="Scientist looking at microscope"
                             />
                             <figcaption>
                                 Medical professional in a lab
