@@ -59,6 +59,7 @@ const AnalystPage = () => {
                     <p>{personalityData.detailedDescription}</p>
                 </section>
                 <Tabs tabs={personalityData.tabs} />
+                {!localQData && <CappexFormSection />}
                 <section className={styles['career-path']}>
                     <div className={styles['path-intro']}>
                         <h2>
@@ -197,7 +198,6 @@ const AnalystPage = () => {
                     </section>
                 )}
             </div>
-            {!localQData && <CappexFormSection />}
         </div>
     );
 };

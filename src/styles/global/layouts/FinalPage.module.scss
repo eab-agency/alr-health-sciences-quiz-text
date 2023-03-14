@@ -338,9 +338,9 @@
         background: tokens.$c-gray-100;
         .sourceContent {
             background: color.adjust(tokens.$c-blue-800, $lightness: 70%);
-            border-color: color.adjust(tokens.$c-blue-800, $lightness: 50%);
+            border-color: color.adjust(tokens.$c-blue-800, $lightness: 20%);
             h2 {
-                color: tokens.$c-blue-500;
+                color: color.adjust(tokens.$c-blue-800, $lightness: 30%);
             }
         }
         &::before {

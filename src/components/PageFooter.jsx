@@ -34,13 +34,21 @@ export default function PageFooter() {
                 <div className="help-privacy">
                     <ul>
                         <li>
-                            <button type="button" onClick={helpClick}>
+                            <button
+                                type="button"
+                                className={styles.helpPrivBtn}
+                                onClick={helpClick}
+                            >
                                 <MdHelpOutline />
                                 Help
                             </button>
                         </li>
                         <li>
-                            <button type="button" onClick={privacyClick}>
+                            <button
+                                type="button"
+                                className={styles.helpPrivBtn}
+                                onClick={privacyClick}
+                            >
                                 <MdOutlinePrivacyTip />
                                 Privacy
                             </button>
