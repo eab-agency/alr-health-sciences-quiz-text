@@ -16,13 +16,26 @@ export default function LandingPage() {
     // grab utm_source from query params
     const utmSource = router.query.utm_source;
 
-    const [localQData, setLocalQData] = useLocalStorage('eab-quiz-data', {});
+    const [localQData, setLocalQData] = useLocalStorage('eab-quiz-data', {
+        answers: [],
+        currentQuestion: 0,
+        score: {
+            executive: 0,
+            practitioner: 0,
+            educator: 0,
+            scientist: 0,
+            analyst: 0,
+            initial: 0,
+        },
+        highestScorePersonality: null,
+        utmSource: '',
+    });
 
-    // useEffect(() => {
-    //     if (utmSource) {
-    //         setLocalQData({ ...localQData, utmSource });
-    //     }
-    // }, [utmSource]);
+    useEffect(() => {
+        if (utmSource) {
+            setLocalQData({ ...localQData, utmSource });
+        }
+    }, [utmSource]);
 
     return (
         <>

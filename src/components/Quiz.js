@@ -29,6 +29,7 @@ function Quiz({ user }) {
             initial: 0,
         },
         highestScorePersonality: null,
+        utmSource: '',
     });
 
     const handleAnswer = (question, answer, associatedField) => {
