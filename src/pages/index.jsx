@@ -18,11 +18,11 @@ export default function LandingPage() {
 
     const [localQData, setLocalQData] = useLocalStorage('eab-quiz-data', {});
 
-    useEffect(() => {
-        if (utmSource) {
-            setLocalQData({ ...localQData, utmSource });
-        }
-    }, [utmSource]);
+    // useEffect(() => {
+    //     if (utmSource) {
+    //         setLocalQData({ ...localQData, utmSource });
+    //     }
+    // }, [utmSource]);
 
     return (
         <>
