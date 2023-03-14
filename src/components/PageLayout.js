@@ -7,9 +7,9 @@ export default function PageLayout({ children }) {
         <>
             <div className="page-layout">
                 <PageHeader pageType="results" />
-                <div className="page-layout__container">
+                <main className="page-layout__container">
                     <div className="page-layout__content">{children}</div>
-                </div>
+                </main>
             </div>
             <PageFooter />
         </>

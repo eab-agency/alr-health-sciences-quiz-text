@@ -90,10 +90,10 @@ const PractitionerPage = () => {
                         </ul>
                         <figure>
                             <Image
-                                src="/images/executive.jpg"
+                                src="/images/nurse.jpg"
                                 width={478}
                                 height={284}
-                                alt="Executive woman smiling in front of a laptop"
+                                alt="Nurse reading a board"
                             />
                             <figcaption>Nurse</figcaption>
                         </figure>
@@ -101,10 +101,10 @@ const PractitionerPage = () => {
                     <div className={styles['executive-path']}>
                         <figure>
                             <Image
-                                src="/images/executive.jpg"
+                                src="/images/athletic-trainer-occupational-therapist.jpg"
                                 width={478}
                                 height={284}
-                                alt="Executive woman smiling in front of a laptop"
+                                alt="Occupational therapist in session"
                             />
                             <figcaption>
                                 Athletic trainer or occupational therapist

@@ -111,10 +111,10 @@ const EducatorPage = () => {
                         </div>
                         <figure>
                             <Image
-                                src="/images/executive.jpg"
+                                src="/images/non-profit-worker.jpg"
                                 width={478}
                                 height={284}
-                                alt="Executive woman smiling in front of a laptop"
+                                alt="Non profit worker in a desk"
                             />
                             <figcaption>Nonprofit Worker</figcaption>
                         </figure>
@@ -122,10 +122,10 @@ const EducatorPage = () => {
                     <div className={styles['executive-path']}>
                         <figure>
                             <Image
-                                src="/images/executive.jpg"
+                                src="/images/educator.jpg"
                                 width={478}
                                 height={284}
-                                alt="Executive woman smiling in front of a laptop"
+                                alt="Medical educator in front of a whiteboard"
                             />
                             <figcaption>Professor</figcaption>
                         </figure>

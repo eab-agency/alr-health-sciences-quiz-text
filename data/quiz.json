@@ -570,7 +570,7 @@
             "description": "With two New Jersey campuses and a wide range of online offerings, Fairleigh Dickinson offers flexible ways to earn your health sciences degree. Programs range from bachelor’s to master’s and professional doctorates, and there are a number of combined programs that streamline the process of earning both your undergrad and advanced degrees.",
             "link": "https://www.fdu.edu/academics/programs/?fwp_program_topic=health-sciences",
             "linkText": "Explore Programs at Fairleigh Dickinson",
-            "imageURL": "https://via.placeholder.com/352x433",
+            "imageURL": "/images/fairleigh-dickinson-university.jpg",
             "associatedStates": ["NY", "NJ", "CT", "RI", "PA", "MA", "MD", "DE"]
         },
         {
@@ -579,7 +579,7 @@
             "description": "Located in San Diego, California, SDSU offers a variety of health care certificates and bachelor’s, master’s, and doctoral/professional degrees. Programs in SDSU’s College of Health and Human Services provide students with a balanced and meaningful education, both inside and outside the classroom, to develop them into confident and compassionate professionals.",
             "link": "https://chhs.sdsu.edu/",
             "linkText": "Learn About Health and Human Services at SDSU",
-            "imageURL": "https://via.placeholder.com/352x433",
+            "imageURL": "/images/san-diego-university.jpg",
             "associatedStates": ["CA", "AZ", "NV"]
         },
         {
@@ -588,7 +588,7 @@
             "description": "Located in Fort Wayne, Indiana, the University of Saint Francis offers certificates, associate’s, bachelor’s and master’s degrees in health care. One-on-one faculty advising and a focus on real-world learning set USF’s programs apart. Plus, programs are developed with a Franciscan lens, which recognizes the dignity of each person and encourages serving others and society as a whole.",
             "link": "https://majors.sf.edu/",
             "linkText": "Explore Programs at USF",
-            "imageURL": "https://via.placeholder.com/352x433",
+            "imageURL": "/images/u-of-saint-francis.jpg",
             "associatedStates": ["IL", "IN", "WI", "IA", "MI"]
         }
     ],
