@@ -5,7 +5,7 @@ import Link from 'next/link';
 import styles from '@/styles/global/layouts/Results.module.scss';
 import useUser from '@/hooks/useUser';
 
-const Results = ({ personality, description, title, answers }) => {
+const Results = ({ personality, description, title, answers, children }) => {
     const { user } = useUser();
     return (
         <div className={styles['results-container']}>
@@ -16,28 +16,32 @@ const Results = ({ personality, description, title, answers }) => {
                 <p>{description}</p>
             </div>
 
-            <div className={styles.engageCopy}>
-                <p>
-                    Learn why we thought this role could be a good fit for you!
-                    Then, discover <strong>related careers</strong>, average{' '}
-                    <strong>salaries</strong> and job outlook, and{' '}
-                    <strong>academic programs</strong> that can help you reach
-                    your goals faster.
-                </p>
-            </div>
-            <div className={styles.Form}>
-                <h2>Where should we send your results?</h2>
-                <Form
-                    redirectTo={`/${personality}`}
-                    answers={answers}
-                    user={user}
-                    id="2"
-                />
-                {process.env.NODE_ENV === 'development' && (
-                    <Link href={`/${personality}`}>
-                        Skip form (only shows in dev mode)
-                    </Link>
-                )}
+            <div className={styles.engage}>
+                <div className={styles.engageCopy}>
+                    <p>
+                        Learn why we thought this role could be a good fit for
+                        you! Then, discover <strong>related careers</strong>,
+                        average <strong>salaries</strong> and job outlook, and{' '}
+                        <strong>academic programs</strong> that can help you
+                        reach your goals faster.
+                    </p>
+                </div>
+                <div className={styles.Form}>
+                    <h2>Where should we send your results?</h2>
+                    <Form
+                        redirectTo={`/${personality}`}
+                        answers={answers}
+                        user={user}
+                        id="2"
+                        className={styles.formContainer}
+                    />
+                    {process.env.NODE_ENV === 'development' && (
+                        <Link href={`/${personality}`}>
+                            Skip form (only shows in dev mode)
+                        </Link>
+                    )}
+                </div>
+                {children}
             </div>
         </div>
     );
