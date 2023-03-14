@@ -562,7 +562,16 @@
             "link": "https://www.unthsc.edu/academics/",
             "linkText": "Learn About Health Sciences at UNT",
             "imageURL": "/images/university-north-texas.jpg",
-            "associatedStates": ["TX", "OK", "LA", "AR"]
+            "associatedStates": [
+                "TX",
+                "OK",
+                "LA",
+                "AR",
+                "Texas",
+                "Oklahoma",
+                "Louisiana",
+                "Arkansas"
+            ]
         },
         {
             "title": "Fairleigh Dickinson",
@@ -571,7 +580,24 @@
             "link": "https://www.fdu.edu/academics/programs/?fwp_program_topic=health-sciences",
             "linkText": "Explore Programs at Fairleigh Dickinson",
             "imageURL": "/images/fairleigh-dickinson-university.jpg",
-            "associatedStates": ["NY", "NJ", "CT", "RI", "PA", "MA", "MD", "DE"]
+            "associatedStates": [
+                "NY",
+                "NJ",
+                "CT",
+                "RI",
+                "PA",
+                "MA",
+                "MD",
+                "DE",
+                "New York",
+                "New Jersey",
+                "Connecticut",
+                "Rhode Island",
+                "Pennsylvania",
+                "Massachusetts",
+                "Maryland",
+                "Delaware"
+            ]
         },
         {
             "title": "San Diego State University",
@@ -580,7 +606,14 @@
             "link": "https://chhs.sdsu.edu/",
             "linkText": "Learn About Health and Human Services at SDSU",
             "imageURL": "/images/san-diego-university.jpg",
-            "associatedStates": ["CA", "AZ", "NV"]
+            "associatedStates": [
+                "CA",
+                "AZ",
+                "NV",
+                "California",
+                "Arizona",
+                "Nevada"
+            ]
         },
         {
             "title": "University of Saint Francis",
@@ -589,7 +622,18 @@
             "link": "https://majors.sf.edu/",
             "linkText": "Explore Programs at USF",
             "imageURL": "/images/u-of-saint-francis.jpg",
-            "associatedStates": ["IL", "IN", "WI", "IA", "MI"]
+            "associatedStates": [
+                "IL",
+                "IN",
+                "WI",
+                "IA",
+                "MI",
+                "Illinois",
+                "Indiana",
+                "Wisconsin",
+                "Iowa",
+                "Michigan"
+            ]
         }
     ],
     "score": {
