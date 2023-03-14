@@ -91,6 +91,14 @@ small,
     font-style: italic;
 }
 
+small {
+    color: tokens.$c-white;
+
+    @media (prefers-color-scheme: light) {
+        color: tokens.$c-blue-500;
+    }
+}
+
 // ================
 // Other Type Styles
 
