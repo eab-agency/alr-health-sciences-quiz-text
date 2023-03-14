@@ -108,3 +108,57 @@ p {
         transform: rotate(360deg);
     }
 }
+
+.cappex-form {
+    display: block;
+    position: fixed;
+    z-index: config.$layer-10;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    &::before {
+        content: '';
+        display: block;
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        z-index: config.$layer-1;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(config.$c-blue-500, 0.7);
+        backdrop-filter: blur(0.3em);
+    }
+
+    .content {
+        display: block;
+        width: 90vw;
+        max-width: config.$mq-800;
+        position: relative;
+        z-index: config.$layer-2;
+        padding: clamp(config.$baseUnit, 3vw, config.$baseUnit * 3);
+        border: 0.5em solid color.adjust(config.$c-blue-500, $lightness: 0%);
+        background: config.$c-blue-800;
+
+        h3 {
+            color: config.$c-white;
+            font-size: clamp(config.$fs-m, 5vw, config.$fs-xl);
+
+            figure[class*='main-logo'] {
+                display: inline-block;
+                width: clamp(8rem, 13vw, 13rem);
+                transform: translateY(17%);
+                margin-inline: 1%;
+            }
+        }
+
+        form {
+            margin-bottom: 0;
+
+            .btn-primary {
+                margin-top: clamp(config.$baseUnit, 3vw, config.$baseUnit * 3);
+            }
+        }
+    }
+}
