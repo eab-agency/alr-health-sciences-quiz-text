@@ -312,4 +312,17 @@ div[class*='__tab-panel'] {
             color: tokens.$c-blue-500;
         }
     }
+
+    p {
+        font-size: clamp(tokens.$fs-s, 2vw, tokens.$fs-m);
+    }
+
+    ul {
+        margin-top: 2em;
+        padding-left: 2em;
+
+        li {
+            margin-bottom: 1.5em;
+        }
+    }
 }

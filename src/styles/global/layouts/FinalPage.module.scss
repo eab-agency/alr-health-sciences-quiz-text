@@ -114,6 +114,10 @@
             flex-direction: row;
         }
 
+        p {
+            font-size: clamp(tokens.$fs-s, 2vw, tokens.$fs-m);
+        }
+
         ul {
             flex: 1 1 100%;
             list-style: none;
@@ -125,6 +129,8 @@
 
             li {
                 display: block;
+                padding-left: 2em;
+                position: relative;
                 font-size: clamp(tokens.$fs-s, 2vw, tokens.$fs-m);
                 color: tokens.$c-white;
                 margin-bottom: 1em;
@@ -136,6 +142,9 @@
                     font-family: tokens.$f-icons;
                     color: tokens.$c-orange-500;
                     font-size: 1.2em;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
                     transform: translateY(-5%);
                     position: absolute;
                     left: 0;

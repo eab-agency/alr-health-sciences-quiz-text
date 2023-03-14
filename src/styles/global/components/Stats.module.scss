@@ -127,6 +127,10 @@
             p {
                 font-size: tokens.$fs-s;
 
+                &:last-child {
+                    margin-bottom: 0;
+                }
+
                 @media (max-width: tokens.$mq-1000) {
                     flex: 1 0 15rem;
                 }
