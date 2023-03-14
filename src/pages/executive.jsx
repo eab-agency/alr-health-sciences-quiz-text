@@ -57,7 +57,7 @@ const ExecutivePage = () => {
                     <h1>{personalityData.title}</h1>
                     <p>{personalityData.detailedDescription}</p>
                 </section>
-                <Tabs tabs={personalityData.tabs} className="personalityTabs" />
+                <Tabs tabs={personalityData.tabs} />
                 <section className={styles['career-path']}>
                     <div className={styles['path-intro']}>
                         <h2>

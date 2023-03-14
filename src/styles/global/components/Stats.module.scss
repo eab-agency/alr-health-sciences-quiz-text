@@ -26,7 +26,7 @@
         list-style: none;
         position: relative;
         z-index: tokens.$layer-2;
-        gap: clamp(tokens.$baseUnit * 2, 5vw, tokens.$baseUnit * 4);
+        gap: clamp(tokens.$baseUnit * 3, 5vw, tokens.$baseUnit * 4);
 
         @media (min-width: tokens.$mq-1000) {
             flex-direction: row;
@@ -37,7 +37,7 @@
             display: flex;
             flex-flow: row wrap;
             align-items: center;
-            gap: tokens.$baseUnit * 2;
+            // gap: tokens.$baseUnit * 2;
             padding-block: clamp(
                 tokens.$baseUnit * 1,
                 2vw,
@@ -66,7 +66,7 @@
 
             h3 {
                 display: flex;
-                flex: 1 0 10rem;
+                // flex: 1 0 10rem;
                 flex-direction: column;
                 font-weight: tokens.$fw-normal;
                 font-size: clamp(
@@ -94,6 +94,10 @@
             }
             p {
                 font-size: tokens.$fs-s;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
 
                 @media (max-width: tokens.$mq-1000) {
                     flex: 1 0 15rem;
