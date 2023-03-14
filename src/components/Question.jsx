@@ -45,7 +45,7 @@ function Question({ questionNum, handleAnswer }) {
                             )
                         }
                     >
-                        {answer.answer} ({answer.personality})
+                        {answer.answer}
                     </button>
                 ))}
             </ul>
