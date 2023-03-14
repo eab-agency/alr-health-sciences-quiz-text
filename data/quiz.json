@@ -31,27 +31,27 @@
             "associatedField": "quizresponse1",
             "answers": [
                 {
-                    "answer": "Helping others do their best at work. I like to develop plans and communicate them to a team.",
+                    "answer": "Inspiring others to do their best.",
                     "personality": "executive",
                     "weight": 1
                 },
                 {
-                    "answer": "Improving a person's quality of life and health. I like to help people.",
+                    "answer": "Improving people's quality of life.",
                     "personality": "practitioner",
                     "weight": 1
                 },
                 {
-                    "answer": "Lifelong learning. I like to teach others and give them the tools to help themselves.",
+                    "answer": "Sharing my skills and knowledge with others.",
                     "personality": "educator",
                     "weight": 1
                 },
                 {
-                    "answer": "Making groundbreaking discoveries. I like to figure out how things work.",
+                    "answer": "Making groundbreaking discoveries.",
                     "personality": "scientist",
                     "weight": 1
                 },
                 {
-                    "answer": "Finding insights in data. I like to develop and maintain systems and solve problems.",
+                    "answer": "Creating solutions through analytics.",
                     "personality": "analyst",
                     "weight": 1
                 }
@@ -93,27 +93,27 @@
             "associatedField": "quizresponse3",
             "answers": [
                 {
-                    "answer": "In a hospital or physician's office, but I'd be open to a residential care facility or government agency.",
+                    "answer": "Primarily in a hospital, but open to smaller settings.",
                     "personality": "executive",
                     "weight": 1
                 },
                 {
-                    "answer": "In a physician's office, hospital, or outpatient care center.",
+                    "answer": "Primarily in a physician's office, but open to other settings.",
                     "personality": "practitioner",
                     "weight": 1
                 },
                 {
-                    "answer": "At a government agency or nonprofit, but I'd be open to working at a university or family services organization.",
+                    "answer": "At a government agency, nonprofit, or university.",
                     "personality": "educator",
                     "weight": 1
                 },
                 {
-                    "answer": "In a lab or at a university, but I'd be open to working in a hospital or office.",
+                    "answer": "In a lab, at a university, or hospital.",
                     "personality": "scientist",
                     "weight": 1
                 },
                 {
-                    "answer": "In an office or hospital, but I'd be open to working in a technical services or administrative support organization.",
+                    "answer": "In a technical services or administrative support setting.",
                     "personality": "analyst",
                     "weight": 1
                 }
@@ -124,27 +124,27 @@
             "associatedField": "quizresponse4",
             "answers": [
                 {
-                    "answer": "Leading and communicating with others. I have good attention to detail and enjoy analyzing information and using technology.",
+                    "answer": "Leadership and guiding others.",
                     "personality": "executive",
                     "weight": 2
                 },
                 {
-                    "answer": "Empathetic communication and emotional stablility. I have strong problem-solving and interpersonal skills.",
+                    "answer": "Empathetic communication and emotional stability.",
                     "personality": "practitioner",
                     "weight": 2
                 },
                 {
-                    "answer": "Breaking down big ideas so others can learn. I'm also good at analyzing information to inform big-picture problem solving.",
+                    "answer": "Breaking down big ideas so others can learn.",
                     "personality": "educator",
                     "weight": 2
                 },
                 {
-                    "answer": "Critical thinking, observation, and data analysis. I can also communicate complex ideas simply while speaking and writing.",
+                    "answer": "Critical thinking, observation, and data analysis.",
                     "personality": "scientist",
                     "weight": 2
                 },
                 {
-                    "answer": "Organization, project management, data analysis, and creative problem solving.",
+                    "answer": "Organization, project management, and problem solving.",
                     "personality": "analyst",
                     "weight": 2
                 }
@@ -186,27 +186,27 @@
             "associatedField": "quizresponse6",
             "answers": [
                 {
-                    "answer": "Some experience in an administrative or clinical role.",
+                    "answer": "In an administrative or clinical role.",
                     "personality": "executive",
                     "weight": 1
                 },
                 {
-                    "answer": "Some experience working in a lab setting or with patients as a medic, nurse, medical assistant, EMT, etc.",
+                    "answer": "Some experience working in a lab setting or with patients as a medic, nurse...",
                     "personality": "practitioner",
                     "weight": 1
                 },
                 {
-                    "answer": "Some experience working in education or with a community organization.",
+                    "answer": "In education or with a community organization.",
                     "personality": "educator",
                     "weight": 1
                 },
                 {
-                    "answer": "I have some experience working in a lab setting or doing research, writing proposals, and writing about my findings.",
+                    "answer": "Doing research, writing proposals, and recording my findings.",
                     "personality": "scientist",
                     "weight": 1
                 },
                 {
-                    "answer": "I have some experience working with computers, databases, or information systems.",
+                    "answer": "With computers, databases, or information systems.",
                     "personality": "analyst",
                     "weight": 1
                 }
