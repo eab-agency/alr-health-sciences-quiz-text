@@ -1,6 +1,10 @@
+@use 'sass:color';
 @use '../config/tokens';
 
 .accordion {
+    position: relative;
+    z-index: tokens.$layer-1;
+
     .accordion-header {
         cursor: pointer;
         h2 {
@@ -28,6 +32,11 @@
 
                 i {
                     transform: translateX(30%);
+                }
+
+                // add light mode
+                @media (prefers-color-scheme: light) {
+                    color: color.adjust(tokens.$c-malva-500, $lightness: -25%);
                 }
             }
         }

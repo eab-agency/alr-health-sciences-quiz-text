@@ -1,3 +1,4 @@
+@use 'sass:color';
 @use '../config/tokens';
 
 .stats {
@@ -20,6 +21,13 @@
         z-index: tokens.$layer-1;
     }
 
+    @media (prefers-color-scheme: light) {
+        background: tokens.$c-gray-100;
+        &::before {
+            background: tokens.$c-gray-100;
+        }
+    }
+
     ul {
         display: flex;
         flex-direction: column;
@@ -37,7 +45,7 @@
             display: flex;
             flex-flow: row wrap;
             align-items: center;
-            // gap: tokens.$baseUnit * 2;
+            gap: clamp(tokens.$baseUnit * 0.1, 3vw, tokens.$baseUnit * 2);
             padding-block: clamp(
                 tokens.$baseUnit * 1,
                 2vw,
@@ -45,6 +53,10 @@
             );
             padding-left: 1em;
             border-left: 0.5em solid tokens.$c-blue-500;
+
+            @media (prefers-color-scheme: light) {
+                border-color: color.adjust(tokens.$c-blue-800, $lightness: 70%);
+            }
 
             @media (min-width: tokens.$mq-1000) {
                 flex-direction: column;
@@ -58,6 +70,13 @@
                     tokens.$baseUnit * 2
                 );
                 padding-block: 0;
+
+                @media (prefers-color-scheme: light) {
+                    border-color: color.adjust(
+                        tokens.$c-blue-800,
+                        $lightness: 70%
+                    );
+                }
             }
 
             &:last-child {
@@ -77,9 +96,15 @@
                 color: tokens.$c-white;
                 width: 100%;
                 max-width: 10rem;
+                margin-bottom: clamp(0rem, 2vw, tokens.$baseUnit * 2);
+
+                @media (prefers-color-scheme: light) {
+                    color: tokens.$c-blue-800;
+                }
 
                 @media (min-width: tokens.$mq-1000) {
                     max-width: 100%;
+                    // flex: auto;
                 }
 
                 strong {
@@ -90,6 +115,13 @@
                         tokens.$baseUnit * 5
                     );
                     font-weight: tokens.$fw-bold;
+
+                    @media (prefers-color-scheme: light) {
+                        color: color.adjust(
+                            tokens.$c-turquoise-500,
+                            $lightness: -5%
+                        );
+                    }
                 }
             }
             p {
@@ -115,5 +147,9 @@
         z-index: tokens.$layer-2;
         font-style: italic;
         font-size: tokens.$fs-s;
+
+        @media (prefers-color-scheme: light) {
+            border-color: color.adjust(tokens.$c-blue-500, $lightness: 50%);
+        }
     }
 }
