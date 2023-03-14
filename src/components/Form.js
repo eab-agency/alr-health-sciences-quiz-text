@@ -175,7 +175,11 @@ const AcquiaFormHandle = ({ redirectTo, answers = {}, user = {}, id }) => {
                 if (field.alias === 'quiz_result') {
                     newFormValues[field.alias] =
                         answers.highestScorePersonality;
-                } else if (field.alias === 'paid_social_source_of_con') {
+                } else if (
+                    field.alias === 'paid_social_source_of_con' &&
+                    localQData &&
+                    localQData.utmSource
+                ) {
                     newFormValues[field.alias] = localQData.utmSource;
                 } else {
                     newFormValues[field.alias] = field.defaultValue || '';
