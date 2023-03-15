@@ -43,7 +43,7 @@ p {
     padding-right: 0.7em;
 
     @media (max-width: config.$mq-500) {
-        max-width: 15rem;
+        max-width: 20rem;
     }
 
     &::before {
