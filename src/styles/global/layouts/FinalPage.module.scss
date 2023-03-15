@@ -175,6 +175,14 @@
             }
         }
 
+        .pathwrapper {
+            order: 1;
+
+            @media (min-width: tokens.$mq-900) {
+                order: initial;
+            }
+        }
+
         figure {
             flex-shrink: 0;
             width: 50%;
@@ -182,7 +190,7 @@
 
             @media (min-width: tokens.$mq-900) {
                 width: 40%;
-                order: auto;
+                order: initial;
             }
 
             img {
