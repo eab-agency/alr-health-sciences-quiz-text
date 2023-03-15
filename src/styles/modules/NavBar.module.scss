@@ -44,7 +44,9 @@
 
     .hamburgerOpen {
         @extend %hamburguer;
-        top: 0;
+        top: 1em;
+        right: 1em;
+        position: fixed;
     }
 
     ul {

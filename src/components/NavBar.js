@@ -43,6 +43,7 @@ export default function NabBar() {
                                 ? styles.active
                                 : styles.nonActive
                         }
+                        onClick={toggleMenu}
                     >
                         Practitioner
                     </Link>
@@ -55,6 +56,7 @@ export default function NabBar() {
                                 ? styles.active
                                 : styles.nonActive
                         }
+                        onClick={toggleMenu}
                     >
                         Analyst
                     </Link>
@@ -67,6 +69,7 @@ export default function NabBar() {
                                 ? styles.active
                                 : styles.nonActive
                         }
+                        onClick={toggleMenu}
                     >
                         Educator
                     </Link>
@@ -79,6 +82,7 @@ export default function NabBar() {
                                 ? styles.active
                                 : styles.nonActive
                         }
+                        onClick={toggleMenu}
                     >
                         Executive
                     </Link>
@@ -91,6 +95,7 @@ export default function NabBar() {
                                 ? styles.active
                                 : styles.nonActive
                         }
+                        onClick={toggleMenu}
                     >
                         Scientist
                     </Link>
