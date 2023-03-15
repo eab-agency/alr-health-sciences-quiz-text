@@ -17,20 +17,6 @@ const validationSchema = Yup.object().shape({
     // .required('Email is required'),
 });
 
-const getValidationSchema = (field) => {
-    const { alias, isRequired, validationMessage } = field;
-
-    let _validationSchema = Yup.string();
-
-    if (isRequired) {
-        _validationSchema = _validationSchema.required(validationMessage);
-    }
-
-    return Yup.object().shape({
-        [alias]: _validationSchema,
-    });
-};
-
 const generateField = (field, error) => {
     const {
         id,
