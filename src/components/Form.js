@@ -120,6 +120,9 @@ const generateField = (field, error) => {
 };
 
 const AcquiaFormHandle = ({ redirectTo, answers = {}, user = {}, id }) => {
+    // keep track of whether the form has been submitted
+    const [isSent, setIsSent] = useState(false);
+
     const [location] = useLocalStorage('489hLocation', null);
     const [localQData] = useLocalStorage('eab-quiz-data');
     const { data: acsForm, error } = useForm(id);
@@ -148,12 +151,16 @@ const AcquiaFormHandle = ({ redirectTo, answers = {}, user = {}, id }) => {
                 ip_address_state: location.region_iso_code,
             };
 
-            const { data } = await axios.post(
-                `/api/submit?formId=${theForm.id}`,
-                {
+            await axios
+                .post(`/api/submit?formId=${theForm.id}`, {
                     mauticform: formData,
-                }
-            );
+                })
+                .then((res) => {
+                    setIsSent(true);
+                })
+                .catch((err) => {
+                    console.log('err', err);
+                });
 
             setSubmitting(false);
             // Redirect to the specified path on successful form submission
@@ -220,30 +227,39 @@ const AcquiaFormHandle = ({ redirectTo, answers = {}, user = {}, id }) => {
             validationSchema={validationSchema}
             onSubmit={onSubmit}
         >
-            {({ errors, isSubmitting }) => (
-                <Form className={styles.form}>
-                    {theFields.map((field) => (
-                        <div
-                            className={`${styles.qGroup} ${
-                                field.type === 'hidden' ? styles.hidden : ''
-                            }`}
-                            key={field.id}
-                        >
-                            {generateField(field, errors[field.alias])}
-                            <ErrorMessage name={field.alias} component="span" />
-                        </div>
-                    ))}
+            {({ errors, isSubmitting }) =>
+                !isSent ? (
+                    <Form className={styles.form}>
+                        {theFields.map((field) => (
+                            <div
+                                className={`${styles.qGroup} ${
+                                    field.type === 'hidden' ? styles.hidden : ''
+                                }`}
+                                key={field.id}
+                            >
+                                {generateField(field, errors[field.alias])}
+                                <ErrorMessage
+                                    name={field.alias}
+                                    component="span"
+                                />
+                            </div>
+                        ))}
 
-                    <button
-                        className="button btn-primary"
-                        type="submit"
-                        disabled={isSubmitting}
-                    >
-                        Submit
-                        <MdChevronRight />
-                    </button>
-                </Form>
-            )}
+                        <button
+                            className="button btn-primary"
+                            type="submit"
+                            disabled={isSubmitting}
+                        >
+                            Submit
+                            <MdChevronRight />
+                        </button>
+                    </Form>
+                ) : (
+                    <div className={styles.formSuccess}>
+                        <h2>Thank you for your submission!</h2>
+                    </div>
+                )
+            }
         </Formik>
     );
 };
