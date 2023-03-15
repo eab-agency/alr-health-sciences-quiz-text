@@ -58,21 +58,22 @@
 
             .close-modal {
                 position: absolute;
-                right: 1em;
-                top: 1em;
+                right: 1rem;
+                top: 1rem;
                 background: none;
-                text-indent: -999em;
+                text-indent: -999rem;
                 padding: 0;
                 border: none;
-                width: 1.5em;
-                height: 1.5em;
+                width: 1.5rem;
+                height: 1.5rem;
+                font-size: 1px;
                 transition: all 0.2s ease-in-out;
 
                 &::before {
                     content: '';
                     display: block;
-                    width: 1.5em;
-                    height: 0.25em;
+                    width: 1.5rem;
+                    height: 0.25rem;
                     background-color: tokens.$c-orange-500;
                     position: absolute;
                     transform: rotate(45deg);
@@ -81,8 +82,8 @@
                 &::after {
                     content: '';
                     display: block;
-                    width: 1.5em;
-                    height: 0.25em;
+                    width: 1.5rem;
+                    height: 0.25rem;
                     background-color: tokens.$c-orange-500;
                     position: absolute;
                     transform: rotate(-45deg);
