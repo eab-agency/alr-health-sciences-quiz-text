@@ -4,8 +4,8 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 // import 'react-tabs/style/react-tabs.css'
 // import styles from '@/styles/global/components/Tabs.module.scss';
 
-const TabComponent = ({ tabs }) => (
-    <Tabs>
+const TabComponent = ({ tabs, className }) => (
+    <Tabs className={className}>
         <TabList>
             {tabs.map((tab, index) => (
                 <Tab className={tab.icon} key={index}>

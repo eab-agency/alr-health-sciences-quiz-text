@@ -58,7 +58,7 @@ const ExecutivePage = () => {
                     <h1>{personalityData.title}</h1>
                     <p>{personalityData.detailedDescription}</p>
                 </section>
-                <Tabs tabs={personalityData.tabs} />
+                <Tabs className="react-tabs" tabs={personalityData.tabs} />
                 {!localQData && <CappexFormSection />}
                 <section className={styles['career-path']}>
                     <div className={styles['path-intro']}>
@@ -129,7 +129,10 @@ const ExecutivePage = () => {
                             especially for more senior management roles.
                         </p>
                     </div>
-                    <Tabs tabs={personalityData.degreeTabs} />
+                    <Tabs
+                        className="degree-tabs"
+                        tabs={personalityData.degreeTabs}
+                    />
                 </section>
                 <section className={styles.certificates}>
                     {/* <div className={styles.accordionHead}> */}

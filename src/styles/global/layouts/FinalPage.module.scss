@@ -116,6 +116,11 @@
 
         p {
             font-size: clamp(tokens.$fs-s, 2vw, tokens.$fs-m);
+            order: 1;
+
+            @media (min-width: tokens.$mq-900) {
+                order: 0;
+            }
         }
 
         ul {
@@ -173,9 +178,11 @@
         figure {
             flex-shrink: 0;
             width: 50%;
+            order: 0;
 
             @media (min-width: tokens.$mq-900) {
                 width: 40%;
+                order: auto;
             }
 
             img {

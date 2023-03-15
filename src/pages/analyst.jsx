@@ -58,7 +58,7 @@ const AnalystPage = () => {
                     <h1>{personalityData.title}</h1>
                     <p>{personalityData.detailedDescription}</p>
                 </section>
-                <Tabs tabs={personalityData.tabs} />
+                <Tabs className="react-tabs" tabs={personalityData.tabs} />
                 {!localQData && <CappexFormSection />}
                 <section className={styles['career-path']}>
                     <div className={styles['path-intro']}>
@@ -138,7 +138,7 @@ const AnalystPage = () => {
                     </div>
                     <Tabs
                         tabs={personalityData.degreeTabs}
-                        className="degreeTabs"
+                        className="degree-tabs"
                     />
                 </section>
                 <section className={styles.certificates}>
