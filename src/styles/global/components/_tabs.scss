@@ -326,3 +326,74 @@ div[class*='__tab-panel'] {
         }
     }
 }
+
+.degree-tabs {
+    ul[class*='tab-list'] {
+        display: flex;
+        flex-direction: row;
+
+        li {
+            width: auto;
+            border-top-color: transparent;
+            border-left-color: transparent;
+            border-bottom: transparent;
+            border-right-width: 1px;
+
+            @media (prefers-color-scheme: light) {
+                border-color: color.adjust(tokens.$c-blue-500, $lightness: 50%);
+                border-top-color: transparent;
+                border-left-color: transparent;
+                border-bottom: transparent;
+            }
+
+            &:last-child {
+                border-right: 0.5em solid transparent;
+            }
+
+            &[class*='-selected'] {
+                border: 0.5em solid tokens.$c-blue-500;
+                border-right-width: 0.5em;
+                border-bottom-width: 0;
+                pointer-events: none;
+
+                @media (prefers-color-scheme: light) {
+                    border-color: color.adjust(
+                        tokens.$c-blue-500,
+                        $lightness: 50%
+                    );
+                }
+
+                // @media (min-width: tokens.$mq-800) {
+                //     border-right-width: 0.5em;
+                //     border-bottom-width: 0;
+                // }
+
+                span {
+                    text-decoration: none;
+                }
+
+                &::before {
+                    color: tokens.$c-turquoise-500;
+
+                    @media (prefers-color-scheme: light) {
+                        color: tokens.$c-malva-500;
+                    }
+                }
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 130%;
+                    background: tokens.$c-blue-800;
+
+                    @media (prefers-color-scheme: light) {
+                        background: tokens.$c-gray-100;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -58,7 +58,7 @@ const EducatorPage = () => {
                     <h1>{personalityData.title}</h1>
                     <p>{personalityData.detailedDescription}</p>
                 </section>
-                <Tabs tabs={personalityData.tabs} />
+                <Tabs className="react-tabs" tabs={personalityData.tabs} />
                 {!localQData && <CappexFormSection />}
                 <section className={styles['career-path']}>
                     <div className={styles['path-intro']}>
@@ -74,7 +74,7 @@ const EducatorPage = () => {
                         </p>
                     </div>
                     <div className={styles['executive-path']}>
-                        <div>
+                        <div className={styles.pathwrapper}>
                             <p>
                                 A health education specialist’s duties differ
                                 based on where they work:
@@ -131,7 +131,7 @@ const EducatorPage = () => {
                             />
                             <figcaption>Professor</figcaption>
                         </figure>
-                        <div>
+                        <div className={styles.pathwrapper}>
                             <ul>
                                 <li>
                                     <strong>Community health workers</strong>{' '}
@@ -180,7 +180,7 @@ const EducatorPage = () => {
                     </div>
                     <Tabs
                         tabs={personalityData.degreeTabs}
-                        className="degreeTabs"
+                        className="degree-tabs"
                     />
                 </section>
                 <section className={styles.certificates}>
