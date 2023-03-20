@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import { GTM_ID, pageview } from '@/lib/gtm';
 import { useEffect } from 'react';
 import { ModalContainer } from 'reoverlay';
+import { Analytics } from '@vercel/analytics/react';
 import { ContextProvider } from '../context/context';
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
@@ -46,6 +47,7 @@ export default function App({ Component, pageProps }) {
                     )}
                 </ContextProvider>
             </SWRConfig>
+            <Analytics />
             <ModalContainer />
         </>
     );
