@@ -64,7 +64,7 @@ const EducatorPage = () => {
                     <div className={styles['path-intro']}>
                         <h2>
                             What's a common health care career path for The
-                            Executive?
+                            Educator?
                         </h2>
                         <p>
                             Occupations that align with The Educator’s career

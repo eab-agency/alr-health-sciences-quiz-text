@@ -55,7 +55,7 @@ const PractitionerPage = () => {
                     <div className={styles['path-intro']}>
                         <h2>
                             What's a common health care career path for The
-                            Executive?
+                            Practitioner?
                         </h2>
                         <p>
                             Occupations that align with The Practitioner’s
