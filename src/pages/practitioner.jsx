@@ -147,7 +147,7 @@ const PractitionerPage = () => {
                     <div className={styles['degrees-intro']}>
                         <h2>
                             What are the best health care degrees for The
-                            Executive?
+                            Practitioner?
                         </h2>
                         <p>
                             For many roles in The Practitioner’s career path, a

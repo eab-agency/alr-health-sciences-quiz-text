@@ -167,7 +167,7 @@ const EducatorPage = () => {
                     <div className={styles['degrees-intro']}>
                         <h2>
                             What are the best health care degrees for The
-                            Executive?
+                            Educator?
                         </h2>
                         <p>
                             The type of degree needed for various careers in The
