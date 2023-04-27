@@ -22,7 +22,7 @@ function ContextProvider({ children }) {
     useEffect(() => {
         const getData = setTimeout(() => {
             axios.get(apiURL).then((response) => {
-                setLocation(response.data);
+                setLocation({ region_iso_code: response.data.region_iso_code });
             });
         }, 2000);
 
