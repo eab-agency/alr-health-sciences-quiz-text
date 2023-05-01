@@ -110,7 +110,6 @@
 .quizSection{
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: clamp(tokens.$baseUnit * 2, 5vw, tokens.$baseUnit * 4);
     width: 100%;
     max-width: tokens.$maxWidth;
@@ -134,6 +133,7 @@
 
     @media(min-width: tokens.$mq-900){
         flex-direction: row;
+        align-items: center;
     }
 
     & > div{
@@ -142,7 +142,7 @@
     }
 
     figure{
-        width: 100%;
+        width: 50%;
         // max-width: 30rem;
         position: relative;
         z-index: tokens.$layer-2;
@@ -220,7 +220,7 @@
     .whyChooseContent{
         display: flex;
         flex-direction: column;
-        align-items: center;
+        
         gap: clamp(tokens.$baseUnit * 2, 5vw, tokens.$baseUnit * 4);
         width: 100%;
         max-width: tokens.$maxWidth;
@@ -230,18 +230,21 @@
 
         @media(min-width: tokens.$mq-900){
             flex-direction: row;
+            align-items: center;
         }
 
         figure{
-            width: 100%;
-            // max-width: 30rem;
+            width: 50%;
+            height: clamp(12rem, 20vw, 20rem);
             position: relative;
             z-index: tokens.$layer-2;
             flex: 1 0 auto;
+            order: 0;
 
             @media (min-width: tokens.$mq-900){
                 width: clamp(20rem, 30vw, 30rem);
                 height: clamp(20rem, 40vw, 40rem);
+                order: 1;
             }
 
             img{
@@ -253,6 +256,7 @@
 
         ul{
             list-style: none;
+            order: 1;
 
             li{
                 margin-bottom: 3em;
