@@ -77,42 +77,12 @@ const SeoPage = () => {
 
                                     <div className={styles.intro}>
                                         <h2>{data.quizSection.title}</h2>
-                                        <p>
-                                            If you want to work in the medical
-                                            field but you don’t know which job
-                                            fits your skills and interests, this
-                                            free quiz can help find a good fit
-                                            and you plan your next steps.
-                                        </p>
-
-                                        <p>
-                                            The Bureau of Labor Statistics
-                                            predicts about{' '}
-                                            <strong>
-                                                2 million jobs in health care
-                                                will be created each year over
-                                                the next decade.
-                                            </strong>{' '}
-                                            Many colleges and universities offer
-                                            flexible, affordable degrees or
-                                            certificates that can help you get a
-                                            head start in transferring your
-                                            skills to a new or more advanced
-                                            role.
-                                        </p>
-
-                                        <p>
-                                            In less than three minutes, you
-                                            could{' '}
-                                            <strong>
-                                                discover which type of health
-                                                care career could be a good fit
-                                                for you.
-                                            </strong>{' '}
-                                            We’ll also connect you with schools
-                                            near you that
-                                        </p>
-
+                                        <p
+                                            dangerouslySetInnerHTML={{
+                                                __html: data.quizSection
+                                                    .content,
+                                            }}
+                                        />
                                         <Button
                                             type="primary"
                                             label={data.quizSection.buttonText}
@@ -171,26 +141,16 @@ const SeoPage = () => {
                                 </section>
                                 <section className={styles.contactForm}>
                                     <div className={styles.intro}>
-                                        <h2>Want More from Cappex?</h2>
-                                        <p>
-                                            Let us know the best way to contact
-                                            you with helpful information and
-                                            potential college or university
-                                            matches.
-                                        </p>
+                                        <h2>{data.contactForm.title}</h2>
+                                        <p>{data.contactForm.description}</p>
                                     </div>
                                 </section>
                                 <section className={styles.takeQuiz}>
-                                    <h2>Ready to Find Your Role?</h2>
-                                    <p>
-                                        In less than three minutes, you could
-                                        discover which role could be a good fit
-                                        for you — and the steps you can take to
-                                        advance your career.
-                                    </p>
+                                    <h2>{data.takeQuiz.title}</h2>
+                                    <p>{data.takeQuiz.description}</p>
                                     <Button
                                         type="primary"
-                                        label={data.quizSection.buttonText}
+                                        label={data.takeQuiz.buttonText}
                                         href="/quiz"
                                         className={styles.button}
                                     />
