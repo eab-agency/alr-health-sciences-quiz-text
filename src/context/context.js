@@ -11,9 +11,7 @@ const UserLocationContext = createContext(null);
 function ContextProvider({ children }) {
     const { data: schools, error } = useRequest('/quiz/schools');
 
-    // eslint-disable-next-line no-unused-vars
-    const [loading, setLoading] = useState(false);
-    const [matchedSchool, setMatchedSchool] = useState(null);
+    const [matchedSchools, setMatchedSchools] = useState(null);
 
     const apiURL = `https://ipgeolocation.abstractapi.com/v1/?api_key=${process.env.NEXT_PUBLIC_ABSTRACT_API_KEY}`;
 
@@ -37,18 +35,18 @@ function ContextProvider({ children }) {
                 schools
             );
             // grab first school from schools and set matchedSchool
-            setMatchedSchool(matchedSchoolInternal);
+            setMatchedSchools(matchedSchoolInternal);
         }
     }, [schools, location]);
 
-    // set matchedSchool to first school in schools
-    useEffect(() => {
-        if (schools) setMatchedSchool(schools[0]);
-    }, [schools]);
+    // // set matchedSchool to first school in schools
+    // useEffect(() => {
+    //     if (schools) setMatchedSchools(schools[0]);
+    // }, [schools]);
 
     const valueUser = useMemo(
-        () => ({ matchedSchool, setMatchedSchool }),
-        [matchedSchool, setMatchedSchool]
+        () => ({ matchedSchools, setMatchedSchools }),
+        [matchedSchools, setMatchedSchools]
     );
 
     return (

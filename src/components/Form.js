@@ -201,7 +201,13 @@ const AcquiaFormHandle = ({ redirectTo, answers = {}, user = {}, id }) => {
                 ...newFormValues,
             }));
         }
-    }, [theFields]);
+    }, [
+        answers.answers,
+        answers.highestScorePersonality,
+        localQData,
+        theFields,
+        user,
+    ]);
 
     if (error) return <p>Error loading form.</p>;
     if (!acsForm) return <p className="loading">Loading...</p>;

@@ -562,6 +562,11 @@
             "link": "https://www.unthsc.edu/academics/",
             "linkText": "Learn About Health Sciences at UNT",
             "imageURL": "/images/university-north-texas.jpg",
+            "logoUrl": "/images/university-north-texas_logo.jpg",
+            "schoolMeta": {
+                "city": "Fort Worth",
+                "state": "TX"
+            },
             "associatedStates": [
                 "TX",
                 "OK",
@@ -571,7 +576,14 @@
                 "Oklahoma",
                 "Louisiana",
                 "Arkansas"
-            ]
+            ],
+            "formLinkTo": {
+                "master": "https://hsc.unt.edu/admissions/apply-now",
+                "bachelor": "https://hsc.unt.edu/admissions/apply-now",
+                "associate": "https://hsc.unt.edu/admissions/apply-now",
+                "certificate": "https://hsc.unt.edu/admissions/apply-now",
+                "doctorate": "https://hsc.unt.edu/admissions/apply-now"
+            }
         },
         {
             "title": "Fairleigh Dickinson",
@@ -580,6 +592,11 @@
             "link": "https://www.fdu.edu/academics/programs/?fwp_program_topic=health-sciences",
             "linkText": "Explore Programs at Fairleigh Dickinson",
             "imageURL": "/images/fairleigh-dickinson-university.jpg",
+            "logoUrl": "/images/university-north-texas_logo.jpg",
+            "schoolMeta": {
+                "city": "Madison & Teaneck",
+                "state": "NJ"
+            },
             "associatedStates": [
                 "NY",
                 "NJ",
@@ -597,7 +614,14 @@
                 "Massachusetts",
                 "Maryland",
                 "Delaware"
-            ]
+            ],
+            "formLinkTo": {
+                "master": "https://hsc.unt.edu/admissions/apply-now",
+                "bachelor": "https://hsc.unt.edu/admissions/apply-now",
+                "associate": "https://hsc.unt.edu/admissions/apply-now",
+                "certificate": "https://hsc.unt.edu/admissions/apply-now",
+                "doctorate": "https://hsc.unt.edu/admissions/apply-now"
+            }
         },
         {
             "title": "San Diego State University",
@@ -606,6 +630,11 @@
             "link": "https://chhs.sdsu.edu/",
             "linkText": "Learn About Health and Human Services at SDSU",
             "imageURL": "/images/san-diego-university.jpg",
+            "logoUrl": "/images/university-north-texas_logo.jpg",
+            "schoolMeta": {
+                "city": "San Diego",
+                "state": "CA"
+            },
             "associatedStates": [
                 "CA",
                 "AZ",
@@ -613,7 +642,14 @@
                 "California",
                 "Arizona",
                 "Nevada"
-            ]
+            ],
+            "formLinkTo": {
+                "master": "https://hsc.unt.edu/admissions/apply-now",
+                "bachelor": "https://hsc.unt.edu/admissions/apply-now",
+                "associate": "https://hsc.unt.edu/admissions/apply-now",
+                "certificate": "https://hsc.unt.edu/admissions/apply-now",
+                "doctorate": "https://hsc.unt.edu/admissions/apply-now"
+            }
         },
         {
             "title": "University of Saint Francis",
@@ -622,6 +658,11 @@
             "link": "https://majors.sf.edu/",
             "linkText": "Explore Programs at USF",
             "imageURL": "/images/u-of-saint-francis.jpg",
+            "logoUrl": "/images/university-north-texas_logo.jpg",
+            "schoolMeta": {
+                "city": "Fort Wayne",
+                "state": "IN"
+            },
             "associatedStates": [
                 "IL",
                 "IN",
@@ -633,7 +674,14 @@
                 "Wisconsin",
                 "Iowa",
                 "Michigan"
-            ]
+            ],
+            "formLinkTo": {
+                "master": "https://hsc.unt.edu/admissions/apply-now",
+                "bachelor": "https://hsc.unt.edu/admissions/apply-now",
+                "associate": "https://hsc.unt.edu/admissions/apply-now",
+                "certificate": "https://hsc.unt.edu/admissions/apply-now",
+                "doctorate": "https://hsc.unt.edu/admissions/apply-now"
+            }
         }
     ],
     "score": {
