@@ -8,6 +8,7 @@ import { useUser } from '@/context/context';
 import UniversityMatch from '@/components/UniversityMatch';
 import { useRequest } from '@/hooks/useRequest';
 import styles from '@/styles/global/layouts/FinalPage.module.scss';
+import SchoolCarousel from '@/components/SchoolCarousel';
 
 import { BiLinkExternal } from 'react-icons/bi';
 import Stats from '@/components/Stats';
@@ -18,7 +19,7 @@ import { useLocalStorage } from '@/hooks/useLocalStorage';
 
 const PractitionerPage = () => {
     const { data: results, error: resultsError } = useRequest('/quiz/results');
-    const { matchedSchool } = useUser();
+    const { matchedSchools } = useUser();
     const [localQData] = useLocalStorage('eab-quiz-data');
     const router = useRouter();
     const currentRoute = router.pathname.replace('/', '');
@@ -214,9 +215,9 @@ const PractitionerPage = () => {
                         </a>
                     </div>
                 </section>
-                {matchedSchool && (
+                {matchedSchools && (
                     <section className={styles['matched-school']}>
-                        <UniversityMatch school={matchedSchool} />
+                        <SchoolCarousel schools={matchedSchools} />
                     </section>
                 )}
             </div>

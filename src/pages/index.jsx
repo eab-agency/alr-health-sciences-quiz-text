@@ -35,7 +35,7 @@ export default function LandingPage() {
         if (utmSource) {
             setLocalQData({ ...localQData, utmSource });
         }
-    }, [utmSource]);
+    }, [localQData, setLocalQData, utmSource]);
 
     return (
         <>
