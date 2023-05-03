@@ -16,7 +16,7 @@ import styles from '@/styles/global/layouts/FinalPage.module.scss';
 import Accordion from '@/components/Accordion';
 import CappexFormSection from '@/components/CappexFormSection';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
-import SchoolCarousel from '@/components/SchoolCarousel';
+import CarouselWithForm from '@/components/CarouselWithForm';
 
 const AnalystPage = () => {
     const { data: results, error: resultsError } = useRequest('/quiz/results');
@@ -193,13 +193,10 @@ const AnalystPage = () => {
                         </a>
                     </div>
                 </section>
-                {matchedSchools && (
-                    <section className={styles['matched-school']}>
-                        <h2>Top Schools for The Scientist</h2>
-
-                        <SchoolCarousel schools={matchedSchools} />
-                    </section>
-                )}
+                <section className={styles['matched-schools']}>
+                    <h2>Matched Schools</h2>
+                    <CarouselWithForm />
+                </section>
             </div>
         </div>
     );

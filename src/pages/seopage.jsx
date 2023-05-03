@@ -6,9 +6,7 @@ import Image from 'next/image';
 // import SeoPageLayout from '@/components/SeoPageLayout';
 // import Tabs from '@/components/Tabs';
 import Stats from '@/components/Stats';
-import Link from 'next/link';
 import CarouselWithForm from '@/components/CarouselWithForm';
-import { useUser } from '@/context/context';
 
 import styles from '@/styles/global/layouts/SeoPage.module.scss';
 import Button from '@/components/Button';
@@ -49,7 +47,6 @@ const SeoPage = () => {
                     <div className="page-layout__content">
                         <div className={styles.container}>
                             <div className={styles.content}>
-                                <CarouselWithForm />
                                 <section className={styles.pageHero}>
                                     <h1
                                         dangerouslySetInnerHTML={{
@@ -154,6 +151,10 @@ const SeoPage = () => {
                                         href="/quiz"
                                         className={styles.button}
                                     />
+                                </section>
+                                <section className={styles['matched-schools']}>
+                                    <h2>Matched Schools</h2>
+                                    <CarouselWithForm />
                                 </section>
                             </div>
                         </div>
