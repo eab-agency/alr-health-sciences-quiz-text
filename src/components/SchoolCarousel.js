@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import Button from './Button';
 
 const responsive = {
     superLargeDesktop: {
@@ -26,10 +27,6 @@ const SchoolCarousel = ({ schools }) => (
     <Carousel responsive={responsive}>
         {schools.map((school) => (
             <>
-                <h4 key={school.title}>{school.title}</h4>
-                <p>
-                    {school.schoolMeta.city}, {school.schoolMeta.state}
-                </p>
                 <Image
                     src={school.imageURL}
                     width="200"
@@ -37,7 +34,12 @@ const SchoolCarousel = ({ schools }) => (
                     alt={school.title}
                 />
                 <Image src={school.logoUrl} width="100" height="100" />
+                <h4 key={school.title}>{school.title}</h4>
+                <p>
+                    {school.schoolMeta.city}, {school.schoolMeta.state}
+                </p>
                 <p>{school.description}</p>
+                <Button label={school.buttonText} type="primary" href="" />
             </>
         ))}
     </Carousel>
