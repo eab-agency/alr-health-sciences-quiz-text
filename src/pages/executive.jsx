@@ -205,7 +205,7 @@ const ExecutivePage = () => {
                     </div>
                 </section>
                 {matchedSchools && (
-                    <section className={styles['matched-school']}>
+                    <section className={styles.carouselContainer}>
                         <SchoolCarousel schools={matchedSchools} />
                     </section>
                 )}
