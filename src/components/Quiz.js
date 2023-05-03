@@ -103,24 +103,6 @@ function Quiz({ user }) {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [localQData.currentQuestion, localQData.questionLength]);
 
-    const handleRetakeQuiz = () => {
-        // reset state
-        setLocalQData({
-            ...localQData,
-            answers: [],
-            currentQuestion: 0,
-            score: {
-                executive: 0,
-                practitioner: 0,
-                educator: 0,
-                scientist: 0,
-                analyst: 0,
-                initial: 0,
-            },
-            highestScorePersonality: null,
-            isFinished: false,
-        });
-    };
     if (questionError) return <p>Error loading questions.</p>;
     if (!questions) return <p className="loading">Loading...</p>;
 
@@ -141,7 +123,7 @@ function Quiz({ user }) {
                         answers={finalResults}
                         user={user}
                     >
-                        <ResetQuizButton onClick={handleRetakeQuiz} />
+                        <ResetQuizButton />
                     </Results>
                 </div>
             </div>
