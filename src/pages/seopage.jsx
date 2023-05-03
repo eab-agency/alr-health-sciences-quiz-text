@@ -44,7 +44,7 @@ const SeoPage = () => {
 
     return (
         <>
-            <div className="page-layout">
+            <div className={styles.pageLayout}>
                 <PageHeader pageType="seoPage" />
                 <main className="page-layout__container">
                     <div className="page-layout__content">
