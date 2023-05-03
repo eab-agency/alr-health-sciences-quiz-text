@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-nested-ternary */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // import Score from '@/components/Score';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import Image from 'next/image';
@@ -9,11 +9,15 @@ import { useRequest } from '@/hooks/useRequest';
 import Question from './Question';
 import ResetQuizButton from './ResetQuizButton';
 import Results from './Results';
+import Score from './Score';
 
 function Quiz({ user }) {
     const { data: results, error: resultError } = useRequest('/quiz/results');
     const { data: questions, error: questionError } =
         useRequest('/quiz/questions');
+    // console.log('🚀 ~ file: Quiz.js:16 ~ Quiz ~ questions:', questions.length);
+
+    const [scopedQuestions, setScopedQuestions] = useState(null);
 
     const [personalityData, setPersonalityData] = useState('executive');
 
@@ -28,6 +32,8 @@ function Quiz({ user }) {
             analyst: 0,
             initial: 0,
         },
+        isFinished: false,
+        questionLength: 0,
         highestScorePersonality: null,
         utmSource: '',
     });
@@ -60,6 +66,8 @@ function Quiz({ user }) {
         if (updatedScore[highestScorePersonality] === 0) {
             highestScorePersonality = ''; // If all scores are 0, return an empty string as the highest score personality
         }
+        const isFinished = localQData.currentQuestion === questions.length - 1;
+        // if currentQuestion is equal to the question.length, then set finished to true
 
         setLocalQData({
             ...localQData,
@@ -69,12 +77,13 @@ function Quiz({ user }) {
             ],
             score: updatedScore,
             currentQuestion: localQData.currentQuestion + 1,
+            questionLength: questions.length - 1,
             highestScorePersonality,
         });
     };
 
     // if highestScorePersonality is changes, then set the personalityData
-    React.useEffect(() => {
+    useEffect(() => {
         if (results) {
             const personalityDataInternal = results.find(
                 (result) =>
@@ -85,28 +94,21 @@ function Quiz({ user }) {
         }
     }, [localQData.highestScorePersonality, results]);
 
-    const handleRetakeQuiz = () => {
-        // reset state
-        setLocalQData({
-            ...localQData,
-            answers: [],
-            currentQuestion: 0,
-            score: {
-                executive: 0,
-                practitioner: 0,
-                educator: 0,
-                scientist: 0,
-                analyst: 0,
-                initial: 0,
-            },
-            highestScorePersonality: null,
-        });
-    };
+    useEffect(() => {
+        console.log('localQData updated', localQData);
+        // if localQData.currentQuesion is greater than localQData.questionLength, then set isFinished to true
+        if (localQData.currentQuestion > localQData.questionLength) {
+            setLocalQData({ ...localQData, isFinished: true });
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [localQData.currentQuestion, localQData.questionLength]);
+
     if (questionError) return <p>Error loading questions.</p>;
     if (!questions) return <p className="loading">Loading...</p>;
 
     // if we are at the end of the quiz, show the results page and pass the score and personality
-    if (localQData.currentQuestion === questions?.length) {
+    if (localQData.isFinished) {
+        // setLocalQData({ ...localQData, isFinished: true });
         const finalResults = {
             answers: localQData.answers,
             highestScorePersonality: localQData.highestScorePersonality,
@@ -121,7 +123,7 @@ function Quiz({ user }) {
                         answers={finalResults}
                         user={user}
                     >
-                        <ResetQuizButton onClick={handleRetakeQuiz} />
+                        <ResetQuizButton />
                     </Results>
                 </div>
             </div>
@@ -159,11 +161,10 @@ function Quiz({ user }) {
         <div className={styles['container-quiz']}>
             <div className={styles.content}>
                 {/* NOTE: This score components was just for testing purposes?? */}
-                {/* } <Score
+                {/* <Score
                     score={localQData.score}
                     winningPersonality={localQData.highestScorePersonality}
-                />{' '}
-                */}
+                /> */}
                 <span className="intro-title">
                     Define Your Future in Health Care
                 </span>

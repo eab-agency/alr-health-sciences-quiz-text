@@ -211,6 +211,52 @@
                     "weight": 1
                 }
             ]
+        },
+        {
+            "question": "We're curious how accurate your results are!<br /><strong>Which of these areas would most appeal to you?</strong>",
+            "associatedField": "quizresponse7",
+            "answers": [
+                {
+                    "answer": "Diagnostic Services",
+                    "personality": "analyst",
+                    "weight": 0
+                },
+                {
+                    "answer": "Health Services Management",
+                    "personality": "executive",
+                    "weight": 0
+                },
+                {
+                    "answer": "Public Health",
+                    "personality": "educator",
+                    "weight": 0
+                },
+                {
+                    "answer": "Nursing",
+                    "personality": "analyst",
+                    "weight": 0
+                },
+                {
+                    "answer": "Information Technology",
+                    "personality": "analyst",
+                    "weight": 0
+                },
+                {
+                    "answer": "Mental or Social Health",
+                    "personality": "analyst",
+                    "weight": 0
+                },
+                 {
+                     "answer": "Clinical Care",
+                     "personality": "analyst",
+                     "weight": 0
+                 },
+                   {
+                       "answer": "Research",
+                       "personality": "analyst",
+                       "weight": 0
+                   }
+            ]
         }
     ],
     "results": [
