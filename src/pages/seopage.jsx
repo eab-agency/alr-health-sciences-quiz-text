@@ -7,6 +7,8 @@ import Image from 'next/image';
 // import Tabs from '@/components/Tabs';
 import Stats from '@/components/Stats';
 import Link from 'next/link';
+import SchoolCarousel from '@/components/SchoolCarousel';
+import { useUser } from '@/context/context';
 
 import styles from '@/styles/global/layouts/SeoPage.module.scss';
 import Button from '@/components/Button';
@@ -16,8 +18,7 @@ import data from '../data/seopage.json';
 
 /* eslint-disable react/no-danger */
 const SeoPage = () => {
-    const router = useRouter();
-    const currentRoute = router.pathname.replace('/', '');
+    const { matchedSchools } = useUser();
 
     const reasonsArray = data.whyChoose[1].reasons;
     const reasonsList = reasonsArray.map((reason) => (
@@ -32,8 +33,8 @@ const SeoPage = () => {
     ));
 
     const rightCareerArray = data.rightCareer[0].reasons;
-    const rightCareerList = rightCareerArray.map((reason) => (
-        <li>
+    const rightCareerList = rightCareerArray.map((reason, index) => (
+        <li key={index}>
             <p
                 dangerouslySetInnerHTML={{
                     __html: reason.description,
@@ -77,7 +78,7 @@ const SeoPage = () => {
 
                                     <div className={styles.intro}>
                                         <h2>{data.quizSection.title}</h2>
-                                        <p
+                                        <div
                                             dangerouslySetInnerHTML={{
                                                 __html: data.quizSection
                                                     .content,
@@ -155,6 +156,15 @@ const SeoPage = () => {
                                         className={styles.button}
                                     />
                                 </section>
+                                {matchedSchools && (
+                                    <section
+                                        className={styles['matched-school']}
+                                    >
+                                        <SchoolCarousel
+                                            schools={matchedSchools}
+                                        />
+                                    </section>
+                                )}
                             </div>
                         </div>
                     </div>
