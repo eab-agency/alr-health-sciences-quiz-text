@@ -38,6 +38,8 @@ const ExecutivePage = () => {
         }
     }, [results, currentRoute]);
 
+    console.log(personalityData);
+
     const handleStateChange = (value) => {
         const matchedSchoolInternal = getMatchedSchool(value, schools);
         setMatchedSchools(matchedSchoolInternal);
