@@ -3,10 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 
-// import SeoPageLayout from '@/components/SeoPageLayout';
-// import Tabs from '@/components/Tabs';
 import Stats from '@/components/Stats';
-import Link from 'next/link';
 
 import styles from '@/styles/global/layouts/SeoPage.module.scss';
 import Button from '@/components/Button';
