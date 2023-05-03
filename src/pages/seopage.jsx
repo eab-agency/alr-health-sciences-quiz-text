@@ -7,7 +7,7 @@ import Image from 'next/image';
 // import Tabs from '@/components/Tabs';
 import Stats from '@/components/Stats';
 import Link from 'next/link';
-import SchoolCarousel from '@/components/SchoolCarousel';
+import CarouselWithForm from '@/components/CarouselWithForm';
 import { useUser } from '@/context/context';
 
 import styles from '@/styles/global/layouts/SeoPage.module.scss';
@@ -18,11 +18,9 @@ import data from '../data/seopage.json';
 
 /* eslint-disable react/no-danger */
 const SeoPage = () => {
-    const { matchedSchools } = useUser();
-
     const reasonsArray = data.whyChoose[1].reasons;
-    const reasonsList = reasonsArray.map((reason) => (
-        <li>
+    const reasonsList = reasonsArray.map((reason, index) => (
+        <li key={index}>
             <h3>{reason.title}</h3>
             <p
                 dangerouslySetInnerHTML={{
@@ -51,6 +49,7 @@ const SeoPage = () => {
                     <div className="page-layout__content">
                         <div className={styles.container}>
                             <div className={styles.content}>
+                                <CarouselWithForm />
                                 <section className={styles.pageHero}>
                                     <h1
                                         dangerouslySetInnerHTML={{
@@ -156,15 +155,6 @@ const SeoPage = () => {
                                         className={styles.button}
                                     />
                                 </section>
-                                {matchedSchools && (
-                                    <section
-                                        className={styles['matched-school']}
-                                    >
-                                        <SchoolCarousel
-                                            schools={matchedSchools}
-                                        />
-                                    </section>
-                                )}
                             </div>
                         </div>
                     </div>
