@@ -22,24 +22,41 @@ const responsive = {
     },
 };
 
-const SchoolCarousel = ({ schools }) => (
-    <Carousel responsive={responsive}>
-        {schools.map((school) => (
-            <>
-                <h4 key={school.title}>{school.title}</h4>
-                <p>
-                    {school.schoolMeta.city}, {school.schoolMeta.state}
-                </p>
-                <Image
-                    src={school.imageURL}
-                    width="200"
-                    height="100"
-                    alt={school.title}
-                />
-                <Image src={school.logoUrl} width="100" height="100" />
-                <p>{school.description}</p>
-            </>
-        ))}
-    </Carousel>
-);
+const SchoolCarousel = ({ schools, handleClick }) => {
+    const handleButtonClick = () => {
+        handleClick();
+    };
+
+    // if schools is empty, return null
+    if (!schools) return null;
+
+    return (
+        <Carousel responsive={responsive}>
+            {schools.map((school) => (
+                <div key={school.title}>
+                    <Image
+                        src={school.imageURL}
+                        width="200"
+                        height="109"
+                        alt={school.title}
+                    />
+                    <Image
+                        src={school.logoUrl}
+                        width="100"
+                        height="100"
+                        alt={`${school.title} logo`}
+                    />
+                    <h4 key={school.title}>{school.title}</h4>
+                    <p>
+                        {school.schoolMeta.city}, {school.schoolMeta.state}
+                    </p>
+                    <p>{school.description}</p>
+                    <button type="button" onClick={() => handleButtonClick()}>
+                        {school.buttonText}
+                    </button>
+                </div>
+            ))}
+        </Carousel>
+    );
+};
 export default SchoolCarousel;

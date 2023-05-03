@@ -609,6 +609,7 @@
             "linkText": "Learn About Health Sciences at UNT",
             "imageURL": "/images/university-north-texas.jpg",
             "logoUrl": "/images/university-north-texas_logo.jpg",
+            "buttonText": "Go to unthsc.edu",
             "schoolMeta": {
                 "city": "Fort Worth",
                 "state": "TX"
@@ -639,6 +640,7 @@
             "linkText": "Explore Programs at Fairleigh Dickinson",
             "imageURL": "/images/fairleigh-dickinson-university.jpg",
             "logoUrl": "/images/university-north-texas_logo.jpg",
+            "buttonText": "Go to unthsc.edu",
             "schoolMeta": {
                 "city": "Madison & Teaneck",
                 "state": "NJ"
@@ -677,6 +679,7 @@
             "linkText": "Learn About Health and Human Services at SDSU",
             "imageURL": "/images/san-diego-university.jpg",
             "logoUrl": "/images/university-north-texas_logo.jpg",
+            "buttonText": "Go to unthsc.edu",
             "schoolMeta": {
                 "city": "San Diego",
                 "state": "CA"
@@ -705,6 +708,7 @@
             "linkText": "Explore Programs at USF",
             "imageURL": "/images/u-of-saint-francis.jpg",
             "logoUrl": "/images/university-north-texas_logo.jpg",
+            "buttonText": "Go to unthsc.edu",
             "schoolMeta": {
                 "city": "Fort Wayne",
                 "state": "IN"

@@ -10,12 +10,12 @@ import Stats from '@/components/Stats';
 import { useUser } from '@/context/context';
 import { useRequest } from '@/hooks/useRequest';
 import { BiLinkExternal } from 'react-icons/bi';
-import SchoolCarousel from '@/components/SchoolCarousel';
 
 import styles from '@/styles/global/layouts/FinalPage.module.scss';
 import Accordion from '@/components/Accordion';
 import CappexFormSection from '@/components/CappexFormSection';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
+import CarouselWithForm from '@/components/CarouselWithForm';
 
 const ExecutivePage = () => {
     const { data: results, error: resultsError } = useRequest('/quiz/results');
@@ -204,11 +204,10 @@ const ExecutivePage = () => {
                         </a>
                     </div>
                 </section>
-                {matchedSchools && (
-                    <section className={styles['matched-school']}>
-                        <SchoolCarousel schools={matchedSchools} />
-                    </section>
-                )}
+                <section className={styles['matched-schools']}>
+                    <h2>Matched Schools</h2>
+                    <CarouselWithForm />
+                </section>
             </div>
         </div>
     );
