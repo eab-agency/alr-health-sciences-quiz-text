@@ -6,6 +6,8 @@
     max-width: tokens.$maxWidth;
     margin: 0 auto;
     padding-block: clamp(tokens.$baseUnit, 5vw, tokens.$baseUnit * 2);
+    position: relative;
+    z-index: tokens.$layer-10;
 }
 
 .page-header-results {

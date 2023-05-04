@@ -3,8 +3,6 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 
-// import SeoPageLayout from '@/components/SeoPageLayout';
-// import Tabs from '@/components/Tabs';
 import Stats from '@/components/Stats';
 import CarouselWithForm from '@/components/CarouselWithForm';
 
@@ -41,7 +39,7 @@ const SeoPage = () => {
 
     return (
         <>
-            <div className="page-layout">
+            <div className={styles.pageLayout}>
                 <PageHeader pageType="seoPage" />
                 <main className="page-layout__container">
                     <div className="page-layout__content">

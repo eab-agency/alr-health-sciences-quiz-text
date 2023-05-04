@@ -178,10 +178,7 @@ const ScientistPage = () => {
                     </div>
                 </section>
 
-                <section className={styles['matched-schools']}>
-                    <h2>Matched Schools</h2>
-                    <CarouselWithForm />
-                </section>
+                <CarouselWithForm />
             </div>
         </div>
     );
