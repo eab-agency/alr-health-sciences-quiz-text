@@ -204,12 +204,7 @@ const ExecutivePage = () => {
                         </a>
                     </div>
                 </section>
-                <section className={styles.matchedSchools}>
-                    <div className={styles.intro}>
-                        <h2>Matched Schools</h2>
-                    </div>
-                    <CarouselWithForm />
-                </section>
+                <CarouselWithForm />
             </div>
         </div>
     );

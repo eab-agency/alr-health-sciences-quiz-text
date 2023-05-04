@@ -8,6 +8,7 @@
   position: relative;
   width: 100%;
   padding-bottom: 4em;
+  z-index: tokens.$layer-1;
 }
 .react-multi-carousel-track {
   list-style: none;
@@ -34,7 +35,6 @@
   cursor: pointer;
 }
 .react-multiple-carousel__arrow:hover {
-  // background: yellowgreen;
   background: tokens.$c-turquoise-500;
 }
 .react-multiple-carousel__arrow::before {
@@ -195,20 +195,20 @@
   }
 }
 
-[dir='rtl'].react-multi-carousel-list {
-  direction: rtl;
-}
-.rtl.react-multiple-carousel__arrow--right {
-  right: auto;
-  left: calc(4% + 1px);
-}
-.rtl.react-multiple-carousel__arrow--right::before {
-  content: "\e824";
-}
-.rtl.react-multiple-carousel__arrow--left {
-  left: auto;
-  right: calc(4% + 1px);
-}
-.rtl.react-multiple-carousel__arrow--left::before {
-  content: "\e825";
-}
+// [dir='rtl'].react-multi-carousel-list {
+//   direction: rtl;
+// }
+// .rtl.react-multiple-carousel__arrow--right {
+//   right: auto;
+//   left: calc(4% + 1px);
+// }
+// .rtl.react-multiple-carousel__arrow--right::before {
+//   content: "\e824";
+// }
+// .rtl.react-multiple-carousel__arrow--left {
+//   left: auto;
+//   right: calc(4% + 1px);
+// }
+// .rtl.react-multiple-carousel__arrow--left::before {
+//   content: "\e825";
+// }
