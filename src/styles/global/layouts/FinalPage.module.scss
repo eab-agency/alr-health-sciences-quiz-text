@@ -369,18 +369,42 @@
     }
 }
 
-.matched-school {
+.matchedSchools {
     display: block;
     position: relative;
     width: 100%;
+    max-width: tokens.$mq-1200;
+    margin: 0 auto;
+    min-height: 35rem;
+    padding-block: clamp(tokens.$baseUnit * 2, 5vw, tokens.$baseUnit * 3);
 
-    .stateSelect {
+    .intro{
+        position: relative;
+    z-index: tokens.$layer-2;
+
+    h2{
+        position: relative;
+        padding-bottom: 0.5em;
+        margin-bottom: tokens.$baseUnit * 2;
+
+        &::after {
+            content: '';
+            display: block;
+            width: 100vw;
+            height: 1px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background: tokens.$c-blue-300;
+            z-index: tokens.$layer-2;
+        }
+    }
     }
 }
 
-.carouselContainer{
-    display: block;
-    width: 100%;
+// .carouselContainer{
+//     display: block;
+//     width: 100%;
     
-    background: red;
-}
+//     background: red;
+// }

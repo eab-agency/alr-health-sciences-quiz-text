@@ -1,27 +1,27 @@
 import Image from 'next/image';
 /* eslint-disable */
 import Carousel from 'react-multi-carousel';
-import styles from '@/styles/global/components/SchoolCarousel.module.scss';
-// import 'react-multi-carousel/lib/styles.css';
 /* eslint-enable */
+import { MdChevronRight } from 'react-icons/md';
 
 const responsive = {
     superLargeDesktop: {
-        // the naming can be any, depends on you.
-        breakpoint: { max: 4000, min: 3000 },
-        items: 5,
+        breakpoint: { max: 4000, min: 1800 },
+        items: 4,
     },
     desktop: {
-        breakpoint: { max: 3000, min: 1024 },
+        breakpoint: { max: 1800, min: 1024 },
         items: 3,
     },
     tablet: {
         breakpoint: { max: 1024, min: 464 },
         items: 2,
+        partialVisibilityGutter: 40,
     },
     mobile: {
         breakpoint: { max: 464, min: 0 },
         items: 1,
+        partialVisibilityGutter: 40,
     },
 };
 
@@ -34,29 +34,44 @@ const SchoolCarousel = ({ schools, handleClick }) => {
     if (!schools) return null;
 
     return (
-        <Carousel responsive={responsive}>
+        <Carousel responsive={responsive} showDots infinite>
             {schools.map((school) => (
-                <div key={school.title}>
-                    <Image
-                        src={school.imageURL}
-                        width="200"
-                        height="109"
-                        alt={school.title}
-                    />
-                    <Image
-                        src={school.logoUrl}
-                        width="100"
-                        height="100"
-                        alt={`${school.title} logo`}
-                    />
-                    <h4 key={school.title}>{school.title}</h4>
-                    <p>
-                        {school.schoolMeta.city}, {school.schoolMeta.state}
-                    </p>
-                    <p>{school.description}</p>
-                    <button type="button" onClick={() => handleButtonClick()}>
-                        {school.buttonText}
-                    </button>
+                <div className="item-content" key={school.title}>
+                    <div className="item-head">
+                        <Image
+                            src={school.imageURL}
+                            width="200"
+                            height="109"
+                            alt={school.title}
+                            className="school-thumbnail"
+                        />
+                        <Image
+                            src={school.logoUrl}
+                            width="100"
+                            height="100"
+                            alt={`${school.title} logo`}
+                            className="school-logo"
+                        />
+                    </div>
+                    <div className="item-text">
+                        <div className="item-head">
+                            <h4 key={school.title}>{school.title}</h4>
+                            <p>
+                                {school.schoolMeta.city},{' '}
+                                {school.schoolMeta.state}
+                            </p>
+                        </div>
+                        <p>{school.description}</p>
+                        <button
+                            type="button"
+                            onClick={() => handleButtonClick()}
+                        >
+                            <span>{school.buttonText}</span>
+                            <i>
+                                <MdChevronRight />
+                            </i>
+                        </button>
+                    </div>
                 </div>
             ))}
         </Carousel>

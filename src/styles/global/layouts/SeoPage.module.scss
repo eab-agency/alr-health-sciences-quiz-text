@@ -117,6 +117,7 @@
 
     h2{
         position: relative;
+        padding-bottom: 0.5em;
         margin-bottom: tokens.$baseUnit * 2;
 
         &::after {

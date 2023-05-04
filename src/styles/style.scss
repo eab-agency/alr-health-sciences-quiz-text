@@ -3,6 +3,8 @@
 @use 'global/layouts';
 @use 'global/components';
 
+@use 'global/components/SchoolCarousel.module.scss';
+
 body {
     background-color: config.$c-blue-800;
 }

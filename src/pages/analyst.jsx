@@ -193,8 +193,10 @@ const AnalystPage = () => {
                         </a>
                     </div>
                 </section>
-                <section className={styles['matched-schools']}>
-                    <h2>Matched Schools</h2>
+                <section className={styles.matchedSchools}>
+                    <div className={styles.intro}>
+                        <h2>Matched Schools</h2>
+                    </div>
                     <CarouselWithForm />
                 </section>
             </div>
