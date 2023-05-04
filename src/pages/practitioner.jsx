@@ -8,7 +8,6 @@ import { useUser } from '@/context/context';
 import UniversityMatch from '@/components/UniversityMatch';
 import { useRequest } from '@/hooks/useRequest';
 import styles from '@/styles/global/layouts/FinalPage.module.scss';
-import SchoolCarousel from '@/components/SchoolCarousel';
 
 import { BiLinkExternal } from 'react-icons/bi';
 import Stats from '@/components/Stats';
@@ -16,6 +15,7 @@ import Accordion from '@/components/Accordion';
 import Image from 'next/image';
 import CappexFormSection from '@/components/CappexFormSection';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
+import CarouselWithForm from '@/components/CarouselWithForm';
 
 const PractitionerPage = () => {
     const { data: results, error: resultsError } = useRequest('/quiz/results');
@@ -215,11 +215,10 @@ const PractitionerPage = () => {
                         </a>
                     </div>
                 </section>
-                {matchedSchools && (
-                    <section className={styles['matched-school']}>
-                        <SchoolCarousel schools={matchedSchools} />
-                    </section>
-                )}
+                <section className={styles['matched-schools']}>
+                    <h2>Matched Schools</h2>
+                    <CarouselWithForm />
+                </section>
             </div>
         </div>
     );

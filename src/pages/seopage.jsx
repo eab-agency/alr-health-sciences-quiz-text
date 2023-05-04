@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import Image from 'next/image';
 
 import Stats from '@/components/Stats';
+import CarouselWithForm from '@/components/CarouselWithForm';
 
 import styles from '@/styles/global/layouts/SeoPage.module.scss';
 import Button from '@/components/Button';
@@ -13,12 +14,9 @@ import data from '../data/seopage.json';
 
 /* eslint-disable react/no-danger */
 const SeoPage = () => {
-    const router = useRouter();
-    const currentRoute = router.pathname.replace('/', '');
-
     const reasonsArray = data.whyChoose[1].reasons;
-    const reasonsList = reasonsArray.map((reason) => (
-        <li>
+    const reasonsList = reasonsArray.map((reason, index) => (
+        <li key={index}>
             <h3>{reason.title}</h3>
             <p
                 dangerouslySetInnerHTML={{
@@ -29,8 +27,8 @@ const SeoPage = () => {
     ));
 
     const rightCareerArray = data.rightCareer[0].reasons;
-    const rightCareerList = rightCareerArray.map((reason) => (
-        <li>
+    const rightCareerList = rightCareerArray.map((reason, index) => (
+        <li key={index}>
             <p
                 dangerouslySetInnerHTML={{
                     __html: reason.description,
@@ -74,7 +72,7 @@ const SeoPage = () => {
 
                                     <div className={styles.intro}>
                                         <h2>{data.quizSection.title}</h2>
-                                        <p
+                                        <div
                                             dangerouslySetInnerHTML={{
                                                 __html: data.quizSection
                                                     .content,
@@ -151,6 +149,10 @@ const SeoPage = () => {
                                         href="/quiz"
                                         className={styles.button}
                                     />
+                                </section>
+                                <section className={styles['matched-schools']}>
+                                    <h2>Matched Schools</h2>
+                                    <CarouselWithForm />
                                 </section>
                             </div>
                         </div>

@@ -29,6 +29,8 @@ export default function LandingPage() {
         },
         highestScorePersonality: null,
         utmSource: '',
+        isFinished: false,
+        questionLength: 0,
     });
 
     useEffect(() => {
