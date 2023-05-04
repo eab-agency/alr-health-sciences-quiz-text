@@ -7,7 +7,7 @@ import { MdChevronRight } from 'react-icons/md';
 const responsive = {
     superLargeDesktop: {
         breakpoint: { max: 4000, min: 1800 },
-        items: 4,
+        items: 3,
     },
     desktop: {
         breakpoint: { max: 1800, min: 1024 },
