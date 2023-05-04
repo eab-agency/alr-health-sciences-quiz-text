@@ -17,12 +17,6 @@ const CarouselWithForm = () => {
             <div className={styles.intro}>
                 <h2>Want More from Cappex?</h2>
             </div>
-            {/* {!visibleForm && (
-                <SchoolCarousel
-                    schools={matchedSchools}
-                    handleClick={() => onCarouselClick()}
-                />
-            )} */}
 
             <div className={styles.container}>
                 <SchoolCarousel
