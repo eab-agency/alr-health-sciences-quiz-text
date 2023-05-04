@@ -1,7 +1,7 @@
 import Image from 'next/image';
 /* eslint-disable */
 import Carousel from 'react-multi-carousel';
-import styles from '@/styles/global/components/Accordion.module.scss';
+import styles from '@/styles/global/components/SchoolCarousel.module.scss';
 // import 'react-multi-carousel/lib/styles.css';
 /* eslint-enable */
 
