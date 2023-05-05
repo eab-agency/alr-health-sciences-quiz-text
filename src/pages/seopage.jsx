@@ -10,7 +10,6 @@ import styles from '@/styles/global/layouts/SeoPage.module.scss';
 import Button from '@/components/Button';
 import PageFooter from '@/components/PageFooter';
 import PageHeader from '@/components/PageHeader';
-// eslint-disable-next-line import/no-unresolved
 import { StickyCta } from '@/components/StickyCta';
 import data from '../data/seopage.json';
 
