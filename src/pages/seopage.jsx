@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 
@@ -10,6 +10,7 @@ import styles from '@/styles/global/layouts/SeoPage.module.scss';
 import Button from '@/components/Button';
 import PageFooter from '@/components/PageFooter';
 import PageHeader from '@/components/PageHeader';
+import { StickyCta } from '@/components/StickyCta';
 import data from '../data/seopage.json';
 
 /* eslint-disable react/no-danger */
@@ -36,6 +37,13 @@ const SeoPage = () => {
             />
         </li>
     ));
+
+    const [posY, setPosY] = useState(0);
+    const carouselRef = useRef(null);
+    useEffect(() => {
+        const carouselPosY = carouselRef.current.getBoundingClientRect().top;
+        setPosY(carouselPosY);
+    }, [carouselRef]);
 
     return (
         <>
@@ -134,28 +142,33 @@ const SeoPage = () => {
                                     </div>
                                     <ul>{rightCareerList}</ul>
                                 </section>
-                                <section className={styles.contactForm}>
+                                {/* <section className={styles.contactForm}>
                                     <div className={styles.intro}>
                                         <h2>{data.contactForm.title}</h2>
                                         <p>{data.contactForm.description}</p>
                                     </div>
-                                </section>
+                                </section> */}
                                 <section className={styles.takeQuiz}>
-                                    <h2>{data.takeQuiz.title}</h2>
-                                    <p>{data.takeQuiz.description}</p>
-                                    <Button
-                                        type="primary"
-                                        label={data.takeQuiz.buttonText}
-                                        href="/quiz"
-                                        className={styles.button}
-                                    />
+                                    <div className={styles.content}>
+                                        <h2>{data.takeQuiz.title}</h2>
+                                        <p>{data.takeQuiz.description}</p>
+                                        <Button
+                                            type="primary"
+                                            label={data.takeQuiz.buttonText}
+                                            href="/quiz"
+                                            className={styles.button}
+                                        />
+                                    </div>
                                 </section>
-                                <CarouselWithForm />
+                                <div ref={carouselRef}>
+                                    <CarouselWithForm />
+                                </div>
                             </div>
                         </div>
                     </div>
                 </main>
             </div>
+            <StickyCta posY={posY} />
             <PageFooter />
         </>
     );
