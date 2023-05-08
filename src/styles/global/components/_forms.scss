@@ -52,8 +52,7 @@ input[type='number'],
 input[type='password'],
 input[type='tel'],
 input[type='text'],
-input[type='url'],
-.StripeElement {
+input[type='url'] {
     @extend %form-field !optional;
     line-height: 1.2;
 }
@@ -144,5 +143,83 @@ label {
         & + .required {
             color: config.$c-error;
         }
+    }
+}
+
+
+div[aria-labelledby="checkbox-group"]{
+    padding-block: 0.5em;
+    label{
+        display: flex;
+        flex-flow: row wrap;
+        align-items: flex-start;
+        gap: 1rem;
+
+        & > div{
+            // display: flex;
+            // align-items: center;
+            // flex: 1 0 7em;
+
+            input{
+                opacity: 0;
+                width: 0;
+                height: 0;
+
+                &:checked + label::before{
+                    background: config.$c-white;
+
+                    @media (prefers-color-scheme: light) {
+                        background: color.scale(config.$c-turquoise-500, $lightness: 60%);
+                    }
+                }
+
+                &:checked + label::after{
+                    content: config.$i-checkmark;
+                    font-family: config.$f-icons;
+                    position: absolute;
+                    top: -0.3em;
+                    left: 0.1em;
+                    font-size: 1.2em;
+                    font-weight: bold;
+                    color: config.$c-orange-500;
+
+                    // light mode
+                    @media (prefers-color-scheme: light) {
+                        color: config.$c-blue-500;
+                    }
+                }
+            }
+
+            label{
+                position: relative;
+                padding: 0 0 0 1.4em;
+                color: config.$c-white;
+
+                &::before{
+                    content:"";
+                    display: block;
+                    width: 1em;
+                    height: 1em;
+                    background: config.$c-white;
+                    border: 1px solid config.$c-blue-500;
+                    position: absolute;
+                    top: 0.2em;
+                    left: 0;
+                    border-radius: 0.2em;
+                }
+
+                @media (prefers-color-scheme: light) {
+                    color: config.$c-blue-800;
+                }
+            }
+        }
+    }
+}
+
+#checkbox-group{
+    color: config.$c-turquoise-500;
+
+    @media (prefers-color-scheme: light) {
+        color: color.adjust(config.$c-malva-500, $lightness: -30%);
     }
 }
