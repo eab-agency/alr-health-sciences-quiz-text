@@ -15,12 +15,16 @@ function ContextProvider({ children }) {
 
     const apiURL = `https://ipgeolocation.abstractapi.com/v1/?api_key=${process.env.NEXT_PUBLIC_ABSTRACT_API_KEY}`;
 
-    const [location, setLocation] = useLocalStorage('489hLocation', null);
+    // const [location, setLocation] = useLocalStorage('489hLocation', null);
+    const [location, setLocation] = useState(null);
 
     useEffect(() => {
         const getData = setTimeout(() => {
             axios.get(apiURL).then((response) => {
-                setLocation({ region_iso_code: response.data.region_iso_code });
+                setLocation({
+                    region_iso_code: response.data.region_iso_code,
+                    postal_code: response.data.postal_code,
+                });
             });
         }, 2000);
 
@@ -45,8 +49,8 @@ function ContextProvider({ children }) {
     // }, [schools]);
 
     const valueUser = useMemo(
-        () => ({ matchedSchools, setMatchedSchools }),
-        [matchedSchools, setMatchedSchools]
+        () => ({ matchedSchools, setMatchedSchools, location }),
+        [matchedSchools, setMatchedSchools, location]
     );
 
     return (

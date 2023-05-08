@@ -10,6 +10,7 @@ import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { MdChevronRight } from 'react-icons/md';
 import styles from '@/styles/global/components/Form.module.scss';
 import useForm from '@/hooks/useForm';
+import { useUser } from '@/context/context';
 
 const validationSchema = Yup.object().shape({
     // validation schema here
@@ -152,17 +153,24 @@ const generateField = (field, error) => {
     }
 };
 
-const AcquiaFormHandle = ({ redirectTo, answers = {}, user = {}, id }) => {
+const AcquiaFormHandle = ({
+    redirectTo,
+    answers = {},
+    user = {},
+    id,
+    school = {},
+}) => {
     // keep track of whether the form has been submitted
     const [isSent, setIsSent] = useState(false);
 
-    const [location] = useLocalStorage('489hLocation', null);
     const [localQData] = useLocalStorage('eab-quiz-data');
     const { data: acsForm, error } = useForm(id);
     const [formValues, setFormValues] = useState({});
 
     const [theForm, setTheForm] = useState(null);
     const [theFields, setTheFields] = useState([]);
+
+    const { location } = useUser();
 
     useEffect(() => {
         if (acsForm) {
@@ -182,6 +190,7 @@ const AcquiaFormHandle = ({ redirectTo, answers = {}, user = {}, id }) => {
                 formName: theForm.name,
                 messenger: 1,
                 ip_address_state: location.region_iso_code,
+                ip_address_zip: location.postal_code,
             };
 
             await axios
@@ -223,6 +232,8 @@ const AcquiaFormHandle = ({ redirectTo, answers = {}, user = {}, id }) => {
                     localQData.utmSource
                 ) {
                     newFormValues[field.alias] = localQData.utmSource;
+                } else if (field.alias === 'school_carousel') {
+                    newFormValues[field.alias] = school.title;
                 } else {
                     newFormValues[field.alias] = field.defaultValue || '';
                     if (answers.answers) {

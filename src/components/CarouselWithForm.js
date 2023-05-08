@@ -49,6 +49,7 @@ const CarouselWithForm = ({ formId }) => {
                             </p>
                         </div>
                         <Form
+                            school={selectedSchool}
                             redirectTo={selectedSchool.link}
                             user={user}
                             id={formId || '4'}
