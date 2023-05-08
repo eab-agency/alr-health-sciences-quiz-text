@@ -20,7 +20,7 @@ export const StickyCta = ({ posY }) => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, [posY]);
 
-    console.log('the vertical: ', posY);
+    // console.log('the vertical: ', posY);
 
     const stickyCtaClass = `${styles.stickyCta} ${
         scrolled ? styles.scrolled : ''
