@@ -5,7 +5,7 @@ import { useUser } from '@/context/context';
 import styles from '@/styles/global/components/CarouselWithForm.module.scss';
 import { RiArrowGoBackFill } from 'react-icons/ri';
 
-const CarouselWithForm = () => {
+const CarouselWithForm = ({ formId }) => {
     const [visibleForm, setVisibleForm] = useState(false);
     const { matchedSchools, user } = useUser();
 
@@ -51,7 +51,7 @@ const CarouselWithForm = () => {
                         <Form
                             redirectTo={selectedSchool.link}
                             user={user}
-                            id="4"
+                            id={formId || '4'}
                         />
                     </div>
                 )}
