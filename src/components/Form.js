@@ -36,7 +36,6 @@ const generateField = (field, error) => {
                 <>
                     <label htmlFor={alias}>{label}</label>
                     {isRequired && <span className="required">*</span>}
-
                     <Field
                         name={alias}
                         type="text"
@@ -100,6 +99,54 @@ const generateField = (field, error) => {
                 />
             );
 
+        case 'select':
+            return (
+                <>
+                    <label htmlFor={alias}>{label}</label>
+                    {isRequired && <span className="required">*</span>}
+                    <Field
+                        name={alias}
+                        as="select"
+                        className={error ? 'is-invalid' : ''}
+                    >
+                        <option value="">Select</option>
+                        {properties.list.list.map((option) => (
+                            <option key={option.value} value={option.value}>
+                                {option.label}
+                            </option>
+                        ))}
+                    </Field>
+                    {helpMessage && <small>{helpMessage}</small>}
+                </>
+            );
+
+        case 'checkboxgrp':
+            return (
+                <>
+                    <div id="checkbox-group">{label}</div>
+                    <div role="group" aria-labelledby="checkbox-group">
+                        <label>
+                            {isRequired && <span className="required">*</span>}
+                            {properties.optionlist.list.map((option) => (
+                                <div key={option.value}>
+                                    <Field
+                                        name={alias}
+                                        id={option.value}
+                                        type="checkbox"
+                                        value={option.value}
+                                        className={error ? 'is-invalid' : ''}
+                                    />
+                                    <label htmlFor={option.value}>
+                                        {option.label}
+                                    </label>
+                                </div>
+                            ))}
+                        </label>
+                        {helpMessage && <small>{helpMessage}</small>}
+                    </div>
+                </>
+            );
+
         default:
             return null;
     }
@@ -160,9 +207,11 @@ const AcquiaFormHandle = ({ redirectTo, answers = {}, user = {}, id }) => {
 
     const initialValues = {};
 
+    const [fieldsProcessed, setFieldsProcessed] = useState(false);
+
     useEffect(() => {
-        // console.log('theFields', theFields);
-        if (theFields.length > 0) {
+        console.log('theFields', theFields);
+        if (theFields.length > 0 && !fieldsProcessed) {
             const newFormValues = {};
             theFields.forEach((field) => {
                 if (field.alias === 'quiz_result') {
@@ -200,6 +249,8 @@ const AcquiaFormHandle = ({ redirectTo, answers = {}, user = {}, id }) => {
                 ...prev,
                 ...newFormValues,
             }));
+
+            setFieldsProcessed(true);
         }
     }, [
         answers.answers,
@@ -207,6 +258,7 @@ const AcquiaFormHandle = ({ redirectTo, answers = {}, user = {}, id }) => {
         localQData,
         theFields,
         user,
+        fieldsProcessed,
     ]);
 
     if (error) return <p>Error loading form.</p>;
