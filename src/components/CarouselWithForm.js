@@ -9,7 +9,10 @@ const CarouselWithForm = () => {
     const [visibleForm, setVisibleForm] = useState(false);
     const { matchedSchools, user } = useUser();
 
-    const onCarouselClick = () => {
+    const [selectedSchool, setSelectedSchool] = useState(null);
+
+    const onCarouselClick = (school) => {
+        setSelectedSchool(school);
         setVisibleForm(!visibleForm);
     };
     return (
@@ -21,7 +24,7 @@ const CarouselWithForm = () => {
             <div className={styles.container}>
                 <SchoolCarousel
                     schools={matchedSchools}
-                    handleClick={() => onCarouselClick()}
+                    handleClick={(school) => onCarouselClick(school)}
                 />
 
                 {visibleForm && (
@@ -45,7 +48,11 @@ const CarouselWithForm = () => {
                                 university matches.
                             </p>
                         </div>
-                        <Form user={user} id="4" />
+                        <Form
+                            redirectTo={selectedSchool.link}
+                            user={user}
+                            id="4"
+                        />
                     </div>
                 )}
             </div>

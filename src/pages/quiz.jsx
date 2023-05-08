@@ -95,7 +95,7 @@ export default function LandingPage() {
                             <Button
                                 label="Get Started"
                                 type="primary"
-                                href="quiz"
+                                href="quiz-start"
                             />
                         </div>
                         <figure className={styles['deco-image']}>

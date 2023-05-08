@@ -210,7 +210,7 @@ const AcquiaFormHandle = ({ redirectTo, answers = {}, user = {}, id }) => {
     const [fieldsProcessed, setFieldsProcessed] = useState(false);
 
     useEffect(() => {
-        console.log('theFields', theFields);
+        // console.log('theFields', theFields);
         if (theFields.length > 0 && !fieldsProcessed) {
             const newFormValues = {};
             theFields.forEach((field) => {

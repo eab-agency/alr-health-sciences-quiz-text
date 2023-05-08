@@ -26,8 +26,8 @@ const responsive = {
 };
 
 const SchoolCarousel = ({ schools, handleClick }) => {
-    const handleButtonClick = () => {
-        handleClick();
+    const handleButtonClick = (school) => {
+        handleClick(school);
     };
 
     // if schools is empty, return null
@@ -64,7 +64,7 @@ const SchoolCarousel = ({ schools, handleClick }) => {
                         <p>{school.description}</p>
                         <button
                             type="button"
-                            onClick={() => handleButtonClick()}
+                            onClick={() => handleButtonClick(school)}
                         >
                             <span>{school.buttonText}</span>
                             <i>
