@@ -18,6 +18,8 @@ function ContextProvider({ children }) {
     // const [location, setLocation] = useLocalStorage('489hLocation', null);
     const [location, setLocation] = useState(null);
 
+    const [formData, setFormData] = useState(null);
+
     useEffect(() => {
         const getData = setTimeout(() => {
             axios.get(apiURL).then((response) => {
@@ -49,8 +51,14 @@ function ContextProvider({ children }) {
     // }, [schools]);
 
     const valueUser = useMemo(
-        () => ({ matchedSchools, setMatchedSchools, location }),
-        [matchedSchools, setMatchedSchools, location]
+        () => ({
+            matchedSchools,
+            setMatchedSchools,
+            location,
+            formData,
+            setFormData,
+        }),
+        [matchedSchools, setMatchedSchools, location, formData, setFormData]
     );
 
     return (

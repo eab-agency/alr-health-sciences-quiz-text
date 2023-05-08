@@ -11,6 +11,7 @@ import { MdChevronRight } from 'react-icons/md';
 import styles from '@/styles/global/components/Form.module.scss';
 import useForm from '@/hooks/useForm';
 import { useUser } from '@/context/context';
+import form from '@/pages/api/form';
 
 const validationSchema = Yup.object().shape({
     // validation schema here
@@ -18,7 +19,7 @@ const validationSchema = Yup.object().shape({
     // .required('Email is required'),
 });
 
-const generateField = (field, error) => {
+const generateField = (field, error, formData) => {
     const {
         id,
         label,
@@ -31,9 +32,12 @@ const generateField = (field, error) => {
         properties,
     } = field;
 
+    const shouldHide = formData && Boolean(formData[alias]); // check if field is already populated in formData
+    console.log('🚀 ~ file: Form.js:36 ~ generateField ~ formData:', formData);
+
     switch (type) {
         case 'text':
-            return (
+            return !shouldHide ? (
                 <>
                     <label htmlFor={alias}>{label}</label>
                     {isRequired && <span className="required">*</span>}
@@ -42,9 +46,17 @@ const generateField = (field, error) => {
                         type="text"
                         placeholder={properties.placeholder}
                         className={error ? 'is-invalid' : ''}
+                        value={formData && formData[alias]}
                     />
                     {helpMessage && <small>{helpMessage}</small>}
                 </>
+            ) : (
+                <Field
+                    key={id}
+                    name={alias}
+                    type="hidden"
+                    value={formData[alias]}
+                />
             );
         case 'email':
             return (
@@ -170,7 +182,8 @@ const AcquiaFormHandle = ({
     const [theForm, setTheForm] = useState(null);
     const [theFields, setTheFields] = useState([]);
 
-    const { location } = useUser();
+    const { location, setFormData, formData } = useUser();
+    console.log('🤵🏼‍♂️🤵🏼‍♂️🤵🏼‍♂️ ~ file: Form.js:174 ~ formData:', formData);
 
     useEffect(() => {
         if (acsForm) {
@@ -184,7 +197,7 @@ const AcquiaFormHandle = ({
 
     const onSubmit = async (values, { setSubmitting, setErrors }) => {
         try {
-            const formData = {
+            const theFormData = {
                 ...values,
                 formId: theForm.id,
                 formName: theForm.name,
@@ -195,9 +208,10 @@ const AcquiaFormHandle = ({
 
             await axios
                 .post(`/api/submit?formId=${theForm.id}`, {
-                    mauticform: formData,
+                    mauticform: theFormData,
                 })
                 .then((res) => {
+                    setFormData(theFormData);
                     setIsSent(true);
                 })
                 .catch((err) => {
@@ -206,9 +220,9 @@ const AcquiaFormHandle = ({
 
             setSubmitting(false);
             // Redirect to the specified path on successful form submission
-            if (redirectTo) {
-                router.push(redirectTo);
-            }
+            // if (redirectTo) {
+            //     router.push(redirectTo);
+            // }
         } catch (error) {
             setSubmitting(false);
         }
@@ -270,6 +284,7 @@ const AcquiaFormHandle = ({
         theFields,
         user,
         fieldsProcessed,
+        school,
     ]);
 
     if (error) return <p>Error loading form.</p>;
@@ -292,7 +307,11 @@ const AcquiaFormHandle = ({
                                 }`}
                                 key={field.id}
                             >
-                                {generateField(field, errors[field.alias])}
+                                {generateField(
+                                    field,
+                                    errors[field.alias],
+                                    formData
+                                )}
                                 <ErrorMessage
                                     name={field.alias}
                                     component="span"
