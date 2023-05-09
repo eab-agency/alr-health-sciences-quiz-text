@@ -73,9 +73,9 @@ const AcquiaFormHandle = ({
 
             setSubmitting(false);
             // Redirect to the specified path on successful form submission
-            // if (redirectTo) {
-            //     router.push(redirectTo);
-            // }
+            if (redirectTo) {
+                router.push(redirectTo);
+            }
         } catch (error) {
             setSubmitting(false);
         }
