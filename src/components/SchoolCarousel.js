@@ -25,7 +25,7 @@ const responsive = {
     },
 };
 
-const SchoolCarousel = ({ schools, handleClick }) => {
+const SchoolCarousel = ({ schools, handleClick, className }) => {
     const handleButtonClick = (school) => {
         handleClick(school);
     };
@@ -34,7 +34,12 @@ const SchoolCarousel = ({ schools, handleClick }) => {
     if (!schools) return null;
 
     return (
-        <Carousel responsive={responsive} showDots infinite>
+        <Carousel
+            responsive={responsive}
+            showDots
+            infinite
+            containerClass={className}
+        >
             {schools.map((school) => (
                 <div className="item-content" key={school.title}>
                     <div className="item-head">

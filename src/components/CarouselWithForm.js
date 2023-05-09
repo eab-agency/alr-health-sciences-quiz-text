@@ -25,6 +25,7 @@ const CarouselWithForm = ({ formId }) => {
                 <SchoolCarousel
                     schools={matchedSchools}
                     handleClick={(school) => onCarouselClick(school)}
+                    className={`${visibleForm ? styles.hide : ''}`}
                 />
 
                 {visibleForm && (

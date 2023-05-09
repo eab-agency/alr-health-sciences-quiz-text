@@ -132,6 +132,7 @@ input.is-invalid {
 
 label {
     color: config.$c-turquoise-500;
+    font-size: 0.9em;
 
     & + .required {
         color: config.$c-error;
