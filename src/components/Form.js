@@ -1,7 +1,7 @@
 /* eslint-disable react/no-danger */
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useMemo, useState } from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, ErrorMessage } from 'formik';
 import axios from 'axios';
 import * as Yup from 'yup';
 import { useRouter } from 'next/router';
@@ -11,159 +11,13 @@ import { MdChevronRight } from 'react-icons/md';
 import styles from '@/styles/global/components/Form.module.scss';
 import useForm from '@/hooks/useForm';
 import { useUser } from '@/context/context';
-import form from '@/pages/api/form';
+import GenerateField from '@/lib/GenerateField';
 
 const validationSchema = Yup.object().shape({
     // validation schema here
     preferred_email: Yup.string().email('Invalid email'),
     // .required('Email is required'),
 });
-
-const generateField = (field, error, formData) => {
-    const {
-        id,
-        label,
-        alias,
-        type,
-        defaultValue,
-        isRequired,
-        validationMessage,
-        helpMessage,
-        properties,
-    } = field;
-
-    const shouldHide = formData && Boolean(formData[alias]); // check if field is already populated in formData
-    console.log('🚀 ~ file: Form.js:36 ~ generateField ~ formData:', formData);
-
-    switch (type) {
-        case 'text':
-            return !shouldHide ? (
-                <>
-                    <label htmlFor={alias}>{label}</label>
-                    {isRequired && <span className="required">*</span>}
-                    <Field
-                        name={alias}
-                        type="text"
-                        placeholder={properties.placeholder}
-                        className={error ? 'is-invalid' : ''}
-                        value={formData && formData[alias]}
-                    />
-                    {helpMessage && <small>{helpMessage}</small>}
-                </>
-            ) : (
-                <Field
-                    key={id}
-                    name={alias}
-                    type="hidden"
-                    value={formData[alias]}
-                />
-            );
-        case 'email':
-            return (
-                <>
-                    <label htmlFor={alias}>{label}</label>
-                    {isRequired && <span className="required">*</span>}
-
-                    <Field
-                        name={alias}
-                        type="email"
-                        placeholder={properties.placeholder}
-                        className={error ? 'is-invalid' : ''}
-                    />
-                    {helpMessage && <small>{helpMessage}</small>}
-                </>
-            );
-        case 'hidden':
-            return <Field key={id} name={alias} type="hidden" />;
-        case 'tel':
-            return (
-                <>
-                    <label htmlFor={alias}>{label}</label>
-                    {isRequired && <span className="required">*</span>}
-                    <Field
-                        name={alias}
-                        type="tel"
-                        placeholder={properties.placeholder}
-                        className={error ? 'is-invalid' : ''}
-                    />
-                    {helpMessage && <small>{helpMessage}</small>}
-                </>
-            );
-        case 'date':
-            return (
-                <>
-                    <label htmlFor={alias}>{label}</label>
-                    {isRequired && <span className="required">*</span>}
-                    <Field
-                        name={alias}
-                        type="date"
-                        placeholder={properties.placeholder}
-                        className={error ? 'is-invalid' : ''}
-                    />
-                    {helpMessage && <small>{helpMessage}</small>}
-                </>
-            );
-        case 'freehtml':
-            return (
-                <div
-                    dangerouslySetInnerHTML={{
-                        __html: properties.text,
-                    }}
-                />
-            );
-
-        case 'select':
-            return (
-                <>
-                    <label htmlFor={alias}>{label}</label>
-                    {isRequired && <span className="required">*</span>}
-                    <Field
-                        name={alias}
-                        as="select"
-                        className={error ? 'is-invalid' : ''}
-                    >
-                        <option value="">Select</option>
-                        {properties.list.list.map((option) => (
-                            <option key={option.value} value={option.value}>
-                                {option.label}
-                            </option>
-                        ))}
-                    </Field>
-                    {helpMessage && <small>{helpMessage}</small>}
-                </>
-            );
-
-        case 'checkboxgrp':
-            return (
-                <>
-                    <div id="checkbox-group">{label}</div>
-                    <div role="group" aria-labelledby="checkbox-group">
-                        <label>
-                            {isRequired && <span className="required">*</span>}
-                            {properties.optionlist.list.map((option) => (
-                                <div key={option.value}>
-                                    <Field
-                                        name={alias}
-                                        id={option.value}
-                                        type="checkbox"
-                                        value={option.value}
-                                        className={error ? 'is-invalid' : ''}
-                                    />
-                                    <label htmlFor={option.value}>
-                                        {option.label}
-                                    </label>
-                                </div>
-                            ))}
-                        </label>
-                        {helpMessage && <small>{helpMessage}</small>}
-                    </div>
-                </>
-            );
-
-        default:
-            return null;
-    }
-};
 
 const AcquiaFormHandle = ({
     redirectTo,
@@ -183,7 +37,6 @@ const AcquiaFormHandle = ({
     const [theFields, setTheFields] = useState([]);
 
     const { location, setFormData, formData } = useUser();
-    console.log('🤵🏼‍♂️🤵🏼‍♂️🤵🏼‍♂️ ~ file: Form.js:174 ~ formData:', formData);
 
     useEffect(() => {
         if (acsForm) {
@@ -307,11 +160,11 @@ const AcquiaFormHandle = ({
                                 }`}
                                 key={field.id}
                             >
-                                {generateField(
-                                    field,
-                                    errors[field.alias],
-                                    formData
-                                )}
+                                <GenerateField
+                                    field={field}
+                                    errors={errors[field.alias]}
+                                    formData={formData}
+                                />
                                 <ErrorMessage
                                     name={field.alias}
                                     component="span"
