@@ -38,12 +38,12 @@ const SeoPage = () => {
         </li>
     ));
 
-    const [posY, setPosY] = useState(0);
+    // const [posY, setPosY] = useState(0);
     const carouselRef = useRef(null);
-    useEffect(() => {
-        const carouselPosY = carouselRef.current.getBoundingClientRect().top;
-        setPosY(carouselPosY);
-    }, [carouselRef]);
+    // useEffect(() => {
+    //     const carouselPosY = carouselRef.current.getBoundingClientRect().top;
+    //     setPosY(carouselPosY);
+    // }, [carouselRef]);
 
     return (
         <>
@@ -168,7 +168,7 @@ const SeoPage = () => {
                     </div>
                 </main>
             </div>
-            <StickyCta posY={posY} />
+            <StickyCta trackedElement={carouselRef} />
             <PageFooter />
         </>
     );
