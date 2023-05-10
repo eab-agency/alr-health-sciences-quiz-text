@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
 import { Field, useFormikContext } from 'formik';
 import { useEffect, useState } from 'react';
+import MaskedInput from 'react-text-mask';
 
 const GenerateField = ({ field, error, formData }) => {
     const [phoneHasValue, setPhoneHasValue] = useState(false);
@@ -17,6 +18,23 @@ const GenerateField = ({ field, error, formData }) => {
             setPhoneHasValue(false);
         }
     }, [phone_number]);
+
+    const phoneNumberMask = [
+        '(',
+        /[1-9]/,
+        /\d/,
+        /\d/,
+        ')',
+        ' ',
+        /\d/,
+        /\d/,
+        /\d/,
+        '-',
+        /\d/,
+        /\d/,
+        /\d/,
+        /\d/,
+    ];
 
     //  const [field, meta] = useField(props);
     const {
@@ -75,11 +93,20 @@ const GenerateField = ({ field, error, formData }) => {
                 <>
                     <label htmlFor={alias}>{label}</label>
                     {isRequired && <span className="required">*</span>}
+
                     <Field
                         name={alias}
                         type="tel"
                         placeholder={properties.placeholder}
                         className={error ? 'is-invalid' : ''}
+                        render={({ fieldItems }) => (
+                            <MaskedInput
+                                {...fieldItems}
+                                mask={phoneNumberMask}
+                                type="tel"
+                                placeholder={properties.placeholder}
+                            />
+                        )}
                     />
                     {helpMessage && <small>{helpMessage}</small>}
                 </>

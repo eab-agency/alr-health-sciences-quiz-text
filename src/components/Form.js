@@ -13,24 +13,6 @@ import useForm from '@/hooks/useForm';
 import { useUser } from '@/context/context';
 import GenerateField from '@/lib/GenerateField';
 
-const makeConditionalSchema = (stateValue) => {
-    console.log(
-        '🚀 ~ file: Form.js:17 ~ makeConditionalSchema ~ stateValue:',
-        stateValue
-    );
-    const { alias, isRequired } = stateValue;
-    if (isRequired) {
-        return Yup.object({
-            alias: Yup.string().required('Required bubba'),
-            /* validation one */
-        });
-    }
-
-    return Yup.object({
-        /* some other validation */
-    });
-};
-
 // const validationSchema = Yup.object().shape({
 //     // validation schema here
 //     preferred_email: Yup.string()
