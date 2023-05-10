@@ -13,11 +13,12 @@ import useForm from '@/hooks/useForm';
 import { useUser } from '@/context/context';
 import GenerateField from '@/lib/GenerateField';
 
-const validationSchema = Yup.object().shape({
-    // validation schema here
-    preferred_email: Yup.string().email('Invalid email'),
-    // .required('Email is required'),
-});
+// const validationSchema = Yup.object().shape({
+//     // validation schema here
+//     preferred_email: Yup.string()
+//         .email('Invalid email')
+//         .required('Email is required'),
+// });
 
 const AcquiaFormHandle = ({
     redirectTo,
@@ -81,7 +82,8 @@ const AcquiaFormHandle = ({
         }
     };
 
-    const initialValues = {};
+    const initialValues = { ...formData };
+    console.log('🚀 ~ file: Form.js:85 ~ formData:', formData);
 
     const [fieldsProcessed, setFieldsProcessed] = useState(false);
 
@@ -143,14 +145,42 @@ const AcquiaFormHandle = ({
     if (error) return <p>Error loading form.</p>;
     if (!acsForm) return <p className="loading">Loading...</p>;
 
+    // Assume `fields` is the array of form fields received from the API
+    const validationSchema = Yup.object().shape(
+        theFields.reduce((schema, field) => {
+            console.log(
+                '🚀 ~ file: Form.js:169 ~ theFields.reduce ~ field:',
+                field
+            );
+            // For each field, create a Yup validation object based on its validation rules
+            let fieldValidation = Yup.string();
+
+            if (field.isRequired) {
+                fieldValidation = fieldValidation.required(
+                    `${field.label} is required`
+                );
+            }
+
+            if (field.type === 'email') {
+                fieldValidation = fieldValidation.email('Invalid email');
+            }
+
+            // Add more validation rules here as needed
+
+            // Add the validation object to the schema object using the field's alias as the key
+            schema[field.alias] = fieldValidation;
+            return schema;
+        }, {})
+    );
+
     return (
         <Formik
             enableReinitialize
-            initialValues={formValues || initialValues}
+            initialValues={initialValues}
             validationSchema={validationSchema}
             onSubmit={onSubmit}
         >
-            {({ errors, isSubmitting }) =>
+            {({ errors, isSubmitting, isValid, dirty }) =>
                 !isSent ? (
                     <Form className={styles.form}>
                         {theFields.map((field) => (
@@ -165,6 +195,7 @@ const AcquiaFormHandle = ({
                                     errors={errors[field.alias]}
                                     formData={formData}
                                 />
+
                                 <ErrorMessage
                                     name={field.alias}
                                     component="span"
@@ -175,7 +206,7 @@ const AcquiaFormHandle = ({
                         <button
                             className="button btn-primary"
                             type="submit"
-                            disabled={isSubmitting}
+                            disabled={isSubmitting && isValid && dirty}
                         >
                             Submit
                             <MdChevronRight />
