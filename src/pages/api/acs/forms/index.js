@@ -3,7 +3,7 @@ import { getAccessToken } from '@/lib/token-utils';
 export default async (req, res) => {
     const token = await getAccessToken();
 
-    const response = await fetch('https://go.cappex-health.com/api/forms', {
+    const response = await fetch('https://go.cappexhealth.com/api/forms', {
         headers: {
             Authorization: `Bearer ${token}`,
         },

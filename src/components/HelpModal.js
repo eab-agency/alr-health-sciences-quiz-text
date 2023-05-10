@@ -5,7 +5,7 @@ const InquireModal = () => {
     const closeModal = () => {
         Reoverlay.hideAll();
     };
-    const email = 'help@cappex-health.com';
+    const email = 'help@cappexhealth.com';
     return (
         <ModalWrapper
             contentContainerClassName="modal-content"
