@@ -36,7 +36,7 @@ export const StickyCta = ({ posY }) => {
     return (
         <div className={stickyCtaClass}>
             <button type="button" onClick={handleClick}>
-                <span>Learn more from Cappex</span>
+                <span>Explore your school matches</span>
                 <i>
                     <MdChevronRight />{' '}
                 </i>

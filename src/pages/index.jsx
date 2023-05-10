@@ -148,6 +148,9 @@ const SeoPage = () => {
                                         <p>{data.contactForm.description}</p>
                                     </div>
                                 </section> */}
+                                <div ref={carouselRef}>
+                                    <CarouselWithForm />
+                                </div>
                                 <section className={styles.takeQuiz}>
                                     <div className={styles.content}>
                                         <h2>{data.takeQuiz.title}</h2>
@@ -160,9 +163,6 @@ const SeoPage = () => {
                                         />
                                     </div>
                                 </section>
-                                <div ref={carouselRef}>
-                                    <CarouselWithForm />
-                                </div>
                             </div>
                         </div>
                     </div>

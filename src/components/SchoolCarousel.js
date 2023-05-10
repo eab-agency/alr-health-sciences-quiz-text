@@ -45,8 +45,8 @@ const SchoolCarousel = ({ schools, handleClick, className }) => {
                     <div className="item-head">
                         <Image
                             src={school.imageURL}
-                            width="200"
-                            height="109"
+                            width="400"
+                            height="300"
                             alt={school.title}
                             className="school-thumbnail"
                         />

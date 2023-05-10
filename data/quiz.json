@@ -639,7 +639,7 @@
             "link": "https://www.fdu.edu/academics/programs/?fwp_program_topic=health-sciences",
             "linkText": "Explore Programs at Fairleigh Dickinson",
             "imageURL": "/images/fairleigh-dickinson-university.jpg",
-            "logoUrl": "/images/university-north-texas_logo.jpg",
+            "logoUrl": "/images/fairleigh-dickinson-university_logo.jpg",
             "buttonText": "Go to fdu.edu",
             "schoolMeta": {
                 "city": "Madison & Teaneck",
@@ -678,7 +678,7 @@
             "link": "https://chhs.sdsu.edu/",
             "linkText": "Learn About Health and Human Services at SDSU",
             "imageURL": "/images/san-diego-university.jpg",
-            "logoUrl": "/images/university-north-texas_logo.jpg",
+            "logoUrl": "/images/san-diego-state-university_logo.jpg",
             "buttonText": "Go to sdsu.edu",
             "schoolMeta": {
                 "city": "San Diego",
@@ -707,7 +707,7 @@
             "link": "https://majors.sf.edu/",
             "linkText": "Explore Programs at USF",
             "imageURL": "/images/u-of-saint-francis.jpg",
-            "logoUrl": "/images/university-north-texas_logo.jpg",
+            "logoUrl": "/images/university-of-saint-francis_logo.jpg",
             "buttonText": "Go to sf.edu",
             "schoolMeta": {
                 "city": "Fort Wayne",
