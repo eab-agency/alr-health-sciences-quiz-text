@@ -6,13 +6,12 @@ const GenerateField = ({ field, error, formData }) => {
     const [phoneHasValue, setPhoneHasValue] = useState(false);
     const {
         values: { phone_number },
-        setFieldValue,
     } = useFormikContext();
 
     // if phone_number has a value, set phoneHasValue to true
     // if phone_number is empty, set phoneHasValue to false
     useEffect(() => {
-        if (phone_number !== '') {
+        if (phone_number !== undefined && phone_number !== '') {
             setPhoneHasValue(true);
         } else {
             setPhoneHasValue(false);
@@ -33,6 +32,7 @@ const GenerateField = ({ field, error, formData }) => {
     } = field;
 
     const shouldHide = formData && Boolean(formData[alias]); // check if field is already populated in formData
+    // const shouldHide = false;
 
     switch (type) {
         case 'text':
@@ -45,20 +45,14 @@ const GenerateField = ({ field, error, formData }) => {
                         type="text"
                         placeholder={properties.placeholder}
                         className={error ? 'is-invalid' : ''}
-                        value={formData && formData[alias]}
                     />
                     {helpMessage && <small>{helpMessage}</small>}
                 </>
             ) : (
-                <Field
-                    key={id}
-                    name={alias}
-                    type="hidden"
-                    value={formData[alias]}
-                />
+                <Field key={id} name={alias} type="hidden" />
             );
         case 'email':
-            return (
+            return !shouldHide ? (
                 <>
                     <label htmlFor={alias}>{label}</label>
                     {isRequired && <span className="required">*</span>}
@@ -71,6 +65,8 @@ const GenerateField = ({ field, error, formData }) => {
                     />
                     {helpMessage && <small>{helpMessage}</small>}
                 </>
+            ) : (
+                <Field key={id} name={alias} type="hidden" />
             );
         case 'hidden':
             return <Field key={id} name={alias} type="hidden" />;
