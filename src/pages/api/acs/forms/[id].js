@@ -6,7 +6,7 @@ export default async (req, res) => {
     const token = await getAccessToken();
 
     const response = await fetch(
-        `https://go.cappex-health.com/api/forms/${id}`,
+        `https://go.cappexhealth.com/api/forms/${id}`,
         {
             headers: {
                 Authorization: `Bearer ${token}`,

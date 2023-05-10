@@ -1,114 +1,177 @@
-import React, { useEffect } from 'react';
-import Head from 'next/head';
-import Image from 'next/image';
-import useUser from '@/hooks/useUser';
-import PageFooter from '@/components/PageFooter';
-import styles from '@/styles/global/layouts/EmailOnly.module.scss';
-import Button from '@/components/Button';
-// eslint-disable-next-line import/no-unresolved
-import MainLogo from '@/components/MainLogo';
+/* eslint-disable no-unused-vars */
+import React, { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/router';
-import { useLocalStorage } from '@/hooks/useLocalStorage';
+import Image from 'next/image';
 
-export default function LandingPage() {
-    const { user } = useUser();
-    const router = useRouter();
-    // grab utm_source from query params
-    const utmSource = router.query.utm_source;
+import Stats from '@/components/Stats';
+import CarouselWithForm from '@/components/CarouselWithForm';
 
-    const [localQData, setLocalQData] = useLocalStorage('eab-quiz-data', {
-        answers: [],
-        currentQuestion: 0,
-        score: {
-            executive: 0,
-            practitioner: 0,
-            educator: 0,
-            scientist: 0,
-            analyst: 0,
-            initial: 0,
-        },
-        highestScorePersonality: null,
-        utmSource: '',
-    });
+import styles from '@/styles/global/layouts/SeoPage.module.scss';
+import Button from '@/components/Button';
+import PageFooter from '@/components/PageFooter';
+import PageHeader from '@/components/PageHeader';
+import { StickyCta } from '@/components/StickyCta';
+import data from '../data/seopage.json';
 
+/* eslint-disable react/no-danger */
+const SeoPage = () => {
+    const reasonsArray = data.whyChoose[1].reasons;
+    const reasonsList = reasonsArray.map((reason, index) => (
+        <li key={index}>
+            <h3>{reason.title}</h3>
+            <p
+                dangerouslySetInnerHTML={{
+                    __html: reason.description,
+                }}
+            />
+        </li>
+    ));
+
+    const rightCareerArray = data.rightCareer[0].reasons;
+    const rightCareerList = rightCareerArray.map((reason, index) => (
+        <li key={index}>
+            <p
+                dangerouslySetInnerHTML={{
+                    __html: reason.description,
+                }}
+            />
+        </li>
+    ));
+
+    const [posY, setPosY] = useState(0);
+    const carouselRef = useRef(null);
     useEffect(() => {
-        if (utmSource) {
-            setLocalQData({ ...localQData, utmSource });
-        }
-    }, [utmSource]);
+        const carouselPosY = carouselRef.current.getBoundingClientRect().top;
+        setPosY(carouselPosY);
+    }, [carouselRef]);
 
     return (
         <>
-            <Head>
-                <title>
-                    Define Your Future in Health Care | Health Science Quiz
-                </title>
-                <meta name="description" content="Cappex Health Science Quiz" />
-                <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1"
-                />
-                <link rel="icon" href="/favicon.png" />
-            </Head>
-            <main className="short landing">
-                <div className="content-wrapper">
-                    <div className={styles.container}>
-                        <div className={styles.content}>
-                            <header>
-                                <MainLogo />
-                                {user && user.fname ? (
-                                    <h1>
-                                        {/* if user.fname this display some text */}
-                                        {`${user.fname}, `} Define Your Future
-                                        in Health Care
-                                    </h1>
-                                ) : (
-                                    <h1>Define Your Future in Health Care</h1>
-                                )}
-                            </header>
-                            <p>
-                                If you’re considering a career change, a role in
-                                health care could be a great fit. The Bureau of
-                                Labor Statistics predicts about{' '}
-                                <strong>
-                                    2 million jobs in health care will be
-                                    created each year over the next decade
-                                </strong>
-                                —and many colleges and universities offer
-                                flexible, affordable degrees or certificates
-                                that can help you get a head start in
-                                transferring your skills to a new or more
-                                advanced role.
-                            </p>
+            <div className={styles.pageLayout}>
+                <PageHeader pageType="seoPage" />
+                <main className="page-layout__container">
+                    <div className="page-layout__content">
+                        <div className={styles.container}>
+                            <div className={styles.content}>
+                                <section className={styles.pageHero}>
+                                    <h1
+                                        dangerouslySetInnerHTML={{
+                                            __html: data.pageTitle,
+                                        }}
+                                    />
+                                    <figure>
+                                        <Image
+                                            src="/images/which-health-care-career.jpg"
+                                            width={800}
+                                            height={480}
+                                            alt="Health care professional in a laboratory"
+                                        />
+                                    </figure>
+                                </section>
+                                <section className={styles.quizSection}>
+                                    <figure>
+                                        <Image
+                                            src="/images/profesional-man-researching-online.jpg"
+                                            width={800}
+                                            height={480}
+                                            alt="Profesional man researching online"
+                                        />
+                                    </figure>
 
-                            <p>
-                                In less than three minutes, you could{' '}
-                                <strong>
-                                    discover which role could be a good fit for
-                                    you
-                                </strong>
-                                —and the steps you can take to advance your
-                                career.
-                            </p>
-                            <Button
-                                label="Get Started"
-                                type="primary"
-                                href="quiz"
-                            />
+                                    <div className={styles.intro}>
+                                        <h2>{data.quizSection.title}</h2>
+                                        <div
+                                            dangerouslySetInnerHTML={{
+                                                __html: data.quizSection
+                                                    .content,
+                                            }}
+                                        />
+                                        <Button
+                                            type="primary"
+                                            label={data.quizSection.buttonText}
+                                            href="/quiz"
+                                            className={styles.button}
+                                        />
+                                    </div>
+                                </section>
+                                <Stats
+                                    stats={data.stats}
+                                    source={data.statsSource}
+                                    className={styles.stats}
+                                />
+                                <section className={styles.whyChoose}>
+                                    <div className={styles.intro}>
+                                        <h2>{data.whyChoose[0].title}</h2>
+                                    </div>
+                                    <div className={styles.whyChooseContent}>
+                                        <ul>{reasonsList}</ul>
+                                        <figure>
+                                            <Image
+                                                src="/images/doctor-wearing-mas-and-sthethoscope.jpg"
+                                                width={478}
+                                                height={284}
+                                                alt="Doctor wearing mask and a sthethoscope"
+                                            />
+                                        </figure>
+                                    </div>
+                                </section>
+                                <section className={styles.testimonial}>
+                                    <div className={styles.quotation}>
+                                        <blockquote>
+                                            <p>{data.testimonial.text}</p>
+                                            <div
+                                                className={
+                                                    styles.testimonialAuthor
+                                                }
+                                            >
+                                                <p>{data.testimonial.author}</p>
+                                                <small>
+                                                    {
+                                                        data.testimonial
+                                                            .authorTitle
+                                                    }
+                                                </small>
+                                            </div>
+                                        </blockquote>
+                                    </div>
+                                </section>
+                                <section className={styles.rightCareer}>
+                                    <div className={styles.intro}>
+                                        <h2>{data.rightCareer[0].title}</h2>
+                                        <p>{data.rightCareer[0].description}</p>
+                                    </div>
+                                    <ul>{rightCareerList}</ul>
+                                </section>
+                                {/* <section className={styles.contactForm}>
+                                    <div className={styles.intro}>
+                                        <h2>{data.contactForm.title}</h2>
+                                        <p>{data.contactForm.description}</p>
+                                    </div>
+                                </section> */}
+                                <section className={styles.takeQuiz}>
+                                    <div className={styles.content}>
+                                        <h2>{data.takeQuiz.title}</h2>
+                                        <p>{data.takeQuiz.description}</p>
+                                        <Button
+                                            type="primary"
+                                            label={data.takeQuiz.buttonText}
+                                            href="/quiz"
+                                            className={styles.button}
+                                        />
+                                    </div>
+                                </section>
+                                <div ref={carouselRef}>
+                                    <CarouselWithForm />
+                                </div>
+                            </div>
                         </div>
-                        <figure className={styles['deco-image']}>
-                            <Image
-                                src="/images/cappex-define-your-future-img.jpg"
-                                alt="Define Your Future in Health Care"
-                                // fill
-                                width={500}
-                                height={600}
-                            />
-                        </figure>
                     </div>
-                </div>
-            </main>
+                </main>
+            </div>
+            <StickyCta posY={posY} />
             <PageFooter />
         </>
     );
-}
+};
+// SeoPage.PageLayout = PageLayout;
+export default SeoPage;

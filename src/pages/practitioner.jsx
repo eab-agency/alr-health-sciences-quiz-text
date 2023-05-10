@@ -15,10 +15,11 @@ import Accordion from '@/components/Accordion';
 import Image from 'next/image';
 import CappexFormSection from '@/components/CappexFormSection';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
+import CarouselWithForm from '@/components/CarouselWithForm';
 
 const PractitionerPage = () => {
     const { data: results, error: resultsError } = useRequest('/quiz/results');
-    const { matchedSchool } = useUser();
+    const { matchedSchools } = useUser();
     const [localQData] = useLocalStorage('eab-quiz-data');
     const router = useRouter();
     const currentRoute = router.pathname.replace('/', '');
@@ -214,11 +215,7 @@ const PractitionerPage = () => {
                         </a>
                     </div>
                 </section>
-                {matchedSchool && (
-                    <section className={styles['matched-school']}>
-                        <UniversityMatch school={matchedSchool} />
-                    </section>
-                )}
+                <CarouselWithForm formId="3" />
             </div>
         </div>
     );

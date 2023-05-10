@@ -16,13 +16,14 @@ import styles from '@/styles/global/layouts/FinalPage.module.scss';
 import Accordion from '@/components/Accordion';
 import CappexFormSection from '@/components/CappexFormSection';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
+import CarouselWithForm from '@/components/CarouselWithForm';
 
 const AnalystPage = () => {
     const { data: results, error: resultsError } = useRequest('/quiz/results');
     const { data: schools, error: schoolsError } = useRequest('/quiz/schools');
     const [localQData] = useLocalStorage('eab-quiz-data');
 
-    const { matchedSchool, setMatchedSchool } = useUser();
+    const { matchedSchools, setMatchedSchools } = useUser();
 
     const router = useRouter();
     const currentRoute = router.pathname.replace('/', '');
@@ -40,7 +41,7 @@ const AnalystPage = () => {
 
     const handleStateChange = (value) => {
         const matchedSchoolInternal = getMatchedSchool(value, schools);
-        setMatchedSchool(matchedSchoolInternal);
+        setMatchedSchools(matchedSchoolInternal);
     };
 
     // if no personalityData is found, return loading
@@ -192,11 +193,7 @@ const AnalystPage = () => {
                         </a>
                     </div>
                 </section>
-                {matchedSchool && (
-                    <section className={styles['matched-school']}>
-                        <UniversityMatch school={matchedSchool} />
-                    </section>
-                )}
+                <CarouselWithForm formId="3" />
             </div>
         </div>
     );

@@ -8,7 +8,6 @@ import PageLayout from '@/components/PageLayout';
 import Tabs from '@/components/Tabs';
 import Stats from '@/components/Stats';
 import { useUser } from '@/context/context';
-import UniversityMatch from '@/components/UniversityMatch';
 import { useRequest } from '@/hooks/useRequest';
 import { BiLinkExternal } from 'react-icons/bi';
 
@@ -16,12 +15,13 @@ import styles from '@/styles/global/layouts/FinalPage.module.scss';
 import Accordion from '@/components/Accordion';
 import CappexFormSection from '@/components/CappexFormSection';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
+import CarouselWithForm from '@/components/CarouselWithForm';
 
 const ScientistPage = () => {
     const { data: results, error: resultsError } = useRequest('/quiz/results');
     const { data: schools, error: schoolsError } = useRequest('/quiz/schools');
     const [localQData] = useLocalStorage('eab-quiz-data');
-    const { matchedSchool, setMatchedSchool } = useUser();
+    const { matchedSchools } = useUser();
 
     const router = useRouter();
     const currentRoute = router.pathname.replace('/', '');
@@ -75,7 +75,8 @@ const ScientistPage = () => {
                                 perform complex tests on patient samples to find
                                 data that plays an important role in identifying
                                 and treating cancerimport heart disease,
-                                diabetes, and other medical conditions.
+                                diabetes, and otherimport {useState} from
+                                'react'; medical conditions.
                             </li>
                             <li>
                                 <strong>Clinical pharmacologist</strong>{' '}
@@ -176,11 +177,8 @@ const ScientistPage = () => {
                         </a>
                     </div>
                 </section>
-                {matchedSchool && (
-                    <section className={styles['matched-school']}>
-                        <UniversityMatch school={matchedSchool} />
-                    </section>
-                )}
+
+                <CarouselWithForm formId="3" />
             </div>
         </div>
     );

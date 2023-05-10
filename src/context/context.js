@@ -11,18 +11,22 @@ const UserLocationContext = createContext(null);
 function ContextProvider({ children }) {
     const { data: schools, error } = useRequest('/quiz/schools');
 
-    // eslint-disable-next-line no-unused-vars
-    const [loading, setLoading] = useState(false);
-    const [matchedSchool, setMatchedSchool] = useState(null);
+    const [matchedSchools, setMatchedSchools] = useState(null);
 
     const apiURL = `https://ipgeolocation.abstractapi.com/v1/?api_key=${process.env.NEXT_PUBLIC_ABSTRACT_API_KEY}`;
 
-    const [location, setLocation] = useLocalStorage('489hLocation', null);
+    // const [location, setLocation] = useLocalStorage('489hLocation', null);
+    const [location, setLocation] = useState(null);
+
+    const [formData, setFormData] = useState(null);
 
     useEffect(() => {
         const getData = setTimeout(() => {
             axios.get(apiURL).then((response) => {
-                setLocation({ region_iso_code: response.data.region_iso_code });
+                setLocation({
+                    region_iso_code: response.data.region_iso_code,
+                    postal_code: response.data.postal_code,
+                });
             });
         }, 2000);
 
@@ -37,18 +41,24 @@ function ContextProvider({ children }) {
                 schools
             );
             // grab first school from schools and set matchedSchool
-            setMatchedSchool(matchedSchoolInternal);
+            setMatchedSchools(matchedSchoolInternal);
         }
     }, [schools, location]);
 
-    // set matchedSchool to first school in schools
-    useEffect(() => {
-        if (schools) setMatchedSchool(schools[0]);
-    }, [schools]);
+    // // set matchedSchool to first school in schools
+    // useEffect(() => {
+    //     if (schools) setMatchedSchools(schools[0]);
+    // }, [schools]);
 
     const valueUser = useMemo(
-        () => ({ matchedSchool, setMatchedSchool }),
-        [matchedSchool, setMatchedSchool]
+        () => ({
+            matchedSchools,
+            setMatchedSchools,
+            location,
+            formData,
+            setFormData,
+        }),
+        [matchedSchools, setMatchedSchools, location, formData, setFormData]
     );
 
     return (

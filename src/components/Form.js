@@ -1,7 +1,7 @@
 /* eslint-disable react/no-danger */
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useMemo, useState } from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, ErrorMessage } from 'formik';
 import axios from 'axios';
 import * as Yup from 'yup';
 import { useRouter } from 'next/router';
@@ -10,6 +10,8 @@ import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { MdChevronRight } from 'react-icons/md';
 import styles from '@/styles/global/components/Form.module.scss';
 import useForm from '@/hooks/useForm';
+import { useUser } from '@/context/context';
+import GenerateField from '@/lib/GenerateField';
 
 const validationSchema = Yup.object().shape({
     // validation schema here
@@ -17,105 +19,24 @@ const validationSchema = Yup.object().shape({
     // .required('Email is required'),
 });
 
-const generateField = (field, error) => {
-    const {
-        id,
-        label,
-        alias,
-        type,
-        defaultValue,
-        isRequired,
-        validationMessage,
-        helpMessage,
-        properties,
-    } = field;
-
-    switch (type) {
-        case 'text':
-            return (
-                <>
-                    <label htmlFor={alias}>{label}</label>
-                    {isRequired && <span className="required">*</span>}
-
-                    <Field
-                        name={alias}
-                        type="text"
-                        placeholder={properties.placeholder}
-                        className={error ? 'is-invalid' : ''}
-                    />
-                    {helpMessage && <small>{helpMessage}</small>}
-                </>
-            );
-        case 'email':
-            return (
-                <>
-                    <label htmlFor={alias}>{label}</label>
-                    {isRequired && <span className="required">*</span>}
-
-                    <Field
-                        name={alias}
-                        type="email"
-                        placeholder={properties.placeholder}
-                        className={error ? 'is-invalid' : ''}
-                    />
-                    {helpMessage && <small>{helpMessage}</small>}
-                </>
-            );
-        case 'hidden':
-            return <Field key={id} name={alias} type="hidden" />;
-        case 'tel':
-            return (
-                <>
-                    <label htmlFor={alias}>{label}</label>
-                    {isRequired && <span className="required">*</span>}
-                    <Field
-                        name={alias}
-                        type="tel"
-                        placeholder={properties.placeholder}
-                        className={error ? 'is-invalid' : ''}
-                    />
-                    {helpMessage && <small>{helpMessage}</small>}
-                </>
-            );
-        case 'date':
-            return (
-                <>
-                    <label htmlFor={alias}>{label}</label>
-                    {isRequired && <span className="required">*</span>}
-                    <Field
-                        name={alias}
-                        type="date"
-                        placeholder={properties.placeholder}
-                        className={error ? 'is-invalid' : ''}
-                    />
-                    {helpMessage && <small>{helpMessage}</small>}
-                </>
-            );
-        case 'freehtml':
-            return (
-                <div
-                    dangerouslySetInnerHTML={{
-                        __html: properties.text,
-                    }}
-                />
-            );
-
-        default:
-            return null;
-    }
-};
-
-const AcquiaFormHandle = ({ redirectTo, answers = {}, user = {}, id }) => {
+const AcquiaFormHandle = ({
+    redirectTo,
+    answers = {},
+    user = {},
+    id,
+    school = {},
+}) => {
     // keep track of whether the form has been submitted
     const [isSent, setIsSent] = useState(false);
 
-    const [location] = useLocalStorage('489hLocation', null);
     const [localQData] = useLocalStorage('eab-quiz-data');
     const { data: acsForm, error } = useForm(id);
     const [formValues, setFormValues] = useState({});
 
     const [theForm, setTheForm] = useState(null);
     const [theFields, setTheFields] = useState([]);
+
+    const { location, setFormData, formData } = useUser();
 
     useEffect(() => {
         if (acsForm) {
@@ -129,19 +50,21 @@ const AcquiaFormHandle = ({ redirectTo, answers = {}, user = {}, id }) => {
 
     const onSubmit = async (values, { setSubmitting, setErrors }) => {
         try {
-            const formData = {
+            const theFormData = {
                 ...values,
                 formId: theForm.id,
                 formName: theForm.name,
                 messenger: 1,
                 ip_address_state: location.region_iso_code,
+                ip_address_zip: location.postal_code,
             };
 
             await axios
                 .post(`/api/submit?formId=${theForm.id}`, {
-                    mauticform: formData,
+                    mauticform: theFormData,
                 })
                 .then((res) => {
+                    setFormData(theFormData);
                     setIsSent(true);
                 })
                 .catch((err) => {
@@ -160,9 +83,11 @@ const AcquiaFormHandle = ({ redirectTo, answers = {}, user = {}, id }) => {
 
     const initialValues = {};
 
+    const [fieldsProcessed, setFieldsProcessed] = useState(false);
+
     useEffect(() => {
         // console.log('theFields', theFields);
-        if (theFields.length > 0) {
+        if (theFields.length > 0 && !fieldsProcessed) {
             const newFormValues = {};
             theFields.forEach((field) => {
                 if (field.alias === 'quiz_result') {
@@ -174,6 +99,8 @@ const AcquiaFormHandle = ({ redirectTo, answers = {}, user = {}, id }) => {
                     localQData.utmSource
                 ) {
                     newFormValues[field.alias] = localQData.utmSource;
+                } else if (field.alias === 'school_carousel') {
+                    newFormValues[field.alias] = school.title;
                 } else {
                     newFormValues[field.alias] = field.defaultValue || '';
                     if (answers.answers) {
@@ -200,8 +127,18 @@ const AcquiaFormHandle = ({ redirectTo, answers = {}, user = {}, id }) => {
                 ...prev,
                 ...newFormValues,
             }));
+
+            setFieldsProcessed(true);
         }
-    }, [theFields]);
+    }, [
+        answers.answers,
+        answers.highestScorePersonality,
+        localQData,
+        theFields,
+        user,
+        fieldsProcessed,
+        school,
+    ]);
 
     if (error) return <p>Error loading form.</p>;
     if (!acsForm) return <p className="loading">Loading...</p>;
@@ -223,7 +160,11 @@ const AcquiaFormHandle = ({ redirectTo, answers = {}, user = {}, id }) => {
                                 }`}
                                 key={field.id}
                             >
-                                {generateField(field, errors[field.alias])}
+                                <GenerateField
+                                    field={field}
+                                    errors={errors[field.alias]}
+                                    formData={formData}
+                                />
                                 <ErrorMessage
                                     name={field.alias}
                                     component="span"

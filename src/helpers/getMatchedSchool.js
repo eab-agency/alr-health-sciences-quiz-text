@@ -9,9 +9,13 @@ export const getMatchedSchool = (state, schools) => {
 
         // If no school matches the input state, return the first school in the array
         if (!matchedSchoolInternal) {
-            return schools[0];
+            return schools;
         }
 
-        return matchedSchoolInternal;
+        const remainingSchools = schools.filter(
+            (school) => school !== matchedSchoolInternal
+        );
+
+        return [matchedSchoolInternal, ...remainingSchools];
     }
 };

@@ -15,10 +15,6 @@
     &:nth-child(3) {
         flex: 1 0 100%;
     }
-
-    &:nth-child(n + 4) {
-        display: none;
-    }
 }
 
 .hidden {

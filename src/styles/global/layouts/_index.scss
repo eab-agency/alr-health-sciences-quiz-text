@@ -8,7 +8,7 @@ body {
         flex-direction: column;
         justify-content: space-between;
         min-height: 100vh;
-        overflow: hidden;
+        // overflow: hidden;
         background: url('/images/cappex-icon-dark.svg') no-repeat 70% -40rem;
 
         @media (min-width: tokens.$mq-900) {
@@ -45,10 +45,16 @@ body {
 }
 
 //* Page Layout
+
+.page-layout{
+    overflow: hidden;
+}
+
 .short {
     display: flex;
     flex-direction: column;
     flex: 1;
+    overflow: hidden;
 
     &.landing {
         justify-content: center;
