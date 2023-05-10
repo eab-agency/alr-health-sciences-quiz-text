@@ -38,12 +38,12 @@ const SeoPage = () => {
         </li>
     ));
 
-    const [posY, setPosY] = useState(0);
+    // const [posY, setPosY] = useState(0);
     const carouselRef = useRef(null);
-    useEffect(() => {
-        const carouselPosY = carouselRef.current.getBoundingClientRect().top;
-        setPosY(carouselPosY);
-    }, [carouselRef]);
+    // useEffect(() => {
+    //     const carouselPosY = carouselRef.current.getBoundingClientRect().top;
+    //     setPosY(carouselPosY);
+    // }, [carouselRef]);
 
     return (
         <>
@@ -148,6 +148,9 @@ const SeoPage = () => {
                                         <p>{data.contactForm.description}</p>
                                     </div>
                                 </section> */}
+                                <div ref={carouselRef}>
+                                    <CarouselWithForm />
+                                </div>
                                 <section className={styles.takeQuiz}>
                                     <div className={styles.content}>
                                         <h2>{data.takeQuiz.title}</h2>
@@ -160,15 +163,12 @@ const SeoPage = () => {
                                         />
                                     </div>
                                 </section>
-                                <div ref={carouselRef}>
-                                    <CarouselWithForm />
-                                </div>
                             </div>
                         </div>
                     </div>
                 </main>
             </div>
-            <StickyCta posY={posY} />
+            <StickyCta trackedElement={carouselRef} />
             <PageFooter />
         </>
     );
