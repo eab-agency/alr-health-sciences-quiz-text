@@ -14,11 +14,11 @@ const nextConfig = {
         return [
             {
                 source: '/api/submit:path*',
-                destination: 'https://go.cappex-health.com/form/submit:path*',
+                destination: 'https://go.cappexhealth.com/form/submit:path*',
             },
             {
                 source: '/api/acs/:slug',
-                destination: 'https://go.cappex-health.com/api/:slug',
+                destination: 'https://go.cappexhealth.com/api/:slug',
             },
         ];
     },

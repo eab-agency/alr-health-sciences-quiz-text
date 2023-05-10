@@ -1,4 +1,3 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/a73ee491-424d-4421-a33b-0096aba92086/deploy-status)](https://app.netlify.com/sites/cappex-health/deploys)
 
 
 ## Getting Started
