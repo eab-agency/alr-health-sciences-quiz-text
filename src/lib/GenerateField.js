@@ -106,6 +106,7 @@ const GenerateField = ({ field, error, formData }) => {
                     {helpMessage && <small>{helpMessage}</small>}
                 </>
             );
+        case 'freetext':
         case 'freehtml':
             return (
                 <div
