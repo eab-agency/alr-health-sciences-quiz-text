@@ -15,6 +15,32 @@
     &:nth-child(3) {
         flex: 1 0 100%;
     }
+
+    &.text{
+        border: 1px solid orange;
+    }
+    &.email{
+        border: 1px solid blueviolet;
+    }
+    &.tel{
+        border: 1px solid green;
+    }
+    &.checkboxgrp{
+        border: 1px solid red;
+    }
+    &.select{
+        border: 1px solid yellow;
+    }
+    &.freetext{
+        border: 1px solid lightgreen;
+        flex: 1 0 100%;
+
+    }
+
+    &.button{
+        // display: none;
+        // visibility: hidden;
+    }
 }
 
 .hidden {
