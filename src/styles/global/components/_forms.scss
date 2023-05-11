@@ -55,6 +55,14 @@ input[type='text'],
 input[type='url'] {
     @extend %form-field !optional;
     line-height: 1.2;
+
+    &.is-invalid {
+        animation: shake 0.52s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+        transform: translate3d(0, 0, 0);
+        backface-visibility: hidden;
+        perspective: 1000px;
+        border-color: config.$c-error;
+    }
 }
 
 // Textarea
@@ -113,11 +121,11 @@ input[type='checkbox'] {
 
 input.is-invalid {
     border-color: config.$c-error;
-    background: color.adjust(config.$c-error, $lightness: 27%);
+    background: color.adjust(config.$c-error, $lightness: 23%);
 
     & + span {
         color: config.$c-error;
-        animation: shake 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
+        animation: shake 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
         display: block;
     }
 
@@ -154,7 +162,7 @@ div[aria-labelledby="checkbox-group"]{
         display: flex;
         flex-flow: row wrap;
         align-items: flex-start;
-        gap: 1rem;
+        gap: 2rem;
 
         & > div{
             // display: flex;
@@ -180,7 +188,7 @@ div[aria-labelledby="checkbox-group"]{
                     position: absolute;
                     top: -0.3em;
                     left: 0.1em;
-                    font-size: 1.2em;
+                    font-size: 1.4em;
                     font-weight: bold;
                     color: config.$c-orange-500;
 
@@ -193,18 +201,18 @@ div[aria-labelledby="checkbox-group"]{
 
             label{
                 position: relative;
-                padding: 0 0 0 1.4em;
+                padding: 0 0 0 1.6em;
                 color: config.$c-white;
 
                 &::before{
                     content:"";
                     display: block;
-                    width: 1em;
-                    height: 1em;
+                    width: 1.2em;
+                    height: 1.2em;
                     background: config.$c-white;
                     border: 1px solid config.$c-blue-500;
                     position: absolute;
-                    top: 0.2em;
+                    top: 0.1em;
                     left: 0;
                     border-radius: 0.2em;
                 }
@@ -223,4 +231,32 @@ div[aria-labelledby="checkbox-group"]{
     @media (prefers-color-scheme: light) {
         color: color.adjust(config.$c-malva-500, $lightness: -30%);
     }
+}
+
+.text_optin{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding-left: 1.3em;
+    position: relative;
+
+    input[type="checkbox"]{
+        & + label{
+            text-indent: -999em;
+            width: 100%;
+            position: absolute;
+            left: 0;
+            bottom: 0.3em;
+
+            &::before, &::after{
+                text-indent: 0;
+            }
+        }
+    }
+}
+
+.degree_level,
+.program_of_interest{
+    flex: 1 0 100% !important;
 }
