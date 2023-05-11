@@ -12,6 +12,8 @@ import styles from '@/styles/global/components/Form.module.scss';
 import useForm from '@/hooks/useForm';
 import { useUser } from '@/context/context';
 import GenerateField from '@/lib/GenerateField';
+import { DisplayFormikState } from '@/lib/helpers';
+import isDevMode from '@/helpers/isDevMode';
 
 // const validationSchema = Yup.object().shape({
 //     // validation schema here
@@ -49,7 +51,7 @@ const AcquiaFormHandle = ({
 
     const router = useRouter();
 
-    const onSubmit = async (values, { setSubmitting, setErrors }) => {
+    const onSubmit = async (values, { setSubmitting }) => {
         try {
             const theFormData = {
                 ...values,
@@ -75,7 +77,7 @@ const AcquiaFormHandle = ({
             setSubmitting(false);
             // Redirect to the specified path on successful form submission
             if (redirectTo) {
-                router.push(redirectTo);
+                !isDevMode() && router.push(redirectTo);
             }
         } catch (error) {
             setSubmitting(false);
@@ -83,7 +85,6 @@ const AcquiaFormHandle = ({
     };
 
     const initialValues = { ...formData };
-    console.log('🚀 ~ file: Form.js:85 ~ formData:', formData);
 
     const [fieldsProcessed, setFieldsProcessed] = useState(false);
 
@@ -148,16 +149,18 @@ const AcquiaFormHandle = ({
     // Assume `fields` is the array of form fields received from the API
     const validationSchema = Yup.object().shape(
         theFields.reduce((schema, field) => {
-            console.log(
-                '🚀 ~ file: Form.js:169 ~ theFields.reduce ~ field:',
-                field
-            );
             // For each field, create a Yup validation object based on its validation rules
-            let fieldValidation = Yup.string();
+            let fieldValidation;
+
+            if (field.type === 'text' || field.type === 'email') {
+                fieldValidation = Yup.string();
+            } else if (field.type === 'number') {
+                fieldValidation = Yup.number();
+            }
 
             if (field.isRequired) {
                 fieldValidation = fieldValidation.required(
-                    `${field.label} is required`
+                    field.validationMessage || `${field.label} is required`
                 );
             }
 
@@ -176,7 +179,7 @@ const AcquiaFormHandle = ({
     return (
         <Formik
             enableReinitialize
-            initialValues={initialValues}
+            initialValues={formValues || initialValues}
             validationSchema={validationSchema}
             onSubmit={onSubmit}
         >
@@ -192,17 +195,19 @@ const AcquiaFormHandle = ({
                             >
                                 <GenerateField
                                     field={field}
-                                    errors={errors[field.alias]}
+                                    error={errors[field.alias]}
                                     formData={formData}
                                 />
+                                {/* <DisplayFormikState {...field} /> */}
 
-                                <ErrorMessage
+                                {/* <ErrorMessage
                                     name={field.alias}
                                     component="span"
-                                />
+                                /> */}
                             </div>
                         ))}
 
+                        {/* <DisplayFormikState {...values} /> */}
                         <button
                             className="button btn-primary"
                             type="submit"
