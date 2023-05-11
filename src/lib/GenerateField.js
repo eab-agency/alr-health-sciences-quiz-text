@@ -2,12 +2,16 @@
 /* eslint-disable camelcase */
 import { Field, useFormikContext } from 'formik';
 import { useEffect, useState } from 'react';
+import { MdChevronRight } from 'react-icons/md';
 
 const GenerateField = ({ field, error, formData }) => {
     const [phoneHasValue, setPhoneHasValue] = useState(false);
     const {
         values,
         values: { phone_number },
+        isSubmitting,
+        isValid,
+        dirty,
     } = useFormikContext();
 
     // if phone_number has a value, set phoneHasValue to true
@@ -75,6 +79,17 @@ const GenerateField = ({ field, error, formData }) => {
             );
         case 'hidden':
             return <Field key={id} name={alias} type="hidden" />;
+        case 'button':
+            return (
+                <button
+                    className="button btn-primary"
+                    type="submit"
+                    disabled={isSubmitting && isValid && dirty}
+                >
+                    {label}
+                    <MdChevronRight />
+                </button>
+            );
         case 'tel': {
             return (
                 <>

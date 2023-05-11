@@ -190,9 +190,10 @@ const AcquiaFormHandle = ({
                             <div
                                 className={`${styles.qGroup} ${
                                     field.type === 'hidden' ? styles.hidden : ''
-                                }`}
+                                } ${field.alias}`}
                                 key={field.id}
                             >
+                                {/* <h2>{field.alias}</h2> */}
                                 <GenerateField
                                     field={field}
                                     error={errors[field.alias]}
@@ -208,14 +209,6 @@ const AcquiaFormHandle = ({
                         ))}
 
                         {/* <DisplayFormikState {...values} /> */}
-                        <button
-                            className="button btn-primary"
-                            type="submit"
-                            disabled={isSubmitting && isValid && dirty}
-                        >
-                            Submit
-                            <MdChevronRight />
-                        </button>
                     </Form>
                 ) : (
                     <div className={styles.formSuccess}>
