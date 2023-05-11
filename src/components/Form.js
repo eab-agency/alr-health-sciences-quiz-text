@@ -190,7 +190,7 @@ const AcquiaFormHandle = ({
                             <div
                                 className={`${styles.qGroup} ${
                                     field.type === 'hidden' ? styles.hidden : ''
-                                } ${field.alias}`}
+                                } ${field.alias} ${styles[field.type]} `}
                                 key={field.id}
                             >
                                 {/* <h2>{field.alias}</h2> */}

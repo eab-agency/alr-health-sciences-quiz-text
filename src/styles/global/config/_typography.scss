@@ -77,6 +77,11 @@ ol {
 
 a {
     text-decoration: underline;
+    color: tokens.$c-orange-500;
+
+    @media (prefers-color-scheme: light) {
+        color: tokens.$c-blue-500;
+    }
 
     &:hover,
     &:focus {

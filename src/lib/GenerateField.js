@@ -53,7 +53,7 @@ const GenerateField = ({ field, error, formData }) => {
                         placeholder={properties.placeholder}
                         className={error ? 'is-invalid' : ''}
                     />
-                    {error && error}
+                    {error && <span>{error}</span>}
                     {helpMessage && <small>{helpMessage}</small>}
                 </>
             ) : (
@@ -71,7 +71,7 @@ const GenerateField = ({ field, error, formData }) => {
                         placeholder={properties.placeholder}
                         className={error ? 'is-invalid' : ''}
                     />
-                    {error && error}
+                    {error && <span>{error}</span>}
                     {helpMessage && <small>{helpMessage}</small>}
                 </>
             ) : (
