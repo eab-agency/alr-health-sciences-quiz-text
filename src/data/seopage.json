@@ -85,7 +85,36 @@
         "title": "Ready to Find Your Role?",
         "description": "In less than three minutes, you could discover which role could be a good fit for you — and the steps you can take to advance your career.",
         "buttonText": "Take the Quiz"
-    }
-
+    },
+    "whatIsCappex":{
+        "title": "What is Cappex?",
+        "intro": "At <strong>Cappex</strong>, our mission is to help you get to day one at the college or university that’s right for you. This quest was born out of our own frustration with the college search and selection process. We realized that inherent barriers were limiting many students’ access to education, and we needed to do something about it.",
+        "subtitle":"Here’s how we help future students like you:",
+        "facts": [
+            {
+                "fact": "<strong>Give you tools to sharpen your goals:</strong> It’s easy to say you want to advance your career. It’s harder to know how. Cappex has resources (<a href='/quiz'>like this quiz</a>) to help you define — and reach — your goals."
+            },
+            {
+                "fact": "<strong>Help you connect with the right schools:</strong> Finding a college or university that has programs that are worth your time and investment can be a challenge. Cappex provides matches to make it easier."
+            },
+            {
+                "fact": "<strong>Find funding to make school affordable:</strong> Cappex hosts the nation’s largest scholarship database and makes it easy to apply right from the platform."
+            }
+        ]
+    },
+    "cappexStats": [
+            {
+                "number": "600+",
+                "description": "Institutions trust Cappex to match them with students like you"
+            },
+            {
+                "number": "Billions",
+                "description": "Of dollars in scholarships can be applied for through Cappex’s scholarship database"
+            },
+            {
+                "number": "17+",
+                "description": "Years of experience matching students with their perfect colleges and universities"
+            }
+        ]
 }
 
