@@ -25,28 +25,32 @@ function Question({ questionNum, handleAnswer }) {
     // Handle the loading state
     if (!data) return <div className="loading">Loading...</div>;
 
+    const questionNumeral = questionNum === 7 ? 'last-question' : '';
+
     return (
         <>
             <h2
                 className="question-copy"
                 dangerouslySetInnerHTML={{ __html: data.question }}
             />
-            <ul className={styles.questions}>
+            <ul className={`${styles.questions} ${styles[questionNumeral]}`}>
                 {shuffledAnswers.map((answer, index) => (
-                    <button
-                        className="answer-button"
-                        type="button"
-                        key={index}
-                        onClick={() =>
-                            handleClick(
-                                data.question,
-                                answer,
-                                data.associatedField
-                            )
-                        }
-                    >
-                        {answer.answer}
-                    </button>
+                    <li>
+                        <button
+                            className="answer-button"
+                            type="button"
+                            key={index}
+                            onClick={() =>
+                                handleClick(
+                                    data.question,
+                                    answer,
+                                    data.associatedField
+                                )
+                            }
+                        >
+                            {answer.answer}
+                        </button>
+                    </li>
                 ))}
             </ul>
         </>
