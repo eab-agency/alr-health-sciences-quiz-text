@@ -202,7 +202,11 @@ const PractitionerPage = () => {
                         </Accordion>
                     </section>
 
-                    <div className={styles.carouselWithForm} ref={carouselRef}>
+                    <div
+                        id="explore-your-school-matches"
+                        className={styles.carouselWithForm}
+                        ref={carouselRef}
+                    >
                         <CarouselWithForm formId="3" />
                     </div>
 
