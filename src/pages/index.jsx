@@ -148,7 +148,10 @@ const SeoPage = () => {
                                         <p>{data.contactForm.description}</p>
                                     </div>
                                 </section> */}
-                                <div ref={carouselRef}>
+                                <div
+                                    id="explore-your-school-matches"
+                                    ref={carouselRef}
+                                >
                                     <CarouselWithForm />
                                 </div>
                                 <section className={styles.takeQuiz}>
