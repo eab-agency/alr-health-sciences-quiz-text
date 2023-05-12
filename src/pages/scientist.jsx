@@ -1,48 +1,23 @@
-/* eslint-disable no-unused-vars */
-import React, { useEffect, useState, useRef } from 'react';
-import { useRouter } from 'next/router';
+import React, { useRef } from 'react';
 import Image from 'next/image';
-import { getMatchedSchool } from '@/helpers/getMatchedSchool';
 
 import PageLayout from '@/components/PageLayout';
 import Tabs from '@/components/Tabs';
 import Stats from '@/components/Stats';
-import { useUser } from '@/context/context';
-import { useRequest } from '@/hooks/useRequest';
 import { BiLinkExternal } from 'react-icons/bi';
 
 import styles from '@/styles/global/layouts/FinalPage.module.scss';
 import Accordion from '@/components/Accordion';
-import CappexFormSection from '@/components/CappexFormSection';
-import { useLocalStorage } from '@/hooks/useLocalStorage';
 import CarouselWithForm from '@/components/CarouselWithForm';
 
 import { StickyCta } from '@/components/StickyCta';
+import getQuizJSON from '@/lib/getQuizJSON';
 
-const ScientistPage = () => {
-    const { data: results, error: resultsError } = useRequest('/quiz/results');
-    const { data: schools, error: schoolsError } = useRequest('/quiz/schools');
-    const [localQData] = useLocalStorage('eab-quiz-data');
-    const { matchedSchools } = useUser();
-
-    const router = useRouter();
-    const currentRoute = router.pathname.replace('/', '');
-
-    //    wait for quizData to be populated and then set personalityData based on results.title
-    const [personalityData, setPersonalityData] = useState(null);
-    useEffect(() => {
-        if (results) {
-            const personalityDataInternal = results.find(
-                (result) => result.title.toLowerCase() === currentRoute
-            );
-            setPersonalityData(personalityDataInternal);
-        }
-    }, [results, currentRoute]);
-
+const ScientistPage = ({ results }) => {
     const carouselRef = useRef(null);
 
-    // if no personalityData is found, return loading
-    if (!personalityData) {
+    // if no results is found, return loading
+    if (!results) {
         return <div className="loading">Loading...</div>;
     }
 
@@ -54,11 +29,10 @@ const ScientistPage = () => {
                         Your ideal role could be ...
                     </span>
                     <section className={styles['intro-section']}>
-                        <h1>{personalityData.title}</h1>
-                        <p>{personalityData.detailedDescription}</p>
+                        <h1>{results.title}</h1>
+                        <p>{results.detailedDescription}</p>
                     </section>
-                    <Tabs className="react-tabs" tabs={personalityData.tabs} />
-                    {!localQData && <CappexFormSection />}
+                    <Tabs className="react-tabs" tabs={results.tabs} />
                     <section className={styles['career-path']}>
                         <div className={styles['path-intro']}>
                             <h2>
@@ -82,8 +56,8 @@ const ScientistPage = () => {
                                     perform complex tests on patient samples to
                                     find data that plays an important role in
                                     identifying and treating cancerimport heart
-                                    disease, diabetes, and otherimport{' '}
-                                    {useState} from 'react'; medical conditions.
+                                    disease, diabetes, and other medical
+                                    conditions.
                                 </li>
                                 <li>
                                     <strong>Clinical pharmacologist</strong>{' '}
@@ -116,10 +90,7 @@ const ScientistPage = () => {
                             </figure>
                         </div>
                     </section>
-                    <Stats
-                        stats={personalityData.stats}
-                        source={personalityData.statsSource}
-                    />
+                    <Stats stats={results.stats} source={results.statsSource} />
                     <section className={styles['best-degrees']}>
                         <div className={styles['degrees-intro']}>
                             <h2>
@@ -135,7 +106,7 @@ const ScientistPage = () => {
                             </p>
                         </div>
                         <Tabs
-                            tabs={personalityData.degreeTabs}
+                            tabs={results.degreeTabs}
                             className="degree-tabs"
                         />
                     </section>
@@ -202,3 +173,17 @@ const ScientistPage = () => {
 
 ScientistPage.PageLayout = PageLayout;
 export default ScientistPage;
+
+export const getStaticProps = async () => {
+    const results = await getQuizJSON();
+
+    const filteredResults = results.filter(
+        (result) => result.title.toLowerCase() === 'scientist'
+    );
+
+    return {
+        props: {
+            results: filteredResults[0],
+        },
+    };
+};

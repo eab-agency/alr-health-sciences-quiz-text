@@ -1,30 +1,19 @@
-/* eslint-disable no-unused-vars */
-import React, { useEffect, useState, useRef } from 'react';
-import { useRouter } from 'next/router';
+import React, { useRef } from 'react';
 import Image from 'next/image';
-import { getMatchedSchool } from '@/helpers/getMatchedSchool';
 
 import PageLayout from '@/components/PageLayout';
 import Tabs from '@/components/Tabs';
 import Stats from '@/components/Stats';
-import { useUser } from '@/context/context';
-import UniversityMatch from '@/components/UniversityMatch';
-import { useRequest } from '@/hooks/useRequest';
 import { BiLinkExternal } from 'react-icons/bi';
 
 import styles from '@/styles/global/layouts/FinalPage.module.scss';
 import Accordion from '@/components/Accordion';
-import CappexFormSection from '@/components/CappexFormSection';
-import { useLocalStorage } from '@/hooks/useLocalStorage';
 import CarouselWithForm from '@/components/CarouselWithForm';
 
 import { StickyCta } from '@/components/StickyCta';
 import getQuizJSON from '@/lib/getQuizJSON';
 
-const AnalystPage = ({ results, schools }) => {
-    // console.log('🚀 ~ file: analyst.jsx:25 ~ AnalystPage ~ results:', results);
-    const [localQData] = useLocalStorage('eab-quiz-data');
-
+const AnalystPage = ({ results }) => {
     const carouselRef = useRef(null);
 
     // if no personalityData is found, return loading
@@ -44,7 +33,6 @@ const AnalystPage = ({ results, schools }) => {
                         <p>{results.detailedDescription}</p>
                     </section>
                     <Tabs className="react-tabs" tabs={results.tabs} />
-                    {/* {!localQData && <CappexFormSection />} */}
                     <section className={styles['career-path']}>
                         <div className={styles['path-intro']}>
                             <h2>
@@ -188,7 +176,7 @@ const AnalystPage = ({ results, schools }) => {
                     </section>
                 </div>
             </div>
-            {/* <StickyCta trackedElement={carouselRef} /> */}
+            <StickyCta trackedElement={carouselRef} />
         </>
     );
 };
@@ -198,7 +186,6 @@ export default AnalystPage;
 
 export const getStaticProps = async () => {
     const results = await getQuizJSON();
-    const schools = await getQuizJSON();
 
     const filteredResults = results.filter(
         (result) => result.title.toLowerCase() === 'analyst'
@@ -207,7 +194,6 @@ export const getStaticProps = async () => {
     return {
         props: {
             results: filteredResults[0],
-            schools,
         },
     };
 };

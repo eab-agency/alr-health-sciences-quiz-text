@@ -1,46 +1,23 @@
-/* eslint-disable no-unused-vars */
-import React, { useState, useEffect, useRef } from 'react';
-import { useRouter } from 'next/router';
+import React, { useRef } from 'react';
 
 import Tabs from '@/components/Tabs';
 import PageLayout from '@/components/PageLayout';
-import { useUser } from '@/context/context';
-import UniversityMatch from '@/components/UniversityMatch';
-import { useRequest } from '@/hooks/useRequest';
 import styles from '@/styles/global/layouts/FinalPage.module.scss';
 
 import { BiLinkExternal } from 'react-icons/bi';
 import Stats from '@/components/Stats';
 import Accordion from '@/components/Accordion';
 import Image from 'next/image';
-import CappexFormSection from '@/components/CappexFormSection';
-import { useLocalStorage } from '@/hooks/useLocalStorage';
 import CarouselWithForm from '@/components/CarouselWithForm';
 
 import { StickyCta } from '@/components/StickyCta';
+import getQuizJSON from '@/lib/getQuizJSON';
 
-const PractitionerPage = () => {
-    const { data: results, error: resultsError } = useRequest('/quiz/results');
-    const { matchedSchools } = useUser();
-    const [localQData] = useLocalStorage('eab-quiz-data');
-    const router = useRouter();
-    const currentRoute = router.pathname.replace('/', '');
-
+const PractitionerPage = ({ results }) => {
     const carouselRef = useRef(null);
 
-    //    wait for quizData to be populated and then set personalityData based on results.title
-    const [personalityData, setPersonalityData] = useState(null);
-    useEffect(() => {
-        if (results) {
-            const personalityDataInternal = results.find(
-                (result) => result.title.toLowerCase() === currentRoute
-            );
-            setPersonalityData(personalityDataInternal);
-        }
-    }, [results, currentRoute]);
-
     // if no personalityData is found, return loading
-    if (!personalityData) {
+    if (!results) {
         return <div className="loading">Loading...</div>;
     }
 
@@ -52,11 +29,11 @@ const PractitionerPage = () => {
                         Your ideal role could be ...
                     </span>
                     <section className={styles['intro-section']}>
-                        <h1>{personalityData.title}</h1>
-                        <p>{personalityData.detailedDescription}</p>
+                        <h1>{results.title}</h1>
+                        <p>{results.detailedDescription}</p>
                     </section>
-                    <Tabs className="react-tabs" tabs={personalityData.tabs} />
-                    {!localQData && <CappexFormSection />}
+                    <Tabs className="react-tabs" tabs={results.tabs} />
+                    {/* {!localQData && <CappexFormSection />} */}
                     <section className={styles['career-path']}>
                         <div className={styles['path-intro']}>
                             <h2>
@@ -148,10 +125,7 @@ const PractitionerPage = () => {
                             </ul>
                         </div>
                     </section>
-                    <Stats
-                        stats={personalityData.stats}
-                        source={personalityData.statsSource}
-                    />
+                    <Stats stats={results.stats} source={results.statsSource} />
                     <section className={styles['best-degrees']}>
                         <div className={styles['degrees-intro']}>
                             <h2>
@@ -167,7 +141,7 @@ const PractitionerPage = () => {
                             </p>
                         </div>
                         <Tabs
-                            tabs={personalityData.degreeTabs}
+                            tabs={results.degreeTabs}
                             className="degree-tabs"
                         />
                     </section>
@@ -244,3 +218,17 @@ const PractitionerPage = () => {
 PractitionerPage.PageLayout = PageLayout;
 
 export default PractitionerPage;
+
+export const getStaticProps = async () => {
+    const results = await getQuizJSON();
+
+    const filteredResults = results.filter(
+        (result) => result.title.toLowerCase() === 'practitioner'
+    );
+
+    return {
+        props: {
+            results: filteredResults[0],
+        },
+    };
+};
