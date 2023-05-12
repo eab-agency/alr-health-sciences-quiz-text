@@ -38,12 +38,19 @@ const SeoPage = () => {
         </li>
     ));
 
-    // const [posY, setPosY] = useState(0);
+    const cappexFacts = data.whatIsCappex.facts;
+    console.log('facts', cappexFacts);
+    const cappexFactsList = cappexFacts.map((fact, index) => (
+        <li key={index}>
+            <p
+                dangerouslySetInnerHTML={{
+                    __html: fact.fact,
+                }}
+            />
+        </li>
+    ));
+
     const carouselRef = useRef(null);
-    // useEffect(() => {
-    //     const carouselPosY = carouselRef.current.getBoundingClientRect().top;
-    //     setPosY(carouselPosY);
-    // }, [carouselRef]);
 
     return (
         <>
@@ -142,18 +149,48 @@ const SeoPage = () => {
                                     </div>
                                     <ul>{rightCareerList}</ul>
                                 </section>
-                                {/* <section className={styles.contactForm}>
-                                    <div className={styles.intro}>
-                                        <h2>{data.contactForm.title}</h2>
-                                        <p>{data.contactForm.description}</p>
-                                    </div>
-                                </section> */}
                                 <div
                                     id="explore-your-school-matches"
                                     ref={carouselRef}
                                 >
                                     <CarouselWithForm />
                                 </div>
+                                <section className={styles.whatIsCappex}>
+                                    <div className={styles.intro}>
+                                        <h2>{data.whatIsCappex.title}</h2>
+                                        <p
+                                            dangerouslySetInnerHTML={{
+                                                __html: data.whatIsCappex.intro,
+                                            }}
+                                        />
+                                    </div>
+                                    <div className={styles.content}>
+                                        <figure>
+                                            <Image
+                                                src="/images/college-search.png"
+                                                width={536}
+                                                height={361}
+                                                alt="What is Cappex"
+                                            />
+                                        </figure>
+                                        <div className={styles.cappexFacts}>
+                                            <h3>
+                                                {data.whatIsCappex.subtitle}
+                                            </h3>
+                                            <ul>{cappexFactsList}</ul>
+                                            <div
+                                                dangerouslySetInnerHTML={{
+                                                    __html: data.whatIsCappex
+                                                        .content,
+                                                }}
+                                            />
+                                        </div>
+                                    </div>
+                                </section>
+                                <Stats
+                                    stats={data.cappexStats}
+                                    className={styles.stats}
+                                />
                                 <section className={styles.takeQuiz}>
                                     <div className={styles.content}>
                                         <h2>{data.takeQuiz.title}</h2>
@@ -176,5 +213,4 @@ const SeoPage = () => {
         </>
     );
 };
-// SeoPage.PageLayout = PageLayout;
 export default SeoPage;
