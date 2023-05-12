@@ -11,7 +11,7 @@ function Stats({ stats, source, className }) {
                             <strong>{stat.number}</strong>
                             {stat.title}
                         </h3>
-                        <p
+                        <div
                             dangerouslySetInnerHTML={{
                                 __html: stat.description,
                             }}

@@ -21,7 +21,7 @@ const UniversityMatch = ({ school }) => (
                 <h2>{school.title}</h2>
                 <p>{school.subTitle}</p>
             </div>
-            <p dangerouslySetInnerHTML={{ __html: school.description }} />
+            {/* <p dangerouslySetInnerHTML={{ __html: school.description }} /> */}
             <Button type="primary" label={school.linkText} href={school.link} />
         </div>
     </div>

@@ -19,37 +19,16 @@ import { useLocalStorage } from '@/hooks/useLocalStorage';
 import CarouselWithForm from '@/components/CarouselWithForm';
 
 import { StickyCta } from '@/components/StickyCta';
+import getQuizJSON from '@/lib/getQuizJSON';
 
-const AnalystPage = () => {
-    const { data: results, error: resultsError } = useRequest('/quiz/results');
-    const { data: schools, error: schoolsError } = useRequest('/quiz/schools');
+const AnalystPage = ({ results, schools }) => {
+    // console.log('🚀 ~ file: analyst.jsx:25 ~ AnalystPage ~ results:', results);
     const [localQData] = useLocalStorage('eab-quiz-data');
-
-    const { matchedSchools, setMatchedSchools } = useUser();
-
-    const router = useRouter();
-    const currentRoute = router.pathname.replace('/', '');
-
-    //    wait for quizData to be populated and then set personalityData based on results.title
-    const [personalityData, setPersonalityData] = useState(null);
-    useEffect(() => {
-        if (results) {
-            const personalityDataInternal = results.find(
-                (result) => result.title.toLowerCase() === currentRoute
-            );
-            setPersonalityData(personalityDataInternal);
-        }
-    }, [results, currentRoute]);
-
-    const handleStateChange = (value) => {
-        const matchedSchoolInternal = getMatchedSchool(value, schools);
-        setMatchedSchools(matchedSchoolInternal);
-    };
 
     const carouselRef = useRef(null);
 
     // if no personalityData is found, return loading
-    if (!personalityData) {
+    if (!results) {
         return <div className="loading">Loading...</div>;
     }
 
@@ -61,19 +40,19 @@ const AnalystPage = () => {
                         Your ideal role could be ...
                     </span>
                     <section className={styles['intro-section']}>
-                        <h1>{personalityData.title}</h1>
-                        <p>{personalityData.detailedDescription}</p>
+                        <h1>{results.title}</h1>
+                        <p>{results.detailedDescription}</p>
                     </section>
-                    <Tabs className="react-tabs" tabs={personalityData.tabs} />
-                    {!localQData && <CappexFormSection />}
+                    <Tabs className="react-tabs" tabs={results.tabs} />
+                    {/* {!localQData && <CappexFormSection />} */}
                     <section className={styles['career-path']}>
                         <div className={styles['path-intro']}>
                             <h2>
-                                What’s a common health care career path for The
+                                What's a common health care career path for The
                                 Analyst?
                             </h2>
                             <p>
-                                Occupations that align with The Analyst’s career
+                                Occupations that align with The Analyst's career
                                 path advise organizations on computerized
                                 healthcare systems and analyze clinical data.
                             </p>
@@ -98,7 +77,7 @@ const AnalystPage = () => {
                                     as those used to track a particular disease
                                     or condition. They may collect and analyze
                                     information for facility, regional, and
-                                    national databases; review patients’ records
+                                    national databases; review patients' records
                                     and pathology reports to verify completeness
                                     and accuracy; assign classification codes to
                                     represent the diagnosis and treatment; then
@@ -126,10 +105,7 @@ const AnalystPage = () => {
                             </figure>
                         </div>
                     </section>
-                    <Stats
-                        stats={personalityData.stats}
-                        source={personalityData.statsSource}
-                    />
+                    <Stats stats={results.stats} source={results.statsSource} />
                     <section className={styles['best-degrees']}>
                         <div className={styles['degrees-intro']}>
                             <h2>
@@ -138,14 +114,14 @@ const AnalystPage = () => {
                             </h2>
                             <p>
                                 The degree necessary for careers in The
-                                Analyst’s path varies depending on
-                                responsibilities. An associate’s degree is a
+                                Analyst's path varies depending on
+                                responsibilities. An associate's degree is a
                                 minimum requirement, with many roles preferring
-                                a bachelor’s or master’s degree.
+                                a bachelor's or master's degree.
                             </p>
                         </div>
                         <Tabs
-                            tabs={personalityData.degreeTabs}
+                            tabs={results.degreeTabs}
                             className="degree-tabs"
                         />
                     </section>
@@ -212,10 +188,26 @@ const AnalystPage = () => {
                     </section>
                 </div>
             </div>
-            <StickyCta trackedElement={carouselRef} />
+            {/* <StickyCta trackedElement={carouselRef} /> */}
         </>
     );
 };
 
 AnalystPage.PageLayout = PageLayout;
 export default AnalystPage;
+
+export const getStaticProps = async () => {
+    const results = await getQuizJSON();
+    const schools = await getQuizJSON();
+
+    const filteredResults = results.filter(
+        (result) => result.title.toLowerCase() === 'analyst'
+    );
+
+    return {
+        props: {
+            results: filteredResults[0],
+            schools,
+        },
+    };
+};
