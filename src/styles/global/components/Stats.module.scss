@@ -85,7 +85,6 @@
 
             h3 {
                 display: flex;
-                // flex: 1 0 10rem;
                 flex-direction: column;
                 font-weight: tokens.$fw-normal;
                 font-size: clamp(
@@ -104,7 +103,6 @@
 
                 @media (min-width: tokens.$mq-1000) {
                     max-width: 100%;
-                    // flex: auto;
                 }
 
                 strong {
