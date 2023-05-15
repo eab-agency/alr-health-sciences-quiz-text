@@ -40,7 +40,7 @@ export const StickyCta = ({ trackedElement }) => {
     return (
         <div className={stickyCtaClass}>
             <button type="button" onClick={handleClick}>
-                <span>Explore your school matches</span>
+                <span>Explore Your School Matches</span>
                 <i>
                     <MdChevronRight />{' '}
                 </i>
