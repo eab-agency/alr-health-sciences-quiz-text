@@ -36,7 +36,7 @@ const Results = ({ personality, description, title, answers, children }) => {
                         id="2"
                         className={styles.formContainer}
                     />
-                    {isDevMode && (
+                    {isDevMode() && (
                         <Link href={`/${personality}`}>
                             Skip form (only shows in dev mode)
                         </Link>
