@@ -8,10 +8,13 @@
     max-width: tokens.$maxWidth;
     margin: 0 auto;
     padding-bottom: 0;
+    overflow: hidden;
+
 
     .content {
         @include layouts.content;
         gap: 0;
+        max-width: 100%;
 
         & > span {
             margin-bottom: 2em;
@@ -195,6 +198,7 @@
 
             img {
                 order: 0;
+                width: 100%;
 
                 @media (min-width: tokens.$mq-900) {
                     order: 1;
@@ -367,6 +371,10 @@
         font-weight: tokens.$fw-light;
         font-size: clamp(tokens.$fs-l, 2vw, tokens.$fs-xl);
     }
+}
+
+.carouselWithForm{
+    width: 100%;
 }
 
 .matchedSchools {

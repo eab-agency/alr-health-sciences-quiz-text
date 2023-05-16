@@ -12,12 +12,15 @@ import styles from '@/styles/global/components/Form.module.scss';
 import useForm from '@/hooks/useForm';
 import { useUser } from '@/context/context';
 import GenerateField from '@/lib/GenerateField';
+import { DisplayFormikState } from '@/lib/helpers';
+import isDevMode from '@/helpers/isDevMode';
 
-const validationSchema = Yup.object().shape({
-    // validation schema here
-    preferred_email: Yup.string().email('Invalid email'),
-    // .required('Email is required'),
-});
+// const validationSchema = Yup.object().shape({
+//     // validation schema here
+//     preferred_email: Yup.string()
+//         .email('Invalid email')
+//         .required('Email is required'),
+// });
 
 const AcquiaFormHandle = ({
     redirectTo,
@@ -48,7 +51,7 @@ const AcquiaFormHandle = ({
 
     const router = useRouter();
 
-    const onSubmit = async (values, { setSubmitting, setErrors }) => {
+    const onSubmit = async (values, { setSubmitting }) => {
         try {
             const theFormData = {
                 ...values,
@@ -74,14 +77,14 @@ const AcquiaFormHandle = ({
             setSubmitting(false);
             // Redirect to the specified path on successful form submission
             if (redirectTo) {
-                router.push(redirectTo);
+                !isDevMode() && router.push(redirectTo);
             }
         } catch (error) {
             setSubmitting(false);
         }
     };
 
-    const initialValues = {};
+    const initialValues = { ...formData };
 
     const [fieldsProcessed, setFieldsProcessed] = useState(false);
 
@@ -143,6 +146,36 @@ const AcquiaFormHandle = ({
     if (error) return <p>Error loading form.</p>;
     if (!acsForm) return <p className="loading">Loading...</p>;
 
+    // Assume `fields` is the array of form fields received from the API
+    const validationSchema = Yup.object().shape(
+        theFields.reduce((schema, field) => {
+            // For each field, create a Yup validation object based on its validation rules
+            let fieldValidation;
+
+            if (field.type === 'text' || field.type === 'email') {
+                fieldValidation = Yup.string();
+            } else if (field.type === 'number') {
+                fieldValidation = Yup.number();
+            }
+
+            if (field.isRequired) {
+                fieldValidation = fieldValidation.required(
+                    field.validationMessage || `${field.label} is required`
+                );
+            }
+
+            if (field.type === 'email') {
+                fieldValidation = fieldValidation.email('Invalid email');
+            }
+
+            // Add more validation rules here as needed
+
+            // Add the validation object to the schema object using the field's alias as the key
+            schema[field.alias] = fieldValidation;
+            return schema;
+        }, {})
+    );
+
     return (
         <Formik
             enableReinitialize
@@ -150,36 +183,32 @@ const AcquiaFormHandle = ({
             validationSchema={validationSchema}
             onSubmit={onSubmit}
         >
-            {({ errors, isSubmitting }) =>
+            {({ errors, isSubmitting, isValid, dirty }) =>
                 !isSent ? (
                     <Form className={styles.form}>
                         {theFields.map((field) => (
                             <div
                                 className={`${styles.qGroup} ${
                                     field.type === 'hidden' ? styles.hidden : ''
-                                }`}
+                                } ${field.alias} ${styles[field.type]} `}
                                 key={field.id}
                             >
+                                {/* <h2>{field.alias}</h2> */}
                                 <GenerateField
                                     field={field}
-                                    errors={errors[field.alias]}
+                                    error={errors[field.alias]}
                                     formData={formData}
                                 />
-                                <ErrorMessage
+                                {/* <DisplayFormikState {...field} /> */}
+
+                                {/* <ErrorMessage
                                     name={field.alias}
                                     component="span"
-                                />
+                                /> */}
                             </div>
                         ))}
 
-                        <button
-                            className="button btn-primary"
-                            type="submit"
-                            disabled={isSubmitting}
-                        >
-                            Submit
-                            <MdChevronRight />
-                        </button>
+                        {/* <DisplayFormikState {...values} /> */}
                     </Form>
                 ) : (
                     <div className={styles.formSuccess}>

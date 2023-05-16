@@ -2,7 +2,7 @@
     "pageTitle": " Which <strong>health care career</strong> is right for you?",
     "quizSection": {
         "title": "Take our Free Health Care Career Quiz to Find Out!",
-        "content": "<p> If you want to work in the medical field but you don’t know which job fits your skills and interests, this  free quiz can help find a good fit and you plan your next steps.</p><p>The Bureau of Labor Statistics  predicts about{' '} <strong>2 million jobs in health care will be created each year over the next decade. </strong>{' '}Many colleges and universities offer flexible, affordable degrees or certificates that can help you get a head start in transferring your skills to a new or more advanced role.</p><p> In less than three minutes, you could{' '}<strong>discover which type of health care career could be a good fit for you. </strong>{' '}We’ll also connect you with schools near you that</p>",
+        "content": "<p> If you want to work in the medical field but you don’t know which job fits your skills and interests, this  free quiz can help find a good fit and you plan your next steps.</p><p>The Bureau of Labor Statistics  predicts about <strong>2 million jobs in health care will be created each year over the next decade. </strong>Many colleges and universities offer flexible, affordable degrees or certificates that can help you get a head start in transferring your skills to a new or more advanced role.</p><p> In less than three minutes, you could <strong>discover which type of health care career could be a good fit for you. </strong> We’ll also connect you with schools near you that</p>",
         "buttonText": "Take the Quiz"
     },
     "stats": [
@@ -78,14 +78,43 @@
         }
     ],
     "contactForm": {
-        "title": "Want More from Cappex?",
+        "title": "Explore Your Potencial School matches",
         "description": "Let us know the best way to contact you with helpful information and  potential college or university  matches."
     },
     "takeQuiz": {
         "title": "Ready to Find Your Role?",
         "description": "In less than three minutes, you could discover which role could be a good fit for you — and the steps you can take to advance your career.",
         "buttonText": "Take the Quiz"
-    }
-
+    },
+    "whatIsCappex":{
+        "title": "What is Cappex?",
+        "intro": "At <strong>Cappex</strong>, our mission is to help you get to day one at the college or university that’s right for you. This quest was born out of our own frustration with the college search and selection process. We realized that inherent barriers were limiting many students’ access to education, and we needed to do something about it.",
+        "subtitle":"Here’s how we help future students like you:",
+        "facts": [
+            {
+                "fact": "<strong>Give you tools to sharpen your goals:</strong> It’s easy to say you want to advance your career. It’s harder to know how. Cappex has resources (<a href='/quiz'>like this quiz</a>) to help you define — and reach — your goals."
+            },
+            {
+                "fact": "<strong>Help you connect with the right schools:</strong> Finding a college or university that has programs that are worth your time and investment can be a challenge. Cappex provides matches to make it easier."
+            },
+            {
+                "fact": "<strong>Share valuable college search advice:</strong> Tap into our extensive expertise acquired over nearly two decades of helping students find their perfect schools."
+            }
+        ]
+    },
+    "cappexStats": [
+            {
+                "number": "600+",
+                "description": "Institutions trust Cappex to match them with students like you"
+            },
+            {
+                "number": "Billions",
+                "description": "Of dollars in scholarships can be applied for through Cappex’s scholarship database"
+            },
+            {
+                "number": "17+",
+                "description": "Years of experience matching students with their perfect colleges and universities"
+            }
+        ]
 }
 

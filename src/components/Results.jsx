@@ -4,9 +4,11 @@ import Link from 'next/link';
 
 import styles from '@/styles/global/layouts/Results.module.scss';
 import useUser from '@/hooks/useUser';
+import isDevMode from '@/helpers/isDevMode';
 
 const Results = ({ personality, description, title, answers, children }) => {
     const { user } = useUser();
+    const devModeOnly = isDevMode();
     return (
         <div className={styles['results-container']}>
             <span className="intro-title">Your ideal role is ...</span>
@@ -35,7 +37,7 @@ const Results = ({ personality, description, title, answers, children }) => {
                         id="2"
                         className={styles.formContainer}
                     />
-                    {process.env.NODE_ENV === 'development' && (
+                    {devModeOnly && (
                         <Link href={`/${personality}`}>
                             Skip form (only shows in dev mode)
                         </Link>

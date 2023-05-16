@@ -8,7 +8,8 @@
     padding: clamp(tokens.$baseUnit * 0.2, 2vw, tokens.$baseUnit * 0.5);
     background: tokens.$c-blue-500;
     border-top: 1px solid tokens.$c-blue-800;
-    position: sticky;
+    // position: sticky;
+    position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;

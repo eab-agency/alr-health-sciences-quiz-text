@@ -2,12 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { MdChevronRight } from 'react-icons/md';
 import styles from '@/styles/global/components/StickyCta.module.scss';
 
-export const StickyCta = ({ posY }) => {
+export const StickyCta = ({ trackedElement }) => {
     const [scrolled, setScrolled] = useState(false);
+    const [posY, setPosY] = useState(0);
+
+    useEffect(() => {
+        const trackedElementPosY = trackedElement.current.offsetTop;
+        setPosY(trackedElementPosY);
+    }, [trackedElement]);
 
     useEffect(() => {
         const handleScroll = () => {
-            const trigger = posY - 600;
+            const trigger = posY - 200;
 
             if (window.scrollY >= trigger) {
                 setScrolled(true);
@@ -18,9 +24,7 @@ export const StickyCta = ({ posY }) => {
 
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
-    }, [posY]);
-
-    // console.log('the vertical: ', posY);
+    }, [posY, trackedElement]);
 
     const stickyCtaClass = `${styles.stickyCta} ${
         scrolled ? styles.scrolled : ''
@@ -36,7 +40,7 @@ export const StickyCta = ({ posY }) => {
     return (
         <div className={stickyCtaClass}>
             <button type="button" onClick={handleClick}>
-                <span>Learn more from Cappex</span>
+                <span>Explore Your School Matches</span>
                 <i>
                     <MdChevronRight />{' '}
                 </i>

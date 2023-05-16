@@ -18,7 +18,7 @@ const CarouselWithForm = ({ formId }) => {
     return (
         <section className={styles.matchedSchools}>
             <div className={styles.intro}>
-                <h2>Want More from Cappex?</h2>
+                <h2>Explore Your School Matches</h2>
             </div>
 
             <div className={styles.container}>

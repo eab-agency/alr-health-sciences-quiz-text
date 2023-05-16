@@ -3,6 +3,7 @@ import React from 'react';
 import Image from 'next/image';
 import { MdHelpOutline, MdOutlinePrivacyTip } from 'react-icons/md';
 import { Reoverlay } from 'reoverlay';
+import Link from 'next/link';
 import styles from '../styles/modules/PageFooter.module.scss';
 import PrivacyModal from './PrivacyModal';
 import HelpModal from './HelpModal';
@@ -18,18 +19,20 @@ export default function PageFooter() {
     return (
         <footer className={styles['page-footer']}>
             <div className={styles.wrapper}>
-                <figure className={styles.logo}>
-                    <Image
-                        src="/images/cappex-footer-logo.svg"
-                        alt="Cappex Logo"
-                        fill
-                    />
-                </figure>
-                <div className="copyright">
-                    <p>
-                        © 2023 All rights reserved.{' '}
-                        <a href="https://www.cappex.com">www.Cappex.com</a>
-                    </p>
+                <div className={styles.copyright}>
+                    <figure className={styles.logo}>
+                        <Image
+                            src="/images/cappex-footer-logo.svg"
+                            alt="Cappex Logo"
+                            fill
+                        />
+                    </figure>
+                    <div className="copyright">
+                        <p>
+                            © 2023 All rights reserved.{' '}
+                            <a href="https://www.cappex.com">www.Cappex.com</a>
+                        </p>
+                    </div>
                 </div>
                 <div className="help-privacy">
                     <ul>
@@ -39,11 +42,11 @@ export default function PageFooter() {
                                 className={styles.helpPrivBtn}
                                 onClick={helpClick}
                             >
-                                <MdHelpOutline />
+                                {/* <MdHelpOutline /> */}
                                 Help
                             </button>
                         </li>
-                        <li>
+                        {/* <li>
                             <button
                                 type="button"
                                 className={styles.helpPrivBtn}
@@ -52,6 +55,43 @@ export default function PageFooter() {
                                 <MdOutlinePrivacyTip />
                                 Privacy
                             </button>
+                        </li> */}
+                        <li>
+                            <Link
+                                href="https://www.cappex.com/terms-and-conditions"
+                                target="_blank"
+                                className={styles.footerButton}
+                            >
+                                Terms of Use
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                href="https://www.cappex.com/privacy-policy"
+                                target="_blank"
+                                className={styles.footerButton}
+                            >
+                                Privacy Policy
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                href="https://www.cappex.com/your-privacy-rights"
+                                target="_blank"
+                                className={styles.footerButton}
+                            >
+                                CA Privacy Notice
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                href="https://www.cappex.com/your-privacy-rights"
+                                target="_blank"
+                                className={styles.footerButton}
+                            >
+                                Do Not Sell or Share My Personal Information |
+                                Limit the Use of My Sensitive Data
+                            </Link>
                         </li>
                     </ul>
                 </div>
