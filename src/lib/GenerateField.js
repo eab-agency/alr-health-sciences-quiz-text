@@ -1,3 +1,4 @@
+/* eslint-disable no-prototype-builtins */
 /* eslint-disable no-unused-vars */
 /* eslint-disable camelcase */
 import { Field, useFormikContext } from 'formik';
@@ -132,7 +133,27 @@ const GenerateField = ({ field, error, formData }) => {
                 />
             );
 
-        case 'select':
+        case 'select': {
+            const hasUnitedStates =
+                properties.list.list.hasOwnProperty('United States');
+
+            const renderStateOptions = () => {
+                const states = properties.list.list['United States'];
+                return Object.entries(states).map(([key, value]) => (
+                    <option key={key} value={value}>
+                        {key}
+                    </option>
+                ));
+            };
+
+            const selectOptions = hasUnitedStates
+                ? renderStateOptions()
+                : properties.list.list.map((option) => (
+                      <option key={option.value} value={option.value}>
+                          {option.label}
+                      </option>
+                  ));
+
             return (
                 <>
                     <label htmlFor={alias}>{label}</label>
@@ -143,17 +164,13 @@ const GenerateField = ({ field, error, formData }) => {
                         className={error ? 'is-invalid' : ''}
                     >
                         <option value="">Select</option>
-                        {properties.list.list.map((option) => (
-                            <option key={option.value} value={option.value}>
-                                {option.label}
-                            </option>
-                        ))}
+                        {selectOptions}
                     </Field>
                     {error && error}
                     {helpMessage && <small>{helpMessage}</small>}
                 </>
             );
-
+        }
         case 'checkboxgrp': {
             if (alias === 'text_optin' && !phoneHasValue) {
                 return null;
