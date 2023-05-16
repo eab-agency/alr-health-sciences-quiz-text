@@ -5,6 +5,8 @@
     background-color: tokens.$c-blue-900;
     margin-block: auto 0;
     padding: clamp(tokens.$baseUnit * 0.8, 5vw, tokens.$baseUnit * 2);
+    position: relative;
+    z-index: tokens.$layer-3;
 
     @media (min-width: tokens.$mq-800) {
         padding-block: tokens.$baseUnit * 0.2;
