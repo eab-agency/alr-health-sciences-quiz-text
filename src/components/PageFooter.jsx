@@ -76,7 +76,7 @@ export default function PageFooter() {
                         </li>
                         <li>
                             <Link
-                                href="https://www.cappex.com/your-privacy-rights"
+                                href="https://privacy.eab.com/cappex-CA"
                                 target="_blank"
                                 className={styles.footerButton}
                             >
