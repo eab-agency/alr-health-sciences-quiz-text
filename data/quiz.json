@@ -268,37 +268,37 @@
                 {
                     "title": "Motivation",
                     "icon": "motivation-icon",
-                    "content": "The Executive may like to develop plans and communicate them to a team. They enjoy helping others do their best at work."
+                    "content": "<p>The Executive may like to develop plans and communicate them to a team. They enjoy helping others do their best at work.</p>"
                 },
                 {
                     "title": "Skills",
                     "icon": "skills-icon",
-                    "content": "This role is skilled at leading and communicating with others. They have good attention to detail and enjoy analyzing information and using technology."
+                    "content": "<p>This role is skilled at leading and communicating with others. They have good attention to detail and enjoy analyzing information and using technology.</p>"
                 },
                 {
                     "title": "Works With",
                     "icon": "work-icon",
-                    "content": "Careers in The Executive's path often involve working with health care providers and managing staff or finances."
+                    "content": "<p>Careers in The Executive's path often involve working with health care providers and managing staff or finances.</p>"
                 },
                 {
                     "title": "Courses",
                     "icon": "education-icon",
-                    "content": "The Executive may have taken college courses in accounting, administration, ethics, or economics."
+                    "content": "<p>The Executive may have taken college courses in accounting, administration, ethics, or economics.</p>"
                 },
                 {
                     "title": "Setting",
                     "icon": "setting-icon",
-                    "content": "A hospital or physician's office are common workplaces for The Executive, although they may also work in a residential care facility or government agency."
+                    "content": "<p>A hospital or physician's office are common workplaces for The Executive, although they may also work in a residential care facility or government agency.</p>"
                 },
                 {
                     "title": "Education",
                     "icon": "education-icon",
-                    "content": "Many jobs in this field require college courses in things like accounting, administration, ethics, or economics. Some roles require a bachelor's or master's degree."
+                    "content": "<p>Many jobs in this field require college courses in things like accounting, administration, ethics, or economics. Some roles require a bachelor's or master's degree.</p>"
                 },
                 {
                     "title": "Experience",
                     "icon": "work-icon",
-                    "content": "People with experience in an administrative or clinical role tend to be a good fit for this The Executive's career path."
+                    "content": "<p>People with experience in an administrative or clinical role tend to be a good fit for this The Executive's career path.</p>"
                 }
             ],
             "statsSource": "U.S. Bureau of Labor Statistics",
@@ -338,32 +338,32 @@
                 {
                     "title": "Motivation",
                     "icon": "motivation-icon",
-                    "content": "The Practitioner likes to help people. They enjoy improving a person’s health or quality of life."
+                    "content": "<p>The Practitioner likes to help people. They enjoy improving a person’s health or quality of life.</p>"
                 },
                 {
                     "title": "Skills",
                     "icon": "skills-icon",
-                    "content": "This role is skilled in empathetic communication and tends to be emotionally stable. They have strong problem-solving and interpersonal skills."
+                    "content": "<p>This role is skilled in empathetic communication and tends to be emotionally stable. They have strong problem-solving and interpersonal skills.</p>"
                 },
                 {
                     "title": "Works With",
                     "icon": "work-icon",
-                    "content": "Careers in The Practitioner’s path work with patients and other medical professionals. They may be interested in all patients or those with a specific need."
+                    "content": "<p>Careers in The Practitioner’s path work with patients and other medical professionals. They may be interested in all patients or those with a specific need.</p>"
                 },
                 {
                     "title": "Setting",
                     "icon": "setting-icon",
-                    "content": "A physician’s office, hospital, or outpatient care center are common workplaces for The Practitioner."
+                    "content": "<p>A physician’s office, hospital, or outpatient care center are common workplaces for The Practitioner.</p>"
                 },
                 {
                     "title": "Education",
                     "icon": "education-icon",
-                    "content": "Jobs in this field often require college courses in physical sciences or health care. Many roles require a bachelor’s, masters, or professional degree."
+                    "content": "<p>Jobs in this field often require college courses in physical sciences or health care. Many roles require a bachelor’s, masters, or professional degree.</p>"
                 },
                 {
                     "title": "Experience",
                     "icon": "experience-icon",
-                    "content": "People with experience working in a lab setting or with patients as a nurse, medical assistant, EMT tend to be a good fit for The Practitioner’s career path."
+                    "content": "<p>People with experience working in a lab setting or with patients as a nurse, medical assistant, EMT tend to be a good fit for The Practitioner’s career path.</p>"
                 }
             ],
             "statsSource": "U.S. Bureau of Labor Statistics",
@@ -407,32 +407,32 @@
                 {
                     "title": "Motivation",
                     "icon": "motivation-icon",
-                    "content": "The Educator likes to teach others and give them the tools to help themselves."
+                    "content": "<p>The Educator likes to teach others and give them the tools to help themselves.<p>"
                 },
                 {
                     "title": "Skills",
                     "icon": "skills-icon",
-                    "content": "This role is skilled at breaking down big ideas so others can learn. They’re good at analyzing information to inform big-picture problem solving."
+                    "content": "<p>This role is skilled at breaking down big ideas so others can learn. They’re good at analyzing information to inform big-picture problem solving.</p>"
                 },
                 {
                     "title": "Works With",
                     "icon": "work-icon",
-                    "content": "Careers in The Educator’s path often work with community residents, aspiring health care professionals, or people with disabilities."
+                    "content": "<p>Careers in The Educator’s path often work with community residents, aspiring health care professionals, or people with disabilities.</p>"
                 },
                 {
                     "title": "Setting",
                     "icon": "skills-icon",
-                    "content": "A government agency, nonprofit,  university or family services organization are common workplaces for The Educator."
+                    "content": "<p>A government agency, nonprofit,  university or family services organization are common workplaces for The Educator.</p>"
                 },
                 {
                     "title": "Education",
                     "icon": "education-icon",
-                    "content": "Jobs in this field often require college courses in things like education, public health, ethics, or a language. Roles require a bachelor’s or master’s degree."
+                    "content": "<p>Jobs in this field often require college courses in things like education, public health, ethics, or a language. Roles require a bachelor’s or master’s degree.</p>"
                 },
                 {
                     "title": "Experience",
                     "icon": "skills-icon",
-                    "content": "People with experience working in education, health care, or with a community organization tend to be a good fit for The Educator’s career path."
+                    "content": "<p>People with experience working in education, health care, or with a community organization tend to be a good fit for The Educator’s career path.</p>"
                 }
             ],
             "stats": [
@@ -475,32 +475,32 @@
                 {
                     "title": "Motivation",
                     "icon": "motivation-icon",
-                    "content": "The Scientist likes to figure out how things work and wants to make groundbreaking discoveries."
+                    "content": "<p>The Scientist likes to figure out how things work and wants to make groundbreaking discoveries.</p>"
                 },
                 {
                     "title": "Skills",
                     "icon": "skills-icon",
-                    "content": "This role is skilled at critical thinking, observation, and data analysis. They can also communicate complex ideas simply while speaking and writing."
+                    "content": "<p>This role is skilled at critical thinking, observation, and data analysis. They can also communicate complex ideas simply while speaking and writing.<p>"
                 },
                 {
                     "title": "Works With",
                     "icon": "work-icon",
-                    "content": "Careers in The Scientist’s path usually work with other scientists or medical professionals."
+                    "content": "<p>Careers in The Scientist’s path usually work with other scientists or medical professionals.</p>"
                 },
                 {
                     "title": "Setting",
                     "icon": "setting-icon",
-                    "content": "A lab or university are the most common workplaces for The Scientist, but they may also work in a hospital or office."
+                    "content": "<p>A lab or university are the most common workplaces for The Scientist, but they may also work in a hospital or office.</p>"
                 },
                 {
                     "title": "Education",
                     "icon": "education-icon",
-                    "content": "Jobs in this field often require at least a bachelor’s degree in a physical science, and many prefer a Ph.D. or medical degree."
+                    "content": "<p>Jobs in this field often require at least a bachelor’s degree in a physical science, and many prefer a Ph.D. or medical degree.</p>"
                 },
                 {
                     "title": "Experience",
                     "icon": "experience-icon",
-                    "content": "People with experience working in a lab setting or doing research and writing proposals tend to be a good fit for The Scientist’s career path."
+                    "content": "<p>People with experience working in a lab setting or doing research and writing proposals tend to be a good fit for The Scientist’s career path.</p>"
                 }
             ],
             "stats": [
@@ -543,32 +543,32 @@
                 {
                     "title": "Motivation",
                     "icon": "motivation-icon",
-                    "content": "The Analyst likes to develop and maintain systems and solve problems. They often enjoy solving puzzles presented by data."
+                    "content": "<p>The Analyst likes to develop and maintain systems and solve problems. They often enjoy solving puzzles presented by data.</p>"
                 },
                 {
                     "title": "Skills",
                     "icon": "skills-icon",
-                    "content": "This role is skilled at organization, project management, data analysis, and creative problem solving."
+                    "content": "<p>This role is skilled at organization, project management, data analysis, and creative problem solving.</p>"
                 },
                 {
                     "title": "Works With",
                     "icon": "work-icon",
-                    "content": "Careers in The Analyst’s path tend to work with medical professionals and computer systems."
+                    "content": "<p>Careers in The Analyst’s path tend to work with medical professionals and computer systems.</p>"
                 },
                 {
                     "title": "Setting",
                     "icon": "setting-icon",
-                    "content": "An office or hospital are common workplaces for The Analyst, but they may also work for a technical services or administrative support organization."
+                    "content": "<p>An office or hospital are common workplaces for The Analyst, but they may also work for a technical services or administrative support organization.</p>"
                 },
                 {
                     "title": "Education",
                     "icon": "education-icon",
-                    "content": "Jobs in this field often require college courses in things like biology, computer science, math, and management. Some roles require a bachelor’s or master’s degree."
+                    "content": "<p>Jobs in this field often require college courses in things like biology, computer science, math, and management. Some roles require a bachelor’s or master’s degree.</p>"
                 },
                 {
                     "title": "Experience",
                     "icon": "skills-icon",
-                    "content": "People with experience working with computers, databases, or information systems tend to be a good fit for The Analyst’s career path."
+                    "content": "<p>People with experience working with computers, databases, or information systems tend to be a good fit for The Analyst’s career path.</p>"
                 }
             ],
             "stats": [
