@@ -202,6 +202,22 @@ const GenerateField = ({ field, error, formData }) => {
                 </>
             );
         }
+        case 'number': {
+            return (
+                <>
+                    <label htmlFor={alias}>{label}</label>
+                    {isRequired && <span className="required">*</span>}
+                    <Field
+                        name={alias}
+                        type="number"
+                        placeholder={properties.placeholder}
+                        className={error ? 'is-invalid' : ''}
+                    />
+                    {error && error}
+                    {helpMessage && <small>{helpMessage}</small>}
+                </>
+            );
+        }
 
         default:
             return null;

@@ -168,6 +168,15 @@ const AcquiaFormHandle = ({
                 fieldValidation = fieldValidation.email('Invalid email');
             }
 
+            // if field is a number, and field alias is zip_code, add min and max length
+            if (field.alias === 'zip_code') {
+                fieldValidation = fieldValidation.test(
+                    'len',
+                    'Zip Code needs to be excatly 5 digits',
+                    (val) => !val || val.toString().length === 5
+                );
+            }
+
             // Add more validation rules here as needed
 
             // Add the validation object to the schema object using the field's alias as the key
@@ -182,6 +191,8 @@ const AcquiaFormHandle = ({
             initialValues={formValues || initialValues}
             validationSchema={validationSchema}
             onSubmit={onSubmit}
+            validateOnChange={false}
+            validateOnBlur={false}
         >
             {({ errors, isSubmitting, isValid, dirty }) =>
                 !isSent ? (
