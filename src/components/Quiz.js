@@ -95,7 +95,7 @@ function Quiz({ user }) {
     }, [localQData.highestScorePersonality, results]);
 
     useEffect(() => {
-        console.log('localQData updated', localQData);
+        // console.log('localQData updated', localQData);
         // if localQData.currentQuesion is greater than localQData.questionLength, then set isFinished to true
         if (localQData.currentQuestion > localQData.questionLength) {
             setLocalQData({ ...localQData, isFinished: true });

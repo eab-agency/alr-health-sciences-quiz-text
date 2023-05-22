@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState, useRef } from 'react';
-import { useRouter } from 'next/router';
 import Image from 'next/image';
+import PageLayout from '@/components/PageLayout';
 
 import Stats from '@/components/Stats';
 import CarouselWithForm from '@/components/CarouselWithForm';
@@ -11,10 +11,20 @@ import Button from '@/components/Button';
 import PageFooter from '@/components/PageFooter';
 import PageHeader from '@/components/PageHeader';
 import { StickyCta } from '@/components/StickyCta';
+import { useUser } from '@/context/context';
+import { useRouter } from 'next/router';
 import data from '../data/seopage.json';
 
 /* eslint-disable react/no-danger */
 const SeoPage = () => {
+    const { setUtmSource, utmSource } = useUser();
+    const router = useRouter();
+
+    useEffect(() => {
+        if (router.query.utm_source) {
+            setUtmSource(router.query.utm_source);
+        }
+    }, [router.query.utm_source, setUtmSource]);
     const reasonsArray = data.whyChoose[1].reasons;
     const reasonsList = reasonsArray.map((reason, index) => (
         <li key={index}>
@@ -39,7 +49,6 @@ const SeoPage = () => {
     ));
 
     const cappexFacts = data.whatIsCappex.facts;
-    console.log('facts', cappexFacts);
     const cappexFactsList = cappexFacts.map((fact, index) => (
         <li key={index}>
             <p
@@ -213,4 +222,6 @@ const SeoPage = () => {
         </>
     );
 };
+
+SeoPage.PageLayout = PageLayout;
 export default SeoPage;

@@ -87,21 +87,22 @@ const AcquiaFormHandle = ({
     const initialValues = { ...formData };
 
     const [fieldsProcessed, setFieldsProcessed] = useState(false);
+    const { utmSource } = useUser();
 
     useEffect(() => {
         // console.log('theFields', theFields);
         if (theFields.length > 0 && !fieldsProcessed) {
+            // console.log('🚨 the fields', theFields);
             const newFormValues = {};
             theFields.forEach((field) => {
                 if (field.alias === 'quiz_result') {
                     newFormValues[field.alias] =
                         answers.highestScorePersonality;
-                } else if (
-                    field.alias === 'paid_social_source_of_con' &&
-                    localQData &&
-                    localQData.utmSource
-                ) {
-                    newFormValues[field.alias] = localQData.utmSource;
+                } else if (field.alias === 'paid_social_source_of_con') {
+                    console.log('localQData.utmSource', localQData.utmSource);
+                    console.log('utmSource', utmSource);
+                    newFormValues[field.alias] =
+                        localQData.utmSource || utmSource;
                 } else if (field.alias === 'school_carousel') {
                     newFormValues[field.alias] = school.title;
                 } else {

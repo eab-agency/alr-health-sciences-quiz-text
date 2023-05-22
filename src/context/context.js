@@ -6,7 +6,7 @@ import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { getMatchedSchool } from '@/helpers/getMatchedSchool';
 import { useRequest } from '@/hooks/useRequest';
 
-const UserLocationContext = createContext(null);
+const UserLocationContext = createContext({});
 
 function ContextProvider({ children }) {
     const { data: schools, error } = useRequest('/quiz/schools');
@@ -19,6 +19,8 @@ function ContextProvider({ children }) {
     const [location, setLocation] = useState(null);
 
     const [formData, setFormData] = useState(null);
+
+    const [utmSource, setUtmSource] = useState(null);
 
     useEffect(() => {
         const getData = setTimeout(() => {
@@ -57,8 +59,18 @@ function ContextProvider({ children }) {
             location,
             formData,
             setFormData,
+            utmSource,
+            setUtmSource,
         }),
-        [matchedSchools, setMatchedSchools, location, formData, setFormData]
+        [
+            matchedSchools,
+            setMatchedSchools,
+            location,
+            formData,
+            setFormData,
+            utmSource,
+            setUtmSource,
+        ]
     );
 
     return (
