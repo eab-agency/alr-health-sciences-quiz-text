@@ -15,7 +15,6 @@ export default function PageLayout({ children }) {
     }, [router.query.utm_source, setUtmSource]);
     return (
         <>
-            <h1>utmSource: {utmSource}</h1>
             <div className="page-layout">
                 <PageHeader pageType="results" />
                 <main className="page-layout__container">
