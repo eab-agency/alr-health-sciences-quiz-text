@@ -42,13 +42,10 @@ function Error({ statusCode }) {
                     </figure>
                     <div className={styles.content}>
                         <div className={styles.intro}>
-                            <h1>
-                                Oops! The page you're looking for isn't here.
-                            </h1>
+                            <h1>Oops! A server error just happened.</h1>
                         </div>
                         <p>
-                            It looks like the page you were trying to reach does
-                            not exist. Do not worry, you can visit{' '}
+                            Do not worry, you can visit{' '}
                             <a
                                 href="https://cappexhealth.com"
                                 target="_blank"
