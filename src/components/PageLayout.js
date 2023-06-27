@@ -5,7 +5,7 @@ import PageHeader from './PageHeader';
 import PageFooter from './PageFooter';
 
 export default function PageLayout({ children }) {
-    const { setUtmSource, utmSource } = useUser();
+    const { setUtmSource } = useUser();
     const router = useRouter();
 
     useEffect(() => {

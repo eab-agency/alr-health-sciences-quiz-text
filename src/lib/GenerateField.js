@@ -7,13 +7,10 @@ import { MdChevronRight } from 'react-icons/md';
 
 const GenerateField = ({ field, error, formData }) => {
     const [phoneHasValue, setPhoneHasValue] = useState(false);
-    const {
-        values,
-        values: { phone_number },
-        isSubmitting,
-        isValid,
-        dirty,
-    } = useFormikContext();
+    const { values, isSubmitting, isValid, dirty, setFieldValue } =
+        useFormikContext();
+
+    const { phone_number } = values;
 
     // if phone_number has a value, set phoneHasValue to true
     // if phone_number is empty, set phoneHasValue to false
@@ -42,6 +39,8 @@ const GenerateField = ({ field, error, formData }) => {
     // setting to false for now to show all fields b/c I haven't figured out how to populate fields correctly
     const shouldHide = false;
 
+    const inputValue = values[alias] ?? '';
+
     switch (type) {
         case 'text':
             return !shouldHide ? (
@@ -51,6 +50,10 @@ const GenerateField = ({ field, error, formData }) => {
                     <Field
                         name={alias}
                         type="text"
+                        value={inputValue === null ? '' : inputValue}
+                        onChange={(event) =>
+                            setFieldValue(alias, event.target.value)
+                        }
                         placeholder={properties.placeholder}
                         className={error ? 'is-invalid' : ''}
                     />
@@ -70,6 +73,10 @@ const GenerateField = ({ field, error, formData }) => {
                         name={alias}
                         type="email"
                         placeholder={properties.placeholder}
+                        value={inputValue === null ? '' : inputValue}
+                        onChange={(event) =>
+                            setFieldValue(alias, event.target.value)
+                        }
                         className={error ? 'is-invalid' : ''}
                     />
                     {error && <span>{error}</span>}
@@ -79,7 +86,14 @@ const GenerateField = ({ field, error, formData }) => {
                 <Field key={id} name={alias} type="hidden" />
             );
         case 'hidden':
-            return <Field key={id} name={alias} type="hidden" />;
+            return (
+                <Field
+                    key={id}
+                    name={alias}
+                    type="hidden"
+                    value={inputValue === null ? '' : inputValue}
+                />
+            );
         case 'button':
             return (
                 <button
@@ -100,6 +114,10 @@ const GenerateField = ({ field, error, formData }) => {
                         name={alias}
                         type="tel"
                         placeholder={properties.placeholder}
+                        value={inputValue === null ? '' : inputValue}
+                        onChange={(event) =>
+                            setFieldValue(alias, event.target.value)
+                        }
                         className={error ? 'is-invalid' : ''}
                     />
                     {error && error}
@@ -116,6 +134,10 @@ const GenerateField = ({ field, error, formData }) => {
                         name={alias}
                         type="date"
                         placeholder={properties.placeholder}
+                        value={inputValue === null ? '' : inputValue}
+                        onChange={(event) =>
+                            setFieldValue(alias, event.target.value)
+                        }
                         className={error ? 'is-invalid' : ''}
                     />
                     {error && error}
@@ -161,6 +183,10 @@ const GenerateField = ({ field, error, formData }) => {
                     <Field
                         name={alias}
                         as="select"
+                        value={inputValue === null ? '' : inputValue}
+                        onChange={(event) =>
+                            setFieldValue(alias, event.target.value)
+                        }
                         className={error ? 'is-invalid' : ''}
                     >
                         <option value="">Select</option>
@@ -188,6 +214,23 @@ const GenerateField = ({ field, error, formData }) => {
                                         id={option.value}
                                         type="checkbox"
                                         value={option.value}
+                                        checked={inputValue.includes(
+                                            option.value
+                                        )}
+                                        onChange={(event) => {
+                                            const { value } = event.target;
+                                            const isChecked =
+                                                event.target.checked;
+
+                                            setFieldValue(
+                                                alias,
+                                                isChecked
+                                                    ? [...inputValue, value]
+                                                    : inputValue.filter(
+                                                          (v) => v !== value
+                                                      )
+                                            );
+                                        }}
                                         className={error ? 'is-invalid' : ''}
                                     />
                                     <label htmlFor={option.value}>
@@ -211,6 +254,10 @@ const GenerateField = ({ field, error, formData }) => {
                         name={alias}
                         type="number"
                         placeholder={properties.placeholder}
+                        value={inputValue === null ? '' : inputValue}
+                        onChange={(event) =>
+                            setFieldValue(alias, event.target.value)
+                        }
                         className={error ? 'is-invalid' : ''}
                     />
                     {error && error}
