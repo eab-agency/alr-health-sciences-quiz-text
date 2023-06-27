@@ -6,26 +6,10 @@ import styles from '@/styles/global/components/CarouselWithForm.module.scss';
 import { RiArrowGoBackFill } from 'react-icons/ri';
 
 const CarouselWithForm = ({ formId }) => {
-    console.log(
-        '🚀 ~ file: CarouselWithForm.js:9 ~ CarouselWithForm ~ formId:',
-        formId
-    );
     const [visibleForm, setVisibleForm] = useState(false);
-    console.log(
-        '🚀 ~ file: CarouselWithForm.js:10 ~ CarouselWithForm ~ visibleForm:',
-        visibleForm
-    );
     const { matchedSchools, user } = useUser();
-    console.log(
-        '🚀 ~ file: CarouselWithForm.js:15 ~ CarouselWithForm ~ user:',
-        user
-    );
 
     const [selectedSchool, setSelectedSchool] = useState(null);
-    console.log(
-        '🚀 ~ file: CarouselWithForm.js:17 ~ CarouselWithForm ~ selectedSchool:',
-        selectedSchool
-    );
 
     const onCarouselClick = (school) => {
         setSelectedSchool(school);

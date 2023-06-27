@@ -98,11 +98,16 @@ const AcquiaFormHandle = ({
                 if (field.alias === 'quiz_result') {
                     newFormValues[field.alias] =
                         answers.highestScorePersonality;
-                    // } else if (field.alias === 'paid_social_source_of_con') {
-                    //     // console.log('localQData.utmSource', localQData.utmSource);
-                    //     // console.log('utmSource', utmSource);
-                    //     newFormValues[field.alias] =
-                    //         localQData.utmSource || utmSource;
+                } else if (field.alias === 'paid_social_source_of_con') {
+                    // console.log('localQData.utmSource', localQData.utmSource);
+                    // console.log('utmSource', utmSource);
+                    if (localQData && localQData.utmSource) {
+                        newFormValues[field.alias] = localQData.utmSource;
+                    } else if (utmSource) {
+                        newFormValues[field.alias] = utmSource;
+                    } else {
+                        newFormValues[field.alias] = '';
+                    }
                 } else if (field.alias === 'school_carousel') {
                     newFormValues[field.alias] = school.title;
                 } else {
@@ -142,6 +147,7 @@ const AcquiaFormHandle = ({
         user,
         fieldsProcessed,
         school,
+        utmSource,
     ]);
 
     if (error) return <p>Error loading form.</p>;
