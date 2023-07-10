@@ -112,6 +112,7 @@ function Quiz({ user }) {
         const finalResults = {
             answers: localQData.answers,
             highestScorePersonality: localQData.highestScorePersonality,
+            areaOfInterest: localQData.answers[7].answer,
         };
         return (
             <div className={styles.containerResults}>
