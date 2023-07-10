@@ -18,7 +18,7 @@ const TabComponent = ({ tabs, className }) => (
             <TabPanel className={tab.icon} key={index}>
                 <div className="tab-copy">
                     <h3>{tab.title}</h3>
-                    <p
+                    <div
                         className="tab-content"
                         dangerouslySetInnerHTML={{ __html: tab.content }}
                     />

@@ -110,6 +110,9 @@ const AcquiaFormHandle = ({
                     }
                 } else if (field.alias === 'school_carousel') {
                     newFormValues[field.alias] = school.title;
+                } else if (field.alias === 'area_of_interest') {
+                    // get answer for answers.areaOfInterest and set as value
+                    newFormValues[field.alias] = answers.areaOfInterest;
                 } else {
                     newFormValues[field.alias] = field.defaultValue || '';
                     if (answers.answers) {

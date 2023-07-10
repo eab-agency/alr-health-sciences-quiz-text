@@ -35,7 +35,7 @@ function Question({ questionNum, handleAnswer }) {
             />
             <ul className={`${styles.questions} ${styles[questionNumeral]}`}>
                 {shuffledAnswers.map((answer, index) => (
-                    <li>
+                    <li key={index}>
                         <button
                             className="answer-button"
                             type="button"
