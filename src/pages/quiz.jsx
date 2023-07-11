@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import useUser from '@/hooks/useUser';
@@ -7,6 +7,7 @@ import styles from '@/styles/global/layouts/EmailOnly.module.scss';
 import Button from '@/components/Button';
 // eslint-disable-next-line import/no-unresolved
 import MainLogo from '@/components/MainLogo';
+import QuizLayout from '@/components/QuizLayout';
 
 export default function LandingPage() {
     const { user } = useUser();
@@ -29,7 +30,7 @@ export default function LandingPage() {
                     <div className={styles.container}>
                         <div className={styles.content}>
                             <header>
-                                <MainLogo />
+                                {/* <MainLogo /> */}
                                 {user && user.fname ? (
                                     <h1>
                                         {/* if user.fname this display some text */}
@@ -86,3 +87,5 @@ export default function LandingPage() {
         </>
     );
 }
+
+LandingPage.PageLayout = QuizLayout;
