@@ -4,8 +4,10 @@
 import { Field, useFormikContext } from 'formik';
 import { useEffect, useState } from 'react';
 import { MdChevronRight } from 'react-icons/md';
+import styles from '@/styles/global/components/Form.module.scss';
 
 const GenerateField = ({ field, error, formData }) => {
+    const [isVisible, setIsVisible] = useState(true);
     const [phoneHasValue, setPhoneHasValue] = useState(false);
     const { values, isSubmitting, isValid, dirty, setFieldValue } =
         useFormikContext();
@@ -22,6 +24,10 @@ const GenerateField = ({ field, error, formData }) => {
         }
     }, [phone_number]);
 
+    // const shouldHide = formData && Boolean(formData[alias]); // check if field is already populated in formData
+    // setting to false for now to show all fields b/c I haven't figured out how to populate fields correctly
+    const shouldHide = false;
+
     //  const [field, meta] = useField(props);
     const {
         id,
@@ -33,15 +39,100 @@ const GenerateField = ({ field, error, formData }) => {
         validationMessage,
         helpMessage,
         properties,
+        parent,
+        conditions,
     } = field;
-
-    // const shouldHide = formData && Boolean(formData[alias]); // check if field is already populated in formData
-    // setting to false for now to show all fields b/c I haven't figured out how to populate fields correctly
-    const shouldHide = false;
 
     const inputValue = values[alias] ?? '';
 
+    const getParentFieldValue = (parentFieldId) => {
+        //    convert parentFieldId to number
+        const parentFieldIdNumber = Number(parentFieldId);
+        const parentField = formData.find(
+            (theField) => theField.id === parentFieldIdNumber
+        );
+        const parentFieldValue = parentField.alias
+            ? values[parentField.alias]
+            : null;
+        return parentField ? parentFieldValue : null;
+    };
+    const isMyParentValueSelected = (parentFieldValue) => {
+        const childConditions = conditions.values[0];
+        return parentFieldValue === childConditions;
+    };
+
+    const shouldFieldBeHidden = () => {
+        if (parent) {
+            const parentFieldValue = getParentFieldValue(parent);
+            return (
+                parentFieldValue !== null &&
+                !isMyParentValueSelected(parentFieldValue)
+            );
+        }
+        return false;
+    };
+
+    useEffect(() => {
+        setIsVisible(!shouldFieldBeHidden());
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [values, field]);
+
+    useEffect(() => {
+        if (parent) {
+            const parentFieldValue = getParentFieldValue(parent);
+
+            // Clear the child select's value when parent value changes
+            if (!isMyParentValueSelected(parentFieldValue)) {
+                setFieldValue(alias, ''); // Clear child select value
+            }
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [values, parent]);
+
+    if (shouldFieldBeHidden()) {
+        return null;
+    }
+
+    if (!isVisible) {
+        return null; // Hide the field if it should be hidden
+    }
+
     switch (type) {
+        case 'select': {
+            const selectOptions = properties.list.list.map((option) => (
+                <option key={option.value} value={option.value}>
+                    {option.label}
+                </option>
+            ));
+
+            const handleSelectChange = (event) => {
+                setFieldValue(alias, event.target.value);
+            };
+
+            return (
+                <div
+                    className={`${styles.qGroup}  ${field.alias} ${
+                        styles[field.type]
+                    } `}
+                    key={field.id}
+                >
+                    <label htmlFor={alias}>{label}</label>
+                    {isRequired && <span className="required">*</span>}
+                    <Field
+                        name={alias}
+                        as="select"
+                        value={inputValue === null ? '' : inputValue}
+                        onChange={handleSelectChange}
+                        className={error ? 'is-invalid' : ''}
+                    >
+                        <option value="">Select</option>
+                        {selectOptions}
+                    </Field>
+                    {error && error}
+                    {helpMessage && <small>{helpMessage}</small>}
+                </div>
+            );
+        }
         case 'text':
             return !shouldHide ? (
                 <>
@@ -154,49 +245,6 @@ const GenerateField = ({ field, error, formData }) => {
                     }}
                 />
             );
-
-        case 'select': {
-            const hasUnitedStates =
-                properties.list.list.hasOwnProperty('United States');
-
-            const renderStateOptions = () => {
-                const states = properties.list.list['United States'];
-                return Object.entries(states).map(([key, value]) => (
-                    <option key={key} value={value}>
-                        {key}
-                    </option>
-                ));
-            };
-
-            const selectOptions = hasUnitedStates
-                ? renderStateOptions()
-                : properties.list.list.map((option) => (
-                      <option key={option.value} value={option.value}>
-                          {option.label}
-                      </option>
-                  ));
-
-            return (
-                <>
-                    <label htmlFor={alias}>{label}</label>
-                    {isRequired && <span className="required">*</span>}
-                    <Field
-                        name={alias}
-                        as="select"
-                        value={inputValue === null ? '' : inputValue}
-                        onChange={(event) =>
-                            setFieldValue(alias, event.target.value)
-                        }
-                        className={error ? 'is-invalid' : ''}
-                    >
-                        <option value="">Select</option>
-                        {selectOptions}
-                    </Field>
-                    {error && error}
-                    {helpMessage && <small>{helpMessage}</small>}
-                </>
-            );
-        }
         case 'checkboxgrp': {
             if (alias === 'text_optin' && !phoneHasValue) {
                 return null;
@@ -265,7 +313,6 @@ const GenerateField = ({ field, error, formData }) => {
                 </>
             );
         }
-
         default:
             return null;
     }

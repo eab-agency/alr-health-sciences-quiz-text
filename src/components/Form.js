@@ -41,10 +41,27 @@ const AcquiaFormHandle = ({
 
     const { location, setFormData, formData } = useUser();
 
+    const modifyFields = (fields) =>
+        fields.map(
+            (field) =>
+                // if (
+                //     field.conditions &&
+                //     field.conditions.values &&
+                //     field.conditions.values.length > 0
+                // ) {
+                //     return {
+                //         ...field,
+                //         initialHide: true,
+                //     };
+                // }
+                field
+        );
+
     useEffect(() => {
         if (acsForm) {
             const { fields, ...otherFormProps } = acsForm.form;
-            setTheFields(fields);
+            const modifiedFields = modifyFields(fields);
+            setTheFields(modifiedFields);
             setTheForm(otherFormProps);
         }
     }, [acsForm]);
@@ -99,8 +116,8 @@ const AcquiaFormHandle = ({
                     newFormValues[field.alias] =
                         answers.highestScorePersonality;
                 } else if (field.alias === 'paid_social_source_of_con') {
-                    // console.log('localQData.utmSource', localQData.utmSource);
-                    // console.log('utmSource', utmSource);
+                    console.log('localQData.utmSource', localQData);
+                    console.log('utmSource', utmSource);
                     if (localQData && localQData.utmSource) {
                         newFormValues[field.alias] = localQData.utmSource;
                     } else if (utmSource) {
@@ -151,6 +168,7 @@ const AcquiaFormHandle = ({
         fieldsProcessed,
         school,
         utmSource,
+        answers.areaOfInterest,
     ]);
 
     if (error) return <p>Error loading form.</p>;
@@ -160,12 +178,14 @@ const AcquiaFormHandle = ({
     const validationSchema = Yup.object().shape(
         theFields.reduce((schema, field) => {
             // For each field, create a Yup validation object based on its validation rules
-            let fieldValidation;
+            let fieldValidation = '';
 
             if (field.type === 'text' || field.type === 'email') {
                 fieldValidation = Yup.string();
             } else if (field.type === 'number') {
                 fieldValidation = Yup.number();
+            } else {
+                fieldValidation = Yup.mixed(); // Initialize with a generic Yup type
             }
 
             if (field.isRequired) {
@@ -190,8 +210,9 @@ const AcquiaFormHandle = ({
             // Add more validation rules here as needed
 
             // Add the validation object to the schema object using the field's alias as the key
-            schema[field.alias] = fieldValidation;
-            return schema;
+            // schema[field.alias] = fieldValidation;
+            return { ...schema, [field.alias]: fieldValidation };
+            // return schema;
         }, {})
     );
 
@@ -208,25 +229,12 @@ const AcquiaFormHandle = ({
                 !isSent ? (
                     <Form className={styles.form}>
                         {theFields.map((field) => (
-                            <div
-                                className={`${styles.qGroup} ${
-                                    field.type === 'hidden' ? styles.hidden : ''
-                                } ${field.alias} ${styles[field.type]} `}
+                            <GenerateField
+                                field={field}
+                                error={errors[field.alias]}
+                                formData={theFields}
                                 key={field.id}
-                            >
-                                {/* <h2>{field.alias}</h2> */}
-                                <GenerateField
-                                    field={field}
-                                    error={errors[field.alias]}
-                                    formData={formData}
-                                />
-                                {/* <DisplayFormikState {...field} /> */}
-
-                                {/* <ErrorMessage
-                                    name={field.alias}
-                                    component="span"
-                                /> */}
-                            </div>
+                            />
                         ))}
 
                         {/* <DisplayFormikState {...values} /> */}
