@@ -257,6 +257,7 @@ div[aria-labelledby="checkbox-group"]{
 }
 
 .degree_level,
-.program_of_interest{
+div[class*="program_of_interest"],
+.area_of_interest{
     flex: 1 0 100% !important;
 }
