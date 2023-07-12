@@ -246,16 +246,16 @@
                     "personality": "analyst",
                     "weight": 0
                 },
-                 {
-                     "answer": "Clinical Care",
-                     "personality": "analyst",
-                     "weight": 0
-                 },
-                   {
-                       "answer": "Research",
-                       "personality": "analyst",
-                       "weight": 0
-                   }
+                {
+                    "answer": "Clinical Care",
+                    "personality": "analyst",
+                    "weight": 0
+                },
+                {
+                    "answer": "Research",
+                    "personality": "analyst",
+                    "weight": 0
+                }
             ]
         }
     ],
@@ -602,135 +602,140 @@
     ],
     "schools": [
         {
-            "title": "University of North Texas",
-            "subTitle": "Health Sciences Center",
-            "description": "The University of North Texas is a leading institution for health sciences education, offering students access to expert faculty, advanced facilities, and a focus on career readiness in the healthcare field.",
-            "link": "https://www.unthsc.edu/academics/",
-            "linkText": "Learn About Health Sciences at UNT",
-            "imageURL": "/images/university-north-texas.jpg",
-            "logoUrl": "/images/university-north-texas_logo.jpg",
-            "buttonText": "Visit unthsc.edu",
+            "title": "Augsburg University",
+            "subTitle": "Health Programs",
+            "description": "Augsburg University provides a robust, community-focused health sciences education, preparing students for success in a dynamic healthcare landscape.",
+            "link": "https://www.augsburg.edu/academics/majors/",
+            "linkText": "Learn about health programs at Augsburg",
+            "imageURL": "/images/augsburg-university.jpg",
+            "logoUrl": "/images/augsburg_logo.png",
+            "buttonText": "Connect with Augsburg",
             "schoolMeta": {
-                "city": "Fort Worth",
-                "state": "TX"
+                "city": "Minneapolis",
+                "state": "MN"
             },
-            "associatedStates": [
-                "TX",
-                "OK",
-                "LA",
-                "AR",
-                "Texas",
-                "Oklahoma",
-                "Louisiana",
-                "Arkansas"
-            ]
+            "region": "midwest"
         },
         {
-            "title": "Fairleigh Dickinson",
-            "subTitle": "",
-            "description": "With a commitment to small class sizes and hands-on learning, Fairleigh Dickinson University offers diverse health degree programs and personalized attention from experienced faculty.",
-            "link": "https://www.fdu.edu/academics/colleges-schools/",
-            "linkText": "Explore Programs at Fairleigh Dickinson",
-            "imageURL": "/images/fairleigh-dickinson-university.jpg",
-            "logoUrl": "/images/fairleigh-dickinson-university_logo.jpg",
-            "buttonText": "Visit fdu.edu",
+            "title": "Emory & Henry College",
+            "subTitle": "School of Health Sciences",
+            "description": "Emory & Henry's health programs equip students to provide compassionate, flexible care, addressing the unique health challenges of the Appalachian community.",
+            "link": "https://www.ehc.edu/academics/programs/school-health-sciences/",
+            "linkText": "Learn about health sciences at Emory & Henry",
+            "imageURL": "/images/emory-and-henry-college.webp",
+            "logoUrl": "/images/emory-and-henry-college_logo.jpg",
+            "buttonText": "Connect with Emory & Henry",
             "schoolMeta": {
-                "city": "Madison & Teaneck",
+                "city": "Emory",
+                "state": "VA"
+            },
+            "region": "southeast"
+        },
+        {
+            "title": "University of Massachusetts Lowell",
+            "subTitle": "Zuckerberg College of Health Sciences",
+            "description": "UMass Lowell's health programs, led by experienced faculty, blend innovative research and practical education for licensure-ready, successful healthcare professionals.",
+            "link": "https://www.uml.edu/Health-Sciences/",
+            "linkText": "Learn about health programs at UMass Lowell",
+            "imageURL": "/images/university-of-massachusetts-lowell.jpg",
+            "logoUrl": "/images/university-of-massachusetts-lowell_logo.png",
+            "buttonText": "Connect with UML",
+            "schoolMeta": {
+                "city": "Lowell",
+                "state": "MA"
+            },
+            "region": "northeast"
+        },
+        {
+            "title": "Immaculata University",
+            "subTitle": "College of Nursing and Health Professions",
+            "description": "Immaculata University's health programs combine a strong humanities focus, experiential learning, and individualized mentoring to prepare compassionate, competent healthcare professionals.",
+            "link": "https://www.immaculata.edu/academics/departments/college-of-nursing-and-health-professions/",
+            "linkText": "Learn about nursing and health programs at Immaculata",
+            "imageURL": "/images/Immaculata-University.jpg",
+            "logoUrl": "/images/Immaculata_University_logo.png",
+            "buttonText": "Connect with Immaculata",
+            "schoolMeta": {
+                "city": "Immaculata",
+                "state": "PA"
+            },
+            "region": "northeast"
+        },
+        {
+            "title": "D’Youville University",
+            "subTitle": "Health Programs Across Multiple Schools",
+            "description": "D’Youville University's health programs are committed to innovative, inclusive education, fostering service, and addressing health disparities to build healthier communities.",
+            "link": "https://www.dyu.edu/academics/schools-and-departments",
+            "linkText": "Learn about health programs at D’Youville",
+            "imageURL": "/images/DYouville-University.jpeg",
+            "logoUrl": "/images/DYouville-University_logo.jpg",
+            "buttonText": "Connect with DYU",
+            "schoolMeta": {
+                "city": "Buffalo",
+                "state": "NY"
+            },
+            "region": "northeast"
+        },
+        {
+            "title": "Jacksonville University",
+            "subTitle": "Brooks Rehabilitation College of Healthcare Sciences",
+            "description": "Jacksonville University's health programs focus on equipping students to provide exemplary care and improve health service delivery in diverse communities.",
+            "link": "https://www.ju.edu/chs/index.php",
+            "linkText": "Learn about health programs at Jacksonville",
+            "imageURL": "/images/Jacksonville-University.jpg",
+            "logoUrl": "/images/ju-seal-green-web.png",
+            "buttonText": "Connect with JU",
+            "schoolMeta": {
+                "city": "Jacksonville",
+                "state": "FL"
+            },
+            "region": "southeast"
+        },
+        {
+            "title": "The College of New Jersey",
+            "subTitle": "School of Nursing and Health Sciences",
+            "description": "TCNJ's health programs emphasize health promotion and integrative wellness, equipping students to improve health outcomes and promote equitable access to care.",
+            "link": "https://nhs.tcnj.edu/",
+            "linkText": "Learn about health programs at TCNJ",
+            "imageURL": "/images/college-of-new-jersey.jpg",
+            "logoUrl": "/images/college-of-new-jersey_logo.jpg",
+            "buttonText": "Connect with TCNJ",
+            "schoolMeta": {
+                "city": "Ewing",
                 "state": "NJ"
             },
-            "associatedStates": [
-                "NY",
-                "NJ",
-                "CT",
-                "RI",
-                "PA",
-                "MA",
-                "MD",
-                "DE",
-                "New York",
-                "New Jersey",
-                "Connecticut",
-                "Rhode Island",
-                "Pennsylvania",
-                "Massachusetts",
-                "Maryland",
-                "Delaware"
-            ]
+            "region": "northeast"
         },
         {
-            "title": "San Diego State University",
-            "subTitle": "College of Health and Human Services",
-            "description": "San Diego State University's health programs prioritize community engagement and hands-on learning to prepare students for meaningful careers in health care.",
-            "link": "https://chhs.sdsu.edu/",
-            "linkText": "Learn About Health and Human Services at SDSU",
-            "imageURL": "/images/san-diego-university.jpg",
-            "logoUrl": "/images/san-diego-state-university_logo.jpg",
-            "buttonText": "Visit sdsu.edu",
+            "title": "Montana State University",
+            "subTitle": "Division of Health Sciences",
+            "description": "Montana State University's health programs focus on advancing health education, research, and service to improve well-being statewide. Emphasizing collaboration, they prepare high-quality healthcare providers, educators, and scientists.",
+            "link": "https://www.montana.edu/healthsciences/index.html",
+            "linkText": "Learn about health programs at MSU",
+            "imageURL": "/images/Montana-State-University.png",
+            "logoUrl": "/images/MSU-vert-rgb.jpg",
+            "buttonText": "Connect with MSU",
             "schoolMeta": {
-                "city": "San Diego",
-                "state": "CA"
+                "city": "Bozeman",
+                "state": "MT"
             },
-            "associatedStates": [
-                "CA",
-                "AZ",
-                "NV",
-                "California",
-                "Arizona",
-                "Nevada"
-            ]
+            "region": "mountain"
         },
         {
-            "title": "University of Saint Francis",
-            "subTitle": "",
-            "description": "The University of Saint Francis offers a range of health programs that prioritize hands-on experience, individualized attention, and service to the community.",
-            "link": "https://majors.sf.edu/",
-            "linkText": "Explore Programs at USF",
-            "imageURL": "/images/u-of-saint-francis.jpg",
-            "logoUrl": "/images/university-of-saint-francis_logo.jpg",
-            "buttonText": "Visit sf.edu",
+            "title": "Ithaca College",
+            "subTitle": "School of Health Sciences and Human Performance",
+            "description": "Ithaca College's health programs combine classroom learning and hands-on experience, preparing students to promote health and wellness under expert faculty guidance.",
+            "link": "https://www.ithaca.edu/academics/school-health-sciences-and-human-performance",
+            "linkText": "Learn about health programs at Ithaca College",
+            "imageURL": "/images/ithaca-college.jpg",
+            "logoUrl": "/images/ithaca-college_logo.jpg",
+            "buttonText": "Connect with Ithaca",
             "schoolMeta": {
-                "city": "Fort Wayne",
-                "state": "IN"
+                "city": "Ithaca",
+                "state": "NY"
             },
-            "associatedStates": [
-                "IL",
-                "IN",
-                "WI",
-                "IA",
-                "MI",
-                "Illinois",
-                "Indiana",
-                "Wisconsin",
-                "Iowa",
-                "Michigan"
-            ]
-        },
-               {
-                   "title": "Augsburg University",
-                   "subTitle": "",
-                   "description": "Augsburg University's health programs are designed to foster a deep understanding of the complexities of health care, prepare students for clinical practice, and develop strong ethical and leadership skills.",
-                   "link": "https://www.augsburg.edu/grad/programs/health/",
-                   "linkText": "Explore Programs at Augsburg",
-                   "imageURL": "/images/augsburg-university.jpg",
-                   "logoUrl": "/images/augsburg_logo.png",
-                   "buttonText": "Visit augsburg.edu",
-                   "schoolMeta": {
-                       "city": "Minneapolis",
-                       "state": "MN"
-                   },
-                   "associatedStates": [
-                       "IL",
-                       "IN",
-                       "WI",
-                       "IA",
-                       "MI",
-                       "Illinois",
-                       "Indiana",
-                       "Wisconsin",
-                       "Iowa",
-                       "Michigan"
-                   ]
-               }
+            "region": "northeast"
+        }
     ],
     "score": {
         "executive": 0,
