@@ -397,3 +397,12 @@ div[class*='__tab-panel'] {
         }
     }
 }
+
+
+.tab-content{
+    color: white;
+
+    @media (prefers-color-scheme: light) {
+        color: tokens.$c-blue-500;
+    }
+}

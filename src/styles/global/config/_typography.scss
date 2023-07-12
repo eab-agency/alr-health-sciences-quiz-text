@@ -94,15 +94,15 @@ small,
 .copyright {
     font-size: fonts.$fs-xs;
     font-style: italic;
-}
-
-small {
+    line-height: 135%;
     color: tokens.$c-white;
+    display: block;
 
     @media (prefers-color-scheme: light) {
         color: tokens.$c-blue-500;
     }
 }
+
 
 // ================
 // Other Type Styles

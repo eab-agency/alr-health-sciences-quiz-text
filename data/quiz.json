@@ -5,22 +5,22 @@
             "associatedField": "education_journey",
             "answers": [
                 {
-                    "answer": "I'm currently in school for a health care related degree",
+                    "answer": "I am considering a graduate-level health care degree.",
                     "personality": "initial",
                     "weight": 1
                 },
                 {
-                    "answer": "I'm considering going back to school for a health care related degree",
+                    "answer": "I am exploring a health care degree at the undergraduate level.",
                     "personality": "initial",
                     "weight": 1
                 },
                 {
-                    "answer": "I'm considering going back to school for a degree that isn't related to health care",
+                    "answer": "I am currently in school for an undergraduate health care degree and wish to transfer.",
                     "personality": "initial",
                     "weight": 1
                 },
                 {
-                    "answer": "I'm not currently considering going back to school",
+                    "answer": "I am not currently considering school or I am pursuing a non-health care degree.",
                     "personality": "initial",
                     "weight": 1
                 }
