@@ -135,7 +135,12 @@ const GenerateField = ({ field, error, formData }) => {
         }
         case 'text':
             return !shouldHide ? (
-                <>
+                <div
+                    className={`${styles.qGroup}  ${field.alias} ${
+                        styles[field.type]
+                    } `}
+                    key={field.id}
+                >
                     <label htmlFor={alias}>{label}</label>
                     {isRequired && <span className="required">*</span>}
                     <Field
@@ -150,13 +155,18 @@ const GenerateField = ({ field, error, formData }) => {
                     />
                     {error && <span>{error}</span>}
                     {helpMessage && <small>{helpMessage}</small>}
-                </>
+                </div>
             ) : (
                 <Field key={id} name={alias} type="hidden" />
             );
         case 'email':
             return !shouldHide ? (
-                <>
+                <div
+                    className={`${styles.qGroup}  ${field.alias} ${
+                        styles[field.type]
+                    } `}
+                    key={field.id}
+                >
                     <label htmlFor={alias}>{label}</label>
                     {isRequired && <span className="required">*</span>}
 
@@ -172,7 +182,7 @@ const GenerateField = ({ field, error, formData }) => {
                     />
                     {error && <span>{error}</span>}
                     {helpMessage && <small>{helpMessage}</small>}
-                </>
+                </div>
             ) : (
                 <Field key={id} name={alias} type="hidden" />
             );
@@ -187,18 +197,30 @@ const GenerateField = ({ field, error, formData }) => {
             );
         case 'button':
             return (
-                <button
-                    className="button btn-primary"
-                    type="submit"
-                    disabled={isSubmitting && isValid && dirty}
+                <div
+                    className={`${styles.qGroup}  ${field.alias} ${
+                        styles[field.type]
+                    } `}
+                    key={field.id}
                 >
-                    {label}
-                    <MdChevronRight />
-                </button>
+                    <button
+                        className="button btn-primary"
+                        type="submit"
+                        disabled={isSubmitting && isValid && dirty}
+                    >
+                        {label}
+                        <MdChevronRight />
+                    </button>
+                </div>
             );
         case 'tel': {
             return (
-                <>
+                <div
+                    className={`${styles.qGroup}  ${field.alias} ${
+                        styles[field.type]
+                    } `}
+                    key={field.id}
+                >
                     <label htmlFor={alias}>{label}</label>
                     {isRequired && <span className="required">*</span>}
                     <Field
@@ -213,12 +235,17 @@ const GenerateField = ({ field, error, formData }) => {
                     />
                     {error && error}
                     {helpMessage && <small>{helpMessage}</small>}
-                </>
+                </div>
             );
         }
         case 'date':
             return (
-                <>
+                <div
+                    className={`${styles.qGroup}  ${field.alias} ${
+                        styles[field.type]
+                    } `}
+                    key={field.id}
+                >
                     <label htmlFor={alias}>{label}</label>
                     {isRequired && <span className="required">*</span>}
                     <Field
@@ -233,7 +260,7 @@ const GenerateField = ({ field, error, formData }) => {
                     />
                     {error && error}
                     {helpMessage && <small>{helpMessage}</small>}
-                </>
+                </div>
             );
         case 'freetext':
         case 'freehtml':
@@ -250,7 +277,12 @@ const GenerateField = ({ field, error, formData }) => {
                 return null;
             }
             return (
-                <>
+                <div
+                    className={`${styles.qGroup}  ${field.alias} ${
+                        styles[field.type]
+                    } `}
+                    key={field.id}
+                >
                     <div id="checkbox-group">{label}</div>
                     <div role="group" aria-labelledby="checkbox-group">
                         <label>
@@ -290,12 +322,17 @@ const GenerateField = ({ field, error, formData }) => {
                         {error && error}
                         {helpMessage && <small>{helpMessage}</small>}
                     </div>
-                </>
+                </div>
             );
         }
         case 'number': {
             return (
-                <>
+                <div
+                    className={`${styles.qGroup}  ${field.alias} ${
+                        styles[field.type]
+                    } `}
+                    key={field.id}
+                >
                     <label htmlFor={alias}>{label}</label>
                     {isRequired && <span className="required">*</span>}
                     <Field
@@ -310,7 +347,7 @@ const GenerateField = ({ field, error, formData }) => {
                     />
                     {error && error}
                     {helpMessage && <small>{helpMessage}</small>}
-                </>
+                </div>
             );
         }
         default:
