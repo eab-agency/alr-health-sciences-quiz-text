@@ -41,19 +41,22 @@ export const getMatchedSchool = (state, schools) => {
             regionMatching[r].includes(state)
         );
 
-        const matchedSchoolInternal = schools.find(
-            (school) => school.region === region
-        );
-        console.log(matchedSchoolInternal);
+        let matchedSchoolInternal = schools.find(
+    (school) => school.region === region
+);
 
-        // If no school matches the input state, return the first school in the array
-        if (!matchedSchoolInternal) {
-            return schools[0];
-        }
+// If no school matches the input region, set matchedSchoolInternal to schools[0]
+if (!matchedSchoolInternal) {
+    matchedSchoolInternal = schools[0];
+}
+
+// You can now use the matchedSchoolInternal variable for further operations.
+
 
         const remainingSchools = schools.filter(
             (school) => school !== matchedSchoolInternal
         );
+        console.log(matchedSchoolInternal, remainingSchools);
 
         return [matchedSchoolInternal, ...remainingSchools];
     }
