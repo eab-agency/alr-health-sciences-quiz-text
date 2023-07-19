@@ -35,7 +35,7 @@ const regionMatching = {
 
 // function that checks region_iso_code and returns a school if matched from .schools.associatedStates otherwise returns the first school from schools
 export const getMatchedSchool = (state, schools) => {
-    console.log(state, schools)
+    console.log(state, schools);
     if (schools) {
         const region = Object.keys(regionMatching).find((r) =>
             regionMatching[r].includes(state)
