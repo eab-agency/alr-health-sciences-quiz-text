@@ -42,8 +42,9 @@ export const getMatchedSchool = (state, schools) => {
         );
 
         const matchedSchoolInternal = schools.find(
-            (school) => school.region === region || school.region === 'US'
+            (school) => school.region === region
         );
+        console.log(matchedSchoolInternal)
 
         // If no school matches the input state, return the first school in the array
         if (!matchedSchoolInternal) {
