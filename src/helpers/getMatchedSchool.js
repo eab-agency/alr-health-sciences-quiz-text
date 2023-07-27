@@ -39,7 +39,6 @@ export const getMatchedSchool = (state, schools) => {
         // Return 5 random schools as the default list
         return shuffleArray(schools).slice(0, 5);
     }
-
     if (schools) {
         // Find the region associated with the given state
         const region = Object.keys(regionMatching).find((r) =>
