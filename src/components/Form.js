@@ -76,7 +76,6 @@ const AcquiaFormHandle = ({
                 formName: theForm.name,
                 messenger: 1,
                 ip_address_state: location.region_iso_code,
-                ip_address_zip: location.postal_code,
             };
 
             await axios

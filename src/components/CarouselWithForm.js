@@ -4,14 +4,21 @@ import Form from '@/components/Form';
 import { useUser } from '@/context/context';
 import styles from '@/styles/global/components/CarouselWithForm.module.scss';
 import { RiArrowGoBackFill } from 'react-icons/ri';
+import { useRouter } from 'next/router';
 
 const CarouselWithForm = ({ formId }) => {
     const [visibleForm, setVisibleForm] = useState(false);
-    const { matchedSchools, user } = useUser();
+    const { matchedSchools, user, location } = useUser();
+
+    const router = useRouter();
 
     const [selectedSchool, setSelectedSchool] = useState(null);
 
     const onCarouselClick = (school) => {
+        // if location.notUS === true, then redirect to selectedSchool.link
+        if (location.notUS) {
+            router.push(school.link);
+        }
         setSelectedSchool(school);
         setVisibleForm(!visibleForm);
     };

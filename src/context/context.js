@@ -14,7 +14,7 @@ function ContextProvider({ children }) {
 
     const [matchedSchools, setMatchedSchools] = useState(null);
 
-    const apiURL = `https://ipgeolocation.abstractapi.com/v1/?api_key=${process.env.NEXT_PUBLIC_ABSTRACT_API_KEY}`;
+    const apiURL = `https://ipgeolocation.abstractapi.com/v1/?api_key=${process.env.NEXT_PUBLIC_ABSTRACT_API_KEY}&fields=region_iso_code,country_code`;
 
     // Uncomment the below to simulate a 4XX error when making a GET request to apiURL
     // Create a new instance of axios mock
@@ -39,7 +39,8 @@ function ContextProvider({ children }) {
                 .then((response) => {
                     setLocation({
                         region_iso_code: response.data.region_iso_code,
-                        postal_code: response.data.postal_code,
+                        country_code: response.data.country_code,
+                        notUs: response.data.country_code !== 'US',
                     });
                 })
                 .catch((error) => {
