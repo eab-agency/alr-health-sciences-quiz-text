@@ -35,24 +35,56 @@ const regionMatching = {
 
 // function that checks region_iso_code and returns a school if matched from .schools.associatedStates otherwise returns the first school from schools
 export const getMatchedSchool = (state, schools) => {
+    console.log(
+        '🚀 ~ file: getMatchedSchool.js:38 ~ getMatchedSchool ~ state, schools:',
+        state,
+        schools
+    );
+    if (!state) {
+        // Return 5 random schools as the default list
+        return shuffleArray(schools).slice(0, 5);
+    }
+
     if (schools) {
+        // Find the region associated with the given state
         const region = Object.keys(regionMatching).find((r) =>
             regionMatching[r].includes(state)
         );
 
-        const matchedSchoolInternal = schools.find(
-            (school) => school.region === region || school.region === 'US'
+        // Filter schools by region. the purpose of the school.region === 'US' condition is to include all schools if no region is found for the given state
+        const matchedSchools = shuffleArray(
+            schools.filter(
+                (school) => school.region === region || school.region === 'US'
+            )
         );
 
-        // If no school matches the input state, return the first school in the array
-        if (!matchedSchoolInternal) {
-            return schools[0];
+        // If there are less than 5 matched schools, add additional non-matched schools
+        if (matchedSchools.length < 5) {
+            const nonMatchedSchools = schools.filter(
+                (school) => school.region !== region && school.region !== 'US'
+            );
+
+            const additionalSchools = shuffleArray(nonMatchedSchools).slice(
+                0,
+                5 - matchedSchools.length
+            );
+
+            return [...matchedSchools, ...additionalSchools];
         }
 
-        const remainingSchools = schools.filter(
-            (school) => school !== matchedSchoolInternal
-        );
-
-        return [matchedSchoolInternal, ...remainingSchools];
+        return matchedSchools;
     }
+
+    // Return an empty array if schools is not defined
+    return [];
+};
+
+// Function to shuffle an array using Fisher-Yates algorithm
+const shuffleArray = (array) => {
+    const newArr = [...array];
+    for (let i = newArr.length - 1; i > 0; i -= 1) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [newArr[i], newArr[j]] = [newArr[j], newArr[i]];
+    }
+    return newArr;
 };
