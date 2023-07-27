@@ -35,11 +35,6 @@ const regionMatching = {
 
 // function that checks region_iso_code and returns a school if matched from .schools.associatedStates otherwise returns the first school from schools
 export const getMatchedSchool = (state, schools) => {
-    console.log(
-        '🚀 ~ file: getMatchedSchool.js:38 ~ getMatchedSchool ~ state, schools:',
-        state,
-        schools
-    );
     if (!state) {
         // Return 5 random schools as the default list
         return shuffleArray(schools).slice(0, 5);

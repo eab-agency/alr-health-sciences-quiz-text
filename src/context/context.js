@@ -9,9 +9,6 @@ import { useRequest } from '@/hooks/useRequest';
 
 const UserLocationContext = createContext({});
 
-// Create a new instance of axios mock
-const mock = new MockAdapter(axios);
-
 function ContextProvider({ children }) {
     const { data: schools, error } = useRequest('/quiz/schools');
 
@@ -19,14 +16,14 @@ function ContextProvider({ children }) {
 
     const apiURL = `https://ipgeolocation.abstractapi.com/v1/?api_key=${process.env.NEXT_PUBLIC_ABSTRACT_API_KEY}`;
 
-    // Simulate a 4XX error when making a GET request to apiURL
-    if (process.env.NODE_ENV === 'development') {
-        // console.log(
-        //     '🐛🐛🐛🐛 MockAdapter: Simulating a 4XX error for GET request to',
-        //     apiURL
-        // );
-        // mock.onGet(apiURL).reply(416, { error: 'Bad Request' });
-    }
+    // Uncomment the below to simulate a 4XX error when making a GET request to apiURL
+    // Create a new instance of axios mock
+    // const mock = new MockAdapter(axios);
+    // console.log(
+    //     '🐛🐛🐛🐛 MockAdapter: Simulating a 4XX error for GET request to',
+    //     apiURL
+    // );
+    // mock.onGet(apiURL).reply(416, { error: 'Bad Request' });
 
     // const [location, setLocation] = useLocalStorage('489hLocation', null);
     const [location, setLocation] = useState(null);
