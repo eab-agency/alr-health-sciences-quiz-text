@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import PageLayout from '@/components/PageLayout';
 
@@ -13,6 +13,7 @@ import PageHeader from '@/components/PageHeader';
 import { StickyCta } from '@/components/StickyCta';
 import { useUser } from '@/context/context';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 import data from '../data/seopage.json';
 
 /* eslint-disable react/no-danger */
@@ -63,6 +64,10 @@ const SeoPage = () => {
 
     return (
         <>
+            <Head>
+                <title>{data.pageTitle}</title>
+                <meta name="description" content={data.pageDescription} />
+            </Head>
             <div className={styles.pageLayout}>
                 <PageHeader pageType="seoPage" />
                 <main className="page-layout__container">

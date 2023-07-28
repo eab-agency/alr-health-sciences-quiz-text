@@ -126,14 +126,17 @@ function Quiz() {
         return (
             <div className={styles.containerResults}>
                 <div className={styles.content}>
-                    <Results
-                        personality={localQData.highestScorePersonality}
-                        description={personalityData.description}
-                        title={personalityData.title}
-                        answers={finalResults}
-                    >
-                        <ResetQuizButton />
-                    </Results>
+                    {/* { only show Results if !location.notUS} */}
+                    {!location.notUS && (
+                        <Results
+                            personality={localQData.highestScorePersonality}
+                            description={personalityData.description}
+                            title={personalityData.title}
+                            answers={finalResults}
+                        >
+                            <ResetQuizButton />
+                        </Results>
+                    )}
                 </div>
             </div>
         );
