@@ -115,8 +115,8 @@ const AcquiaFormHandle = ({
                     newFormValues[field.alias] =
                         answers.highestScorePersonality;
                 } else if (field.alias === 'paid_social_source_of_con') {
-                    console.log('localQData.utmSource', localQData);
-                    console.log('utmSource', utmSource);
+                    // console.log('localQData.utmSource', localQData);
+                    // console.log('utmSource', utmSource);
                     if (localQData && localQData.utmSource) {
                         newFormValues[field.alias] = localQData.utmSource;
                     } else if (utmSource) {
