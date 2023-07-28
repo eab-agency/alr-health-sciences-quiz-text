@@ -65,8 +65,14 @@ const SeoPage = () => {
     return (
         <>
             <Head>
-                <title>{data.pageTitle}</title>
-                <meta name="description" content={data.pageDescription} />
+                <title>
+                    Health Care Career Quiz – Which Health Care Career is Right
+                    For You?
+                </title>
+                <meta
+                    name="description"
+                    content="Take a free Cappex health care career quiz. Find the best health care career path for you."
+                />
             </Head>
             <div className={styles.pageLayout}>
                 <PageHeader pageType="seoPage" />
