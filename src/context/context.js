@@ -13,7 +13,7 @@ const UserLocationContext = createContext({});
 function ContextProvider({ children }) {
     const { data: schools, error } = useRequest('/quiz/schools');
 
-    const [matchedSchools, setMatchedSchools] = useState(null);
+    const [matchedSchools, setMatchedSchools] = useState([]);
 
     const [cookies, setCookies] = useCookies(['initialData']);
 

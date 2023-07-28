@@ -8,7 +8,7 @@ import { useRouter } from 'next/router';
 
 const CarouselWithForm = ({ formId }) => {
     const [visibleForm, setVisibleForm] = useState(false);
-    const { matchedSchools, user, location } = useUser();
+    const { user, location } = useUser();
 
     const router = useRouter();
 
@@ -31,7 +31,6 @@ const CarouselWithForm = ({ formId }) => {
 
             <div className={styles.container}>
                 <SchoolCarousel
-                    schools={matchedSchools}
                     handleClick={(school) => onCarouselClick(school)}
                     className={`${visibleForm ? styles.hide : ''}`}
                 />
