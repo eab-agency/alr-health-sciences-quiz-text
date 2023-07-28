@@ -6,6 +6,7 @@ import { GTM_ID, pageview } from '@/lib/gtm';
 import { useEffect } from 'react';
 import { ModalContainer } from 'reoverlay';
 import { Analytics } from '@vercel/analytics/react';
+import { CookiesProvider } from 'react-cookie';
 import { ContextProvider } from '../context/context';
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
@@ -37,15 +38,17 @@ export default function App({ Component, pageProps }) {
             />
 
             <SWRConfig value={{ fetcher }}>
-                <ContextProvider>
-                    {Component.PageLayout ? (
-                        <Component.PageLayout>
+                <CookiesProvider>
+                    <ContextProvider>
+                        {Component.PageLayout ? (
+                            <Component.PageLayout>
+                                <Component {...pageProps} />
+                            </Component.PageLayout>
+                        ) : (
                             <Component {...pageProps} />
-                        </Component.PageLayout>
-                    ) : (
-                        <Component {...pageProps} />
-                    )}
-                </ContextProvider>
+                        )}
+                    </ContextProvider>
+                </CookiesProvider>
             </SWRConfig>
             <Analytics />
             <ModalContainer />

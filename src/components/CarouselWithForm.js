@@ -18,9 +18,10 @@ const CarouselWithForm = ({ formId }) => {
         // if location.notUS === true, then redirect to selectedSchool.link
         if (location.notUS) {
             router.push(school.link);
+        } else {
+            setSelectedSchool(school);
+            setVisibleForm(!visibleForm);
         }
-        setSelectedSchool(school);
-        setVisibleForm(!visibleForm);
     };
     return (
         <section className={styles.matchedSchools}>
