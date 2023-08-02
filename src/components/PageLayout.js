@@ -16,7 +16,7 @@ const LocationInDevMode = () => {
         return null;
     }
 
-    const stayPinnedToTopStyles = {
+    const styles = {
         position: 'fixed',
         top: '0',
         left: '0',
@@ -26,7 +26,7 @@ const LocationInDevMode = () => {
     };
 
     return (
-        <div style={stayPinnedToTopStyles}>
+        <div style={styles}>
             {location ? (
                 <p>Location: {location.region_iso_code}</p>
             ) : (
