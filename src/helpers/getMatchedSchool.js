@@ -12,29 +12,25 @@ const regionMatching = {
         'MD',
         'DE',
     ],
-    midwest: [
-        'OH',
-        'MI',
-        'IN',
-        'IL',
-        'WI',
-        'MN',
-        'IA',
-        'MO',
-        'ND',
-        'SD',
-        'NE',
-        'KS',
-    ],
-    southwest: ['NM', 'AZ', 'CO', 'UT', 'NV', 'WY'],
+    midwest: ['OH', 'MI', 'IN', 'IL', 'WI', 'MN', 'IA', 'MO', 'NE', 'KS'],
+    southwest: ['NM', 'AZ', 'NV', 'WY'],
     pacific: ['CA', 'OR', 'WA', 'AK', 'HI'],
-    mountain: ['MT', 'ID', 'ND', 'SD', 'WY', 'CO', 'UT', 'NV'],
+    mountain: ['MT', 'ID', 'ND', 'SD', 'CO', 'UT'],
     southeast: ['VA', 'NC', 'SC', 'GA', 'FL'],
-    southCentral: ['WV', 'KY', 'TN', 'AL', 'MS', 'AR', 'LA', 'OK', 'TX'],
+    southcentral: ['WV', 'KY', 'TN', 'AL', 'MS', 'AR', 'LA', 'OK', 'TX'],
 };
+
+// get all states from regionMatching, alphabetize and export const
+export const allStates = Object.values(regionMatching)
+    .flat()
+    .sort((a, b) => a.localeCompare(b));
 
 // function that checks region_iso_code and returns a school if matched from .schools.associatedStates otherwise returns the first school from schools
 export const getMatchedSchool = (state, schools) => {
+    console.log(
+        '🚀 ~ file: getMatchedSchool.js:30 ~ getMatchedSchool ~ schools:',
+        schools
+    );
     if (!state) {
         // Return 5 random schools as the default list
         return shuffleArray(schools).slice(0, 5);

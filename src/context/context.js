@@ -79,6 +79,7 @@ function ContextProvider({ children }) {
             setFormData,
             utmSource,
             setUtmSource,
+            setLocation,
         }),
         [
             matchedSchools,
@@ -88,6 +89,7 @@ function ContextProvider({ children }) {
             setFormData,
             utmSource,
             setUtmSource,
+            setLocation,
         ]
     );
 

@@ -749,7 +749,7 @@
                 "city": "Frederick",
                 "state": "MD"
             },
-            "Region": "northeast"
+            "region": "northeast"
         },
         {
     "title": "Goshen College",
@@ -764,7 +764,7 @@
         "city": "Goshen",
         "state": "IN"
     },
-    "Region": "midwest"
+    "region": "midwest"
 },
 
         {
@@ -780,7 +780,7 @@
         "city": "Bowie",
         "state": "MD"
     },
-    "Region": "northeast"
+    "region": "northeast"
 },
 {
     "title": "Mount Carmel College of Nursing",
@@ -795,7 +795,7 @@
         "city": "Columbus",
         "state": "OH"
     },
-    "Region": "Midwest Region"
+    "region": "Midwest Region"
 }
 
 
