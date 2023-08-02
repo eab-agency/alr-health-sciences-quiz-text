@@ -7,13 +7,18 @@ import { RiArrowGoBackFill } from 'react-icons/ri';
 
 const CarouselWithForm = ({ formId }) => {
     const [visibleForm, setVisibleForm] = useState(false);
-    const { matchedSchools, user } = useUser();
+    const { user, location } = useUser();
 
     const [selectedSchool, setSelectedSchool] = useState(null);
 
     const onCarouselClick = (school) => {
-        setSelectedSchool(school);
-        setVisibleForm(!visibleForm);
+        // if location.notUS === true, then redirect to selectedSchool.link
+        if (location.notUS) {
+            window.open(school.link, '_blank');
+        } else {
+            setSelectedSchool(school);
+            setVisibleForm(!visibleForm);
+        }
     };
     return (
         <section className={styles.matchedSchools}>
@@ -23,7 +28,6 @@ const CarouselWithForm = ({ formId }) => {
 
             <div className={styles.container}>
                 <SchoolCarousel
-                    schools={matchedSchools}
                     handleClick={(school) => onCarouselClick(school)}
                     className={`${visibleForm ? styles.hide : ''}`}
                 />

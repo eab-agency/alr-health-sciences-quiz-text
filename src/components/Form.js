@@ -76,7 +76,6 @@ const AcquiaFormHandle = ({
                 formName: theForm.name,
                 messenger: 1,
                 ip_address_state: location.region_iso_code,
-                ip_address_zip: location.postal_code,
             };
 
             await axios
@@ -116,8 +115,8 @@ const AcquiaFormHandle = ({
                     newFormValues[field.alias] =
                         answers.highestScorePersonality;
                 } else if (field.alias === 'paid_social_source_of_con') {
-                    console.log('localQData.utmSource', localQData);
-                    console.log('utmSource', utmSource);
+                    // console.log('localQData.utmSource', localQData);
+                    // console.log('utmSource', utmSource);
                     if (localQData && localQData.utmSource) {
                         newFormValues[field.alias] = localQData.utmSource;
                     } else if (utmSource) {

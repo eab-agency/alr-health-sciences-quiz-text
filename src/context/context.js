@@ -1,20 +1,23 @@
+/* eslint-disable camelcase */
 /* eslint-disable no-unused-vars */
 import { createContext, useContext, useState, useEffect, useMemo } from 'react';
 import axios from 'axios';
-import { useLocalStorage } from '@/hooks/useLocalStorage';
 import MockAdapter from 'axios-mock-adapter';
 
 import { getMatchedSchool } from '@/helpers/getMatchedSchool';
 import { useRequest } from '@/hooks/useRequest';
+import { useCookies } from 'react-cookie';
 
 const UserLocationContext = createContext({});
 
 function ContextProvider({ children }) {
     const { data: schools, error } = useRequest('/quiz/schools');
 
-    const [matchedSchools, setMatchedSchools] = useState(null);
+    const [matchedSchools, setMatchedSchools] = useState([]);
 
-    const apiURL = `https://ipgeolocation.abstractapi.com/v1/?api_key=${process.env.NEXT_PUBLIC_ABSTRACT_API_KEY}`;
+    const [cookies, setCookies] = useCookies(['initialData']);
+
+    const apiURL = `https://ipgeolocation.abstractapi.com/v1/?api_key=${process.env.NEXT_PUBLIC_ABSTRACT_API_KEY}&fields=region_iso_code,country_code`;
 
     // Uncomment the below to simulate a 4XX error when making a GET request to apiURL
     // Create a new instance of axios mock
@@ -32,37 +35,46 @@ function ContextProvider({ children }) {
 
     const [utmSource, setUtmSource] = useState(null);
 
+    const [apiRequestMade, setApiRequestMade] = useState(false);
+
     useEffect(() => {
-        const getData = setTimeout(() => {
+        // Check if the initial data is already stored in cookies
+        const { initialData } = cookies;
+
+        if (initialData) {
+            // Use the initial data from cookies instead of hitting the api
+            setLocation(initialData);
+        } else if (!apiRequestMade) {
+            // Only make the API request if it hasn't been made yet
+            setApiRequestMade(true);
             axios
                 .get(apiURL)
                 .then((response) => {
-                    setLocation({
-                        region_iso_code: response.data.region_iso_code,
-                        postal_code: response.data.postal_code,
-                    });
+                    const { data } = response;
+                    const { region_iso_code, country_code } = data;
+
+                    // Store the initial data in cookies
+                    const initialResponseData = {
+                        region_iso_code,
+                        country_code,
+                        notUS: country_code !== 'US',
+                    };
+                    setLocation(initialResponseData);
+                    setCookies('initialData', initialResponseData);
                 })
                 .catch((error) => {
                     // Handle the error here
                     console.log('API Error:', error);
-
-                    const matchedSchoolInternal = getMatchedSchool(
-                        null,
-                        schools
-                    );
-                    // grab first school from schools and set matchedSchool
-                    setMatchedSchools(matchedSchoolInternal);
                 });
-        }, 2000);
-
-        return () => clearTimeout(getData);
-    }, [apiURL, schools, setLocation]);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [apiURL, schools, setLocation, setCookies]);
 
     // wait for userLocation to be populated and then set matchedSchool based on userLocation.region_iso_code
     useEffect(() => {
         if (location) {
             const matchedSchoolInternal = getMatchedSchool(
-                location.region_iso_code,
+                location?.region_iso_code,
                 schools
             );
             // grab first school from schools and set matchedSchool

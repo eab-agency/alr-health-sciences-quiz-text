@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Carousel from 'react-multi-carousel';
 /* eslint-enable */
 import { MdChevronRight } from 'react-icons/md';
+import { useUser } from '@/context/context';
 
 const responsive = {
     superLargeDesktop: {
@@ -25,13 +26,13 @@ const responsive = {
     },
 };
 
-const SchoolCarousel = ({ schools, handleClick, className }) => {
+const SchoolCarousel = ({ handleClick, className }) => {
+    const { matchedSchools } = useUser();
     const handleButtonClick = (school) => {
         handleClick(school);
     };
-
     // if schools is empty, return null
-    if (!schools) return null;
+    if (!matchedSchools) return null;
 
     return (
         <Carousel
@@ -40,45 +41,46 @@ const SchoolCarousel = ({ schools, handleClick, className }) => {
             infinite
             containerClass={className}
         >
-            {schools.map((school) => (
-                <div className="item-content" key={school.title}>
-                    <div className="item-head">
-                        <Image
-                            src={school.imageURL}
-                            width="400"
-                            height="300"
-                            alt={school.title}
-                            className="school-thumbnail"
-                        />
-                        <Image
-                            src={school.logoUrl}
-                            width="100"
-                            height="100"
-                            alt={`${school.title} logo`}
-                            className="school-logo"
-                        />
-                    </div>
-                    <div className="item-text">
+            {matchedSchools &&
+                matchedSchools.map((school) => (
+                    <div className="item-content" key={school.title}>
                         <div className="item-head">
-                            <h4 key={school.title}>{school.title}</h4>
-                            <p>
-                                {school.schoolMeta.city},{' '}
-                                {school.schoolMeta.state}
-                            </p>
+                            <Image
+                                src={school.imageURL}
+                                width="400"
+                                height="300"
+                                alt={school.title}
+                                className="school-thumbnail"
+                            />
+                            <Image
+                                src={school.logoUrl}
+                                width="100"
+                                height="100"
+                                alt={`${school.title} logo`}
+                                className="school-logo"
+                            />
                         </div>
-                        <p>{school.description}</p>
-                        <button
-                            type="button"
-                            onClick={() => handleButtonClick(school)}
-                        >
-                            <span>{school.buttonText}</span>
-                            <i>
-                                <MdChevronRight />
-                            </i>
-                        </button>
+                        <div className="item-text">
+                            <div className="item-head">
+                                <h4 key={school.title}>{school.title}</h4>
+                                <p>
+                                    {school.schoolMeta.city},{' '}
+                                    {school.schoolMeta.state}
+                                </p>
+                            </div>
+                            <p>{school.description}</p>
+                            <button
+                                type="button"
+                                onClick={() => handleButtonClick(school)}
+                            >
+                                <span>{school.buttonText}</span>
+                                <i>
+                                    <MdChevronRight />
+                                </i>
+                            </button>
+                        </div>
                     </div>
-                </div>
-            ))}
+                ))}
         </Carousel>
     );
 };

@@ -6,16 +6,21 @@ import { useLocalStorage } from '@/hooks/useLocalStorage';
 import Image from 'next/image';
 import styles from '@/styles/global/layouts/Quiz.module.scss';
 import { useRequest } from '@/hooks/useRequest';
+import { useUser } from '@/context/context';
+import { useRouter } from 'next/router';
 import Question from './Question';
 import ResetQuizButton from './ResetQuizButton';
 import Results from './Results';
 import Score from './Score';
 
-function Quiz({ user }) {
+function Quiz() {
     const { data: results, error: resultError } = useRequest('/quiz/results');
     const { data: questions, error: questionError } =
         useRequest('/quiz/questions');
     // console.log('🚀 ~ file: Quiz.js:16 ~ Quiz ~ questions:', questions.length);
+    const router = useRouter();
+
+    const { location } = useUser();
 
     const [scopedQuestions, setScopedQuestions] = useState(null);
 
@@ -109,6 +114,10 @@ function Quiz({ user }) {
     // if we are at the end of the quiz, show the results page and pass the score and personality
     if (localQData.isFinished) {
         // setLocalQData({ ...localQData, isFinished: true });
+        // if location.notUS === true, then redirect to results
+        if (location.notUS) {
+            router.push(`/${localQData.highestScorePersonality}`);
+        }
         const finalResults = {
             answers: localQData.answers,
             highestScorePersonality: localQData.highestScorePersonality,
@@ -117,15 +126,17 @@ function Quiz({ user }) {
         return (
             <div className={styles.containerResults}>
                 <div className={styles.content}>
-                    <Results
-                        personality={localQData.highestScorePersonality}
-                        description={personalityData.description}
-                        title={personalityData.title}
-                        answers={finalResults}
-                        user={user}
-                    >
-                        <ResetQuizButton />
-                    </Results>
+                    {/* { only show Results if !location.notUS} */}
+                    {!location.notUS && (
+                        <Results
+                            personality={localQData.highestScorePersonality}
+                            description={personalityData.description}
+                            title={personalityData.title}
+                            answers={finalResults}
+                        >
+                            <ResetQuizButton />
+                        </Results>
+                    )}
                 </div>
             </div>
         );
