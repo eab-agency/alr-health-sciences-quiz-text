@@ -735,7 +735,70 @@
                 "state": "NY"
             },
             "region": "northeast"
-        }
+        },
+        {
+            "title": "Hood College",
+            "subTitle": "Health Care Programs",
+            "description": "Hood College's health care programs, under the Ruth Whitaker Holmes School, offer holistic studies of health, blending liberal arts with practical experiences. Dedicated faculty and community partnerships propel your journey in behavioral and health sciences.",
+            "link": "https://www.hood.edu/academics/ruth-whitaker-holmes-school-behavioral-health-sciences",
+            "linkText": "Learn about health care programs at Hood",
+            "imageURL": "/images/hood-college.jpg",
+            "logoUrl": "/images/hood-college-logo.png",
+            "buttonText": "Connect with Hood College",
+            "schoolMeta": {
+                "city": "Frederick",
+                "state": "MD"
+            },
+            "region": "northeast"
+        },
+        {
+    "title": "Goshen College",
+    "subTitle": "Nursing Programs",
+    "description": "Goshen's nursing programs emphasize servant leadership, intercultural competency, and innovation - which prepares graduates for a dynamic healthcare landscape.",
+    "link": "https://www.goshen.edu/",
+    "linkText": "Learn about nursing programs at Goshen",
+    "imageURL": "/images/goshen-college.jpg",
+    "logoUrl": "/images/goshen-college-logo.jpg",
+    "buttonText": "Connect with Goshen College",
+    "schoolMeta": {
+        "city": "Goshen",
+        "state": "IN"
+    },
+    "region": "midwest"
+},
+
+        {
+    "title": "Bowie State University",
+    "subTitle": "Healthcare Degrees",
+    "description": "Bowie State equips students for diverse healthcare careers through hands-on experience, expert faculty, and cutting-edge labs in its state-of-the-art science and nursing center.",
+    "link": "https://www.bowiestate.edu/academics/healthcare-degrees.php",
+    "linkText": "Learn about health programs at Bowie State",
+    "imageURL": "/images/bowie-state.jpg",  
+    "logoUrl": "/images/bowie-state-logo.png",  
+    "buttonText": "Connect with Bowie State",
+    "schoolMeta": {
+        "city": "Bowie",
+        "state": "MD"
+    },
+    "region": "northeast"
+},
+{
+    "title": "Mount Carmel College of Nursing",
+    "subTitle": "Nursing Programs",
+    "description": "MCCN prioritizes personal growth with student-focused learning, ideal ratios, and cutting-edge resources, cultivating highly competent, dedicated nursing professionals.",
+    "link": "https://www.mccn.edu/academics ",
+    "linkText": "Explore nursing programs at Mount Carmel",
+    "imageURL": "/images/mt-carmel-college.jpg",
+    "logoUrl": "/images/mt-carmel-college-logo.svg",
+    "buttonText": "Connect with Mount Carmel",
+    "schoolMeta": {
+        "city": "Columbus",
+        "state": "OH"
+    },
+    "region": "midwest"
+}
+
+
     ],
     "score": {
         "executive": 0,
