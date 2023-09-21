@@ -6,8 +6,8 @@ export default function MainLogo() {
     const [logo, setLogo] = React.useState(null);
 
     React.useEffect(() => {
-        const logoLight = '/images/cappex-logo-light.svg';
-        const logoDark = '/images/cappex-logo-dark.svg';
+        const logoLight = '/images/appily-logo-light.svg';
+        const logoDark = '/images/appily-logo-dark.svg';
 
         const matchColorMode = window.matchMedia(
             '(prefers-color-scheme: dark)'

@@ -5,7 +5,7 @@ const PrivacyModal = () => {
     const closeModal = () => {
         Reoverlay.hideAll();
     };
-    const privacyUrl = `https://www.google.com/privacy-policy/`;
+    const privacyUrl = `https://www.appily.com/your-privacy-rights`;
 
     return (
         <ModalWrapper
