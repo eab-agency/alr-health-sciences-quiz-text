@@ -131,7 +131,9 @@ function Quiz() {
             <div className={styles.containerResults}>
                 <div className={styles.content}>
                     {/* { only show Results if !location.notUS} */}
-                    {!location.notUS && (
+                    {(location.notUS === false ||
+                        location.notUS === null ||
+                        location.notUS === undefined) && (
                         <Results
                             personality={localQData.highestScorePersonality}
                             description={personalityData.description}
