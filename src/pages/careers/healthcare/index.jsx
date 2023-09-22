@@ -14,7 +14,7 @@ import { StickyCta } from '@/components/StickyCta';
 import { useUser } from '@/context/context';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
-import data from '../data/seopage.json';
+import data from '@/data/seopage.json';
 
 /* eslint-disable react/no-danger */
 const SeoPage = () => {

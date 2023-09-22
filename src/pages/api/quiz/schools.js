@@ -3,7 +3,7 @@ import { promises as fs } from 'fs';
 
 export default async function handler(req, res) {
     // Find the absolute path of the data directory
-    const dataDirectory = path.join(process.cwd(), 'data');
+    const dataDirectory = path.join(process.cwd(), 'src/data');
     // Read the json data file data.json
     const fileContents = await fs.readFile(
         `${dataDirectory}/quiz.json`,

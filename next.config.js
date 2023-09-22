@@ -1,5 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    async redirects() {
+        return [
+            {
+                source: '/',
+                destination: '/careers/healthcare/',
+                permanent: true,
+            },
+        ];
+    },
     reactStrictMode: true,
     images: {
         remotePatterns: [

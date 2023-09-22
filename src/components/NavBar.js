@@ -37,9 +37,9 @@ export default function NabBar() {
             <ul className={isMenuOpen ? styles.menuOpen : styles.menuClosed}>
                 <li>
                     <Link
-                        href="/practitioner"
+                        href="practitioner"
                         className={
-                            currentRoute === '/practitioner'
+                            currentRoute === '/careers/healthcare/practitioner'
                                 ? styles.active
                                 : styles.nonActive
                         }
@@ -50,9 +50,9 @@ export default function NabBar() {
                 </li>
                 <li>
                     <Link
-                        href="/analyst"
+                        href="analyst"
                         className={
-                            currentRoute === '/analyst'
+                            currentRoute === '/careers/healthcare/analyst'
                                 ? styles.active
                                 : styles.nonActive
                         }
@@ -63,9 +63,9 @@ export default function NabBar() {
                 </li>
                 <li>
                     <Link
-                        href="/educator"
+                        href="educator"
                         className={
-                            currentRoute === '/educator'
+                            currentRoute === '/careers/healthcare/educator'
                                 ? styles.active
                                 : styles.nonActive
                         }
@@ -76,9 +76,9 @@ export default function NabBar() {
                 </li>
                 <li>
                     <Link
-                        href="/executive"
+                        href="executive"
                         className={
-                            currentRoute === '/executive'
+                            currentRoute === '/careers/healthcare/executive'
                                 ? styles.active
                                 : styles.nonActive
                         }
@@ -89,9 +89,9 @@ export default function NabBar() {
                 </li>
                 <li>
                     <Link
-                        href="/scientist"
+                        href="scientist"
                         className={
-                            currentRoute === '/scientist'
+                            currentRoute === '/careers/healthcare/scientist'
                                 ? styles.active
                                 : styles.nonActive
                         }
