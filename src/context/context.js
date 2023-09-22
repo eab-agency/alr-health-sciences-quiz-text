@@ -64,6 +64,14 @@ function ContextProvider({ children }) {
                 })
                 .catch((error) => {
                     // Handle the error here
+                    // Store the initial data in cookies
+                    const apiErrorResponseData = {
+                        region_iso_code: 'VA',
+                        country_code: 'US',
+                        notUS: false,
+                    };
+                    setLocation(apiErrorResponseData);
+                    setCookies('initialData', apiErrorResponseData);
                     console.log('API Error:', error);
                 });
         }
