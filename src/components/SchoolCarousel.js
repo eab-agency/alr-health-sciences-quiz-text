@@ -28,6 +28,7 @@ const responsive = {
 
 const SchoolCarousel = ({ handleClick, className }) => {
     const { matchedSchools } = useUser();
+
     const handleButtonClick = (school) => {
         handleClick(school);
     };
