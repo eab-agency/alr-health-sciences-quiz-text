@@ -31,7 +31,7 @@ export default function MainLogo() {
     return (
         <figure className={styles['main-logo']}>
             {logo && (
-                <Image src={logo} alt="Cappex Logo" width={100} height={19} />
+                <Image src={logo} alt="Appily Logo" width={100} height={19} />
             )}
         </figure>
     );

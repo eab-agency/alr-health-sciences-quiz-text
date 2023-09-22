@@ -16,7 +16,7 @@ export default function LandingPage() {
                 <title>
                     Define Your Future in Health Care | Health Science Quiz
                 </title>
-                <meta name="description" content="Cappex Health Science Quiz" />
+                <meta name="description" content="Appily Health Science Quiz" />
                 <meta
                     name="viewport"
                     content="width=device-width, initial-scale=1"
