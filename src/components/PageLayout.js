@@ -56,7 +56,7 @@ export default function PageLayout({ children }) {
     const { pathname } = router;
 
     useEffect(() => {
-        if (pathname === '/') {
+        if (pathname === '/careers/healthcare') {
             setResultsPage(false);
         } else {
             setResultsPage(true);
