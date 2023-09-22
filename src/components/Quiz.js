@@ -22,6 +22,10 @@ function Quiz() {
 
     const { location } = useUser();
 
+    useEffect(() => {
+        console.log('🚀 ~ file: Quiz.js:24 ~ location:', location);
+    }, [location]);
+
     const [scopedQuestions, setScopedQuestions] = useState(null);
 
     const [personalityData, setPersonalityData] = useState('executive');
@@ -116,7 +120,7 @@ function Quiz() {
         // setLocalQData({ ...localQData, isFinished: true });
         // if location.notUS === true, then redirect to results
         if (location.notUS) {
-            router.push(`/${localQData.highestScorePersonality}`);
+            router.push(`${localQData.highestScorePersonality}`);
         }
         const finalResults = {
             answers: localQData.answers,

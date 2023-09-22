@@ -12,7 +12,6 @@ export default async function handler(req, res) {
     // Parse the JSON string into an object and extract the questions array
     const data = JSON.parse(fileContents);
     const { schools } = data;
-    console.log('🚀 ~ file: schools.js:14 ~ handler ~ schools:', schools);
     // Return the questions array in json format
     res.status(200).json(schools);
 }
