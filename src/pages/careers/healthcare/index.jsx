@@ -71,7 +71,7 @@ const SeoPage = () => {
                 </title>
                 <meta
                     name="description"
-                    content="Take a free Cappex health care career quiz. Find the best health care career path for you."
+                    content="Take a free Appily health care career quiz. Find the best health care career path for you."
                 />
             </Head>
             <div className={styles.pageLayout}>
@@ -190,7 +190,7 @@ const SeoPage = () => {
                                                 src="/images/college-search.png"
                                                 width={536}
                                                 height={361}
-                                                alt="What is Cappex"
+                                                alt="What is Appily"
                                             />
                                         </figure>
                                         <div className={styles.cappexFacts}>

@@ -20,15 +20,21 @@ export default function PageFooter() {
             <div className={styles.wrapper}>
                 <figure className={styles.logo}>
                     <Image
-                        src="/images/cappex-footer-logo.svg"
-                        alt="Cappex Logo"
+                        src="/images/appily-logo-dark.svg"
+                        alt="Appily Logo"
                         fill
                     />
                 </figure>
                 <div className="copyright">
                     <p>
                         © 2023 All rights reserved.{' '}
-                        <a href="https://www.cappex.com">www.Cappex.com</a>
+                        <a
+                            href="https://www.appily.com"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            www.Appily.com
+                        </a>
                     </p>
                 </div>
                 <div className="help-privacy">
