@@ -52,7 +52,7 @@ export const StickyCta = ({ trackedElement }) => {
                 <Button
                     type="primary"
                     label="Take the Quiz"
-                    href="/careers/healthcare/quiz"
+                    href="/careers/healthcare/quiz-start"
                     className={styles.button}
                 />
             </div>
