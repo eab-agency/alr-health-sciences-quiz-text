@@ -92,7 +92,7 @@
         "subtitle":"Here’s how we help future students like you:",
         "facts": [
             {
-                "fact": "<strong>Give you tools to sharpen your goals:</strong> It’s easy to say you want to advance your career. It’s harder to know how. Appily has resources (<a href='/quiz'>like this quiz</a>) to help you define — and reach — your goals."
+                "fact": "<strong>Give you tools to sharpen your goals:</strong> It’s easy to say you want to advance your career. It’s harder to know how. Appily has resources (<a href='/careers/healthcare/quiz'>like this quiz</a>) to help you define — and reach — your goals."
             },
             {
                 "fact": "<strong>Help you connect with the right schools:</strong> Finding a college or university that has programs that are worth your time and investment can be a challenge. Appily provides matches to make it easier."
@@ -117,4 +117,3 @@
             }
         ]
 }
-

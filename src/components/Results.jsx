@@ -31,14 +31,14 @@ const Results = ({ personality, description, title, answers, children }) => {
                 <div className={styles.Form}>
                     <h2>Where should we send your results?</h2>
                     <Form
-                        redirectTo={`/${personality}`}
+                        redirectTo={`/careers/healthcare/${personality}`}
                         answers={answers}
                         user={user}
                         id="2"
                         className={styles.formContainer}
                     />
                     {devModeOnly && (
-                        <Link href={`/${personality}`}>
+                        <Link href={`${personality}`}>
                             Skip form (only shows in dev mode)
                         </Link>
                     )}

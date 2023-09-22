@@ -116,7 +116,7 @@ const SeoPage = () => {
                                         <Button
                                             type="primary"
                                             label={data.quizSection.buttonText}
-                                            href="/quiz"
+                                            href="/careers/healthcare/quiz"
                                             className={styles.button}
                                         />
                                     </div>
@@ -218,7 +218,7 @@ const SeoPage = () => {
                                         <Button
                                             type="primary"
                                             label={data.takeQuiz.buttonText}
-                                            href="/quiz"
+                                            href="/careers/healthcare/quiz"
                                             className={styles.button}
                                         />
                                     </div>
