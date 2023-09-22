@@ -1,19 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { MdChevronRight } from 'react-icons/md';
+import Button from '@/components/Button';
 import styles from '@/styles/global/components/StickyCta.module.scss';
 
 export const StickyCta = ({ trackedElement }) => {
     const [scrolled, setScrolled] = useState(false);
     const [posY, setPosY] = useState(0);
-
-    useEffect(() => {
-        const trackedElementPosY = trackedElement.current.offsetTop;
-        setPosY(trackedElementPosY);
-    }, [trackedElement]);
+    const [quizLink, setQuizLink] = useState('');
 
     useEffect(() => {
         const handleScroll = () => {
-            const trigger = posY - 200;
+            const trigger = posY - 700;
 
             if (window.scrollY >= trigger) {
                 setScrolled(true);
@@ -24,7 +21,19 @@ export const StickyCta = ({ trackedElement }) => {
 
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
-    }, [posY, trackedElement]);
+    }, [posY]);
+
+    useEffect(() => {
+        if (trackedElement && trackedElement.current) {
+            const trackedElementPosY = trackedElement.current.offsetTop;
+            setPosY(trackedElementPosY);
+
+            const trackedElementClass =
+                trackedElement.current.className.toLowerCase();
+
+            setQuizLink(trackedElementClass);
+        }
+    }, [trackedElement]);
 
     const stickyCtaClass = `${styles.stickyCta} ${
         scrolled ? styles.scrolled : ''
@@ -36,6 +45,19 @@ export const StickyCta = ({ trackedElement }) => {
             behavior: 'smooth',
         });
     };
+
+    if (quizLink.includes('quiz')) {
+        return (
+            <div className={stickyCtaClass}>
+                <Button
+                    type="primary"
+                    label="Take the Quiz"
+                    href="/careers/healthcare/quiz"
+                    className={styles.button}
+                />
+            </div>
+        );
+    }
 
     return (
         <div className={stickyCtaClass}>

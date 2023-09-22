@@ -20,6 +20,7 @@ import data from '@/data/seopage.json';
 const SeoPage = () => {
     const { setUtmSource, utmSource } = useUser();
     const router = useRouter();
+    const ctaRef = useRef(null);
 
     useEffect(() => {
         if (router.query.utm_source) {
@@ -59,8 +60,6 @@ const SeoPage = () => {
             />
         </li>
     ));
-
-    const carouselRef = useRef(null);
 
     return (
         <>
@@ -169,10 +168,7 @@ const SeoPage = () => {
                                     </div>
                                     <ul>{rightCareerList}</ul>
                                 </section>
-                                <div
-                                    id="explore-your-school-matches"
-                                    ref={carouselRef}
-                                >
+                                <div id="explore-your-school-matches">
                                     <CarouselWithForm />
                                 </div>
                                 <section className={styles.whatIsCappex}>
@@ -211,7 +207,10 @@ const SeoPage = () => {
                                     stats={data.cappexStats}
                                     className={styles.stats}
                                 />
-                                <section className={styles.takeQuiz}>
+                                <section
+                                    className={styles.takeQuiz}
+                                    ref={ctaRef}
+                                >
                                     <div className={styles.content}>
                                         <h2>{data.takeQuiz.title}</h2>
                                         <p>{data.takeQuiz.description}</p>
@@ -228,7 +227,7 @@ const SeoPage = () => {
                     </div>
                 </main>
             </div>
-            <StickyCta trackedElement={carouselRef} />
+            <StickyCta trackedElement={ctaRef} />
             <PageFooter />
         </>
     );
