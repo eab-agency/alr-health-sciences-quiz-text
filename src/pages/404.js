@@ -50,11 +50,11 @@ function FourOhFour({ statusCode }) {
                             It looks like the page you were trying to reach does
                             not exist. Do not worry, you can visit{' '}
                             <a
-                                href="https://cappexhealth.com"
+                                href="https://advance.appily.com"
                                 target="_blank"
                                 rel="noreferrer"
                             >
-                                cappexhealth.com
+                                advance.appily.com
                             </a>{' '}
                             to start over and explore all the great resources we
                             offer for students interested in health care.
