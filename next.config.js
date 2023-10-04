@@ -1,12 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    async redirects() {
-        return [{
-            source: '/:path*',
-            destination: 'https://advance.appily.com',
-            permanent: true,
-        }]
-    },
+    // async redirects() {
+    //     return [{
+    //         source: '/:path*',
+    //         destination: 'https://advance.appily.com',
+    //         permanent: true,
+    //     }]
+    // },
     reactStrictMode: true,
     images: {
         remotePatterns: [
