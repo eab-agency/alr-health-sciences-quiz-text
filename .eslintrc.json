@@ -1,36 +1,28 @@
 {
-  "extends": [
-    "plugin:import/errors",
-    "next/core-web-vitals",
-    "wesbos",
-    "prettier"
-  ],
-  "settings": {
-    "import/resolver": {
-      "alias": {
-        "extensions": [
-          ".js",
-          ".jsx"
-        ],
-        "map": [
-          [
-            "@",
-            "./src"
-          ]
+    "extends": [
+        "plugin:import/errors",
+        "next/core-web-vitals",
+        "wesbos",
+        "prettier"
+    ],
+    "settings": {
+        "import/resolver": {
+            "alias": {
+                "extensions": [".js", ".jsx"],
+                "map": [["@", "./src"]]
+            }
+        }
+    },
+    "rules": {
+        "react/prop-types": "off",
+        "no-unused-vars": "warn",
+        "prettier/prettier": [
+            "error",
+            {
+                "singleQuote": true,
+                "endOfLine": "auto",
+                "tabWidth": 4
+            }
         ]
-      }
     }
-  },
-  "rules": {
-    "react/prop-types": "off",
-    "no-unused-vars": "warn",
-    "prettier/prettier": [
-      "error",
-      {
-        "singleQuote": true,
-        "endOfLine": "auto",
-        "tabWidth": 4
-      }
-    ]
-  }
 }

@@ -10,7 +10,6 @@
     padding-bottom: 0;
     overflow: hidden;
 
-
     .content {
         @include layouts.content;
         gap: 0;
@@ -373,7 +372,7 @@
     }
 }
 
-.carouselWithForm{
+.carouselWithForm {
     width: 100%;
 }
 
@@ -386,33 +385,33 @@
     min-height: 35rem;
     padding-block: clamp(tokens.$baseUnit * 2, 5vw, tokens.$baseUnit * 3);
 
-    .intro{
+    .intro {
         position: relative;
-    z-index: tokens.$layer-2;
+        z-index: tokens.$layer-2;
 
-    h2{
-        position: relative;
-        padding-bottom: 0.5em;
-        margin-bottom: tokens.$baseUnit * 2;
+        h2 {
+            position: relative;
+            padding-bottom: 0.5em;
+            margin-bottom: tokens.$baseUnit * 2;
 
-        &::after {
-            content: '';
-            display: block;
-            width: 100vw;
-            height: 1px;
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            background: tokens.$c-blue-300;
-            z-index: tokens.$layer-2;
+            &::after {
+                content: '';
+                display: block;
+                width: 100vw;
+                height: 1px;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                background: tokens.$c-blue-300;
+                z-index: tokens.$layer-2;
+            }
         }
-    }
     }
 }
 
 // .carouselContainer{
 //     display: block;
 //     width: 100%;
-    
+
 //     background: red;
 // }

@@ -10,7 +10,7 @@ $c-white: #fff;
 
 // Cappex colors
 $c-orange-500: #f8971d;
-$c-blue-logo:#06008c;
+$c-blue-logo: #06008c;
 
 $c-blue-300: #7478c3;
 $c-blue-500: #303364;
@@ -24,7 +24,7 @@ $c-error: #f67171;
 $c-success: #0f0;
 $c-warning: #ff0;
 
-$c-blue-100:color.scale($c-blue-300, $lightness: 80%);
+$c-blue-100: color.scale($c-blue-300, $lightness: 80%);
 
 //* Base Unit
 $baseUnit: 1rem;

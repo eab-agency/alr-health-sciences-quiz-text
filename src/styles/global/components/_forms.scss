@@ -155,34 +155,36 @@ label {
     }
 }
 
-
-div[aria-labelledby="checkbox-group"]{
+div[aria-labelledby='checkbox-group'] {
     padding-block: 0.5em;
-    label{
+    label {
         display: flex;
         flex-flow: row wrap;
         align-items: flex-start;
         gap: 2rem;
 
-        & > div{
+        & > div {
             // display: flex;
             // align-items: center;
             // flex: 1 0 7em;
 
-            input{
+            input {
                 opacity: 0;
                 width: 0;
                 height: 0;
 
-                &:checked + label::before{
+                &:checked + label::before {
                     background: config.$c-white;
 
                     @media (prefers-color-scheme: light) {
-                        background: color.scale(config.$c-turquoise-500, $lightness: 60%);
+                        background: color.scale(
+                            config.$c-turquoise-500,
+                            $lightness: 60%
+                        );
                     }
                 }
 
-                &:checked + label::after{
+                &:checked + label::after {
                     content: config.$i-checkmark;
                     font-family: config.$f-icons;
                     position: absolute;
@@ -199,13 +201,13 @@ div[aria-labelledby="checkbox-group"]{
                 }
             }
 
-            label{
+            label {
                 position: relative;
                 padding: 0 0 0 1.6em;
                 color: config.$c-white;
 
-                &::before{
-                    content:"";
+                &::before {
+                    content: '';
                     display: block;
                     width: 1.2em;
                     height: 1.2em;
@@ -225,7 +227,7 @@ div[aria-labelledby="checkbox-group"]{
     }
 }
 
-#checkbox-group{
+#checkbox-group {
     color: config.$c-turquoise-500;
 
     @media (prefers-color-scheme: light) {
@@ -233,7 +235,7 @@ div[aria-labelledby="checkbox-group"]{
     }
 }
 
-.text_optin{
+.text_optin {
     display: flex;
     flex-direction: row-reverse;
     align-items: flex-end;
@@ -241,15 +243,16 @@ div[aria-labelledby="checkbox-group"]{
     padding-left: 1.3em;
     position: relative;
 
-    input[type="checkbox"]{
-        & + label{
+    input[type='checkbox'] {
+        & + label {
             text-indent: -999em;
             width: 100%;
             position: absolute;
             left: 0;
             bottom: 0.3em;
 
-            &::before, &::after{
+            &::before,
+            &::after {
                 text-indent: 0;
             }
         }
@@ -257,7 +260,7 @@ div[aria-labelledby="checkbox-group"]{
 }
 
 .degree_level,
-div[class*="program_of_interest"],
-.area_of_interest{
+div[class*='program_of_interest'],
+.area_of_interest {
     flex: 1 0 100% !important;
 }
