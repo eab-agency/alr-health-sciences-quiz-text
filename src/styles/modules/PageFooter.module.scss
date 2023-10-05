@@ -1,4 +1,4 @@
-@use '../global/config/tokens';
+@use "../global/config/tokens";
 
 .page-footer {
     display: block;
@@ -7,10 +7,12 @@
     padding: clamp(tokens.$baseUnit * 0.8, 5vw, tokens.$baseUnit * 2);
     position: relative;
     z-index: tokens.$layer-3;
+    padding-top: 3em;
+    padding-bottom: 5em;
 
-    @media (min-width: tokens.$mq-800) {
-        padding-block: tokens.$baseUnit * 0.2;
-    }
+    // @media (min-width: tokens.$mq-800) {
+    //     padding-block: tokens.$baseUnit * 0.2;
+    // }
 
     .wrapper {
         display: flex;
@@ -21,10 +23,9 @@
         margin: 0 auto;
         gap: tokens.$baseUnit * 1.3;
 
-        @media (min-width: tokens.$mq-800) {
+        @media (min-width: tokens.$mq-900) {
             flex-direction: row;
-            align-items: center;
-            gap: 0;
+            gap: 1em;
         }
     }
 
@@ -70,11 +71,33 @@
             }
         }
     }
+
+    .logoLegal {
+        padding-block: tokens.$baseUnit * 0.5;
+    }
+
+    .legalLinks {
+        margin-bottom: 2em;
+        ul {
+            display: flex;
+            flex-direction: column;
+            gap: tokens.$baseUnit * 0.25;
+            padding-left: 0em;
+            padding-block: 1em;
+
+            li {
+                border: none;
+                a {
+                    font-size: 0.85rem;
+                }
+            }
+        }
+    }
 }
 
 .logo {
     display: block;
     position: relative;
-    width: 5rem;
-    height: 1em;
+    width: 7rem;
+    height: 2em;
 }
