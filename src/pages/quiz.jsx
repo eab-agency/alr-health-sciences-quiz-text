@@ -2,7 +2,6 @@ import React from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import useUser from '@/hooks/useUser';
-import PageFooter from '@/components/PageFooter';
 import styles from '@/styles/global/layouts/EmailOnly.module.scss';
 import Button from '@/components/Button';
 // eslint-disable-next-line import/no-unresolved
