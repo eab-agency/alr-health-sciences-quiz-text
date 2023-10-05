@@ -1,8 +1,7 @@
 @use 'sass:color';
 @use '../config/tokens';
 
-
-.matchedSchools{
+.matchedSchools {
     display: block;
     position: relative;
     width: 100%;
@@ -11,39 +10,39 @@
     min-height: 35rem;
     padding-block: clamp(tokens.$baseUnit * 2, 5vw, tokens.$baseUnit * 3);
 
-    .intro{
+    .intro {
         position: relative;
-    z-index: tokens.$layer-2;
+        z-index: tokens.$layer-2;
 
-    h2{
-        position: relative;
-        padding-bottom: 0.5em;
-        margin-bottom: tokens.$baseUnit * 2;
+        h2 {
+            position: relative;
+            padding-bottom: 0.5em;
+            margin-bottom: tokens.$baseUnit * 2;
 
-        &::after {
-            content: '';
-            display: block;
-            width: 100vw;
-            height: 1px;
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            background: tokens.$c-blue-300;
-            z-index: tokens.$layer-2;
+            &::after {
+                content: '';
+                display: block;
+                width: 100vw;
+                height: 1px;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                background: tokens.$c-blue-300;
+                z-index: tokens.$layer-2;
+            }
         }
     }
-    }
 
-    .container{
+    .container {
         position: relative;
     }
 }
 
-.hide{
+.hide {
     position: absolute;
 }
 
-.carouselForm{
+.carouselForm {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -59,8 +58,8 @@
     @media (prefers-color-scheme: light) {
         background: rgba(color.scale(tokens.$c-blue-100, $lightness: 50%), 0.9);
     }
-    
-    .closeBtn{
+
+    .closeBtn {
         position: absolute;
         right: 0;
         top: 0;
@@ -68,13 +67,13 @@
         border: none;
         font-size: clamp(0.9rem, 1.5vw, 1.2rem);
         color: tokens.$c-turquoise-500;
-        
+
         //ligth mode
         @media (prefers-color-scheme: light) {
             color: tokens.$c-blue-800;
         }
 
-        &:hover{
+        &:hover {
             color: tokens.$c-orange-500;
             @media (prefers-color-scheme: light) {
                 color: tokens.$c-malva-500;
@@ -82,25 +81,23 @@
         }
     }
 
-    .intro{
+    .intro {
         display: flex;
         flex-direction: column;
         width: 100%;
         max-width: tokens.$mq-900;
 
-        h3{
+        h3 {
             color: tokens.$c-white;
             text-align: center;
         }
-        p{
+        p {
             font-size: clamp(1rem, 2vw, 2rem);
             text-align: center;
         }
     }
 
-    form{
+    form {
         margin: 2em auto;
     }
-
-
 }

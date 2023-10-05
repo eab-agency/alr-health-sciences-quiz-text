@@ -3,18 +3,17 @@
 // @use '../components';
 @use '../config/tokens';
 
-
-.pageLayout{
+.pageLayout {
     overflow: hidden;
-    @media (prefers-color-scheme: light){
+    @media (prefers-color-scheme: light) {
         background: tokens.$c-blue-100;
     }
 }
 
-.pageHero{
+.pageHero {
     display: flex;
     flex-direction: column;
-    justify-content: center;    
+    justify-content: center;
     margin-inline: auto;
     margin-bottom: clamp(tokens.$baseUnit * 2, 5vw, tokens.$baseUnit * 4);
     position: relative;
@@ -25,19 +24,17 @@
     padding-inline: clamp(tokens.$baseUnit * 2, 4vw, tokens.$baseUnit * 4);
     // background: tokens.$c-blue-800;
 
-    @media(min-width: tokens.$mq-900){
+    @media (min-width: tokens.$mq-900) {
         padding-left: clamp(tokens.$baseUnit * 2, 4vw, tokens.$baseUnit * 4);
         padding-right: 0;
-    margin-top: -8em;
+        margin-top: -8em;
     }
 
-    @media (prefers-color-scheme: light){
+    @media (prefers-color-scheme: light) {
         background: tokens.$c-blue-100;
     }
 
-    
-
-    h1{
+    h1 {
         font-size: clamp(tokens.$baseUnit * 2, 4vw, tokens.$baseUnit * 4);
         font-weight: 700;
         text-transform: uppercase;
@@ -46,19 +43,19 @@
         line-height: 1;
         z-index: tokens.$layer-2;
 
-        strong{
+        strong {
             display: block;
             color: color.adjust(tokens.$c-turquoise-500, $lightness: 10%);
             font-weight: 900;
             font-size: 1.5em;
 
-            @media (prefers-color-scheme: light){
+            @media (prefers-color-scheme: light) {
                 color: #06008c;
             }
         }
     }
 
-    figure{
+    figure {
         position: absolute;
         top: 50%;
         right: 0;
@@ -67,44 +64,60 @@
         height: 100%;
         width: 100%;
 
-        @media(min-width: tokens.$mq-900){
+        @media (min-width: tokens.$mq-900) {
             width: 70%;
         }
 
-        @media(min-width: tokens.$mq-1400){
+        @media (min-width: tokens.$mq-1400) {
             width: 85%;
             transform: translateX(25%) translateY(-50%);
         }
 
-
-        &::after{
-            content:"";
+        &::after {
+            content: '';
             display: block;
-             width: 100%;
-             height: 100%;
-             position: absolute;
+            width: 100%;
+            height: 100%;
+            position: absolute;
             top: 0;
             left: 0;
-             background-image: linear-gradient(45deg, rgba(tokens.$c-blue-500, 0.95),rgba(tokens.$c-blue-500, 0.7), rgba(tokens.$c-blue-500, 0));
+            background-image: linear-gradient(
+                45deg,
+                rgba(tokens.$c-blue-500, 0.95),
+                rgba(tokens.$c-blue-500, 0.7),
+                rgba(tokens.$c-blue-500, 0)
+            );
 
-             
-             @media(min-width: tokens.$mq-900){
-                 width: 80%;
-                 background-image: linear-gradient(to right, rgba(tokens.$c-blue-500, 0.95),rgba(tokens.$c-blue-500, 0.7), rgba(tokens.$c-blue-500, 0));
+            @media (min-width: tokens.$mq-900) {
+                width: 80%;
+                background-image: linear-gradient(
+                    to right,
+                    rgba(tokens.$c-blue-500, 0.95),
+                    rgba(tokens.$c-blue-500, 0.7),
+                    rgba(tokens.$c-blue-500, 0)
+                );
+            }
+
+            @media (prefers-color-scheme: light) {
+                background-image: linear-gradient(
+                    45deg,
+                    rgba(tokens.$c-blue-100, 1),
+                    rgba(tokens.$c-blue-100, 0.7),
+                    rgba(tokens.$c-blue-100, 0)
+                );
+
+                @media (min-width: tokens.$mq-900) {
+                    background-image: linear-gradient(
+                        to right,
+                        rgba(tokens.$c-blue-100, 1),
+                        rgba(tokens.$c-blue-100, 0.7),
+                        rgba(tokens.$c-blue-100, 0)
+                    );
                 }
-                
-                @media (prefers-color-scheme: light){
-                 background-image: linear-gradient(45deg, rgba(tokens.$c-blue-100, 1),rgba(tokens.$c-blue-100, 0.7), rgba(tokens.$c-blue-100, 0));
-
-                 @media(min-width: tokens.$mq-900){
-                    background-image: linear-gradient(to right, rgba(tokens.$c-blue-100, 1),rgba(tokens.$c-blue-100, 0.7), rgba(tokens.$c-blue-100, 0));
-                 }
-              }
-              
-           
+            }
         }
 
-        img{
+        img {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -112,11 +125,11 @@
     }
 }
 
-%intro{
+%intro {
     position: relative;
     z-index: tokens.$layer-2;
 
-    h2{
+    h2 {
         position: relative;
         padding-bottom: 0.5em;
         margin-bottom: tokens.$baseUnit * 2;
@@ -133,9 +146,9 @@
             z-index: tokens.$layer-2;
         }
     }
-}   
+}
 
-.quizSection{
+.quizSection {
     display: flex;
     flex-direction: column;
     gap: clamp(tokens.$baseUnit * 2, 5vw, tokens.$baseUnit * 4);
@@ -146,9 +159,8 @@
     background: tokens.$c-blue-800;
     position: relative;
 
-    
-    &::before{
-        content:"";
+    &::before {
+        content: '';
         display: block;
         position: absolute;
         top: 0;
@@ -159,72 +171,70 @@
         background: tokens.$c-blue-800;
         z-index: tokens.$layer-1;
     }
-    
-    @media (prefers-color-scheme: light){
+
+    @media (prefers-color-scheme: light) {
         background: tokens.$c-blue-100;
 
-        &::before{
+        &::before {
             background: tokens.$c-blue-100;
         }
     }
 
-    @media(min-width: tokens.$mq-900){
+    @media (min-width: tokens.$mq-900) {
         flex-direction: row;
         align-items: center;
     }
 
-    & > div{
+    & > div {
         position: relative;
         z-index: tokens.$layer-2;
     }
 
-    figure{
+    figure {
         width: 50%;
         // max-width: 30rem;
         position: relative;
         z-index: tokens.$layer-2;
         flex: 1 0 auto;
 
-        @media (min-width: tokens.$mq-900){
+        @media (min-width: tokens.$mq-900) {
             width: clamp(20rem, 30vw, 30rem);
             height: clamp(20rem, 40vw, 40rem);
         }
 
-        img{
+        img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
     }
 
-    .intro{
-
+    .intro {
         @extend %intro;
-    }   
+    }
 }
 
-
-.button{
+.button {
     display: inline-flex;
 }
 
-.stats{
+.stats {
     width: 100%;
     max-width: tokens.$maxWidth;
     margin-inline: auto;
     padding-inline: clamp(tokens.$baseUnit * 2, 5vw, tokens.$baseUnit * 4);
 
-    &::before{
+    &::before {
         background: tokens.$c-blue-900;
 
-        @media (prefers-color-scheme: light){
+        @media (prefers-color-scheme: light) {
             background: tokens.$c-white;
         }
     }
 
-    ul{
-        li{
-            @media(min-width: tokens.$mq-900){
+    ul {
+        li {
+            @media (min-width: tokens.$mq-900) {
                 width: 33%;
                 flex: 1 0 auto;
             }
@@ -232,7 +242,7 @@
     }
 }
 
-.whyChoose{
+.whyChoose {
     background: tokens.$c-blue-800;
     padding: clamp(tokens.$baseUnit * 2, 5vw, tokens.$baseUnit * 4);
     position: relative;
@@ -240,8 +250,8 @@
     max-width: tokens.$maxWidth;
     margin-inline: auto;
 
-    &::before{
-        content:"";
+    &::before {
+        content: '';
         display: block;
         position: absolute;
         top: 0;
@@ -252,19 +262,19 @@
         background: tokens.$c-blue-800;
         z-index: tokens.$layer-1;
 
-        @media (prefers-color-scheme: light){
+        @media (prefers-color-scheme: light) {
             background: tokens.$c-blue-100;
         }
     }
 
-    .intro{
+    .intro {
         @extend %intro;
-    }   
+    }
 
-    .whyChooseContent{
+    .whyChooseContent {
         display: flex;
         flex-direction: column;
-        
+
         gap: clamp(tokens.$baseUnit * 2, 5vw, tokens.$baseUnit * 4);
         width: 100%;
         max-width: tokens.$maxWidth;
@@ -272,12 +282,12 @@
         position: relative;
         z-index: tokens.$layer-2;
 
-        @media(min-width: tokens.$mq-900){
+        @media (min-width: tokens.$mq-900) {
             flex-direction: row;
             align-items: center;
         }
 
-        figure{
+        figure {
             width: 50%;
             height: clamp(12rem, 20vw, 20rem);
             position: relative;
@@ -285,41 +295,39 @@
             flex: 1 0 auto;
             order: 0;
 
-            @media (min-width: tokens.$mq-900){
+            @media (min-width: tokens.$mq-900) {
                 width: clamp(20rem, 30vw, 30rem);
                 height: clamp(20rem, 40vw, 40rem);
                 order: 1;
             }
 
-            img{
+            img {
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
             }
         }
 
-        ul{
+        ul {
             list-style: none;
             order: 1;
 
-            li{
+            li {
                 margin-bottom: 3em;
 
-                h3{
+                h3 {
                     color: tokens.$c-white;
 
-                    @media (prefers-color-scheme: light){
+                    @media (prefers-color-scheme: light) {
                         color: tokens.$c-blue-logo;
                     }
                 }
-
             }
         }
-
     }
 }
 
-.testimonial{
+.testimonial {
     display: block;
     width: 100%;
     max-width: tokens.$mq-900;
@@ -328,8 +336,8 @@
     padding: clamp(tokens.$baseUnit * 2, 5vw, tokens.$baseUnit * 4);
     background: tokens.$c-blue-500;
 
-    &::before{
-        content: "";
+    &::before {
+        content: '';
         display: block;
         width: 100vw;
         height: 100%;
@@ -340,19 +348,17 @@
         background: tokens.$c-blue-500;
         z-index: tokens.$layer-1;
 
-        @media (prefers-color-scheme: light){
+        @media (prefers-color-scheme: light) {
             background: tokens.$c-white;
         }
     }
 
-    .quotation{
+    .quotation {
         position: relative;
         z-index: tokens.$layer-2;
 
-
-        blockquote{
-
-            &::before{
+        blockquote {
+            &::before {
                 content: '"';
                 display: block;
                 text-align: center;
@@ -363,19 +369,19 @@
                 margin-top: 3rem;
             }
 
-            p{
+            p {
                 font-size: clamp(1.5rem, 5vw, 2rem);
                 text-align: center;
                 font-weight: 300;
             }
 
-            .testimonialAuthor{
+            .testimonialAuthor {
                 border-top: 1px solid tokens.$c-blue-300;
                 padding-top: tokens.$baseUnit * 2;
                 margin-top: tokens.$baseUnit * 2;
                 text-align: center;
 
-                p{
+                p {
                     font-size: tokens.$baseUnit;
                 }
             }
@@ -383,23 +389,23 @@
     }
 }
 
-.rightCareer{
+.rightCareer {
     display: block;
     width: 100%;
     max-width: tokens.$maxWidth;
     margin-inline: auto;
     padding: clamp(tokens.$baseUnit * 2, 5vw, tokens.$baseUnit * 4);
 
-    .intro{
+    .intro {
         @extend %intro;
         max-width: tokens.$mq-1000;
 
-        p{
+        p {
             font-size: clamp(tokens.$baseUnit, 5vw, tokens.$baseUnit * 1.5);
         }
     }
 
-    ul{
+    ul {
         list-style: none;
         counter-reset: list;
         display: flex;
@@ -408,7 +414,7 @@
         padding-top: 2em;
         margin: 0;
 
-        li{
+        li {
             padding-left: 1em;
             position: relative;
             counter-increment: list;
@@ -416,36 +422,36 @@
             flex: 1 0 15rem;
             font-size: tokens.$baseUnit * 0.9;
 
-            @media(min-width: tokens.$mq-1000){
+            @media (min-width: tokens.$mq-1000) {
                 flex: 1 0 5rem;
                 margin: 0;
             }
 
-            &::before{
-                content: counter(list)".";
+            &::before {
+                content: counter(list) '.';
                 display: block;
                 line-height: 1;
                 font-size: 2.3em;
                 color: tokens.$c-white;
 
-                @media (prefers-color-scheme: light){
+                @media (prefers-color-scheme: light) {
                     color: tokens.$c-blue-logo;
                 }
             }
 
-            strong{
+            strong {
                 display: block;
                 font-size: 1.2em;
 
-                @media (prefers-color-scheme: light){
+                @media (prefers-color-scheme: light) {
                     color: tokens.$c-blue-logo;
-                }        
+                }
             }
         }
     }
 }
 
-.contactForm{
+.contactForm {
     display: block;
     width: 100%;
     max-width: tokens.$mq-900;
@@ -454,13 +460,13 @@
     // background: tokens.$c-blue-500;
     position: relative;
 
-    .intro{
+    .intro {
         @extend %intro;
         border-bottom: 1px solid rgba(tokens.$c-blue-300, 0.2);
     }
 
-    &::before{
-        content: "";
+    &::before {
+        content: '';
         display: block;
         width: 100vw;
         height: 100%;
@@ -470,13 +476,13 @@
         transform: translateX(-50%);
         background: tokens.$c-blue-500;
 
-        @media (prefers-color-scheme: light){
+        @media (prefers-color-scheme: light) {
             background: tokens.$c-white;
         }
     }
 }
 
-.takeQuiz{
+.takeQuiz {
     display: block;
     width: 100%;
     max-width: tokens.$mq-900;
@@ -484,9 +490,9 @@
     padding: clamp(tokens.$baseUnit * 2, 5vw, tokens.$baseUnit * 4);
     text-align: center;
     position: relative;
-    
-     &::before{
-        content: "";
+
+    &::before {
+        content: '';
         display: block;
         width: 100vw;
         height: 100%;
@@ -497,28 +503,28 @@
         background: tokens.$c-blue-500;
         z-index: tokens.$layer-1;
 
-        @media (prefers-color-scheme: light){
+        @media (prefers-color-scheme: light) {
             background: tokens.$c-white;
         }
     }
 
-    .content{
+    .content {
         position: relative;
         z-index: tokens.$layer-2;
     }
 }
 
-.whatIsCappex{
+.whatIsCappex {
     display: block;
     width: 100%;
     max-width: tokens.$mq-1200;
     margin-inline: auto;
     padding: clamp(tokens.$baseUnit * 2, 5vw, tokens.$baseUnit * 4);
     position: relative;
-    background: color.scale(tokens.$c-blue-800, $lightness:-20%);
+    background: color.scale(tokens.$c-blue-800, $lightness: -20%);
 
-    &::before{
-        content: "";
+    &::before {
+        content: '';
         display: block;
         width: 100vw;
         height: 100%;
@@ -526,28 +532,27 @@
         top: 0;
         left: 50%;
         transform: translateX(-50%);
-        background: color.scale(tokens.$c-blue-800, $lightness:-20%);
+        background: color.scale(tokens.$c-blue-800, $lightness: -20%);
         z-index: tokens.$layer-1;
 
-        @media (prefers-color-scheme: light){
+        @media (prefers-color-scheme: light) {
             background: tokens.$c-white;
         }
     }
 
-    .intro{
+    .intro {
         max-width: tokens.$mq-800;
         position: relative;
         z-index: tokens.$layer-2;
 
-        h2{
+        h2 {
             font-size: clamp(tokens.$baseUnit * 2, 5vw, tokens.$baseUnit * 3);
-
         }
-        p{
+        p {
             font-size: clamp(tokens.$baseUnit, 5vw, tokens.$baseUnit * 1.2);
         }
     }
-    .content{
+    .content {
         display: flex;
         flex-flow: row wrap;
         gap: 2em;
@@ -555,30 +560,32 @@
         position: relative;
         z-index: tokens.$layer-2;
 
-
-        figure{
+        figure {
             padding-inline: 4em;
-            @media(min-width: tokens.$mq-800){
+            @media (min-width: tokens.$mq-800) {
                 order: 1;
                 flex: 1 0 45%;
                 padding: 0;
             }
         }
 
-        .cappexFacts{
+        .cappexFacts {
             flex: 1 0 calc(55% - 2em);
 
-            h3{
+            h3 {
                 color: tokens.$c-white;
-                font-size: clamp(tokens.$baseUnit * 1.5, 5vw, tokens.$baseUnit * 2);
+                font-size: clamp(
+                    tokens.$baseUnit * 1.5,
+                    5vw,
+                    tokens.$baseUnit * 2
+                );
             }
 
-            ul{
-                li{
-
+            ul {
+                li {
                 }
             }
-            p{
+            p {
                 // font-size: clamp(tokens.$baseUnit, 5vw, tokens.$baseUnit * 1.5);
             }
         }

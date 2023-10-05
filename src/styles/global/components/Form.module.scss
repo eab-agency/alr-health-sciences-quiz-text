@@ -17,20 +17,24 @@
         flex: 1 0 100%;
     }
 
-    &.text, &.email, &.tel, &.checkboxgrp, &.select{
+    &.text,
+    &.email,
+    &.tel,
+    &.checkboxgrp,
+    &.select {
         border: none;
     }
 
-    &.freetext{
+    &.freetext {
         flex: 1 0 100%;
         font-size: tokens.$fs-xs;
-        a{
+        a {
             text-decoration: none;
             font-weight: 400;
         }
     }
 
-    &.button{
+    &.button {
         background: none;
         border-radius: 0;
         border: none;
