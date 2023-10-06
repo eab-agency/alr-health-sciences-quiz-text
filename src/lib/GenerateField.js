@@ -41,7 +41,9 @@ const GenerateField = ({ field, error, formData }) => {
         properties,
         parent,
         conditions,
+        showLabel
     } = field;
+    console.log("🚀 ~ file: GenerateField.js:45 ~ GenerateField ~ field:", showLabel, field)
 
     const inputValue = values[alias] ?? '';
 
@@ -116,7 +118,7 @@ const GenerateField = ({ field, error, formData }) => {
                     } `}
                     key={field.id}
                 >
-                    <label htmlFor={alias}>{label}</label>
+                    {showLabel && <label htmlFor={alias}>{label}</label>}
                     {isRequired && <span className="required">*</span>}
                     <Field
                         name={alias}
@@ -141,7 +143,7 @@ const GenerateField = ({ field, error, formData }) => {
                     } `}
                     key={field.id}
                 >
-                    <label htmlFor={alias}>{label}</label>
+                    {showLabel && <label htmlFor={alias}>{label}</label>}
                     {isRequired && <span className="required">*</span>}
                     <Field
                         name={alias}
@@ -167,7 +169,7 @@ const GenerateField = ({ field, error, formData }) => {
                     } `}
                     key={field.id}
                 >
-                    <label htmlFor={alias}>{label}</label>
+                    {showLabel && <label htmlFor={alias}>{label}</label>}
                     {isRequired && <span className="required">*</span>}
 
                     <Field
@@ -221,7 +223,7 @@ const GenerateField = ({ field, error, formData }) => {
                     } `}
                     key={field.id}
                 >
-                    <label htmlFor={alias}>{label}</label>
+                    {showLabel && <label htmlFor={alias}>{label}</label>}
                     {isRequired && <span className="required">*</span>}
                     <Field
                         name={alias}
@@ -246,7 +248,7 @@ const GenerateField = ({ field, error, formData }) => {
                     } `}
                     key={field.id}
                 >
-                    <label htmlFor={alias}>{label}</label>
+                    {showLabel && <label htmlFor={alias}>{label}</label>}
                     {isRequired && <span className="required">*</span>}
                     <Field
                         name={alias}
@@ -273,9 +275,9 @@ const GenerateField = ({ field, error, formData }) => {
                 />
             );
         case 'checkboxgrp': {
-            if (alias === 'text_optin' && !phoneHasValue) {
-                return null;
-            }
+            // if (alias === 'text_optin' && !phoneHasValue) {
+            //     return null;
+            // }
             return (
                 <div
                     className={`${styles.qGroup}  ${field.alias} ${
@@ -283,7 +285,7 @@ const GenerateField = ({ field, error, formData }) => {
                     } `}
                     key={field.id}
                 >
-                    <div id="checkbox-group">{label}</div>
+                    {showLabel && <div id="checkbox-group">{label}</div>}
                     <div role="group" aria-labelledby="checkbox-group">
                         <label>
                             {isRequired && <span className="required">*</span>}
@@ -333,7 +335,7 @@ const GenerateField = ({ field, error, formData }) => {
                     } `}
                     key={field.id}
                 >
-                    <label htmlFor={alias}>{label}</label>
+                    {showLabel && <label htmlFor={alias}>{label}</label>}
                     {isRequired && <span className="required">*</span>}
                     <Field
                         name={alias}
