@@ -1,9 +1,7 @@
 {
     "extends": [
         "plugin:import/errors",
-        "next/core-web-vitals",
-        "wesbos",
-        "prettier"
+        "next/core-web-vitals"
     ],
     "settings": {
         "import/resolver": {
@@ -16,13 +14,5 @@
     "rules": {
         "react/prop-types": "off",
         "no-unused-vars": "warn",
-        "prettier/prettier": [
-            "error",
-            {
-                "singleQuote": true,
-                "endOfLine": "auto",
-                "tabWidth": 4
-            }
-        ]
     }
 }
