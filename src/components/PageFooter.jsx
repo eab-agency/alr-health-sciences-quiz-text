@@ -1,19 +1,9 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
 import Image from 'next/image';
-import { MdHelpOutline, MdOutlinePrivacyTip } from 'react-icons/md';
-import { Reoverlay } from 'reoverlay';
 import styles from '../styles/modules/PageFooter.module.scss';
-import PrivacyModal from './PrivacyModal';
-import HelpModal from './HelpModal';
 
 export default function PageFooter() {
-    const helpClick = () => {
-        Reoverlay.showModal(HelpModal, {});
-    };
-    const privacyClick = () => {
-        Reoverlay.showModal(PrivacyModal, {});
-    };
+   
+const currentYear = new Date().getFullYear();
 
     return (
         <footer className={styles['page-footer']}>
@@ -95,7 +85,7 @@ export default function PageFooter() {
                     </div>
                     <div className="copyright">
                         <p>
-                            © 2023 All rights reserved.{' '}
+                            © {currentYear} All rights reserved.{' '}
                             <a
                                 href="https://www.appily.com"
                                 target="_blank"
@@ -105,31 +95,6 @@ export default function PageFooter() {
                             </a>
                         </p>
                     </div>
-                </div>
-
-                <div className="help-privacy">
-                    <ul>
-                        <li>
-                            <button
-                                type="button"
-                                className={styles.helpPrivBtn}
-                                onClick={helpClick}
-                            >
-                                <MdHelpOutline />
-                                Help
-                            </button>
-                        </li>
-                        <li>
-                            <button
-                                type="button"
-                                className={styles.helpPrivBtn}
-                                onClick={privacyClick}
-                            >
-                                <MdOutlinePrivacyTip />
-                                Privacy
-                            </button>
-                        </li>
-                    </ul>
                 </div>
             </div>
         </footer>
