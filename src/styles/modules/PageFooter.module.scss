@@ -45,25 +45,6 @@
         margin: 0;
 
         li {
-            // padding-inline: 1em;
-
-            .helpPrivBtn {
-                display: flex;
-                align-items: center;
-                gap: tokens.$baseUnit / 2;
-                text-transform: uppercase;
-                text-decoration: none;
-                font-size: tokens.$fs-xs;
-                background: none;
-                border: none;
-
-                &:hover {
-                    background-color: tokens.$c-blue-500;
-                    border-radius: 0;
-                    text-decoration: underline;
-                }
-            }
-
             border-right: 1px solid tokens.$c-blue-500;
 
             &:first-child {
@@ -87,8 +68,19 @@
 
             li {
                 border: none;
-                a {
+                a, button {
                     font-size: 0.85rem;
+                }
+                // TODO: Andrei, I'm sure you have a better way of handling buttons that should look like links. was just doing this real quick.
+                button {
+                    border: none;
+                    background-color: transparent;
+                    color: tokens.$c-blue-300;
+                    padding-left: 0;
+                    text-decoration: underline;
+                    &:hover {
+                        text-decoration: none;
+                    }
                 }
             }
         }

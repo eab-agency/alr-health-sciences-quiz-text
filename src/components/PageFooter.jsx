@@ -84,7 +84,6 @@ export default function PageFooter() {
                             <li>
                                 <button
                                     type="button"
-                                    className={styles.helpPrivBtn}
                                     onClick={(e) => {
                                         e.preventDefault();
                                         window.OneTrust.ToggleInfoDisplay();
