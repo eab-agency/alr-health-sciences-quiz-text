@@ -7,13 +7,13 @@ import { RiArrowGoBackFill } from 'react-icons/ri';
 
 const CarouselWithForm = ({ formId }) => {
     const [visibleForm, setVisibleForm] = useState(false);
-    const { user, location } = useUser();
+    const { user, location, globalPrivacyControl } = useUser();
 
     const [selectedSchool, setSelectedSchool] = useState(null);
 
     const onCarouselClick = (school) => {
         // if location.notUS === true, then redirect to selectedSchool.link
-        if (location.notUS) {
+		if (location.notUS || globalPrivacyControl) {
             window.open(school.link, '_blank');
         } else {
             setSelectedSchool(school);

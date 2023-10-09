@@ -36,6 +36,20 @@ export default function App({ Component, pageProps }) {
           `,
                 }}
             />
+            <Script
+					src="https://cdn.cookielaw.org/consent/f621c13f-1c94-43c9-8362-0f5d72c69f26/OtAutoBlock.js"
+					strategy="beforeInteractive"
+				/>
+				<Script
+					src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js"
+					data-domain-script="f621c13f-1c94-43c9-8362-0f5d72c69f26"
+				/>
+				<Script
+					id="otStubData"
+					dangerouslySetInnerHTML={{
+						__html: "function OptanonWrapper() {}",
+					}}
+				/>
 
             <SWRConfig value={{ fetcher }}>
                 <CookiesProvider>

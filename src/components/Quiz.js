@@ -20,7 +20,7 @@ function Quiz() {
     // console.log('🚀 ~ file: Quiz.js:16 ~ Quiz ~ questions:', questions.length);
     const router = useRouter();
 
-    const { location } = useUser();
+    const { location, globalPrivacyControl } = useUser();
 
     useEffect(() => {
         console.log('🚀 ~ file: Quiz.js:24 ~ location:', location);
@@ -119,7 +119,7 @@ function Quiz() {
     if (localQData.isFinished) {
         // setLocalQData({ ...localQData, isFinished: true });
         // if location.notUS === true, then redirect to results
-        if (location.notUS) {
+        if (location.notUS || globalPrivacyControl) {
             router.push(`${localQData.highestScorePersonality}`);
         }
         const finalResults = {
@@ -134,15 +134,15 @@ function Quiz() {
                     {(location.notUS === false ||
                         location.notUS === null ||
                         location.notUS === undefined) && (
-                        <Results
-                            personality={localQData.highestScorePersonality}
-                            description={personalityData.description}
-                            title={personalityData.title}
-                            answers={finalResults}
-                        >
-                            <ResetQuizButton />
-                        </Results>
-                    )}
+                            <Results
+                                personality={localQData.highestScorePersonality}
+                                description={personalityData.description}
+                                title={personalityData.title}
+                                answers={finalResults}
+                            >
+                                <ResetQuizButton />
+                            </Results>
+                        )}
                 </div>
             </div>
         );

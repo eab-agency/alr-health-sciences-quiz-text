@@ -2,8 +2,8 @@ import Image from 'next/image';
 import styles from '../styles/modules/PageFooter.module.scss';
 
 export default function PageFooter() {
-   
-const currentYear = new Date().getFullYear();
+
+    const currentYear = new Date().getFullYear();
 
     return (
         <footer className={styles['page-footer']}>
@@ -80,6 +80,19 @@ const currentYear = new Date().getFullYear();
                                 >
                                     Personal Information Protection
                                 </a>
+                            </li>
+                            <li>
+                                <button
+                                    type="button"
+                                    className={styles.helpPrivBtn}
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        window.OneTrust.ToggleInfoDisplay();
+                                    }
+                                    }
+                                >
+                                    Privacy Preferences
+                                </button>
                             </li>
                         </ul>
                     </div>
