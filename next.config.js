@@ -1,12 +1,17 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    // async redirects() {
-    //     return [{
-    //         source: '/:path*',
-    //         destination: 'https://advance.appily.com',
-    //         permanent: true,
-    //     }]
-    // },
+    async redirects() {
+        return [{
+            source: '/quiz',
+            destination: 'https://www.advance.appily.com/careers/healthcare/quiz',
+            permanent: true,
+        },
+        {
+            source: '/:path*',
+            destination: 'https://www.advance.appily.com/careers/healthcare/:path*',
+            permanent: true,
+        }]
+    },
     reactStrictMode: true,
     images: {
         remotePatterns: [
