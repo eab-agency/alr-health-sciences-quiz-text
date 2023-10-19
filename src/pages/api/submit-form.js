@@ -45,7 +45,7 @@ export default async function corsHandler(req, res) {
 
         await runCorsMiddleware(req, res);
 
-        const endpoint = `https://go.cappexhealth.com/form/submit?formId=${formId}`;
+        const endpoint = `https://go.advance.appily.com/form/submit?formId=${formId}`;
         const { data } = await axios.post(endpoint, req.body);
 
         res.status(200).json(data);
